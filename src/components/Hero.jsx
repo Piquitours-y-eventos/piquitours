@@ -93,7 +93,7 @@ export default function Hero() {
       </div>
       <div className="hero-content">
         <h1>
-          <span>Explora el Mundo</span><br />
+          <span>Explora los lugares mas hermosos</span><br />
           con Piquitours
         </h1>
         <div className="animated-text-container">
