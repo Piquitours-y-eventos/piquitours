@@ -94,7 +94,7 @@ export default function Hero() {
       <div className="hero-content">
         <h1>
           <span>Explora los lugares mas hermosos</span><br />
-          con Piquitours
+          con Piquitours y eventos
         </h1>
         <div className="animated-text-container">
           {TEXTS.map((text, index) => (
