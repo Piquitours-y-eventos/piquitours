@@ -272,8 +272,13 @@ body:not(.dark-mode) .nav-links a {
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+body:not(.dark-mode) .nav-links li {
+  /* background-color: red; */
+}
+
 body:not(.dark-mode) .nav-links a:hover {
-  background: rgba(0, 0, 0, 0.05);
+  /* background: rgba(0, 0, 0, 0.05); */
+  background: rgba(0, 153, 255, 0.2);
 }
 
 body:not(.dark-mode) .theme-toggle {
@@ -289,13 +294,13 @@ body:not(.dark-mode) .menu-toggle {
 }
 
 body:not(.dark-mode) .nav {
-  background: transparent;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  /* background: transparent; */
+  /* backdrop-filter: blur(15px); */
+  /* -webkit-backdrop-filter: blur(15px); */
 }
 
 body:not(.dark-mode) .nav-links a {
-  background: rgba(0, 0, 0, 0.05);
+  /* background: rgba(0, 153, 255, 0.2);  */
 }
 
 /* ===== BLOQUEO DE SCROLL ===== */

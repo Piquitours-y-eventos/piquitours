@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { FiArrowUpRight } from 'react-icons/fi';
 import './styles/Destinations.css';
 
-// Memoizamos el componente para evitar re-renderizados innecesarios
 const DestinationCard = React.memo(({ destination, index }) => {
   return (
     <motion.div

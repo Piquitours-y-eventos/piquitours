@@ -1,0 +1,10 @@
+Get-ChildItem -Recurse -File -Include $extensiones |
+>> Where-Object {
+>>     $_.FullName -notmatch '\\node_modules\\' -and
+>>     $_.FullName -notmatch '\\.git\\' -and
+>>     $_.Name -ne 'proyecto_completo.txt'
+>> } |
+>> ForEach-Object {
+>>     "==== $($_.FullName) ===="
+>>     Get-Content $_.FullName -Raw
+>> } | Set-Content proyecto_completo.txt -Encoding utf8
