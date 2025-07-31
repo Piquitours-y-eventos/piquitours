@@ -1,10 +1,11 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowUpRight } from 'react-icons/fi';
+import TourDetailsModal from './TourDetailsModal';
+import toursData from '../data/tours.json';
 import './styles/Destinations.css';
 
-const DestinationCard = React.memo(({ destination, index }) => {
+const DestinationCard = React.memo(({ destination, index, onCardClick }) => {
   return (
     <motion.div
       className="destination-card"
@@ -18,6 +19,7 @@ const DestinationCard = React.memo(({ destination, index }) => {
         stiffness: 90
       }}
     >
+      {/* Efectos visuales */}
       {[...Array(2)].map((_, i) => (
         <div 
           key={i}
@@ -34,9 +36,9 @@ const DestinationCard = React.memo(({ destination, index }) => {
         <img 
           src={destination.image} 
           alt={destination.title}
-          loading="lazy" // Carga perezosa
+          loading="lazy"
         />
-        
+
         <div className="rating-badge">
           ⭐
           <span>{destination.rating}</span>
@@ -52,22 +54,24 @@ const DestinationCard = React.memo(({ destination, index }) => {
             whileInView={{ scale: 1 }}
             transition={{ type: "spring", delay: 0.3 }}
           >
-            ${destination.price.toLocaleString()}
+            ${destination.price}
           </motion.div>
         </div>
 
-        <p id='card-description-01'>{destination.description}</p>
+        <p className="card-description">{destination.description}</p>
 
         <motion.button
           className="cta-button"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => onCardClick(destination)}
         >
           Conoce más
           <FiArrowUpRight style={{ fontSize: '1.4rem' }} />
         </motion.button>
       </div>
 
+      {/* Partículas flotantes */}
       {[...Array(5)].map((_, i) => (
         <div 
           key={i}
@@ -87,62 +91,37 @@ const DestinationCard = React.memo(({ destination, index }) => {
 });
 
 const Destinations = () => {
-  const destinations = [
-    {
-      title: "ARRÁS DE CIELO",
-      description: "Peñol y Guatapé, dos razones para enamorarte de Antioquia.",
-      image: "/guatap2.jpeg",
-      rating: 4.9,
-      price: "420,000"
-    },
-    {
-      title: "SABOR CARIBE",
-      description: "Barú, Rodadero y Cartagena: tres joyas, un solo paraíso.",
-      image: "/baru.jpeg", // Reemplaza con una URL válida
-      rating: 4.8,
-      price: "850,000"
-    },
-    {
-      title: "MAR DE SIETE COLORES",
-      description: "Entre corales y brisa, San Andrés te enamora",
-      image: "sanandres2.jpeg", // Reemplaza con una URL válida
-      rating: 5.0,
-      price: "1,700,000"
-    },
-    {
-      title: "TRES DESTINOS",
-      description: "Paisajes que inspiran, emociones que aceleran: así se vive el Quindío.",
-      image: "quindio.jpg", // Reemplaza con una URL válida
-      rating: 5.0,
-      price: "450,000"
-    },
-    {
-      title: "VAMOS PA'L PUEBLO",
-      description: "Boyacá: Donde cada rincón tiene una historia, y cada paisaje, un suspiro",
-      image: "", // Reemplaza con una URL válida
-      rating: 5.0,
-      price: 0
-    },
-    {
-      title: "Lorem ipsum dolor sit amet",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus.",
-      image: "https://via.placeholder.com/600x400?text=Destino+6", // Reemplaza con una URL válida
-      rating: 5.0,
-      price: 0
-    }
-  ];
+  const [selectedTour, setSelectedTour] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCardClick = (tour) => {
+    setSelectedTour(tour);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedTour(null);
+  };
 
   return (
     <section className="destinations-section" id="destinos">
       <div className="destinations-grid">
-        {destinations.map((destination, index) => (
+        {toursData.tours.map((tour, index) => (
           <DestinationCard
-            key={index}
-            destination={destination}
+            key={tour.id}
+            destination={tour}
             index={index}
+            onCardClick={handleCardClick}
           />
         ))}
       </div>
+      
+      <TourDetailsModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        tour={selectedTour}
+      />
     </section>
   );
 };

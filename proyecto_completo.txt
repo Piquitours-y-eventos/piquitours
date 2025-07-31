@@ -24,6 +24,17 @@ dist-ssr
 *.sln
 *.sw?
 
+==== C:\Users\rojas\Desktop\piquitours\codigo.codigo ====
+page reload proyecto_completo.txt
+Get-ChildItem -Recurse -File -Include $extensiones | Where-Object {
+$_.FullName -notmatch '\\node_modules\\' -and
+$_.FullName -notmatch '\\.git\\' -and
+$_.Name -ne 'proyecto_completo.txt'
+} |
+ForEach-Object {
+"==== $($_.FullName) ===="
+Get-Content $_.FullName -Raw
+} | Set-Content proyecto_completo.txt -Encoding utf8
 ==== C:\Users\rojas\Desktop\piquitours\comand.comand ====
 Get-ChildItem -Recurse -File -Include $extensiones |
 >> Where-Object {
@@ -88,10 +99,9 @@ export default [
   <meta property="og:image" content="./public/preview.webp" />
   <meta property="og:url" content="https://piquitours-y-eventos.vercel.app/" />
   <link rel="icon" type="image/png" href="/logo_entero.png" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;700&display=swap"
-    rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -2305,6 +2315,13 @@ Este proyecto estÃ¡ licenciado bajo la Licencia MIT. Consulta el archivo `LICE
 ---
 
 <!-- <a href='https://github.com/rx3card'>rx3card Oscar Rojas.</a> -->
+
+## ðŸ¤ Contributing 
+<!-- 
+<a href="https://openomy.app/github/rx3card/piquitours" target="_blank" style="display: block; width: 100%;" align="center">
+  <img src="https://www.openomy.com/svg?repo=rx3card/piquitours&chart=list" target="_blank" alt="Contribution Leaderboard" style="display: block; width: 100%;" />
+</a>
+ -->
 
 ==== C:\Users\rojas\Desktop\piquitours\tailwind.config.cjs ====
 /** @type {import('tailwindcss').Config} */
@@ -10227,13 +10244,13 @@ createRoot(document.getElementById('root')).render(
 )
 
 ==== C:\Users\rojas\Desktop\piquitours\src\components\Destinations.jsx ====
-
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowUpRight } from 'react-icons/fi';
+import TourDetailsModal from './TourDetailsModal';
 import './styles/Destinations.css';
 
-const DestinationCard = React.memo(({ destination, index }) => {
+const DestinationCard = React.memo(({ destination, index, onCardClick }) => {
   return (
     <motion.div
       className="destination-card"
@@ -10263,13 +10280,19 @@ const DestinationCard = React.memo(({ destination, index }) => {
         <img 
           src={destination.image} 
           alt={destination.title}
-          loading="lazy" // Carga perezosa
+          loading="lazy"
         />
-        
+
         <div className="rating-badge">
           â­
           <span>{destination.rating}</span>
         </div>
+
+        {destination.credit && (
+          <div className="image-credit">
+            Imagen de: {destination.credit}
+          </div>
+        )}
       </div>
 
       <div className="content-container">
@@ -10291,6 +10314,7 @@ const DestinationCard = React.memo(({ destination, index }) => {
           className="cta-button"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => onCardClick(destination)}
         >
           Conoce mÃ¡s
           <FiArrowUpRight style={{ fontSize: '1.4rem' }} />
@@ -10316,50 +10340,64 @@ const DestinationCard = React.memo(({ destination, index }) => {
 });
 
 const Destinations = () => {
+  const [selectedDestination, setSelectedDestination] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const destinations = [
     {
       title: "ARRÃS DE CIELO",
       description: "PeÃ±ol y GuatapÃ©, dos razones para enamorarte de Antioquia.",
       image: "/guatap2.jpeg",
       rating: 4.9,
-      price: "420,000"
+      price: "420,000",
+      credit: "https://www.google.com/imgres?q=imagen&imgurl=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1689308271305-58e75832289b%3Ffm%3Djpg%26q%3D60%26w%3D3000%26ixlib%3Drb-4.1.0%26ixid%3DM3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%253D%253D&imgrefurl=https%3A%2F%2Funsplash.com%2Fes%2Ffotos%2Funa-imagen-generada-por-computadora-de-un-planeta-en-el-espacio-Q1b5nTLlZZA&docid=xcUM7GW6iwkmmM&tbnid=GaeCvxSUvoYwCM&vet=12ahUKEwjPxpa72-SOAxWaTjABHRYrNEwQM3oECCAQAA..i&w=3000&h=1875&hcb=2&ved=2ahUKEwjPxpa72-SOAxWaTjABHRYrNEwQM3oECCAQAA"
     },
     {
       title: "SABOR CARIBE",
       description: "BarÃº, Rodadero y Cartagena: tres joyas, un solo paraÃ­so.",
-      image: "/baru.jpeg", // Reemplaza con una URL vÃ¡lida
+      image: "/baru.jpeg",
       rating: 4.8,
       price: "850,000"
     },
     {
       title: "MAR DE SIETE COLORES",
       description: "Entre corales y brisa, San AndrÃ©s te enamora",
-      image: "sanandres2.jpeg", // Reemplaza con una URL vÃ¡lida
+      image: "sanandres2.jpeg",
       rating: 5.0,
       price: "1,700,000"
     },
     {
       title: "TRES DESTINOS",
       description: "Paisajes que inspiran, emociones que aceleran: asÃ­ se vive el QuindÃ­o.",
-      image: "quindio.jpg", // Reemplaza con una URL vÃ¡lida
+      image: "quindio.jpg",
       rating: 5.0,
       price: "450,000"
     },
     {
       title: "VAMOS PA'L PUEBLO",
       description: "BoyacÃ¡: Donde cada rincÃ³n tiene una historia, y cada paisaje, un suspiro",
-      image: "", // Reemplaza con una URL vÃ¡lida
+      image: "",
       rating: 5.0,
       price: 0
     },
     {
       title: "Lorem ipsum dolor sit amet",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus.",
-      image: "https://via.placeholder.com/600x400?text=Destino+6", // Reemplaza con una URL vÃ¡lida
+      image: "https://via.placeholder.com/600x400?text=Destino+6",
       rating: 5.0,
       price: 0
     }
   ];
+
+  const handleCardClick = (destination) => {
+    setSelectedDestination(destination);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedDestination(null);
+  };
 
   return (
     <section className="destinations-section" id="destinos">
@@ -10369,9 +10407,15 @@ const Destinations = () => {
             key={index}
             destination={destination}
             index={index}
+            onCardClick={handleCardClick}
           />
         ))}
       </div>
+      <TourDetailsModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        destination={selectedDestination}
+      />
     </section>
   );
 };
@@ -10715,6 +10759,320 @@ export default  function Section() {
   )
 }
 
+==== C:\Users\rojas\Desktop\piquitours\src\components\TourDetailsModal.jsx ====
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiX, FiCalendar, FiCheckCircle, FiMapPin, FiClock, FiMaximize, FiMinimize } from 'react-icons/fi';
+import '../index.css'; // Import Tailwind CSS
+
+const TourDetailsModal = ({ isOpen, onClose, destination }) => {
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0);
+
+  if (!destination) return null;
+
+  // Invented detailed tour data
+  const tourDetails = {
+    description: `Explora ${destination.title.split(':')[0]} en un viaje inolvidable. Descubre paisajes impresionantes, sumÃ©rgete en la cultura local y disfruta de experiencias Ãºnicas diseÃ±adas para cautivar tus sentidos. Desde caminatas guiadas hasta cenas bajo las estrellas, este tour combina aventura, relajaciÃ³n y descubrimiento.`,
+    highlights: [
+      `Visita guiada a los sitios mÃ¡s emblemÃ¡ticos de ${destination.title.split(':')[0]}.`,
+      "Actividades al aire libre como caminatas, paseos en bote o ciclismo.",
+      "Degustaciones de gastronomÃ­a local con chefs reconocidos.",
+      "Alojamiento en hoteles boutique con vistas espectaculares.",
+      "Transporte privado y guÃ­as expertos en cada etapa del viaje.",
+    ],
+    itinerary: [
+      {
+        day: "DÃ­a 1",
+        title: "Bienvenida y ExploraciÃ³n",
+        description: `Llegada a ${destination.title.split(':')[0]}. Check-in en un hotel de lujo, seguido de un tour introductorio por los puntos clave de la regiÃ³n. Termina el dÃ­a con una cena de bienvenida.`,
+        time: "08:00 AM - 08:00 PM",
+        location: destination.title.split(':')[0],
+      },
+      {
+        day: "DÃ­a 2",
+        title: "Aventura Natural",
+        description: "Explora reservas naturales con caminatas guiadas o actividades acuÃ¡ticas. Disfruta de un almuerzo tÃ­pico al aire libre y tiempo libre para relajarte.",
+        time: "07:00 AM - 06:00 PM",
+        location: "Zonas Naturales",
+      },
+      {
+        day: "DÃ­a 3",
+        title: "InmersiÃ³n Cultural",
+        description: "Visita museos, sitios histÃ³ricos y mercados locales. Participa en un taller cultural y disfruta de una cena temÃ¡tica con mÃºsica en vivo.",
+        time: "09:00 AM - 09:00 PM",
+        location: "Centro HistÃ³rico",
+      },
+      {
+        day: "DÃ­a 4",
+        title: "Despedida",
+        description: "MaÃ±ana libre para compras o relajaciÃ³n. Traslado al aeropuerto o estaciÃ³n para el regreso.",
+        time: "08:00 AM - 12:00 PM",
+        location: destination.title.split(':')[0],
+      },
+    ],
+    inclusions: [
+      "Transporte privado de ida y vuelta",
+      "Alojamiento en hotel 4 o 5 estrellas",
+      "Desayunos, almuerzos y cenas seleccionadas",
+      "GuÃ­as turÃ­sticos bilingÃ¼es",
+      "Entradas a todas las atracciones mencionadas",
+      "Seguro de viaje bÃ¡sico",
+    ],
+    gallery: [
+      destination.image,
+      "https://picsum.photos/800/600?random=1",
+      "https://picsum.photos/800/600?random=2",
+      "https://picsum.photos/800/600?random=3",
+    ],
+  };
+
+  const handleImageChange = (index) => {
+    setCurrentImage(index);
+  };
+
+  const toggleFullScreen = () => {
+    setIsFullScreen(!isFullScreen);
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.div
+            className={`relative bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl w-11/12 ${
+              isFullScreen ? 'w-full h-full' : 'max-w-5xl max-h-[90vh]'
+            } overflow-y-auto shadow-2xl p-8`}
+            initial={{ scale: 0.8, y: 50 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0.8, y: 50 }}
+            transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+          >
+            {/* Modal Controls */}
+            <div className="absolute top-4 right-4 flex gap-2">
+              <button
+                className="text-white hover:text-blue-400 transition-colors"
+                onClick={toggleFullScreen}
+                title={isFullScreen ? 'Reducir' : 'Pantalla completa'}
+              >
+                {isFullScreen ? <FiMinimize size={28} /> : <FiMaximize size={28} />}
+              </button>
+              <button
+                className="text-white hover:text-blue-400 transition-colors"
+                onClick={onClose}
+                title="Cerrar"
+              >
+                <FiX size={28} />
+              </button>
+            </div>
+
+            {/* Header Section */}
+            <div className="relative h-96 rounded-xl overflow-hidden mb-8">
+              <motion.img
+                src={tourDetails.gallery[currentImage]}
+                alt={`${destination.title} - Imagen ${currentImage + 1}`}
+                className="w-full h-full object-cover"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                key={currentImage}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent flex items-end p-6">
+                <div>
+                  <h2 className="text-4xl font-bold font-montserrat">{destination.title}</h2>
+                  <p className="text-lg opacity-80 mt-2">{destination.description}</p>
+                </div>
+              </div>
+              <div className="absolute top-4 right-4 bg-black bg-opacity-60 px-4 py-2 rounded-full flex items-center gap-2">
+                <FiMapPin />
+                <span>{destination.title.split(':')[0]}</span>
+              </div>
+            </div>
+
+            {/* Photo Gallery */}
+            <div className="mb-8">
+              <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+                <FiCalendar /> GalerÃ­a de Fotos
+              </h3>
+              <div className="flex gap-4 overflow-x-auto pb-4">
+                {tourDetails.gallery.map((image, index) => (
+                  <motion.img
+                    key={index}
+                    src={image}
+                    alt={`GalerÃ­a ${destination.title} ${index + 1}`}
+                    className={`h-24 w-36 object-cover rounded-lg cursor-pointer ${
+                      currentImage === index ? 'border-2 border-blue-400' : 'opacity-70'
+                    }`}
+                    onClick={() => handleImageChange(index)}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: 'spring', stiffness: 200 }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Detailed Description */}
+            <div className="mb-8">
+              <h3 className="text-2xl font-semibold mb-4">Sobre el Tour</h3>
+              <p className="text-gray-300 leading-relaxed">{tourDetails.description}</p>
+            </div>
+
+            {/* Highlights Section */}
+            <div className="mb-8">
+              <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+                <FiCheckCircle /> Puntos Destacados
+              </h3>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {tourDetails.highlights.map((highlight, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-center gap-2 text-gray-200"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <FiCheckCircle className="text-blue-400" />
+                    {highlight}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Itinerary Section */}
+            <div className="mb-8">
+              <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+                <FiCalendar /> Itinerario
+              </h3>
+              <div className="space-y-6">
+                {tourDetails.itinerary.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex gap-4"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+                      {item.day}
+                    </div>
+                    <div className="flex-1 bg-slate-700 bg-opacity-50 p-4 rounded-lg">
+                      <h4 className="text-xl font-medium">{item.title}</h4>
+                      <p className="text-gray-300">{item.description}</p>
+                      <div className="flex items-center gap-2 text-sm text-gray-400 mt-2">
+                        <FiClock />
+                        <span>{item.time}</span>
+                        <FiMapPin className="ml-4" />
+                        <span>{item.location}</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Inclusions Section */}
+            <div className="mb-8">
+              <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+                <FiCheckCircle /> QuÃ© Incluye
+              </h3>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {tourDetails.inclusions.map((item, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-center gap-2 text-gray-200"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <FiCheckCircle className="text-blue-400" />
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Booking Form */}
+            <div className="bg-slate-700 bg-opacity-50 p-6 rounded-lg">
+              <h3 className="text-2xl font-semibold mb-4">Reserva tu Experiencia</h3>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  alert('Â¡Reserva enviada con Ã©xito!');
+                }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-4"
+              >
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium mb-1">
+                    Nombre Completo
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    required
+                    placeholder="Ingresa tu nombre"
+                    className="w-full p-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium mb-1">
+                    Correo ElectrÃ³nico
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    placeholder="Ingresa tu correo"
+                    className="w-full p-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="date" className="block text-sm font-medium mb-1">
+                    Fecha de Viaje
+                  </label>
+                  <input
+                    id="date"
+                    type="date"
+                    required
+                    className="w-full p-3 bg-slate-800 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="people" className="block text-sm font-medium mb-1">
+                    NÃºmero de Personas
+                  </label>
+                  <input
+                    id="people"
+                    type="number"
+                    required
+                    min="1"
+                    placeholder="NÃºmero de personas"
+                    className="w-full p-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  />
+                </div>
+                <motion.button
+                  type="submit"
+                  className="mt-4 w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-blue-800 transition-all col-span-1 md:col-span-2"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Enviar Reserva
+                </motion.button>
+              </form>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+export default TourDetailsModal;
 ==== C:\Users\rojas\Desktop\piquitours\src\components\WhyUs.jsx ====
 
 import React, { useState } from 'react';
@@ -10881,6 +11239,310 @@ export default function WhyUs() {
   );
 }
 
+==== C:\Users\rojas\Desktop\piquitours\src\components\styles\DEPRECATED.TourDetailsModal.css.DEPRECATED ====
+.tour-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  background: linear-gradient(120deg, #0099ff 0%, #003366 100%);
+  background-blend-mode: multiply;
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 130px;
+  overflow-y: auto;
+}
+
+.tour-modal-content {
+  background: #fff;
+  color: #1a1a1a;
+  border-radius: 24px;
+  box-shadow: 0 8px 48px rgba(0, 153, 255, 0.18);
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 40px;
+  animation: modalPop 0.5s cubic-bezier(.23,1,.32,1);
+}
+
+@keyframes modalPop {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.tour-modal-content.fullscreen {
+  max-width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+}
+
+.tour-modal-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem 0.5rem 2rem;
+  background: linear-gradient(90deg, #0099ff 0%, #6ec5ff 100%);
+}
+
+.tour-modal-rating {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: #fff;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+}
+.tour-modal-rating .star {
+  color: gold;
+  font-size: 1.3rem;
+}
+
+.tour-modal-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.tour-modal-btn {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 50%;
+  padding: 0.5rem;
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.tour-modal-btn:hover {
+  background: #fff;
+  color: #0099ff;
+}
+.tour-modal-btn.close:hover {
+  background: #ff4d4d;
+  color: #fff;
+}
+
+.tour-modal-gallery {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  background: #eaf6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.tour-modal-gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 2px 24px rgba(0,153,255,0.08);
+}
+.tour-modal-gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #0099ffcc;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 2rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s;
+}
+.tour-modal-gallery-nav.left { left: 1rem; }
+.tour-modal-gallery-nav.right { right: 1rem; }
+.tour-modal-gallery-nav:hover { background: #003366; }
+
+.tour-modal-gallery-thumbs {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 3;
+}
+.tour-modal-thumb {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #fff;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: border 0.2s, opacity 0.2s;
+}
+.tour-modal-thumb.active {
+  border: 2px solid #0099ff;
+  opacity: 1;
+}
+
+.tour-modal-main {
+  padding: 2rem;
+  background: #fff;
+  flex: 1;
+}
+.tour-modal-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0099ff;
+  margin-bottom: 0.7rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.tour-modal-desc {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+}
+
+.tour-modal-section {
+  margin-bottom: 1.5rem;
+}
+.tour-modal-section h3 {
+  font-size: 1.15rem;
+  color: #003366;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.tour-modal-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tour-modal-section li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #444;
+  margin-bottom: 0.4rem;
+}
+.tour-modal-section .icon {
+  color: #0099ff;
+}
+
+.tour-modal-itinerary {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.tour-modal-itinerary-item {
+  background: #eaf6ff;
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  box-shadow: 0 1px 8px rgba(0,153,255,0.07);
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.tour-modal-itinerary-day {
+  font-weight: bold;
+  color: #0099ff;
+  min-width: 70px;
+}
+.tour-modal-itinerary-meta {
+  font-size: 0.95rem;
+  color: #003366;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.2rem;
+}
+
+.tour-modal-sidebar {
+  background: linear-gradient(90deg, #0099ff 0%, #6ec5ff 100%);
+  color: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 0 0 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.tour-modal-price {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.tour-modal-price .amount {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 0.3rem;
+}
+.tour-modal-book-btn {
+  background: #fff;
+  color: #0099ff;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+.tour-modal-book-btn:hover {
+  background: #0099ff;
+  color: #fff;
+}
+.tour-modal-book-note {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .tour-modal-content {
+    max-width: 98vw;
+  }
+  .tour-modal-gallery {
+    height: 220px;
+  }
+  .tour-modal-main {
+    padding: 1.2rem;
+  }
+  .tour-modal-sidebar {
+    padding: 1rem 1.2rem;
+  }
+}
+@media (max-width: 600px) {
+  .tour-modal-content {
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+  .tour-modal-gallery {
+    height: 160px;
+  }
+  .tour-modal-title {
+    font-size: 1.3rem;
+  }
+  .tour-modal-sidebar {
+    border-radius: 0 0 12px 12px;
+    padding: 0.7rem 0.7rem;
+  }
+  .tour-modal-main {
+    padding: 0.7rem;
+  }
+  .tour-modal-gallery-thumbs {
+    gap: 0.2rem;
+  }
+  .tour-modal-thumb {
+    width: 28px;
+    height: 28px;
+  }
+}
 ==== C:\Users\rojas\Desktop\piquitours\src\components\styles\Destinations.css ====
 
 /* Destinations.css */
@@ -10894,13 +11556,14 @@ export default function WhyUs() {
 
 .destinations-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
   max-width: 1900px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
+
 
 .destination-card {
   position: relative;
@@ -11116,7 +11779,7 @@ p {
   }
 }
 
-/* Media Queries Responsivos */
+Media Queries Responsivos
 @media (min-width: 1200px) {
   .destinations-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -11240,6 +11903,29 @@ body:not(.dark-mode) .floating-particle{
 /* ********** */
 
 
+.image-credit {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-style: italic;
+  z-index: 2;
+  pointer-events: none;
+  backdrop-filter: blur(2px);
+  max-width: 90%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+body:not(.dark-mode) .image-credit {
+  color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.3);
+}
 
 ==== C:\Users\rojas\Desktop\piquitours\src\components\styles\Footer.css ====
 
@@ -11916,11 +12602,11 @@ body:not(.dark-mode) .nav-links a:hover {
 }
 
 body:not(.dark-mode) .theme-toggle {
-  background: #e0e0e0;
+  /* background: #e0e0e0; */
 }
 
 body:not(.dark-mode) .theme-toggle.dark {
-  background: #4d4d4d;
+  /* background: #4d4d4d; */
 }
 
 body:not(.dark-mode) .menu-toggle {
@@ -12816,210 +13502,6 @@ export default function Home() {
   );
 }
 ==== C:\Users\rojas\Desktop\piquitours\src\pages\Nosotros.jsx ====
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import Header from "../components/Header";
-import './styles/Nosotros.css';
-import { FaUsers, FaMapMarkedAlt, FaHandshake, FaLinkedin, FaGithub, FaBus, FaRocket } from 'react-icons/fa';
-import Footer from '../components/Footer';
-
-const team = [
-  {
-    name: "Carlos CalderÃ³n Rojas",
-    role: "Fundador & CEO",
-    experience: "11 aÃ±os",
-    bio: "Visionario del turismo accesible con pasiÃ³n por las experiencias autÃ©nticas",
-    photo: "https://scontent.fpei2-2.fna.fbcdn.net/v/t39.30808-6/470142599_888736366767042_441264858313248290_n.jpg",
-    social: { linkedin: "#", github: "#" }
-  },
-  {
-    name: "Equipo Dev 1",
-    role: "LÃ­der TecnolÃ³gico",
-    experience: "8 aÃ±os",
-    bio: "Arquitecto principal de soluciones digitales innovadoras",
-    photo: "https://picsum.photos/200/200?random=1",
-    social: { linkedin: "#", github: "#" }
-  },
-  {
-    name: "Equipo Dev 2",
-    role: "Especialista UI/UX",
-    experience: "5 aÃ±os",
-    bio: "DiseÃ±ador de experiencias de usuario memorables",
-    photo: "https://picsum.photos/200/200?random=2",
-    social: { linkedin: "#", github: "#" }
-  },
-  {
-    name: "Equipo Dev 3",
-    role: "Ingeniero Backend",
-    experience: "4 aÃ±os",
-    bio: "Especialista en sistemas escalables y seguros",
-    photo: "https://picsum.photos/200/200?random=3",
-    social: { linkedin: "#", github: "#" }
-  }
-];
-
-const TimelineEvent = ({ year, title, description }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
-
-  return (
-    <motion.div 
-      ref={ref}
-      className="timeline-event"
-      initial={{ opacity: 0, x: -50 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="timeline-marker"></div>
-      <h3>{year} - {title}</h3>
-      <p>{description}</p>
-    </motion.div>
-  );
-};
-
-const TeamCard = ({ member, index }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      className="team-card"
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.2 }}
-    >
-      <div className="card-inner">
-        <div className="card-front">
-          <div className="avatar-container">
-            <img 
-              src={member.photo} 
-              alt={member.name}
-              onError={(e) => {
-                e.target.src = 'data:image/png;base64,iVBORw0KGgoAAAáž–0x0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
-                e.target.alt = 'Imagen no disponible';
-              }}
-            />
-            <div className="experience-badge">{member.experience}</div>
-          </div>
-          <h3>{member.name}</h3>
-          <p>{member.role}</p>
-        </div>
-        
-        <div className="card-back">
-          <div className="bio-content">
-            <h4>{member.name}</h4>
-            <p>{member.bio}</p>
-            <div className="social-links">
-              <a href={member.social.linkedin}><FaLinkedin /></a>
-              <a href={member.social.github}><FaGithub /></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-export default function Nosotros() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  return (
-    <main>
-      <div className="nosotros-container">
-        <h1>Nosotros</h1>
-        <Header />
-        
-        <section className="hero-nosotros">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="hero-heading"
-          >
-            MÃ¡s de una dÃ©cada creando<br />
-            <span className="highlight">experiencias inolvidables</span>
-          </motion.h1>
-          
-          <div className="hero-stats">
-            <div className="stat-item">
-              <FaBus className="stat-icon" />
-              <div>
-                <h3>15K+</h3>
-                <p>Viajeros transportados</p>
-              </div>
-            </div>
-            <div className="stat-item">
-              <FaMapMarkedAlt className="stat-icon" />
-              <div>
-                <h3>50+</h3>
-                <p>Destinos nacionales</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="historia-section">
-          <h2>Nuestra TravesÃ­a</h2>
-          <div className="timeline">
-            <TimelineEvent
-              year="2013"
-              title="Humble Beginnings"
-              description="Primer viaje familiar desde El Espinal hasta el Caribe"
-            />
-            <TimelineEvent
-              year="2015"
-              title="FormalizaciÃ³n"
-              description="Registro oficial como empresa turÃ­stica"
-            />
-            <TimelineEvent
-              year="2020"
-              title="ExpansiÃ³n Nacional"
-              description="Cobertura en 32 departamentos"
-            />
-            <TimelineEvent
-              year="2024"
-              title="Reconocimiento Nacional"
-              description="Premio a la InnovaciÃ³n TurÃ­stica"
-            />
-          </div>
-        </section>
-
-        <section className="equipo-section" ref={ref}>
-          <h2>El Alma de Piquitours</h2>
-          <div className="team-grid">
-            {team.map((member, index) => (
-              <TeamCard key={index} member={member} index={index} />
-            ))}
-          </div>
-        </section>
-
-        <section className="philosophy-section">
-          <h2>Nuestra Esencia</h2>
-          <div className="philosophy-grid">
-            <motion.div 
-              className="philosophy-item"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaHandshake className="philosophy-icon" />
-              <h3>Confianza Transparente</h3>
-              <p>Operamos con total transparencia en cada transacciÃ³n</p>
-            </motion.div>
-            <motion.div 
-              className="philosophy-item"
-              whileHover={{ scale: 1.05 }}
-            >
-              <FaRocket className="philosophy-icon" />
-              <h3>InnovaciÃ³n Constante</h3>
-              <p>Sistemas de reservas y pagos de Ãºltima generaciÃ³n</p>
-            </motion.div>
-          </div>
-        </section>
-        <Footer />
-      </div>
-    </main>
-  );
-}
 ==== C:\Users\rojas\Desktop\piquitours\src\pages\styles\Home.css ====
 
 .video-background {
@@ -13045,283 +13527,3 @@ export default function Nosotros() {
 
 
 ==== C:\Users\rojas\Desktop\piquitours\src\pages\styles\Nosotros.css ====
-
-/* styles/Nosotros.css */
-.nosotros-container {
-  background: #0f172a;
-  color: #fff;
-  overflow-x: hidden;
-  min-height: 100vh;
-  display: none;
-}
-
-/* Hero Section */
-.hero-nosotros {
-  position: relative;
-  padding: 8rem 2rem;
-  background: linear-gradient(45deg, #1e3a8a, #0f172a);
-  text-align: center;
-}
-
-.hero-heading {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: 3rem;
-  line-height: 1.2;
-}
-
-.highlight {
-  background: linear-gradient(45deg, #38bdf8, #0ea5e9);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.hero-stats {
-  display: flex;
-  justify-content: center;
-  gap: 4rem;
-  margin-top: 4rem;
-}
-
-.stat-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  border-radius: 1rem;
-  backdrop-filter: blur(10px);
-}
-
-.stat-icon {
-  font-size: 2.5rem;
-  color: #38bdf8;
-}
-
-/* Historia Corporativa */
-.historia-section {
-  padding: 6rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.timeline {
-  position: relative;
-  padding-left: 2rem;
-  margin-top: 4rem;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 4px;
-  background: linear-gradient(to bottom, #38bdf8, #0ea5e9);
-}
-
-.timeline-event {
-  position: relative;
-  padding: 2rem;
-  margin-bottom: 3rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 1rem;
-  backdrop-filter: blur(10px);
-}
-
-.timeline-marker {
-  position: absolute;
-  left: -2.8rem;
-  top: 2rem;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #38bdf8;
-  border: 3px solid #0f172a;
-}
-
-/* SecciÃ³n Equipo - Corregido */
-.equipo-section {
-  padding: 6rem 2rem;
-  background: linear-gradient(45deg, #0f172a, #1e3a8a);
-}
-
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.team-card {
-  perspective: 1000px;
-  aspect-ratio: 3/4;
-}
-
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  box-shadow: 0 10px 30px rgba(0, 153, 255, 0.1);
-  border-radius: 1rem;
-  overflow: hidden;
-}
-
-.team-card:hover .card-inner {
-  transform: rotateY(180deg);
-}
-
-.card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.card-front {
-  background: rgba(255, 255, 255, 0.05);
-  justify-content: center;
-}
-
-.card-back {
-  background: linear-gradient(45deg, #0099ff, #0066cc);
-  transform: rotateY(180deg);
-  justify-content: center;
-}
-
-/* CorrecciÃ³n del texto invertido */
-.bio-content {
-  transform: rotateY(180deg);
-  /* FIX: Corrige la orientaciÃ³n del texto */
-  width: 100%;
-  text-align: center;
-}
-
-.avatar-container {
-  position: relative;
-  width: 180px;
-  height: 180px;
-  margin: 0 auto 1.5rem;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid #38bdf8;
-  transition: transform 0.3s ease;
-}
-
-.avatar-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.experience-badge {
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #38bdf8;
-  color: #0f172a;
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
-}
-
-.social-links {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.social-links a {
-  color: white;
-  font-size: 1.5rem;
-  transition: all 0.3s ease;
-  padding: 0.5rem;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.social-links a:hover {
-  background: #38bdf8;
-  transform: translateY(-3px);
-}
-
-/* FilosofÃ­a */
-.philosophy-section {
-  padding: 6rem 2rem;
-}
-
-.philosophy-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.philosophy-item {
-  text-align: center;
-  padding: 3rem 2rem;
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease;
-}
-
-.philosophy-item:hover {
-  transform: translateY(-5px);
-}
-
-.philosophy-icon {
-  font-size: 3rem;
-  color: #38bdf8;
-  margin-bottom: 1.5rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero-stats {
-    flex-direction: column;
-  }
-
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .timeline-marker {
-    left: -10px;
-  }
-
-  .card-back {
-    display: none;
-  }
-
-  .team-card:hover .card-inner {
-    transform: none;
-  }
-}
-
-@media (hover: none) {
-  .card-back {
-    display: block;
-    transform: none;
-    position: relative;
-    backface-visibility: visible;
-  }
-
-  .team-card .card-inner {
-    transform-style: flat;
-  }
-}
-

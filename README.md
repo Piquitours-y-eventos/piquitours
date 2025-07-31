@@ -102,3 +102,10 @@ Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENS
 ---
 
 <!-- <a href='https://github.com/rx3card'>rx3card Oscar Rojas.</a> -->
+
+## 🤝 Contributing 
+<!-- 
+<a href="https://openomy.app/github/rx3card/piquitours" target="_blank" style="display: block; width: 100%;" align="center">
+  <img src="https://www.openomy.com/svg?repo=rx3card/piquitours&chart=list" target="_blank" alt="Contribution Leaderboard" style="display: block; width: 100%;" />
+</a>
+ -->

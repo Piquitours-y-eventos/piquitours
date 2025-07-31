@@ -282,11 +282,11 @@ body:not(.dark-mode) .nav-links a:hover {
 }
 
 body:not(.dark-mode) .theme-toggle {
-  background: #e0e0e0;
+  /* background: #e0e0e0; */
 }
 
 body:not(.dark-mode) .theme-toggle.dark {
-  background: #4d4d4d;
+  /* background: #4d4d4d; */
 }
 
 body:not(.dark-mode) .menu-toggle {

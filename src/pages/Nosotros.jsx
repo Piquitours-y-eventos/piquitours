@@ -1,204 +1,384 @@
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from "framer-motion";
+import { FaUsers, FaGlobeAmericas, FaMapSigns, FaBolt, FaHeart, FaLeaf, FaHandshake, FaMedal } from "react-icons/fa";
+import { GiColombia } from "react-icons/gi";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import './styles/Nosotros.css';
-import { FaUsers, FaMapMarkedAlt, FaHandshake, FaLinkedin, FaGithub, FaBus, FaRocket } from 'react-icons/fa';
-import Footer from '../components/Footer';
-
-const team = [
-  {
-    name: "Carlos Calderón Rojas",
-    role: "Fundador & CEO",
-    experience: "11 años",
-    bio: "Visionario del turismo accesible con pasión por las experiencias auténticas",
-    photo: "https://scontent.fpei2-2.fna.fbcdn.net/v/t39.30808-6/470142599_888736366767042_441264858313248290_n.jpg",
-    social: { linkedin: "#", github: "#" }
-  },
-  {
-    name: "Equipo Dev 1",
-    role: "Líder Tecnológico",
-    experience: "8 años",
-    bio: "Arquitecto principal de soluciones digitales innovadoras",
-    photo: "https://picsum.photos/200/200?random=1",
-    social: { linkedin: "#", github: "#" }
-  },
-  {
-    name: "Equipo Dev 2",
-    role: "Especialista UI/UX",
-    experience: "5 años",
-    bio: "Diseñador de experiencias de usuario memorables",
-    photo: "https://picsum.photos/200/200?random=2",
-    social: { linkedin: "#", github: "#" }
-  },
-  {
-    name: "Equipo Dev 3",
-    role: "Ingeniero Backend",
-    experience: "4 años",
-    bio: "Especialista en sistemas escalables y seguros",
-    photo: "https://picsum.photos/200/200?random=3",
-    social: { linkedin: "#", github: "#" }
-  }
-];
-
-const TimelineEvent = ({ year, title, description }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
-
-  return (
-    <motion.div 
-      ref={ref}
-      className="timeline-event"
-      initial={{ opacity: 0, x: -50 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="timeline-marker"></div>
-      <h3>{year} - {title}</h3>
-      <p>{description}</p>
-    </motion.div>
-  );
-};
-
-const TeamCard = ({ member, index }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      className="team-card"
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.2 }}
-    >
-      <div className="card-inner">
-        <div className="card-front">
-          <div className="avatar-container">
-            <img 
-              src={member.photo} 
-              alt={member.name}
-              onError={(e) => {
-                e.target.src = 'data:image/png;base64,iVBORw0KGgoAAAព0x0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
-                e.target.alt = 'Imagen no disponible';
-              }}
-            />
-            <div className="experience-badge">{member.experience}</div>
-          </div>
-          <h3>{member.name}</h3>
-          <p>{member.role}</p>
-        </div>
-        
-        <div className="card-back">
-          <div className="bio-content">
-            <h4>{member.name}</h4>
-            <p>{member.bio}</p>
-            <div className="social-links">
-              <a href={member.social.linkedin}><FaLinkedin /></a>
-              <a href={member.social.github}><FaGithub /></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
 
 export default function Nosotros() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
   return (
-    <main>
-      <div className="nosotros-container">
-        <h1>Nosotros</h1>
-        <Header />
+    <main className="nosotros-container">
+      {/* <Header /> */}
+      
+      {/* HERO SECTION CON EFECTO PARALLAX */}
+      <section className="hero-nosotros">
+        <div className="video-overlay" />
+        <video autoPlay loop muted playsInline className="bg-video">
+          <source src="/video_colombia.mp4" type="video/mp4" />
+        </video>
         
-        <section className="hero-nosotros">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="hero-heading"
+        <motion.div 
+          className="hero-content"
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <motion.div
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Más de una década creando<br />
-            <span className="highlight">experiencias inolvidables</span>
-          </motion.h1>
+            <h1 className="hero-title">
+              <motion.span 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+              >
+                Descubre el corazón
+              </motion.span>
+              <motion.br 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+              />
+              <motion.span 
+                className="highlight-text"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2 }}
+              >
+                de Colombia
+              </motion.span>
+            </h1>
+          </motion.div>
           
-          <div className="hero-stats">
-            <div className="stat-item">
-              <FaBus className="stat-icon" />
-              <div>
-                <h3>15K+</h3>
-                <p>Viajeros transportados</p>
-              </div>
-            </div>
-            <div className="stat-item">
-              <FaMapMarkedAlt className="stat-icon" />
-              <div>
-                <h3>50+</h3>
-                <p>Destinos nacionales</p>
-              </div>
-            </div>
-          </div>
-        </section>
+          <motion.p 
+            className="hero-subtitle"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5 }}
+          >
+            Más que viajes, creamos conexiones auténticas con nuestra tierra y su gente
+          </motion.p>
+          
+          <motion.div
+            className="scroll-indicator"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+          >
+            <div className="mouse"></div>
+          </motion.div>
+        </motion.div>
+      </section>
 
-        <section className="historia-section">
-          <h2>Nuestra Travesía</h2>
-          <div className="timeline">
-            <TimelineEvent
-              year="2013"
-              title="Humble Beginnings"
-              description="Primer viaje familiar desde El Espinal hasta el Caribe"
-            />
-            <TimelineEvent
-              year="2015"
-              title="Formalización"
-              description="Registro oficial como empresa turística"
-            />
-            <TimelineEvent
-              year="2020"
-              title="Expansión Nacional"
-              description="Cobertura en 32 departamentos"
-            />
-            <TimelineEvent
-              year="2024"
-              title="Reconocimiento Nacional"
-              description="Premio a la Innovación Turística"
-            />
-          </div>
-        </section>
-
-        <section className="equipo-section" ref={ref}>
-          <h2>El Alma de Piquitours</h2>
-          <div className="team-grid">
-            {team.map((member, index) => (
-              <TeamCard key={index} member={member} index={index} />
-            ))}
-          </div>
-        </section>
-
-        <section className="philosophy-section">
-          <h2>Nuestra Esencia</h2>
-          <div className="philosophy-grid">
+      {/* MÉTRICAS INTERACTIVAS */}
+      <section className="hero-stats">
+        <motion.div 
+          className="stats-container"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <div className="stat">
             <motion.div 
-              className="philosophy-item"
-              whileHover={{ scale: 1.05 }}
+              className="icon-container"
+              whileHover={{ rotate: 360, scale: 1.1 }}
+              transition={{ duration: 0.5 }}
             >
-              <FaHandshake className="philosophy-icon" />
-              <h3>Confianza Transparente</h3>
-              <p>Operamos con total transparencia en cada transacción</p>
+              <FaUsers className="icon pulse" />
             </motion.div>
-            <motion.div 
-              className="philosophy-item"
-              whileHover={{ scale: 1.05 }}
+            <motion.h3
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ delay: 0.2 }}
             >
-              <FaRocket className="philosophy-icon" />
-              <h3>Innovación Constante</h3>
-              <p>Sistemas de reservas y pagos de última generación</p>
-            </motion.div>
+              +15,000
+            </motion.h3>
+            <p>Viajeros felices</p>
           </div>
-        </section>
-        <Footer />
-      </div>
+          
+          <div className="stat">
+            <motion.div 
+              className="icon-container"
+              whileHover={{ rotate: 360, scale: 1.1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <GiColombia className="icon pulse" />
+            </motion.div>
+            <motion.h3
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ delay: 0.4 }}
+            >
+              +50
+            </motion.h3>
+            <p>Rincones mágicos</p>
+          </div>
+          
+          <div className="stat">
+            <motion.div 
+              className="icon-container"
+              whileHover={{ rotate: 360, scale: 1.1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <FaMapSigns className="icon pulse" />
+            </motion.div>
+            <motion.h3
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              11 años
+            </motion.h3>
+            <p>Tejiendo historias</p>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* HISTORIA CON TIMELINE */}
+      <section className="history-section">
+        <div className="section-header">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Nuestra <span className="highlight">Historia</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            Un viaje de pasión que comenzó en El Espinal y hoy recorre toda Colombia
+          </motion.p>
+        </div>
+        
+        <div className="timeline">
+          <div className="timeline-item">
+            <div className="timeline-content">
+              <h3>2012 - Los inicios</h3>
+              <p>Nace PiquiTours con un pequeño grupo de apasionados por mostrar la belleza oculta del Tolima.</p>
+            </div>
+            <div className="timeline-dot"></div>
+          </div>
+          
+          <div className="timeline-item">
+            <div className="timeline-content">
+              <h3>2015 - Primera expansión</h3>
+              <p>Llegamos a la región cafetera, incorporando comunidades locales en nuestras experiencias.</p>
+            </div>
+            <div className="timeline-dot"></div>
+          </div>
+          
+          <div className="timeline-item">
+            <div className="timeline-content">
+              <h3>2018 - Reconocimiento</h3>
+              <p>Ganamos el premio al Mejor Operador de Turismo Sostenible en Colombia.</p>
+            </div>
+            <div className="timeline-dot"></div>
+          </div>
+          
+          <div className="timeline-item">
+            <div className="timeline-content">
+              <h3>2023 - Hoy</h3>
+              <p>+50 destinos en todo el país, impactando positivamente a más de 100 comunidades.</p>
+            </div>
+            <div className="timeline-dot"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* VALORES CON EFECTO 3D */}
+      <section className="values-section">
+        <div className="section-header">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Lo que nos <span className="highlight">define</span>
+          </motion.h2>
+        </div>
+        
+        <div className="valores-grid">
+          <motion.div 
+            className="valor-card"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ y: -10 }}
+          >
+            <div className="valor-icon">
+              <FaHeart />
+            </div>
+            <h4>Pasión Auténtica</h4>
+            <p>No somos guías, somos narradores de historias que laten al ritmo de Colombia.</p>
+          </motion.div>
+          
+          <motion.div 
+            className="valor-card"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            whileHover={{ y: -10 }}
+          >
+            <div className="valor-icon">
+              <FaLeaf />
+            </div>
+            <h4>Sostenibilidad Radical</h4>
+            <p>Cada experiencia está diseñada para proteger y regenerar los destinos que visitamos.</p>
+          </motion.div>
+          
+          <motion.div 
+            className="valor-card"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            whileHover={{ y: -10 }}
+          >
+            <div className="valor-icon">
+              <FaHandshake />
+            </div>
+            <h4>Impacto Comunitario</h4>
+            <p>+70% de nuestros proveedores son negocios locales y comunidades indígenas.</p>
+          </motion.div>
+          
+          <motion.div 
+            className="valor-card"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            whileHover={{ y: -10 }}
+          >
+            <div className="valor-icon">
+              <FaBolt />
+            </div>
+            <h4>Innovación Constante</h4>
+            <p>Creamos experiencias que no encontrarás en ningún otro lugar.</p>
+          </motion.div>
+          
+          <motion.div 
+            className="valor-card"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            whileHover={{ y: -10 }}
+          >
+            <div className="valor-icon">
+              <FaMedal />
+            </div>
+            <h4>Excelencia</h4>
+            <p>Detalles cuidadosamente diseñados para superar tus expectativas.</p>
+          </motion.div>
+          
+          <motion.div 
+            className="valor-card"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1 }}
+            whileHover={{ y: -10 }}
+          >
+            <div className="valor-icon">
+              <FaGlobeAmericas />
+            </div>
+            <h4>Conciencia Global</h4>
+            <p>Promovemos un turismo responsable que celebra la diversidad cultural.</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* EQUIPO */}
+      <section className="team-section">
+        <div className="section-header">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Conoce al <span className="highlight">equipo</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            Apasionados exploradores, guías certificados y expertos en cultura colombiana
+          </motion.p>
+        </div>
+        
+        <div className="team-grid">
+          <motion.div 
+            className="team-member"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <div className="member-photo photo1"></div>
+            <h3>Carlos Piqui</h3>
+            <p>Fundador & Guía Master</p>
+          </motion.div>
+          
+          <motion.div 
+            className="team-member"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <div className="member-photo photo2"></div>
+            <h3>María González</h3>
+            <p>Directora de Experiencias</p>
+          </motion.div>
+          
+          <motion.div 
+            className="team-member"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <div className="member-photo photo3"></div>
+            <h3>Diego Rodríguez</h3>
+            <p>Especialista en Aventura</p>
+          </motion.div>
+          
+          <motion.div 
+            className="team-member"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <div className="member-photo photo4"></div>
+            <h3>Ana Morales</h3>
+            <p>Coordinadora Comunitaria</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="cta-section">
+        <motion.div 
+          className="cta-content"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <h2>¿Listo para vivir Colombia como nunca?</h2>
+          <p>Déjanos ser parte de tu próxima aventura inolvidable</p>
+          <motion.button
+            whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(0, 191, 255, 0.5)" }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Crear mi experiencia
+          </motion.button>
+        </motion.div>
+      </section>
+
+      <Footer />
     </main>
   );
 }

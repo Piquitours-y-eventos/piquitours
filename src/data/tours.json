@@ -1,0 +1,85 @@
+{
+  "tours": [
+    {
+      "id": 1,
+      "title": "ARRÁS DE CIELO",
+      "description": "Peñol y Guatapé, dos razones para enamorarte de Antioquia.",
+      "image": "/guatap2.jpeg",
+      "rating": 4.9,
+      "price": "420,000",
+      "fullDescription": "Explora el majestuoso Peñón de Guatapé y sus coloridos pueblos en una experiencia única que combina naturaleza, cultura y aventura.",
+      "highlights": [
+        {
+          "icon": "FiMapPin",
+          "text": "Vistas panorámicas desde la cima del Peñón"
+        },
+        {
+          "icon": "FiHome",
+          "text": "Recorrido por las calles de Guatapé"
+        }
+      ],
+      "itinerary": [
+        {
+          "day": "Día 1",
+          "title": "Ascenso al Peñón",
+          "description": "Subida por las escalinatas del Peñón de Guatapé para disfrutar de las mejores vistas.",
+          "activities": ["Ascenso", "Fotos panorámicas", "Almuerzo típico"],
+          "time": "8:00 AM - 2:00 PM",
+          "location": "Peñón de Guatapé"
+        }
+      ],
+      "inclusions": ["Transporte", "Guía local", "Entradas"],
+      "exclusions": ["Propinas", "Comidas no especificadas"],
+      "gallery": [
+        "/guatap2.jpeg",
+        "https://source.unsplash.com/random/800x600/?guatape"
+      ],
+      "details": {
+        "duration": "1 día",
+        "difficulty": "Moderada",
+        "groupSize": "2-15 personas",
+        "languages": ["Español", "Inglés básico"],
+        "bestSeason": "Todo el año"
+      }
+    },
+    {
+      "id": 2,
+      "title": "SABOR CARIBE",
+      "description": "Barú, Rodadero y Cartagena: tres joyas, un solo paraíso.",
+      "image": "/baru.jpeg",
+      "rating": 4.8,
+      "price": "850,000",
+      "fullDescription": "Disfruta de las playas paradisíacas de Barú, la vibrante vida nocturna del Rodadero y el encanto histórico de Cartagena.",
+      "highlights": [
+        {
+          "icon": "FiMapPin",
+          "text": "Playas de arena blanca en Barú"
+        }
+      ],
+      "itinerary": [
+        {
+          "day": "Día 1",
+          "title": "Islas de Barú",
+          "description": "Tour por las islas paradisíacas de Barú con almuerzo incluido.",
+          "activities": ["Tour en lancha", "Snorkel", "Almuerzo playero"],
+          "time": "7:00 AM - 5:00 PM",
+          "location": "Islas de Barú"
+        }
+      ],
+      "inclusions": ["Transporte acuático", "Almuerzo", "Equipo de snorkel"],
+      "exclusions": ["Bebidas alcohólicas", "Propinas"],
+      "gallery": [
+        "/baru.jpeg",
+        "https://source.unsplash.com/random/800x600/?cartagena"
+      ],
+      "details": {
+        "duration": "4 días / 3 noches",
+        "difficulty": "Fácil",
+        "groupSize": "4-12 personas",
+        "languages": ["Español"],
+        "bestSeason": "Diciembre a Marzo"
+      }
+    }
+  ]
+  
+}
