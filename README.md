@@ -1,6 +1,6 @@
 # Piquitours y Eventos
 
-![Portada](./public/preview.webp)
+![Portada](./public/preview.png)
 
 Este proyecto está diseñado para gestionar y organizar tours y eventos de manera eficiente de la empresa Piquitours y eventos.
 
