@@ -225,6 +225,7 @@
 
 .button-continue {
   background: rgba(0, 153, 255, 0.2); /* semitransparente para mostrar el blur */
+  /* background: rgba(289, 184, 16, 0.2); */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); /* soporte Safari */
   border: 2px solid rgba(255, 255, 255, 0.15);

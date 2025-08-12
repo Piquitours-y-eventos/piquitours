@@ -81,6 +81,8 @@
   border-radius: 10px;
   transition: all 0.2s ease;
   position: relative;
+  display: flex;           /* <-- Agrega esta línea */
+  align-items: center;     /* <-- Agrega esta línea */
 }
 
 .nav-links a:hover {

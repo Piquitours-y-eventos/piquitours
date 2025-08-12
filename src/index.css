@@ -2,138 +2,126 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Tipografías */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;800&display=swap');
+
+/* Variables globales */
 :root {
-  --primary-color: #0077B6;
-  --highlight-color: #0099FF;
-  --background-color-light: #FFFFFF;
-  --background-color-dark: #030617;
-  --text-color-light: #030617;
-  --text-color-dark: rgba(255, 255, 255, 0.87);
-  font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --color-bg-dark: #0B0F19;
+  --color-bg-light: #FFFFFF;
+  --color-primary: #00B4D8; /* Turquesa */
+  --color-primary-dark: #0077B6; /* Azul Marino */
+  --color-accent: #FFD166; /* Dorado */
+  --color-text-light: #F8F9FA;
+  --color-text-dark: #1E1E1E;
+
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
   line-height: 1.5;
   font-weight: 400;
-  font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Reset básico */
 * {
   text-decoration: none !important;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Tipografía */
 body {
+  font-family: var(--font-body);
   margin: 0;
   padding: 0;
 }
 
-/* Añadir margen superior para todas las páginas excepto Home */
-main:not([data-page="home"]) {
-  margin-top: 130px; /* Altura del header sin scroll */
-}
-
-.scrolled + main:not([data-page="home"]) {
-  margin-top: 100px; /* Altura del header con scroll */
-}
-
-body.dark-mode {
-  background-color: var(--background-color-dark);
-  color: var(--text-color-dark);
-}
-
-body:not(.dark-mode) {
-  background-color: var(--background-color-light);
-  color: var(--text-color-light);
-}
-
-h1, h2, h3, nav {
-  font-family: 'Montserrat', sans-serif;
+/* Encabezados */
+h1, h2, h3 {
+  font-family: var(--font-heading);
   font-weight: 700;
 }
 
+/* Ajuste global de tamaño de fuente */
+html {
+  font-size: 15px; /* Antes probablemente 16px+, ahora más equilibrado */
+}
+
+main:not([data-page="home"]) {
+  margin-top: 110px; /* Altura del header ajustada */
+}
+
+.scrolled + main:not([data-page="home"]) {
+  margin-top: 90px;
+}
+
+/* Modo oscuro */
+body.dark-mode {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+}
+
+body:not(.dark-mode) {
+  background-color: var(--color-bg-light);
+  color: var(--color-text-dark);
+}
+
+/* Enlaces */
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: var(--color-primary);
+  transition: color 0.2s ease-in-out;
 }
 
 a:hover {
-  color: #535bf2;
+  color: var(--color-primary-dark);
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: var(--background-color-dark);
-    color: var(--text-color-dark);
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  body {
-    background-color: var(--background-color-light);
-    color: var(--text-color-light);
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-/* ESTILOS SEGUROS PARA SCROLLBAR */
+/* Scrollbar personalizado */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 
-/* Fondo de la barra */
 ::-webkit-scrollbar-track {
   background: transparent;
   border-radius: 8px;
 }
 
-/* Barra deslizante */
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
+  background: var(--color-primary-dark);
   border-radius: 8px;
   border: 2px solid transparent;
   background-clip: padding-box;
   transition: all 0.3s ease;
 }
 
-/* Efecto hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--highlight-color);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: var(--color-primary);
 }
 
-/* Modo oscuro */
+/* Modo oscuro scrollbar */
 body.dark-mode ::-webkit-scrollbar-thumb {
-  background: rgba(0, 153, 255, 0.6);
+  background: rgba(0, 180, 216, 0.6);
 }
-
 body.dark-mode ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 153, 255, 0.9);
+  background: rgba(0, 180, 216, 0.9);
 }
 
-/* Modo claro */
+/* Modo claro scrollbar */
 body:not(.dark-mode) ::-webkit-scrollbar-thumb {
   background: rgba(0, 119, 182, 0.4);
 }
-
 body:not(.dark-mode) ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 119, 182, 0.8);
 }
 
 /* Firefox */
 * {
-  scrollbar-color: var(--primary-color) transparent;
+  scrollbar-color: var(--color-primary-dark) transparent;
   scrollbar-width: thin;
 }
