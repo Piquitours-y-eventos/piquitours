@@ -12,8 +12,8 @@
   position: fixed;
   top: 0;
   width: 100%;
-  height: 130px;
-  padding: 0 20px;
+  height: clamp(85px, 12vh, 110px);
+  padding: 0 clamp(20px, 3vw, 40px);
   background: transparent;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); /* Soporte para Safari */
@@ -25,7 +25,7 @@
 }
 
 .scrolled {
-  height: 100px;
+  height: clamp(75px, 10vh, 95px);
   backdrop-filter: blur(10px); /* Mantener el blur al hacer scroll */
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -41,23 +41,29 @@
   align-items: center;
 }
 
-/* ===== LOGO (TAMAÑO ORIGINAL) ===== */
+/* ===== LOGO RESPONSIVE ===== */
 .logo-container {
   z-index: 1001;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .logo {
-  height: 160px;
+  height: clamp(125px, 12vh, 130px);
   width: auto;
-  max-width: 350px;
-  transition: all 0.3s ease;
+  max-width: clamp(280px, 30vw, 380px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   object-fit: contain;
-  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+  object-position: center;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
+  /* Asegurar que el logo mantenga su proporción */
+  aspect-ratio: auto;
+  max-height: 130px;
 }
 
 .scrolled .logo {
-  height: 120px;
+  height: clamp(75px, 9vh, 95px);
+  max-width: clamp(220px, 26vw, 300px);
 }
 
 /* ===== NAVEGACIÓN PRINCIPAL ===== */
@@ -68,7 +74,7 @@
 
 .nav-links {
   display: flex;
-  gap: 2.5rem;
+  gap: clamp(0.8rem, 2.5vw, 2rem);
   list-style: none;
   align-items: center;
 }
@@ -76,68 +82,99 @@
 .nav-links a {
   color: #fff;
   text-decoration: none;
-  font-size: 1.2rem;
-  padding: 0.8rem 1.5rem;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  font-weight: 600;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: 0.02em;
+  padding: clamp(0.9rem, 2vw, 1.2rem) clamp(1.1rem, 2.4vw, 1.5rem);
   border-radius: 10px;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  display: flex;           /* <-- Agrega esta línea */
-  align-items: center;     /* <-- Agrega esta línea */
+  display: flex;
+  align-items: center;
+  gap: clamp(0.6rem, 1.4vw, 0.8rem);
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links a svg {
+  font-size: clamp(14px, 2.8vw, 18px);
+  flex-shrink: 0;
+}
+
+.nav-links a span {
+  font-size: inherit;
 }
 
 .nav-links a:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* ===== BOTÓN TOGGLER ESTILO MAC ===== */
+/* ===== CONTENEDOR DEL BOTÓN TEMA ===== */
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: clamp(2rem, 4vw, 2.5rem);
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  margin-left: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* ===== BOTÓN TOGGLER ESTILO iOS/APPLE ===== */
 .theme-toggle {
   position: relative;
-  width: 60px;
-  height: 30px;
-  border-radius: 15px;
+  width: clamp(40px, 5vw, 48px);
+  height: clamp(22px, 3vw, 26px);
+  border-radius: clamp(11px, 1.5vw, 13px);
   border: none;
-  background: #e0e0e0;
+  background: #e5e5e7;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-left: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin-left: 0;
   padding: 0;
   overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .theme-toggle.dark {
-  background: #004cff36;
+  background: #34c759;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 .toggle-thumb {
   position: absolute;
   left: 2px;
   top: 2px;
-  width: 26px;
-  height: 26px;
+  width: clamp(18px, 2.5vw, 22px);
+  height: clamp(18px, 2.5vw, 22px);
   border-radius: 50%;
-  background: white;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .theme-toggle.dark .toggle-thumb {
-  transform: translateX(30px);
-  background: #f5f5f5;
+  transform: translateX(clamp(18px, 2.5vw, 22px));
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 .theme-toggle svg {
-  color: #333;
-  width: 14px;
-  height: 14px;
-  transition: color 0.3s ease;
+  color: #8e8e93;
+  width: clamp(10px, 1.5vw, 12px);
+  height: clamp(10px, 1.5vw, 12px);
+  transition: all 0.3s ease;
 }
 
 .theme-toggle.dark svg {
-  color: #333;
+  color: #34c759;
 }
 
 .theme-toggle:hover .toggle-thumb {
@@ -164,20 +201,21 @@
 /* ===== RESPONSIVE (MÓVIL) ===== */
 @media (max-width: 768px) {
   .header {
-    height: 120px;
+    height: clamp(55px, 7vh, 70px);
   }
 
   .scrolled {
-    height: 90px;
+    height: clamp(45px, 6vh, 60px);
   }
 
   .logo {
-    height: 140px !important;
-    max-width: 280px;
+    height: clamp(40px, 5.5vh, 55px) !important;
+    max-width: clamp(120px, 22vw, 150px);
   }
 
   .scrolled .logo {
-    height: 100px !important;
+    height: clamp(32px, 4.5vh, 45px) !important;
+    max-width: clamp(95px, 18vw, 120px);
   }
 
   .menu-toggle {
@@ -186,18 +224,18 @@
 
   .nav {
     position: fixed;
-    top: 90px;
+    top: clamp(45px, 6vh, 60px);
     left: 0;
     width: 100%;
-    height: calc(100vh - 90px);
-    background: transparent; /* Mantener transparente en móvil */
+    height: calc(100vh - clamp(45px, 6vh, 60px));
+    background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     flex-direction: column;
     justify-content: flex-start;
     transform: translateY(-150%);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    padding-top: 3rem;
+    padding-top: clamp(1.5rem, 3.5vh, 2.2rem);
   }
 
   .nav.open {
@@ -206,31 +244,46 @@
 
   .nav-links {
     flex-direction: column;
-    gap: 3rem;
+    gap: clamp(1.2rem, 2.4vh, 1.8rem);
     width: 100%;
-    padding: 0 2rem;
+    padding: 0 clamp(0.6rem, 2.4vw, 1.2rem);
   }
 
   .nav-links a {
     width: 100%;
-    font-size: 1.6rem;
-    padding: 1.2rem;
+    font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+    padding: clamp(0.8rem, 2vh, 1rem);
     background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+  }
+
+  .theme-toggle-container {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin: 2rem 0 1rem 0;
+    padding: 1.5rem 0 0 0;
   }
 
   .theme-toggle {
-    width: 55px;
+    width: 50px;
     height: 28px;
-    margin: 2rem 0;
+    margin: 0;
+    background: #e5e5e7;
+  }
+
+  .theme-toggle.dark {
+    background: #34c759;
   }
 
   .toggle-thumb {
     width: 24px;
     height: 24px;
+    left: 2px;
+    top: 2px;
   }
 
   .theme-toggle.dark .toggle-thumb {
-    transform: translateX(27px);
+    transform: translateX(22px);
   }
 }
 
@@ -246,12 +299,12 @@
   }
 
   .logo {
-    height: 150px;
-    max-width: 320px;
+    height: 180px;
+    max-width: 400px;
   }
 
   .scrolled .logo {
-    height: 110px;
+    height: 140px;
   }
 }
 
@@ -274,36 +327,15 @@ body:not(.dark-mode) .nav-links a {
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-body:not(.dark-mode) .nav-links li {
-  /* background-color: red; */
-}
-
 body:not(.dark-mode) .nav-links a:hover {
-  /* background: rgba(0, 0, 0, 0.05); */
   background: rgba(0, 153, 255, 0.2);
-}
-
-body:not(.dark-mode) .theme-toggle {
-  /* background: #e0e0e0; */
-}
-
-body:not(.dark-mode) .theme-toggle.dark {
-  /* background: #4d4d4d; */
 }
 
 body:not(.dark-mode) .menu-toggle {
   color: #1a1a1a;
 }
 
-body:not(.dark-mode) .nav {
-  /* background: transparent; */
-  /* backdrop-filter: blur(15px); */
-  /* -webkit-backdrop-filter: blur(15px); */
-}
 
-body:not(.dark-mode) .nav-links a {
-  /* background: rgba(0, 153, 255, 0.2);  */
-}
 
 /* ===== BLOQUEO DE SCROLL ===== */
 .no-scroll {

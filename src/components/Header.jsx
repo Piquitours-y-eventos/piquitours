@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaSun, FaMoon, FaBars, FaTimes, FaHome, FaMapMarkerAlt, FaUsers, FaEnvelope } from 'react-icons/fa';
+import { FaSun, FaMoon, FaBars, FaTimes, FaHome, FaMapMarkerAlt, FaUsers, FaEnvelope, FaPhone, FaStar } from 'react-icons/fa';
 import "./styles/Header.css";
 
 export default function Header() {
@@ -46,40 +46,41 @@ export default function Header() {
           <ul className="nav-links">
             <li>
               <Link to="/" onClick={closeMenu}>
-              <FaHome style={{ marginRight: "6px" }} />
-              Inicio
+                <FaHome />
+                <span>Inicio</span>
               </Link>
             </li>
             <li>
-            <Link to="/destinos" onClick={closeMenu}>
-              <FaMapMarkerAlt style={{ marginRight: "6px" }} />
-              Destinos
-            </Link>
+              <Link to="/destinos" onClick={closeMenu}>
+                <FaMapMarkerAlt />
+                <span>Destinos</span>
+              </Link>
             </li>
             <li>
               <Link to="/nosotros" onClick={closeMenu}>
-                <FaUsers style={{ marginRight: "6px" }} />
-                Nosotros
+                <FaUsers />
+                <span>Nosotros</span>
               </Link>
             </li>
             <li>
               <Link to="/contacto" onClick={closeMenu}>
-                <FaEnvelope style={{ marginRight: "6px" }} />
-                Contacto
+                <FaEnvelope />
+                <span>Contacto</span>
               </Link>
             </li>
-            <li>
-              <button 
-                className={`theme-toggle ${darkMode ? 'dark' : ''}`} 
-                onClick={toggleDarkMode}
-                aria-label="Toggle theme"
-              >
-                <div className="toggle-thumb">
-                  {darkMode ? <FaSun /> : <FaMoon />}
-                </div>
-              </button>
-            </li>
           </ul>
+          
+          <div className="theme-toggle-container">
+            <button 
+              className={`theme-toggle ${darkMode ? 'dark' : ''}`} 
+              onClick={toggleDarkMode}
+              aria-label="Toggle theme"
+            >
+              <div className="toggle-thumb">
+                {darkMode ? <FaSun /> : <FaMoon />}
+              </div>
+            </button>
+          </div>
         </nav>
 
         <button 

@@ -148,6 +148,9 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  color: #fff;
+  text-decoration: none;
+  font-size: clamp(18px, 3.5vw, 22px);
 }
 
 .social-icon:hover {
