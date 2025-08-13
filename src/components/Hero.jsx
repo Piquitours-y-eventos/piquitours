@@ -13,9 +13,8 @@ const TEXTS = [
 
 const IMAGES = [
   'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1519046904884-5315520b5817?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'
+  'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+  'https://i0.wp.com/blog.vivaaerobus.com/wp-content/uploads/2022/04/playas-colombia-1.jpg?fit=1920%2C1080&ssl=1'
 ];
 
 export default function Hero() {
@@ -76,10 +75,10 @@ export default function Hero() {
       <div className="hero-overlay" />
       <div className="hero-gradient" />
       <button className="hero-button prev" onClick={goToPrevious} aria-label="Imagen anterior">
-        ❮
+        ‹
       </button>
       <button className="hero-button next" onClick={goToNext} aria-label="Imagen siguiente">
-        ❯
+        ›
       </button>
       <div className="hero-dots">
         {IMAGES.map((_, index) => (
@@ -94,7 +93,7 @@ export default function Hero() {
       <div className="hero-content">
         <h1>
           <span>Explora los lugares mas hermosos</span><br />
-          con Piquitours
+          con <span className="piquitours-text">Piquitours</span>
         </h1>
         <div className="animated-text-container">
           {TEXTS.map((text, index) => (

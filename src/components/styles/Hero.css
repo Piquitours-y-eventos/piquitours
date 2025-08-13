@@ -1,4 +1,3 @@
-
 .hero {
   position: relative;
   width: 100%;
@@ -52,7 +51,6 @@
   z-index: 0; /* IMPORTANTE: debajo de los botones */
 }
 
-
 .hero-gradient {
   position: absolute;
   bottom: 0;
@@ -67,60 +65,40 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: clamp(1.5rem, 3vw, 2.1rem);
-  height: clamp(1.5rem, 3vw, 2.1rem);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 215, 0, 0.2) 50%, rgba(255, 255, 255, 0.15) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  color: #fff;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  padding: 0;
+  cursor: pointer;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: white;
-  font-size: clamp(0.6rem, 1.5vw, 1rem);
+  transition: all 0.3s ease;
+  z-index: 3;
+  user-select: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.4s ease-in-out;
-  z-index: 2;
-  overflow: hidden;
-  isolation: isolate;
+  width: clamp(2.5rem, 5vw, 3.2rem);
+  height: clamp(2.5rem, 5vw, 3.2rem);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 
+              0 0 8px rgba(255, 215, 0, 0.1);
+  font-weight: 300;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.hero-button::before {
-  content: '';
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: conic-gradient(from 180deg, rgba(0, 153, 255, 0.2), rgba(0, 153, 255, 0.4), rgba(0, 153, 255, 0.2));
-  animation: rotateGlow 4s linear infinite;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none;
-}
+/* Eliminado el elemento ::before que causaba el cuadrado azul */
 
-.hero-button:hover::before {
-  opacity: 1;
-}
+/* Hover duplicado eliminado - se usa el elegante más abajo */
 
-.hero-button:hover {
-  transform: translateY(-50%) scale(1.15);
-  box-shadow: 0 6px 30px rgba(0, 153, 255, 0.6);
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #ffffff;
-}
+/* Eliminado hover del ::before que causaba el efecto azul */
 
-@keyframes rotateGlow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hero-button:active {
+  transform: translateY(-50%) scale(0.98);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3), 
+              0 0 8px rgba(255, 215, 0, 0.15);
 }
-
 
 .prev {
   left: clamp(0.6rem, 1.8vw, 1.2rem);
@@ -132,30 +110,37 @@
 
 .hero-dots {
   position: absolute;
-  bottom: clamp(5rem, 10vh, 7rem);
+  bottom: clamp(6rem, 12vh, 8.5rem);
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: clamp(0.4rem, 1vw, 0.6rem);
+  gap: clamp(0.5rem, 1.2vw, 0.8rem);
   z-index: 2;
 }
 
 .dot {
-  width: clamp(0.36rem, 0.9vw, 0.525rem);
-  height: clamp(0.36rem, 0.9vw, 0.525rem);
-  background: rgba(255, 255, 255, 0.5);
+  width: clamp(0.5rem, 1.2vw, 0.7rem);
+  height: clamp(0.5rem, 1.2vw, 0.7rem);
+  background: rgba(255, 215, 0, 0.4);
+  border: 1px solid rgba(255, 215, 0, 0.6);
   border-radius: 50%;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
 }
 
 .dot.active {
-  background: var(--primary-color);
-  transform: scale(1.3);
+  background: linear-gradient(135deg, #FFD700, #FFC107);
+  border: 1px solid #FFD700;
+  transform: scale(1.4);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 .dot:hover {
-  background: var(--highlight-color);
+  background: rgba(255, 215, 0, 0.7);
+  border: 1px solid #FFD700;
+  transform: scale(1.2);
+  box-shadow: 0 3px 12px rgba(255, 215, 0, 0.4);
 }
 
 .hero-content {
@@ -168,35 +153,25 @@
 }
 
 .hero h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(1.4rem, 3.5vw, 2.8rem);
-  font-weight: 700;
-  color: #3d90ca;
-  margin-bottom: 1.2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffd700 0%, #ffb347 25%, #ff8c69 50%, #ffa500 75%, #ffd700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   text-align: center;
+  margin-bottom: clamp(1rem, 3vw, 2rem);
   line-height: 1.1;
-  letter-spacing: -1px;
-  transform: translateZ(50px);
-
-  /*  Glass effect */
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-radius: 0.8rem;
-  padding: 0.5rem 1.2rem;
-  display: inline-block;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.2));
+  letter-spacing: -0.02em;
   transition: all 0.4s ease-in-out;
 }
 
 .hero h1:hover {
-  transform: translateZ(55px) scale(1.03);
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 40px rgba(0, 153, 255, 0.5);
+  transform: scale(1.02);
+  filter: drop-shadow(4px 4px 12px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 25px rgba(255, 215, 0, 0.4));
 }
-
 
 .animated-text-container {
   height: clamp(50px, 9vw, 75px);
@@ -206,9 +181,10 @@
 }
 
 .animated-text {
-  font-size: clamp(0.9rem, 2.4vw, 1.5rem);
-  font-weight: 300;
-  background: linear-gradient(45deg, #fff, #0099FF);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.1rem, 2.6vw, 1.7rem);
+  font-weight: 500;
+  background: linear-gradient(45deg, #fff, #f8f9fa);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -217,6 +193,8 @@
   opacity: 0;
   transform: translateY(12px);
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  letter-spacing: 0.02em;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .animated-text.active {
@@ -225,29 +203,39 @@
 }
 
 .button-continue {
-  background: rgba(0, 153, 255, 0.2); /* semitransparente para mostrar el blur */
-  /* background: rgba(289, 184, 16, 0.2); */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* soporte Safari */
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  color: #fff;
-  padding: clamp(0.6rem, 1.8vw, 0.9rem) clamp(1.2rem, 3.6vw, 1.8rem);
-  border-radius: 30px;
-  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
-  box-shadow: 0 6px 18px rgba(0, 153, 255, 0.3);
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #d4af37 0%, #ffd700 25%, #ffed4e 50%, #ffd700 75%, #d4af37 100%);
+  color: #1a1a1a;
+  border: 2px solid rgba(255, 215, 0, 0.8);
+  padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+  font-size: clamp(0.95rem, 2.2vw, 1.2rem);
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
   position: relative;
   overflow: hidden;
-  display: inline-flex;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 
+              0 0 20px rgba(255, 215, 0, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
   align-items: center;
-  gap: 0.6rem;
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  transform-style: preserve-3d;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: fit-content;
   z-index: 2;
 }
 
 .button-continue:hover {
   transform: translateY(-3px) rotateX(10deg) rotateY(5deg);
-  box-shadow: 0 15px 40px rgba(0, 153, 255, 0.4);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 193, 7, 0.4);
+  border: 2px solid rgba(255, 215, 0, 0.6);
 }
 
 .button-continue::before {
@@ -255,7 +243,7 @@
   position: absolute;
   inset: -2px;
   border-radius: 50px;
-  background: linear-gradient(45deg, #0099FF, #0066CC, transparent 50%, #0099FF 80%);
+  background: linear-gradient(45deg, #FFD700, #FFC107, transparent 50%, #FFD700 80%);
   z-index: -1;
   animation: borderLight 6s infinite linear;
   opacity: 0.5;
@@ -276,49 +264,119 @@
 
 .redes-sociales {
   position: absolute;
-  bottom: clamp(15px, 3vh, 25px);
+  bottom: clamp(8px, 2vh, 15px);
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: clamp(0.4rem, 1.5vw, 1rem);
-  padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.8rem, 2vw, 1.2rem);
-  backdrop-filter: blur(10px);
-  border-radius: 35px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  gap: clamp(0.5rem, 1.5vw, 0.8rem);
+  padding: clamp(0.5rem, 1.2vw, 0.7rem) clamp(0.8rem, 2vw, 1.2rem);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 
+              0 0 10px rgba(255, 215, 0, 0.08);
   z-index: 2;
   max-width: 90vw;
   overflow-x: auto;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .redes-sociales a {
+  font-family: 'Inter', sans-serif;
   color: #fff;
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: clamp(0.3rem, 0.8vw, 0.4rem);
-  transition: all 0.3s ease;
-  padding: clamp(0.3rem, 0.8vw, 0.4rem);
-  font-size: clamp(0.6rem, 1.3vw, 0.8rem);
+  gap: clamp(0.3rem, 0.8vw, 0.5rem);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: clamp(0.4rem, 1vw, 0.6rem) clamp(0.6rem, 1.5vw, 0.8rem);
+  font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+  font-weight: 600;
   white-space: nowrap;
-  border-radius: 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.3px;
+}
+
+.redes-sociales a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.redes-sociales a:hover::before {
+  left: 100%;
+}
+
+.redes-sociales a:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25), 0 0 10px rgba(255, 215, 0, 0.15);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.redes-sociales a:hover svg {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.redes-sociales svg {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  transition: all 0.3s ease;
+}
+
+/* Hover elegante para botones del carrusel */
+.hero-button:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 215, 0, 0.35) 50%, rgba(255, 255, 255, 0.25) 100%);
+  border-color: rgba(255, 215, 0, 0.5);
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 
+              0 0 15px rgba(255, 215, 0, 0.2);
+  color: #ffd700;
 }
 
 /* Iconos de redes sociales con colores específicos */
 .redes-sociales a:nth-child(1) svg {
   color: #1877F2; /* Facebook azul */
+  filter: drop-shadow(0 0 8px rgba(24, 119, 242, 0.4));
 }
 
 .redes-sociales a:nth-child(2) svg {
   color: #E4405F;
-  filter: drop-shadow(0 0 3px rgba(228, 64, 95, 0.5));
+  filter: drop-shadow(0 0 8px rgba(228, 64, 95, 0.5));
 }
 
 .redes-sociales a:nth-child(3) svg {
   color: #25D366; /* WhatsApp verde */
+  filter: drop-shadow(0 0 8px rgba(37, 211, 102, 0.4));
 }
 
 .redes-sociales a:nth-child(4) svg {
   color: #0099FF; /* Web azul */
+  filter: drop-shadow(0 0 8px rgba(0, 153, 255, 0.4));
+}
+
+.redes-sociales svg {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  transition: all 0.3s ease;
+}
+
+.redes-sociales a:hover svg {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 .redes-sociales a:hover {
@@ -369,6 +427,8 @@
     transform: translateX(-50%) scaleX(1);
   }
 }
+
+
 
 @media (max-width: 768px) {
   .hero {
@@ -539,4 +599,19 @@ body:not(.dark-mode) .animated-text {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* Estilo especial para "Piquitours" - Rojo-Naranja */
+.hero h1 .piquitours-text {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ff4500 50%, #ff6347 75%, #ff6b35 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 900;
+  filter: drop-shadow(2px 2px 4px rgba(255, 107, 53, 0.4));
+  letter-spacing: -0.01em;
+}
+
+.hero h1 span {
+  display: inline-block;
 }
