@@ -110,7 +110,7 @@
 
 .hero-dots {
   position: absolute;
-  bottom: clamp(6rem, 12vh, 8.5rem);
+  bottom: clamp(5rem, 12vh, 8.5rem);
   left: 50%;
   transform: translateX(-50%);
   display: flex;

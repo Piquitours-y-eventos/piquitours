@@ -14,7 +14,8 @@ const TEXTS = [
 const IMAGES = [
   'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
   'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-  'https://i0.wp.com/blog.vivaaerobus.com/wp-content/uploads/2022/04/playas-colombia-1.jpg?fit=1920%2C1080&ssl=1'
+  'https://i0.wp.com/blog.vivaaerobus.com/wp-content/uploads/2022/04/playas-colombia-1.jpg?fit=1920%2C1080&ssl=1',
+  'https://www.portafolio.co/files/article_new_multimedia/uploads/2024/02/05/65c10956b22b1.jpeg'
 ];
 
 export default function Hero() {
