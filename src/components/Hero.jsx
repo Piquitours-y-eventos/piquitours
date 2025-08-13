@@ -128,10 +128,6 @@ export default function Hero() {
           <FaWhatsapp />
           <span>Contáctanos</span>
         </a>
-        <a href="https://piquitours.com" target="_blank" rel="noreferrer">
-          <TbWorld />
-          <span>Nuestra Web</span>
-        </a>
       </div>
     </section>
   );
