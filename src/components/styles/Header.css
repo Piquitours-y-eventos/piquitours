@@ -82,21 +82,21 @@
 .nav-links a {
   color: #fff;
   text-decoration: none;
-  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-  font-weight: 600;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  letter-spacing: 0.02em;
+  font-size: clamp(1rem, 1.9vw, 1.15rem);
+  font-weight: 500;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.01em;
   padding: clamp(0.9rem, 2vw, 1.2rem) clamp(1.1rem, 2.4vw, 1.5rem);
-  border-radius: 10px;
+  border-radius: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   display: flex;
   align-items: center;
-  gap: clamp(0.6rem, 1.4vw, 0.8rem);
+  gap: clamp(0.7rem, 1.5vw, 0.9rem);
   white-space: nowrap;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .nav-links a svg {
@@ -109,9 +109,12 @@
 }
 
 .nav-links a:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 140, 0, 0.2) 50%, rgba(255, 215, 0, 0.15) 100%);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15), 
+              0 0 10px rgba(255, 215, 0, 0.1);
+  color: #ffd700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 /* ===== CONTENEDOR DEL BOTÓN TEMA ===== */
@@ -141,8 +144,9 @@
 }
 
 .theme-toggle.dark {
-  background: #34c759;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 50%, #ffd700 100%);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15), 
+              0 0 8px rgba(255, 215, 0, 0.2);
 }
 
 .toggle-thumb {
@@ -174,7 +178,8 @@
 }
 
 .theme-toggle.dark svg {
-  color: #34c759;
+  color: #1a1a1a;
+  filter: drop-shadow(0 1px 2px rgba(255, 215, 0, 0.3));
 }
 
 .theme-toggle:hover .toggle-thumb {

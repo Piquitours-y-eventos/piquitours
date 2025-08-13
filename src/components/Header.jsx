@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaSun, FaMoon, FaBars, FaTimes, FaHome, FaMapMarkerAlt, FaUsers, FaEnvelope, FaPhone, FaStar } from 'react-icons/fa';
+import { FaSun, FaMoon, FaBars, FaTimes, FaGem, FaGlobeAmericas, FaUserTie, FaPaperPlane, FaPhone, FaStar } from 'react-icons/fa';
 import "./styles/Header.css";
 
 export default function Header() {
@@ -46,25 +46,25 @@ export default function Header() {
           <ul className="nav-links">
             <li>
               <Link to="/" onClick={closeMenu}>
-                <FaHome />
+                <FaGem />
                 <span>Inicio</span>
               </Link>
             </li>
             <li>
               <Link to="/destinos" onClick={closeMenu}>
-                <FaMapMarkerAlt />
+                <FaGlobeAmericas />
                 <span>Destinos</span>
               </Link>
             </li>
             <li>
               <Link to="/nosotros" onClick={closeMenu}>
-                <FaUsers />
+                <FaUserTie />
                 <span>Nosotros</span>
               </Link>
             </li>
             <li>
               <Link to="/contacto" onClick={closeMenu}>
-                <FaEnvelope />
+                <FaPaperPlane />
                 <span>Contacto</span>
               </Link>
             </li>

@@ -1,87 +1,197 @@
 
-/* Destinations.css */
+/* Premium Destinations Section */
 .destinations-section {
   position: relative;
-  padding: clamp(4rem, 8vw, 12rem) clamp(1rem, 4vw, 2rem);
-  background: #000;
+  padding: clamp(6rem, 10vw, 12rem) clamp(2rem, 5vw, 4rem);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
   overflow: hidden;
   isolation: isolate;
 }
 
-.destinations-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  max-width: 1900px;
+.destinations-container {
+  max-width: 1400px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
+.section-header {
+  text-align: center;
+  margin-bottom: clamp(4rem, 8vw, 8rem);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title-accent {
+  background: linear-gradient(135deg, #FFD700 0%, #FF8C00 50%, #FF6B35 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 0.7em;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.title-main {
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+}
+
+.section-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: clamp(2rem, 4vw, 3rem);
+  position: relative;
+}
+
 
 .destination-card {
   position: relative;
-  background: rgba(15, 23, 42, 0.4);
-  border-radius: clamp(18px, 2.5vw, 32px);
-  border: 1px solid rgba(0, 153, 255, 0.15);
+  background: linear-gradient(145deg, rgba(20, 20, 20, 0.9) 0%, rgba(30, 30, 30, 0.8) 100%);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
   overflow: hidden;
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   transform-style: preserve-3d;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  box-shadow: 0 0 60px rgba(0, 153, 255, 0.05);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 215, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.destination-card::before {
-  content: '';
+.card-glow-effect {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(45deg,
-      rgba(0, 153, 255, 0.1) 0%,
-      rgba(0, 102, 204, 0.05) 100%);
+  inset: -2px;
+  background: linear-gradient(135deg, 
+    rgba(255, 215, 0, 0.4) 0%, 
+    rgba(255, 140, 0, 0.2) 30%, 
+    rgba(255, 107, 53, 0.3) 70%, 
+    rgba(184, 134, 11, 0.4) 100%);
+  border-radius: 26px;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.6s ease;
   z-index: -1;
+  filter: blur(8px);
+}
+
+.card-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 215, 0, 0.1) 50%, 
+    transparent 100%);
+  animation: shimmer 3s infinite;
+  z-index: 1;
 }
 
 .destination-card:hover {
-  transform: translateY(-15px) scale(1.03);
-  box-shadow: 0 0 80px rgba(0, 153, 255, 0.3);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 215, 0, 0.3),
+    0 0 40px rgba(255, 215, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.destination-card:hover::before {
+.destination-card:hover .card-glow-effect {
   opacity: 1;
 }
 
-.image-container {
-  height: clamp(260px, 45vh, 500px);
-  position: relative;
-  overflow: hidden;
-  border-radius: clamp(18px, 2.5vw, 32px) clamp(18px, 2.5vw, 32px) 0 0;
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
 }
 
-.image-container::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg,
-      transparent 50%,
-      rgba(0, 0, 0, 0.9) 100%);
-  z-index: 1;
+.image-container {
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
 }
 
 .image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  filter: brightness(0.9) contrast(1.1);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(255, 215, 0, 0.1) 0%,
+    rgba(255, 140, 0, 0.05) 30%,
+    rgba(0, 0, 0, 0.3) 70%,
+    rgba(0, 0, 0, 0.8) 100%);
+  z-index: 1;
 }
 
 .destination-card:hover img {
-  transform: scale(1.12) rotate(2deg);
+  transform: scale(1.08);
+}
+
+.quick-info {
+  position: absolute;
+  bottom: 16px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  gap: 16px;
+  z-index: 2;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.info-icon {
+  color: #FFD700;
+  font-size: 14px;
+}
+
+.info-item span {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .content-container {
-  padding: clamp(1.2rem, 2.5vw, 2.5rem);
+  padding: 28px 24px 32px;
   position: relative;
   z-index: 2;
 }
@@ -90,293 +200,317 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: clamp(0.8rem, 1.5vw, 1.5rem);
-  gap: 1rem;
+  margin-bottom: 20px;
+  gap: 16px;
 }
 
-h3 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(1.3rem, 2.2vw, 2.2rem);
-  color: #fff;
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: #ffffff;
   font-weight: 600;
-  text-shadow: 0 2px 15px rgba(0, 153, 255, 0.2);
   line-height: 1.3;
   flex: 1;
+  position: relative;
 }
 
-h3::after {
+.card-title::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -8px;
   left: 0;
-  width: 60px;
-  height: 2.5px;
-  background: linear-gradient(90deg, #0099FF, #0066CC);
-  transition: width 0.6s ease;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #FFD700, #FF8C00);
+  border-radius: 2px;
+  transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.destination-card:hover h3::after {
-  width: min(100px, 40%);
+.destination-card:hover .card-title::after {
+  width: 80px;
 }
 
 .price-tag {
-  background: linear-gradient(135deg, #0099FF 0%, #0066CC 100%);
-  color: #fff;
-  padding: clamp(0.5rem, 1vw, 0.8rem) clamp(1rem, 2vw, 2rem);
-  border-radius: 35px;
+  background: linear-gradient(135deg, #FFD700 0%, #FF8C00 50%, #FF6B35 100%);
+  color: #000;
+  padding: 12px 20px;
+  border-radius: 25px;
   font-weight: 700;
-  box-shadow: 0 4px 30px rgba(0, 153, 255, 0.3);
+  box-shadow: 
+    0 4px 20px rgba(255, 215, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  font-size: clamp(0.95rem, 1.2vw, 1.3rem);
+  font-size: 16px;
   white-space: nowrap;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-p {
+.price-currency {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.price-amount {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.price-unit {
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.destination-card:hover .price-tag {
+  transform: scale(1.05);
+  box-shadow: 
+    0 6px 25px rgba(255, 215, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.card-description {
   color: rgba(255, 255, 255, 0.85);
-  line-height: 1.6;
-  margin: clamp(1.2rem, 2vw, 2rem) 0;
-  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
-  font-weight: 300;
-  opacity: 0.9;
+  line-height: 1.7;
+  margin: 20px 0;
+  font-size: 15px;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+}
+
+.card-features {
+  margin: 16px 0 24px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.feature-icon {
+  color: #FFD700 !important;
+  font-size: 13px !important;
+  flex-shrink: 0;
+  width: 13px !important;
+  height: 13px !important;
+  min-width: 13px;
+  min-height: 13px;
+  max-width: 13px;
+  max-height: 13px;
 }
 
 .cta-button {
-  background: linear-gradient(135deg, #0099FF 0%, #0066CC 100%);
-  color: #fff;
+  background: linear-gradient(135deg, #FFD700 0%, #FF8C00 50%, #FF6B35 100%);
+  color: #000;
   border: none;
-  padding: clamp(0.9rem, 1.5vw, 1.4rem) clamp(1.5rem, 3vw, 3rem);
-  border-radius: 45px;
-  display: inline-flex;
+  padding: 16px 32px;
+  border-radius: 30px;
+  display: flex;
   align-items: center;
-  gap: clamp(0.6rem, 1vw, 1.2rem);
+  justify-content: center;
+  gap: 12px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
   overflow: hidden;
-  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
   width: 100%;
-  justify-content: center;
+  box-shadow: 
+    0 4px 20px rgba(255, 215, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.cta-button::after {
+.cta-button:hover {
+  background: linear-gradient(135deg, #FFE55C 0%, #FFA500 50%, #FF7F50 100%);
+  box-shadow: 
+    0 8px 30px rgba(255, 215, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.cta-icon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover .cta-icon {
+  transform: translateX(4px) translateY(-2px);
+}
+
+.cta-button::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg,
-      transparent 25%,
-      rgba(255, 255, 255, 0.15) 50%,
-      transparent 75%);
-  animation: buttonShine 6s infinite;
-  opacity: 0.5;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    transparent 100%);
+  transition: left 0.6s ease;
+}
+
+.cta-button:hover::before {
+  left: 100%;
 }
 
 .rating-badge {
   position: absolute;
-  top: clamp(0.8rem, 1.5vw, 2rem);
-  right: clamp(0.8rem, 1.5vw, 2rem);
-  background: rgba(0, 0, 0, 0.6);
-  color: orange;
-  padding: clamp(0.5rem, 1vw, 0.8rem) clamp(0.8rem, 1.5vw, 1.5rem);
-  border-radius: 35px;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 20, 0.9) 100%);
+  color: #FFD700;
+  padding: 10px 16px;
+  border-radius: 25px;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 8px;
   z-index: 3;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
   font-weight: 600;
-  font-size: clamp(0.85rem, 1.1vw, 1rem);
+  font-size: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.glow-effect {
-  position: absolute;
-  width: min(360px, 80vw);
-  height: min(360px, 80vw);
-  background: radial-gradient(circle,
-      rgba(0, 153, 255, 0.25) 0%,
-      transparent 70%);
-  filter: blur(90px);
-  z-index: -1;
-  opacity: 0.3;
+.star-icon {
+  color: #FFD700;
+  font-size: 16px;
 }
 
-.floating-particle {
+.rating-badge span {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.golden-particle {
   position: absolute;
-  background: rgba(0, 153, 255, 0.08);
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(45deg, #FFD700, #FF8C00);
   border-radius: 50%;
-  animation: float 14s infinite ease-in-out;
-  filter: blur(2px);
+  animation: goldenFloat 8s infinite ease-in-out;
   pointer-events: none;
+  opacity: 0.6;
 }
 
-/* Animaciones */
-@keyframes buttonShine {
-  100% {
-    transform: rotate(360deg);
-  }
+.golden-particle:nth-child(1) {
+  top: 20%;
+  left: 10%;
 }
 
-@keyframes float {
+.golden-particle:nth-child(2) {
+  top: 60%;
+  right: 15%;
+}
 
-  0%,
-  100% {
+.golden-particle:nth-child(3) {
+  bottom: 30%;
+  left: 20%;
+}
+
+@keyframes goldenFloat {
+  0%, 100% {
     transform: translateY(0) rotate(0deg);
+    opacity: 0.6;
   }
-
   50% {
-    transform: translateY(-25px) rotate(3deg);
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 1;
   }
 }
 
-Media Queries Responsivos
-@media (min-width: 1200px) {
-  .destinations-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 1199px) and (min-width: 769px) {
-  .destinations-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
+/* Premium Responsive Design */
 @media (max-width: 768px) {
   .destinations-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
-}
-
-/* Eliminar media queries adicionales */
-@media (min-width: 2000px) {
-  .destinations-grid {
-    grid-template-columns: repeat(3, 1fr);
+  
+  .destination-card {
+    margin: 0 1rem;
   }
-}
-
-@media (min-width: 1600px) and (max-width: 1999px) {
-  .destinations-grid {
-    grid-template-columns: repeat(3, 1fr);
+  
+  .section-title {
+    font-size: clamp(2rem, 8vw, 2.5rem);
   }
-}
-
-@media (min-width: 1200px) and (max-width: 1599px) {
-  .destinations-grid {
-    grid-template-columns: repeat(3, 1fr);
+  
+  .content-container {
+    padding: 24px 20px 28px;
   }
-}
-
-@media (max-width: 1199px) and (min-width: 769px) {
-  .destinations-grid {
-    grid-template-columns: repeat(2, 1fr);
+  
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
-}
-
-@media (max-width: 768px) and (min-width: 481px) {
-  .destinations-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  h3 {
-    font-size: 1.5rem;
-  }
-
+  
   .price-tag {
-    font-size: 1.1rem;
+    align-self: flex-end;
   }
 }
 
 @media (max-width: 480px) {
-  .destinations-grid {
-    grid-template-columns: 1fr;
+  .destinations-section {
+    padding: clamp(4rem, 8vw, 6rem) 1rem;
   }
-
-  .destination-card {
-    margin: 0 0.5rem;
-  }
-
-  h3 {
-    font-size: 1.4rem;
-  }
-
-  .cta-button {
-    padding: 1rem 2rem;
-    font-size: 1rem;
-  }
-
+  
   .image-container {
-    height: 220px;
+    height: 240px;
+  }
+  
+  .quick-info {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .info-item {
+    font-size: 12px;
+    padding: 6px 10px;
   }
 }
 
-/* Optimización para tablets en landscape */
-@media (max-width: 1024px) and (orientation: landscape) {
-  .destinations-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Ajustes para pantallas muy pequeñas */
-@media (max-width: 360px) {
-  h3 {
-    font-size: 1.2rem;
-  }
-
-  .price-tag {
-    font-size: 0.9rem;
-  }
-
-  p {
-    font-size: 0.85rem;
-  }
-}
-
-/* ***** MODO CLARO ***** */
+/* Light Mode Support */
 body:not(.dark-mode) .destinations-section {
-  background-color: var(--background-color-light);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f1f3f4 100%);
 }
 
 body:not(.dark-mode) .destination-card {
-  background: #F3F3F3;
-}
-body:not(.dark-mode) .card-header>h3 {
-  color: var(--text-color-light);
-}
-body:not(.dark-mode) #card-description-01 {
-  color: var(--text-color-light);
-}
-body:not(.dark-mode) .floating-particle{
-  background: hsla(213, 69%, 69%, 0.573);
-  filter: blur(3px);
-}
-/* ********** */
-
-
-.image-credit {
-  position: absolute;
-  bottom: 8px;
-  right: 12px;
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 2px 8px;
-  border-radius: 8px;
-  font-style: italic;
-  z-index: 2;
-  pointer-events: none;
-  backdrop-filter: blur(2px);
-  max-width: 90%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 249, 250, 0.9) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 215, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-body:not(.dark-mode) .image-credit {
-  color: rgba(0, 0, 0, 0.5);
-  background-color: rgba(255, 255, 255, 0.3);
+body:not(.dark-mode) .card-title {
+  color: #1a1a1a;
+}
+
+body:not(.dark-mode) .card-description {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+body:not(.dark-mode) .feature-item {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+body:not(.dark-mode) .title-main {
+  color: #1a1a1a;
+  text-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
+}
+
+body:not(.dark-mode) .section-subtitle {
+  color: rgba(0, 0, 0, 0.7);
 }

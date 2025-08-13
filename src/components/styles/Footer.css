@@ -1,27 +1,32 @@
 
-/* Footer.css */
+/* Footer.css - Premium Design */
 .footer {
   background: linear-gradient(135deg,
-      rgba(15, 23, 42, 0.98) 0%,
-      rgba(8, 29, 54, 0.98) 100%);
+      rgba(15, 23, 42, 0.95) 0%,
+      rgba(8, 29, 54, 0.98) 50%,
+      rgba(20, 15, 35, 0.95) 100%);
   color: white;
-  padding: clamp(3rem, 6vw, 6rem) clamp(1rem, 4vw, 4rem);
+  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 4vw, 4rem);
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  border-top: 2px solid rgba(0, 153, 255, 0.15);
+  border-top: 3px solid rgba(255, 215, 0, 0.2);
 }
 
 .footer::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%,
-      rgba(0, 153, 255, 0.05) 0%,
-      transparent 70%);
-  opacity: 0.4;
+  background: radial-gradient(circle at 30% 40%,
+      rgba(255, 215, 0, 0.08) 0%,
+      rgba(255, 140, 0, 0.05) 40%,
+      transparent 70%),
+    radial-gradient(circle at 70% 60%,
+      rgba(255, 107, 53, 0.06) 0%,
+      transparent 50%);
+  opacity: 0.6;
   z-index: -1;
-  animation: bgPulse 12s infinite linear;
+  animation: bgPulse 15s infinite ease-in-out;
 }
 
 @keyframes bgPulse {
@@ -71,12 +76,17 @@
 }
 
 .footer h4 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-  margin-bottom: clamp(1.2rem, 2vw, 1.8rem);
-  color: #6EC5FF;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+  font-weight: 600;
+  margin-bottom: clamp(1.4rem, 2.5vw, 2rem);
+  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 50%, #ffd700 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   position: relative;
-  line-height: 1.3;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
 }
 
 .footer h4::after {
@@ -84,9 +94,10 @@
   position: absolute;
   bottom: -0.8rem;
   left: 0;
-  width: clamp(50px, 10vw, 80px);
+  width: clamp(60px, 12vw, 100px);
   height: 3px;
-  background: linear-gradient(90deg, #6EC5FF, transparent);
+  background: linear-gradient(90deg, #ffd700 0%, #ff8c00 50%, transparent 100%);
+  border-radius: 2px;
   transition: width 0.4s ease;
 }
 
@@ -119,12 +130,12 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: #6EC5FF;
+  background: linear-gradient(90deg, #ffd700, #ff8c00);
   transition: width 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: #6EC5FF;
+  color: #ffd700;
   transform: translateX(8px);
 }
 
@@ -140,61 +151,279 @@
 }
 
 .social-icon {
-  width: clamp(42px, 8vw, 50px);
-  height: clamp(42px, 8vw, 50px);
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  width: clamp(48px, 9vw, 56px);
+  height: clamp(48px, 9vw, 56px);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   color: #fff;
   text-decoration: none;
-  font-size: clamp(18px, 3.5vw, 22px);
+  font-size: clamp(20px, 4vw, 26px);
+  border: 2px solid transparent;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
 }
 
-.social-icon:hover {
-  background: #6EC5FF;
-  transform: translateY(-5px) rotate(12deg);
-  box-shadow: 0 5px 20px rgba(110, 197, 255, 0.3);
+/* Iconos de redes sociales coloridos y vibrantes */
+.social-icon.facebook {
+  background: linear-gradient(135deg, #1877F2 0%, #42A5F5 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);
+}
+
+.social-icon.facebook:hover {
+  background: linear-gradient(135deg, #0d65d9 0%, #1976D2 100%);
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(24, 119, 242, 0.5);
+  border-color: rgba(24, 119, 242, 0.5);
+}
+
+.social-icon.instagram {
+  background: linear-gradient(135deg, #E4405F 0%, #F77737 50%, #FCAF45 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(228, 64, 95, 0.3);
+}
+
+.social-icon.instagram:hover {
+  background: linear-gradient(135deg, #d12d4a 0%, #e85d2b 50%, #f39c2b 100%);
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(228, 64, 95, 0.5);
+  border-color: rgba(228, 64, 95, 0.5);
+}
+
+.social-icon.twitter {
+  background: linear-gradient(135deg, #1DA1F2 0%, #0d8bd9 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(29, 161, 242, 0.3);
+}
+
+.social-icon.twitter:hover {
+  background: linear-gradient(135deg, #0c85d0 0%, #0a6ebd 100%);
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(29, 161, 242, 0.5);
+  border-color: rgba(29, 161, 242, 0.5);
+}
+
+.social-icon.whatsapp {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.social-icon.whatsapp:hover {
+  background: linear-gradient(135deg, #1ebe57 0%, #0e6b5d 100%);
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+  border-color: rgba(37, 211, 102, 0.5);
+}
+
+.social-icon.newsletter-button {
+  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 50%, #ff6b35 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.social-icon.newsletter-button:hover {
+  background: linear-gradient(135deg, #e6c200 0%, #e67e00 50%, #e55a2b 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.company-description {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.company-stats {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.8rem, 1.5vw, 1.2rem);
+  padding: clamp(0.8rem, 1.5vw, 1.2rem);
+  background: rgba(255, 215, 0, 0.08);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  background: rgba(255, 215, 0, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1);
+}
+
+.stat-icon {
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  color: #ffd700;
+  filter: drop-shadow(0 2px 4px rgba(255, 215, 0, 0.3));
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-weight: 700;
+  color: #ffd700;
+  display: block;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+  line-height: 1.3;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.4rem);
+  margin-bottom: clamp(2rem, 4vw, 2.5rem);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.8rem, 1.5vw, 1rem);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.9rem, 1.7vw, 1.05rem);
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  color: #ffd700;
+  transform: translateX(4px);
+}
+
+.contact-icon {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: #ffd700;
+  filter: drop-shadow(0 1px 3px rgba(255, 215, 0, 0.3));
+}
+
+.rating-section {
+  text-align: center;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  background: rgba(255, 215, 0, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.rating-stars {
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.rating-stars svg {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: #ffd700;
+  filter: drop-shadow(0 1px 3px rgba(255, 215, 0, 0.4));
+}
+
+.rating-text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.newsletter-section {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  border-top: 1px solid rgba(255, 215, 0, 0.15);
+}
+
+.newsletter-section h5 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-weight: 600;
+  color: #ffd700;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  text-align: center;
 }
 
 .newsletter-form {
   display: flex;
   gap: 1rem;
-  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: clamp(1rem, 2vw, 1.5rem);
   flex-direction: column;
 }
 
 .newsletter-input {
-  padding: clamp(0.8rem, 1.8vw, 1.2rem);
-  border: none;
-  border-radius: 50px;
+  flex: 1;
+  padding: clamp(0.9rem, 1.8vw, 1.3rem);
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  border-radius: 10px;
   background: rgba(255, 255, 255, 0.08);
   color: white;
-  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
   transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .newsletter-input:focus {
-  outline: 2px solid #6EC5FF;
-  box-shadow: 0 0 15px rgba(110, 197, 255, 0.2);
+  outline: none;
+  border-color: #ffd700;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.15);
 }
 
 .newsletter-button {
-  background: linear-gradient(135deg, #6EC5FF, #3A7BFF);
-  color: #136ab1;
+  padding: clamp(0.9rem, 1.8vw, 1.3rem) clamp(1.8rem, 3.5vw, 2.5rem);
+  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 50%, #ff6b35 100%);
+  color: white;
   border: none;
-  padding: clamp(0.8rem, 1.8vw, 1.2rem) clamp(1.5rem, 3vw, 2rem);
-  border-radius: 50px;
-  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
   cursor: pointer;
   transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .newsletter-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 20px rgba(110, 197, 255, 0.3);
+}
+
+.newsletter-text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 1rem;
+  text-align: center;
+  line-height: 1.4;
 }
 
 .footer-bottom {
@@ -213,54 +442,133 @@
 
 .back-to-top {
   position: fixed;
-  bottom: clamp(1.5rem, 3vw, 2rem);
-  right: clamp(5.5rem, 10vw, 6rem); /* Ajustar para dejar espacio al botón de WhatsApp */
-  background: #0086ecde;
-  backdrop-filter: blur(3px);
-  color: #000;
-  width: clamp(50px, 8vw, 60px);
-  height: clamp(50px, 8vw, 60px);
+  bottom: 20px;
+  right: 80px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.9) 0%, rgba(255, 140, 0, 0.85) 50%, rgba(255, 107, 53, 0.9) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  width: 50px;
+  height: 50px;
   border-radius: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  box-shadow: 0 0 25px rgba(110, 197, 255, 0.3);
-  z-index: 1000;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3), 0 3px 10px rgba(255, 140, 0, 0.2);
+  z-index: 9999;
+  font-size: 20px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
 .back-to-top:hover {
   transform: translateY(-5px) scale(1.1);
   border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 1) 0%, rgba(255, 140, 0, 0.95) 50%, rgba(255, 107, 53, 1) 100%);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4), 0 4px 15px rgba(255, 140, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.back-to-top::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.back-to-top:hover::before {
+  animation: shimmerEffect 1.5s ease-in-out;
+}
+
+@keyframes shimmerEffect {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
 }
 
 .floating-whatsapp {
   position: fixed;
-  bottom: clamp(1.5rem, 3vw, 2rem); /* Alinear con el botón "back-to-top" */
-  right: clamp(1.5rem, 3vw, 2rem); /* Ubicar al lado del botón "back-to-top" */
-  background-color: #25d365a9;
-  backdrop-filter: blur(3px);
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.95) 0%, rgba(18, 140, 126, 0.9) 50%, rgba(16, 124, 112, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: #fff;
   border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
   width: 50px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3), 0 3px 10px rgba(18, 140, 126, 0.2);
   cursor: pointer;
-  z-index: 1000;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 9999;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
 }
 
 .floating-whatsapp:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1) translateY(-3px);
+  background: linear-gradient(135deg, rgba(37, 211, 102, 1) 0%, rgba(18, 140, 126, 0.95) 50%, rgba(16, 124, 112, 1) 100%);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4), 0 4px 15px rgba(18, 140, 126, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.floating-whatsapp::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.floating-whatsapp:hover::before {
+  animation: shimmerEffect 1.5s ease-in-out;
+}
+
+.floating-whatsapp::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease;
+}
+
+.floating-whatsapp:hover::after {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
 }
 
 .whatsapp-icon {
   font-size: 24px;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+}
+
+.floating-whatsapp:hover .whatsapp-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
 }
 
 @media (max-width: 768px) {
@@ -283,11 +591,18 @@
   }
 
   .back-to-top {
-    right: clamp(5rem, 9vw, 6rem); /* Ajustar posición en pantallas pequeñas */
+    right: 70px;
+    width: 48px;
+    height: 48px;
+    bottom: 15px;
+    font-size: 18px;
   }
 
   .floating-whatsapp {
-    right: clamp(1rem, 2vw, 1.5rem); /* Ajustar posición en pantallas pequeñas */
+    right: 15px;
+    width: 48px;
+    height: 48px;
+    bottom: 15px;
   }
 }
 
@@ -307,6 +622,25 @@
   .social-icon {
     width: 45px;
     height: 45px;
+  }
+
+  .back-to-top {
+    right: 60px;
+    width: 45px;
+    height: 45px;
+    font-size: 16px;
+    bottom: 12px;
+  }
+
+  .floating-whatsapp {
+    right: 12px;
+    width: 45px;
+    height: 45px;
+    bottom: 12px;
+  }
+
+  .whatsapp-icon {
+    font-size: 18px;
   }
 }
 

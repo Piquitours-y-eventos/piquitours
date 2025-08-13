@@ -51,11 +51,28 @@ const TourDetailsModal = ({ isOpen, onClose, tour }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  // Bloquear scroll del body cuando el modal está abierto
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = '15px'; // Compensar scrollbar
+    } else {
+      document.body.style.overflow = 'auto';
+      document.body.style.paddingRight = '0px';
+    }
+
+    // Cleanup al desmontar
+    return () => {
+      document.body.style.overflow = 'auto';
+      document.body.style.paddingRight = '0px';
+    };
+  }, [isOpen]);
+
   if (!tour) return null;
 
   const toggleFullScreen = () => {
     setIsFullScreen(!isFullScreen);
-    document.body.style.overflow = isFullScreen ? 'auto' : 'hidden';
+    // No cambiar el overflow aquí, ya se maneja en useEffect
   };
 
   const handleImageChange = (index) => {
@@ -90,19 +107,21 @@ const TourDetailsModal = ({ isOpen, onClose, tour }) => {
       {isOpen && (
         <>
           <motion.div
-            className="fixed inset-0 bg-black bg-opacity-80 z-[2000] backdrop-blur-sm"
+            className="fixed inset-0 bg-black bg-opacity-80 z-[998] backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             onClick={onClose}
+            style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
           />
           
           <motion.div
-            className={`fixed z-[2001] ${isFullScreen ? 'inset-0' : 'left-1/2 -translate-x-1/2 w-[95vw] max-w-6xl'} mx-auto`}
+            className={`fixed z-[999] ${isFullScreen ? 'inset-0' : 'left-1/2 -translate-x-1/2 w-[95vw] max-w-6xl'} mx-auto`}
             style={{
-              top: isFullScreen ? '0' : '5vh',
-              maxHeight: isFullScreen ? '100vh' : '90vh'
+              top: isFullScreen ? 'clamp(85px, 12vh, 110px)' : 'calc(clamp(85px, 12vh, 110px) + 2vh)',
+              maxHeight: isFullScreen ? 'calc(100vh - clamp(85px, 12vh, 110px))' : 'calc(90vh - clamp(85px, 12vh, 110px))',
+              position: 'fixed'
             }}
             initial={{ opacity: 0, y: 20, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -550,7 +569,7 @@ const TourDetailsModal = ({ isOpen, onClose, tour }) => {
           <AnimatePresence>
             {copied && (
               <motion.div
-                className="fixed bottom-8 left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-[2002] flex items-center gap-2"
+                className="fixed bottom-8 left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-[1002] flex items-center gap-2"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}

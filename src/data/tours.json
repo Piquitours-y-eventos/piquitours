@@ -4,7 +4,7 @@
       "id": 1,
       "title": "ARRÁS DE CIELO",
       "description": "Peñol y Guatapé, dos razones para enamorarte de Antioquia.",
-      "image": "/guatap2.jpeg",
+      "image": "san_andres.jpg",
       "rating": 4.9,
       "price": "420,000",
       "fullDescription": "Explora el majestuoso Peñón de Guatapé y sus coloridos pueblos en una experiencia única que combina naturaleza, cultura y aventura.",
@@ -31,7 +31,7 @@
       "inclusions": ["Transporte", "Guía local", "Entradas"],
       "exclusions": ["Propinas", "Comidas no especificadas"],
       "gallery": [
-        "/guatap2.jpeg",
+        "https://source.unsplash.com/800x600/?guatape",
         "https://source.unsplash.com/random/800x600/?guatape"
       ],
       "details": {
@@ -46,7 +46,7 @@
       "id": 2,
       "title": "SABOR CARIBE",
       "description": "Barú, Rodadero y Cartagena: tres joyas, un solo paraíso.",
-      "image": "/baru.jpeg",
+      "image": "/quindio.jpg",
       "rating": 4.8,
       "price": "850,000",
       "fullDescription": "Disfruta de las playas paradisíacas de Barú, la vibrante vida nocturna del Rodadero y el encanto histórico de Cartagena.",
@@ -69,7 +69,7 @@
       "inclusions": ["Transporte acuático", "Almuerzo", "Equipo de snorkel"],
       "exclusions": ["Bebidas alcohólicas", "Propinas"],
       "gallery": [
-        "/baru.jpeg",
+        "https://source.unsplash.com/800x600/?cartagena",
         "https://source.unsplash.com/random/800x600/?cartagena"
       ],
       "details": {
@@ -78,6 +78,90 @@
         "groupSize": "4-12 personas",
         "languages": ["Español"],
         "bestSeason": "Diciembre a Marzo"
+      }
+    },
+    {
+      "id": 3,
+      "title": "SELVA URBANA",
+      "description": "Conoce la ciudad de Medellín de una manera diferente.",
+      "image": "/baru.jpeg",
+      "rating": 4.5,
+      "price": "250,000",
+      "fullDescription": "Explora la ciudad de Medellín y sus alrededores en una experiencia única que combina naturaleza, cultura y aventura.",
+      "highlights": [
+        {
+          "icon": "FiMapPin",
+          "text": "Turismo en el Parque Arví"
+        },
+        {
+          "icon": "FiHome",
+          "text": "Recorrido por el barrio de El Poblado"
+        }
+      ],
+      "itinerary": [
+        {
+          "day": "Día 1",
+          "title": "Turismo en el Parque Arví",
+          "description": "Recorre el Parque Arví y disfruta de las vistas panorámicas de la ciudad.",
+          "activities": ["Turismo", "Fotos panorámicas", "Almuerzo tÃ­pico"],
+          "time": "8:00 AM - 2:00 PM",
+          "location": "Parque Arví"
+        }
+      ],
+      "inclusions": ["Transporte", "Guía local", "Entradas"],
+      "exclusions": ["Propinas", "Comidas no especificadas"],
+      "gallery": [
+        "https://source.unsplash.com/800x600/?medellin",
+        "https://source.unsplash.com/random/800x600/?medellin"
+      ],
+      "details": {
+        "duration": "1 día",
+        "difficulty": "Moderada",
+        "groupSize": "2-15 personas",
+        "languages": ["Español", "Inglés básico"],
+        "bestSeason": "Todo el año"
+      }
+    },
+    {
+      "id": 4,
+      "title": "ANDINOS",
+      "description": "Conoce los Andes colombianos de una manera diferente.",
+      "image": "guatap2.jpeg",
+      "rating": 4.8,
+      "price": "2,000,000",
+      "fullDescription": "Explora los Andes colombianos y sus alrededores en una experiencia única que combina naturaleza, cultura y aventura.",
+      "highlights": [
+        {
+          "icon": "FiMapPin",
+          "text": "Turismo en el Parque Natural de los Nevados"
+        },
+        {
+          "icon": "FiHome",
+          "text": "Recorrido por el pueblo de Salento"
+        }
+      ],
+      "itinerary": [
+        {
+          "day": "Día 1",
+          "title": "Turismo en el Parque Natural de los Nevados",
+          "description": "Recorre el Parque Natural de los Nevados y disfruta de las vistas panorámicas de la montaña.",
+          "activities": ["Turismo", "Fotos panorámicas", "Almuerzo tÃ­pico"],
+          "time": "8:00 AM - 2:00 PM",
+          "location": "Parque Natural de los Nevados"
+        }
+      ],
+      "inclusions": ["Transporte", "Guía local", "Entradas"],
+      "exclusions": ["Propinas", "Comidas no especificadas"],
+      "gallery": [
+        "https://source.unsplash.com/800x600/?andes",
+        "https://source.unsplash.com/random/800x600/?andes"
+      ],
+      "details": {
+        "duration": "5 días / 4 noches",
+        "difficulty": "Difícil",
+        "groupSize": "4-12 personas",
+        "languages": ["Español"],
+        "bestSeason": "Junio a Noviembre"
       }
     }
   ]
