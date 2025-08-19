@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp, FaArrowUp, FaPhone, FaEnvelope, FaMapMarkerAlt, FaStar, FaAward, FaUsers, FaGlobeAmericas } from 'react-icons/fa';
-import { TbWorld } from 'react-icons/tb';
+import { motion } from 'framer-motion';
+import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp, FaArrowUp, FaPhone, FaEnvelope, FaMapMarkerAlt, FaStar } from 'react-icons/fa';
 import './styles/Footer.css';
 
 export default function Footer() {
@@ -18,6 +18,7 @@ export default function Footer() {
 
   return (
     <footer className="footer">
+      {/* Floating Action Buttons */}
       <div className="back-to-top" onClick={scrollToTop}>
         <FaArrowUp className="arrow-icon" />
       </div>
@@ -27,41 +28,43 @@ export default function Footer() {
       </div>
       
       <div className="footer-content">
-        <div className="footer-section company-info">
+        {/* Company Section */}
+        <motion.div 
+          className="footer-section company-info"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <img 
             src="/logo_entero.png" 
             alt="Piquitours Logo" 
             className="footer-logo"
           />
-          <p className="company-description">Expertos en experiencias turísticas auténticas y memorables en El Espinal, Tolima. Tu aventura perfecta nos espera.</p>
+          <p className="company-description">
+            Expertos en experiencias turísticas auténticas y memorables en El Espinal, Tolima. 
+            Tu aventura perfecta nos espera.
+          </p>
           
-          <div className="company-stats">
-            <div className="stat-item">
-              <FaUsers className="stat-icon" />
-              <div>
-                <span className="stat-number">500+</span>
-                <span className="stat-label">Clientes Felices</span>
+          <div className="trust-indicators">
+            <div className="rating-display">
+              <div className="rating-stars">
+                <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
               </div>
-            </div>
-            <div className="stat-item">
-              <FaAward className="stat-icon" />
-              <div>
-                <span className="stat-number">5+</span>
-                <span className="stat-label">Años de Experiencia</span>
-              </div>
-            </div>
-            <div className="stat-item">
-              <FaGlobeAmericas className="stat-icon" />
-              <div>
-                <span className="stat-number">20+</span>
-                <span className="stat-label">Destinos Únicos</span>
-              </div>
+              <span className="rating-text">5.0 • 500+ clientes satisfechos</span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="footer-section">
-          <h4>Nuestros Servicios</h4>
+        {/* Services Section */}
+        <motion.div 
+          className="footer-section"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+        >
+          <h4>Servicios</h4>
           <ul className="footer-links">
             <li><a href="/destinos">Tours Personalizados</a></li>
             <li><a href="/paquetes">Paquetes Todo Incluido</a></li>
@@ -69,9 +72,16 @@ export default function Footer() {
             <li><a href="/transporte">Transporte Turístico</a></li>
             <li><a href="/guias">Guías Especializados</a></li>
           </ul>
-        </div>
+        </motion.div>
 
-        <div className="footer-section">
+        {/* Contact Section */}
+        <motion.div 
+          className="footer-section"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           <h4>Contacto</h4>
           <div className="contact-info">
             <div className="contact-item">
@@ -87,17 +97,17 @@ export default function Footer() {
               <span>info@piquitours.com</span>
             </div>
           </div>
-          
-          <div className="rating-section">
-            <div className="rating-stars">
-              <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
-            </div>
-            <p className="rating-text">Calificación 5.0 estrellas</p>
-          </div>
-        </div>
+        </motion.div>
 
-        <div className="footer-section">
-          <h4>Síguenos</h4>
+        {/* Social & Newsletter Section */}
+        <motion.div 
+          className="footer-section"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <h4>Conecta con nosotros</h4>
           <div className="social-icons">
             <a href="https://www.facebook.com/share/1AiMVjLLDs/" className="social-icon facebook" target="_blank" rel="noopener noreferrer">
               <FaFacebook />
@@ -114,7 +124,8 @@ export default function Footer() {
           </div>
           
           <div className="newsletter-section">
-            <h5>Newsletter Exclusivo</h5>
+            <h5>Newsletter</h5>
+            <p className="newsletter-description">Recibe ofertas exclusivas y descubre nuevos destinos</p>
             <form className="newsletter-form">
               <input 
                 type="email" 
@@ -123,14 +134,15 @@ export default function Footer() {
               />
               <button type="submit" className="newsletter-button">Suscribirse</button>
             </form>
-            <p className="newsletter-text">Ofertas especiales y destinos únicos</p>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} Piquitours & Eventos. Todos los derechos reservados.</p>
-        <p>El Espinal, Tolima - Colombia | NIT: xxxxx | RNT: xxxxx</p>
+        <div className="footer-bottom-content">
+          <p>© {new Date().getFullYear()} Piquitours & Eventos. Todos los derechos reservados.</p>
+          <p>El Espinal, Tolima - Colombia</p>
+        </div>
       </div>
     </footer>
   );

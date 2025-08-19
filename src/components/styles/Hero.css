@@ -8,8 +8,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: clamp(1rem, 3vw, 2rem);
-  padding-top: clamp(100px, 15vh, 140px);
+  padding: 0;
+  margin: 0;
   text-align: center;
   perspective: 1000px;
   background: var(--background-color-dark);
@@ -143,13 +143,22 @@
   box-shadow: 0 3px 12px rgba(255, 215, 0, 0.4);
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 1500px;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+.hero .hero-content {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 0 2rem !important;
+  opacity: 1 !important;
+  margin: 0 !important;
 }
 
 .hero h1 {
@@ -161,7 +170,9 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-align: center;
-  margin-bottom: clamp(1rem, 3vw, 2rem);
+  width: 100%;
+  margin: 0 0 clamp(1rem, 3vw, 2rem) 0;
+  padding: 0;
   line-height: 1.1;
   filter: drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(255, 215, 0, 0.2));
   letter-spacing: -0.02em;
@@ -175,9 +186,11 @@
 
 .animated-text-container {
   height: clamp(50px, 9vw, 75px);
-  margin: 1.2rem 0;
+  margin: 1.2rem auto;
   position: relative;
   perspective: 1000px;
+  width: 100%;
+  text-align: center;
 }
 
 .animated-text {
@@ -190,6 +203,9 @@
   color: transparent;
   position: absolute;
   width: 100%;
+  left: 0;
+  right: 0;
+  text-align: center;
   opacity: 0;
   transform: translateY(12px);
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);

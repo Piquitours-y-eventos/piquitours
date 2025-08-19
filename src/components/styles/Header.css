@@ -12,7 +12,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  height: clamp(85px, 12vh, 110px);
+  height: clamp(65px, 8vh, 75px);
   padding: 0 clamp(20px, 3vw, 40px);
   background: transparent;
   backdrop-filter: blur(10px);
@@ -25,9 +25,9 @@
 }
 
 .scrolled {
-  height: clamp(75px, 10vh, 95px);
-  backdrop-filter: blur(10px); /* Mantener el blur al hacer scroll */
-  -webkit-backdrop-filter: blur(10px);
+  height: clamp(50px, 6vh, 60px);
+  backdrop-filter: blur(15px); /* Mantener el blur al hacer scroll */
+  -webkit-backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
@@ -49,21 +49,21 @@
 }
 
 .logo {
-  height: clamp(125px, 12vh, 130px);
+  height: clamp(90px, 8vh, 100px);
   width: auto;
-  max-width: clamp(280px, 30vw, 380px);
+  max-width: clamp(220px, 25vw, 280px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   object-fit: contain;
   object-position: center;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
   /* Asegurar que el logo mantenga su proporción */
   aspect-ratio: auto;
-  max-height: 130px;
+  max-height: 100px;
 }
 
 .scrolled .logo {
-  height: clamp(75px, 9vh, 95px);
-  max-width: clamp(220px, 26vw, 300px);
+  height: clamp(55px, 6vh, 65px);
+  max-width: clamp(180px, 22vw, 220px);
 }
 
 /* ===== NAVEGACIÓN PRINCIPAL ===== */
@@ -82,17 +82,17 @@
 .nav-links a {
   color: #fff;
   text-decoration: none;
-  font-size: clamp(1rem, 1.9vw, 1.15rem);
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
   font-weight: 500;
   font-family: 'Playfair Display', serif;
   letter-spacing: 0.01em;
-  padding: clamp(0.9rem, 2vw, 1.2rem) clamp(1.1rem, 2.4vw, 1.5rem);
-  border-radius: 12px;
+  padding: clamp(0.6rem, 1.5vw, 0.8rem) clamp(0.8rem, 1.8vw, 1rem);
+  border-radius: 10px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   display: flex;
   align-items: center;
-  gap: clamp(0.7rem, 1.5vw, 0.9rem);
+  gap: clamp(0.5rem, 1.2vw, 0.7rem);
   white-space: nowrap;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);

@@ -76,10 +76,10 @@ export default function Hero() {
       <div className="hero-overlay" />
       <div className="hero-gradient" />
       <button className="hero-button prev" onClick={goToPrevious} aria-label="Imagen anterior">
-        ‹
+      ←
       </button>
       <button className="hero-button next" onClick={goToNext} aria-label="Imagen siguiente">
-        ›
+      →
       </button>
       <div className="hero-dots">
         {IMAGES.map((_, index) => (
@@ -93,7 +93,7 @@ export default function Hero() {
       </div>
       <div className="hero-content">
         <h1>
-          <span>Explora los lugares mas hermosos</span><br />
+          <span>Explora los lugares mas <br /> hermosos</span><br />
           con <span className="piquitours-text">Piquitours</span>
         </h1>
         <div className="animated-text-container">

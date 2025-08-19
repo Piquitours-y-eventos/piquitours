@@ -1,6 +1,148 @@
 {
   "tours": [
     {
+      "id": "guajira",
+      "nombre": "Wayuu • Dunas de La Guajira",
+      "resumen": "Desierto dorado, rancherías Wayuu y atardeceres que encienden el horizonte. Un roadtrip al punto más norte de Suramérica.",
+      "bullets": [
+        "Safari fotográfico al amanecer en las dunas",
+        "Noche estelar con taller básico de astrofotografía",
+        "Inmersión cultural con artesanías y cocina Wayuu"
+      ],
+      "salida": ["Bogotá","Barranquilla"],
+      "categorias": ["Aventura","Naturaleza","Astronomía"],
+      "duracion": 3,
+      "precio": 1390000,
+      "popularidad": 98,
+      "portada": { "type":"video",
+        "src":"https://cdn.coverr.co/videos/coverr-sand-dunes-8474/1080p.mp4",
+        "poster":"https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1600&auto=format&fit=crop"
+      },
+      "media": [
+        {"type":"img","src":"https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1535914254981-b5012eebbd15?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1518684079-6f7f1f9b81c2?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"video","src":"https://cdn.coverr.co/videos/coverr-golden-sand-9586/1080p.mp4",
+          "poster":"https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop"}
+      ],
+      "itinerario": [
+        {"dia":"Día 1", "titulo":"Ruta Riohacha • Ranchería", "detalle":"Recepción, almuerzo típico y recorrido cultural. Fogata con historias Wayuu."},
+        {"dia":"Día 2", "titulo":"Dunas + Cabo de la Vela", "detalle":"Amanecer en dunas, wind point, atardecer en el Faro. Noche de estrellas."},
+        {"dia":"Día 3", "titulo":"Pilón de Azúcar", "detalle":"Ascenso suave y playa. Tiempo libre y regreso."}
+      ],
+      "incluye": [
+        {"ok":true, "txt":"Transporte terrestre 4x4"},
+        {"ok":true, "txt":"Alojamiento en chinchorro premium (opción cabaña)"},
+        {"ok":true, "txt":"Guía local Wayuu"},
+        {"ok":true, "txt":"2 desayunos, 2 cenas"},
+        {"ok":false, "txt":"Almuerzos no especificados"},
+        {"ok":false, "txt":"Gastos personales"}
+      ],
+      "quick":[
+        ["Dificultad","Media"], ["Clima","Cálido – seco"], ["Mejor época","Dic–Ago"],
+        ["Grupo","12 pax"], ["Sostenible","Compensación CO₂"], ["Cobertura","Seguro de viaje"]
+      ],
+      "reviews":[
+        ["Laura M.","Col","5","“Dormir bajo un cielo de millones de estrellas… brutal.”"],
+        ["Carlos G.","Col","5","“Cultura y paisajes que no ves en otro lugar.”"],
+        ["Maria R.","Col","4","“Experiencia única en el desierto.”"]
+      ]
+    },
+    {
+      "id": "cartagena",
+      "nombre": "Cartagena • Encanto Caribeño",
+      "resumen": "Murallas de piedra, plazas coloniales y mar turquesa. Un clásico elevado con detalles de lujo accesible.",
+      "bullets": [
+        "Tour privado por la ciudad amurallada",
+        "Islas del Rosario con snorkel",
+        "Sunset en catamarán",
+        "Degustación de rumba caribeña"
+      ],
+      "salida": ["Bogotá","Medellín","Cali"],
+      "categorias": ["Playa","Cultura","Náutico"],
+      "duracion": 4,
+      "precio": 1590000,
+      "popularidad": 96,
+      "portada":{"type":"img","src":"https://images.unsplash.com/photo-1505761671935-60b3a7427bad?q=80&w=1600&auto=format&fit=crop"},
+      "media":[
+        {"type":"img","src":"https://images.unsplash.com/photo-1543357480-c60d69b8b7e5?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1543351611-58f69d6e60bd?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"video","src":"https://cdn.coverr.co/videos/coverr-tropical-water-9639/1080p.mp4",
+          "poster":"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1200&auto=format&fit=crop"}
+      ],
+      "itinerario":[
+        {"dia":"Día 1", "titulo":"Centro histórico", "detalle":"Calles empedradas, Getsemaní y comida de autor."},
+        {"dia":"Día 2", "titulo":"Islas del Rosario", "detalle":"Snorkel, playa privada y coctel de coco."},
+        {"dia":"Día 3", "titulo":"Libre + Catamarán", "detalle":"Compras, sunset en el mar."},
+        {"dia":"Día 4", "titulo":"San Felipe & despedida", "detalle":"Castillo y café final."}
+      ],
+      "incluye":[
+        {"ok":true, "txt":"Hotel 4★ con desayuno"},
+        {"ok":true, "txt":"Traslados aeropuerto–hotel–aeropuerto"},
+        {"ok":true, "txt":"Tour Islas del Rosario"},
+        {"ok":true, "txt":"Catamarán sunset"},
+        {"ok":false, "txt":"Impuesto de muelle"},
+        {"ok":false, "txt":"Comidas no descritas"}
+      ],
+      "quick":[
+        ["Dificultad","Baja"], ["Clima","Cálido – húmedo"], ["Mejor época","Ene–Mar / Jul–Sep"],
+        ["Familias","Sí"], ["Parejas","Top"], ["Wifi","Hotel & catamarán"]
+      ],
+      "reviews":[
+        ["Andrea S.","Col","5","“Lo viví como película. Volvería.”"],
+        ["Miguel T.","Col","4","“Playas hermosas, servicio puntual.”"],
+        ["Juan P.","Col","5","“La historia cobra vida aquí.”"]
+      ]
+    },
+    {
+      "id": "cocora",
+      "nombre": "Eje Cafetero • Valle de Cocora",
+      "resumen": "Senderos entre palmas de cera gigantes, fincas cafeteras y clima de montaña que despeja la mente.",
+      "bullets": [
+        "Taller de café de especialidad",
+        "Hike panorámico entre palmas de 60m",
+        "Termales al atardecer",
+        "Visita a finca ecológica"
+      ],
+      "salida": ["Bogotá","Medellín","Cali"],
+      "categorias": ["Montaña","Café","Naturaleza"],
+      "duracion": 3,
+      "precio": 990000,
+      "popularidad": 92,
+      "portada":{"type":"img","src":"https://images.unsplash.com/photo-1582231645943-84b068f70a5f?q=80&w=1600&auto=format&fit=crop"},
+      "media":[
+        {"type":"img","src":"https://images.unsplash.com/photo-1528821154947-1aa3d1d9f3be?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"video","src":"https://cdn.coverr.co/videos/coverr-green-mountains-6027/1080p.mp4",
+          "poster":"https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1504197835220-9f453cd4a4d0?q=80&w=1200&auto=format&fit=crop"}
+      ],
+      "itinerario":[
+        {"dia":"Día 1", "titulo":"Finca cafetera", "detalle":"Del cerezo a la taza: catación y tostión."},
+        {"dia":"Día 2", "titulo":"Valle de Cocora", "detalle":"Sendero y miradores. Picnic de autor."},
+        {"dia":"Día 3", "titulo":"Termales", "detalle":"Desconexión total antes del retorno."}
+      ],
+      "incluye":[
+        {"ok":true, "txt":"Transporte local y guía"},
+        {"ok":true, "txt":"Alojamiento rural superior"},
+        {"ok":true, "txt":"Entradas y taller de café"},
+        {"ok":false, "txt":"Almuerzos"},
+        {"ok":false, "txt":"Bebidas alcohólicas"}
+      ],
+      "quick":[
+        ["Dificultad","Media"], ["Altitud","2.400 msnm"], ["Clima","Frío – templado"],
+        ["Fotografía","Spot premium"], ["Wellness","Termales"]
+      ],
+      "reviews":[
+        ["Nati G.","Col","5","“El café nunca me supo igual después de esto.”"],
+        ["Santiago P.","Col","4","“Vistas surrealistas, guía crack.”"],
+        ["Elena V.","Col","5","“Naturaleza pura y fresca.”"]
+      ]
+    },
+    {
       "id": 1,
       "title": "ARRÁS DE CIELO",
       "description": "Peñol y Guatapé, dos razones para enamorarte de Antioquia.",
@@ -103,7 +245,7 @@
           "day": "Día 1",
           "title": "Turismo en el Parque Arví",
           "description": "Recorre el Parque Arví y disfruta de las vistas panorámicas de la ciudad.",
-          "activities": ["Turismo", "Fotos panorámicas", "Almuerzo tÃ­pico"],
+          "activities": ["Turismo", "Fotos panorámicas", "Almuerzo t\u00edpico"],
           "time": "8:00 AM - 2:00 PM",
           "location": "Parque Arví"
         }
@@ -145,7 +287,7 @@
           "day": "Día 1",
           "title": "Turismo en el Parque Natural de los Nevados",
           "description": "Recorre el Parque Natural de los Nevados y disfruta de las vistas panorámicas de la montaña.",
-          "activities": ["Turismo", "Fotos panorámicas", "Almuerzo tÃ­pico"],
+          "activities": ["Turismo", "Fotos panorámicas", "Almuerzo t\u00edpico"],
           "time": "8:00 AM - 2:00 PM",
           "location": "Parque Natural de los Nevados"
         }
@@ -165,5 +307,4 @@
       }
     }
   ]
-  
 }

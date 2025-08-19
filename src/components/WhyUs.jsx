@@ -1,162 +1,186 @@
-
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiStar } from 'react-icons/fi';
 import './styles/WhyUs.css';
 
 export default function WhyUs() {
   const [activeTab, setActiveTab] = useState('experiencia');
-  
+
   const tabs = [
     { id: 'experiencia', label: 'Experiencia' },
-    { id: 'servicios', label: 'lorem ipsum' },
-    { id: 'tecnologia', label: 'lorem ipsum' }
+    { id: 'servicios', label: 'Servicios' },
+    { id: 'tecnologia', label: 'Tecnología' },
   ];
 
+  const features = {
+    experiencia: [
+      {
+        icon: 'https://cdn-icons-png.flaticon.com/512/2583/2583346.png',
+        title: 'Premios Nacionales',
+        desc: 'Reconocidos por asociaciones turísticas como una de las mejores agencias locales del Tolima.',
+      },
+      {
+        icon: 'https://cdn-icons-png.flaticon.com/512/846/846449.png',
+        title: '+10,000 Viajeros Felices',
+        desc: 'Turistas nacionales e internacionales han confiado en nosotros para crear recuerdos únicos.',
+      },
+      {
+        icon: 'https://cdn-icons-png.flaticon.com/512/201/201623.png',
+        title: 'Guías Locales Expertos',
+        desc: 'Nuestro equipo conoce cada rincón de Colombia para ofrecerte una experiencia auténtica.',
+      },
+    ],
+    servicios: [
+      {
+        icon: 'https://cdn-icons-png.flaticon.com/512/888/888064.png',
+        title: 'Tours Personalizados',
+        desc: 'Elige tu destino y armamos la ruta perfecta según tus intereses y presupuesto.',
+      },
+      {
+        icon: 'https://cdn-icons-png.flaticon.com/512/814/814513.png',
+        title: 'Experiencias Exclusivas',
+        desc: 'Acceso a destinos únicos, actividades privadas y alianzas con hoteles de primera.',
+      },
+      {
+        icon: 'https://cdn-icons-png.flaticon.com/512/747/747310.png',
+        title: 'Sostenibilidad',
+        desc: 'Apoyamos a comunidades locales y promovemos un turismo responsable.',
+      },
+    ],
+    tecnologia: [
+      {
+        icon: 'https://cdn-icons-png.flaticon.com/512/1827/1827504.png',
+        title: 'Reservas en Línea',
+        desc: 'Reserva tu experiencia en minutos desde nuestra página o app móvil.',
+      },
+      {
+        icon: 'https://cdn-icons-png.flaticon.com/512/2331/2331941.png',
+        title: 'Soporte 24/7',
+        desc: 'Atención inmediata vía WhatsApp, correo o llamada, en cualquier momento de tu viaje.',
+      },
+      {
+        icon: 'https://cdn-icons-png.flaticon.com/512/609/609361.png',
+        title: 'Tecnología Innovadora',
+        desc: 'Usamos herramientas avanzadas para garantizar una experiencia fluida y segura.',
+      },
+    ],
+  };
+
   return (
-    <section className="why-us" id='why-us-x'>
+    <section className="why-us" id="why-us-x">
       <div className="why-us-container">
-        <motion.div 
+        {/* Texto */}
+        <motion.div
           className="why-us-content"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, type: 'spring', stiffness: 80 }}
         >
-          <h2>Vive la Diferencia Piquitours</h2>
-          
-          <div className="why-us-tabs" id='whi-us-tabs-x'>
-            {tabs.map(tab => (
-              <div
+          <h2>
+            ¿Por qué elegir <span className="highlight">Piquitours</span>?
+          </h2>
+          <p className="intro-text">
+            Más que una agencia, somos tu compañero de viaje en El Espinal y toda Colombia. 
+            Combinamos tradición, hospitalidad y tecnología para experiencias que no olvidarás. 
+            ¡Únete a miles de viajeros felices y descubre Colombia con nosotros!
+          </p>
+          <div className="why-us-rating">
+            <FiStar className="star-icon" />
+            <span>4.9/5 basado en +10,000 reseñas</span>
+          </div>
+
+          {/* Tabs */}
+          <div className="why-us-tabs" role="tablist" aria-label="Razones para elegir Piquitours">
+            {tabs.map((tab) => (
+              <motion.button
                 key={tab.id}
                 className={`why-us-tab ${activeTab === tab.id ? 'active' : ''}`}
                 onClick={() => setActiveTab(tab.id)}
+                role="tab"
+                aria-selected={activeTab === tab.id}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {tab.label}
-              </div>
+              </motion.button>
             ))}
           </div>
 
+          {/* Contenido dinámico */}
           <div className="tab-content-container">
-            {/* Contenido Experiencia */}
-            <motion.div
-              className={`tab-content ${activeTab === 'experiencia' ? 'active' : ''}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: activeTab === 'experiencia' ? 1 : 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              <p className="feature-text" id='feature-text-x'>
-                Con más de x años creando experiencias inolvidables... Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum minima ipsam sunt, rem suscipit officia maxime maiores debitis dicta magni quam temporibus nam perspiciatis libero veniam quo placeat molestias ea.
-              </p>
-              
-              <div className="feature-grid">
-                <div className="feature-card">
-                  <div className="feature-icon">
-                    <img src="https://www.navafas.com/wp-content/uploads/2022/08/Envio-seguro-seguridad-garantizada.png" alt="Experiencia" />
-                  </div>
-                  <h3>Reconocimientos Nacionales</h3>
-                  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum accusamus asperiores ipsa? Tenetur incidunt facere vered</p>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                className="tab-content active"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+              >
+                <p id="feature-text-x">
+                  {activeTab === 'experiencia'
+                    ? 'Con más de 15 años de trayectoria, hemos guiado a miles de turistas por los paisajes del Tolima y Colombia. Somos reconocidos por la calidad de nuestro servicio y el calor humano de nuestra gente.'
+                    : activeTab === 'servicios'
+                    ? 'Diseñamos experiencias personalizadas: desde tours culturales hasta aventuras extremas. Nuestro equipo garantiza comodidad, seguridad y precios justos.'
+                    : 'Innovamos constantemente para ofrecer reservas rápidas, pagos seguros y comunicación en tiempo real.'}
+                </p>
+                <div className="feature-grid">
+                  {features[activeTab].map((feature, index) => (
+                    <motion.div
+                      key={index}
+                      className="feature-card"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                    >
+                      <motion.div
+                        className="feature-icon"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <img src={feature.icon} alt={feature.title} />
+                      </motion.div>
+                      <h3>{feature.title}</h3>
+                      <p>{feature.desc}</p>
+                    </motion.div>
+                  ))}
                 </div>
-              </div>
-            </motion.div>
-
-            {/* Contenido Servicios */}
-            <motion.div
-              className={`tab-content ${activeTab === 'servicios' ? 'active' : ''}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: activeTab === 'servicios' ? 1 : 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              <p className="feature-text" id='feature-text-x'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptates voluptatem doloremque, quidem quibusdam quod, voluptatum, quia quae voluptas quas doloribus. Quisquam voluptates voluptatem doloremque, quidem quibusdam quod.
-              </p>
-              
-              <div className="feature-grid">
-                <div className="feature-card">
-                  <div className="feature-icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1067/1067555.png" alt="Servicios" />
-                  </div>
-                  <h3>Servicios Exclusivos</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum accusamus asperiores ipsa? Tenetur incidunt facere vered</p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Contenido Tecnología */}
-            <motion.div
-              className={`tab-content ${activeTab === 'tecnologia' ? 'active' : ''}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: activeTab === 'tecnologia' ? 1 : 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              <p className="feature-text" id='feature-text-x'>
-                Tecnología de última generación... Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum minima ipsam sunt, rem suscipit officia maxime maiores debitis dicta magni quam temporibus nam perspiciatis libero veniam quo placeat molestias ea.
-              </p>
-              
-              <div className="feature-grid">
-                <div className="feature-card">
-                  <div className="feature-icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/809/809964.png" alt="Tecnología" />
-                  </div>
-                  <h3>Innovación Constante</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum accusamus asperiores ipsa? Tenetur incidunt facere vered</p>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </AnimatePresence>
           </div>
+
+          {/* CTA */}
+          <motion.button
+            className="book-btn"
+            onClick={() => alert('¡Comienza tu aventura! Te contactaremos para personalizar tu viaje.')}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            ¡Reserva tu experiencia ahora!
+          </motion.button>
         </motion.div>
 
-        <motion.div 
+        {/* Imagen */}
+        <motion.div
           className="why-us-visual"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2, type: 'spring', stiffness: 80 }}
         >
-          <div className="why-us-badge floating-element">
-            <span>+15 Años</span>
-            <span>de Experiencia</span>
-          </div>
-          <img 
-            src="https://media.tacdn.com/media/attractions-splice-spp-674x446/12/31/a9/19.jpg" 
-            alt="Equipo Piquitours" 
+          <motion.img
+            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop"
+            alt="Turismo en Colombia"
             className="why-us-image"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.5 }}
           />
-        </motion.div>
-      </div>
 
-      {/* Sección adicional de características */}
-      <div className="feature-grid">
-        <motion.div 
-          className="feature-card"
-          whileHover={{ scale: 1.05 }}
-        >
-          <div className="feature-icon">
-            <img src="https://www.navafas.com/wp-content/uploads/2022/08/Envio-seguro-seguridad-garantizada.png" alt="Seguridad" />
+          <div className="why-us-badge">
+            <span>+15 Años</span>
+            <span>de Excelencia</span>
           </div>
-          <h3>Seguridad Garantizada</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis rem reiciendis nobis unde eum impedit quo consequuntur! Laborum fugiat deleniti ut delectus maxime, reprehenderit ullam necessitatibus! Cumque, aliquid. Adipisci, molestias.</p>
-        </motion.div>
-
-        <motion.div 
-          className="feature-card"
-          whileHover={{ scale: 1.05 }}
-        >
-          <div className="feature-icon">
-            <img src="https://okdiario.com/img/viajes/2016/12/28/10-experiencias-unicas-asequibles-para-todos-los-bolsillos-1.jpg" alt="Exclusividad" />
-          </div>
-          <h3>Experiencias Únicas</h3>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam aspernatur laborum doloribus nobis repellendus omnis, quidem numquam. Provident facilis eligendi, eius commodi, odio, quibusdam omnis quam nisi ex voluptates hic.</p>
-        </motion.div>
-
-        <motion.div 
-          className="feature-card"
-          whileHover={{ scale: 1.05 }}
-        >
-          <div className="feature-icon">
-            <img src="https://u360campus.com/wp-content/uploads/2022/05/Featured_05192022-1-770x400.jpg" alt="Tecnología" />
-          </div>
-          <h3>Lorem ipsum dolor sit</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente deleniti aperiam adipisci eaque architecto dolore aut natus ut! Ea facilis aperiam veritatis unde fuga, optio blanditiis quibusdam officia ad delectus?</p>
         </motion.div>
       </div>
     </section>

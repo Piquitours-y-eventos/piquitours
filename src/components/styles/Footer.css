@@ -1,104 +1,65 @@
 
-/* Footer.css - Premium Design */
+/* Footer.css - Dark Mode Professional Design */
 .footer {
-  background: linear-gradient(135deg,
-      rgba(15, 23, 42, 0.95) 0%,
-      rgba(8, 29, 54, 0.98) 50%,
-      rgba(20, 15, 35, 0.95) 100%);
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   color: white;
-  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 4vw, 4rem);
+  padding: 4rem 2rem 2rem;
   position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  border-top: 3px solid rgba(255, 215, 0, 0.2);
+  border-top: 1px solid rgba(0, 102, 204, 0.2);
 }
 
 .footer::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 40%,
-      rgba(255, 215, 0, 0.08) 0%,
-      rgba(255, 140, 0, 0.05) 40%,
-      transparent 70%),
-    radial-gradient(circle at 70% 60%,
-      rgba(255, 107, 53, 0.06) 0%,
-      transparent 50%);
-  opacity: 0.6;
-  z-index: -1;
-  animation: bgPulse 15s infinite ease-in-out;
-}
-
-@keyframes bgPulse {
-
-  0%,
-  100% {
-    opacity: 0.3;
-  }
-
-  50% {
-    opacity: 0.6;
-  }
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0066cc, #00bfff);
 }
 
 .footer-content {
-  max-width: min(1500px, 90%);
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-  gap: clamp(2rem, 4vw, 4rem);
-  position: relative;
-  z-index: 1;
-}
-
-.footer-section {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: sectionReveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-
-@keyframes sectionReveal {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
 }
 
 .footer-logo {
-  width: clamp(150px, 25vw, 220px);
-  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-  filter: drop-shadow(0 0 20px rgba(0, 153, 255, 0.2));
-  transition: transform 0.4s ease;
+  width: 180px;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
 }
 
 .footer-logo:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .footer h4 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+  font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: clamp(1.4rem, 2.5vw, 2rem);
-  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 50%, #ffd700 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 1.5rem;
+  color: #00bfff;
   position: relative;
-  line-height: 1.2;
-  letter-spacing: 0.01em;
 }
 
 .footer h4::after {
   content: '';
   position: absolute;
-  bottom: -0.8rem;
+  bottom: -0.5rem;
   left: 0;
-  width: clamp(60px, 12vw, 100px);
-  height: 3px;
-  background: linear-gradient(90deg, #ffd700 0%, #ff8c00 50%, transparent 100%);
-  border-radius: 2px;
-  transition: width 0.4s ease;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #0066cc, #00bfff);
+  border-radius: 1px;
+}
+
+.footer h5 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #00bfff;
 }
 
 .footer-links {
@@ -108,118 +69,93 @@
 }
 
 .footer-links li {
-  margin-bottom: clamp(0.8rem, 1.8vw, 1.2rem);
+  margin-bottom: 0.8rem;
 }
 
 .footer-links a {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: block;
   padding: 0.3rem 0;
-  position: relative;
-}
-
-.footer-links a::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #ffd700, #ff8c00);
-  transition: width 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: #ffd700;
-  transform: translateX(8px);
+  color: #00bfff;
+  transform: translateX(5px);
 }
 
-.footer-links a:hover::before {
-  width: 40px;
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s ease;
+}
+
+.contact-item:hover {
+  color: #00bfff;
+}
+
+.contact-icon {
+  font-size: 1.1rem;
+  color: #0066cc;
 }
 
 .social-icons {
   display: flex;
-  gap: clamp(1rem, 2.5vw, 1.8rem);
-  margin-top: clamp(1.5rem, 3vw, 2.5rem);
-  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .social-icon {
-  width: clamp(48px, 9vw, 56px);
-  height: clamp(48px, 9vw, 56px);
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  width: 44px;
+  height: 44px;
+  background: rgba(0, 102, 204, 0.1);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 0.3s ease;
   color: #fff;
   text-decoration: none;
-  font-size: clamp(20px, 4vw, 26px);
-  border: 2px solid transparent;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  position: relative;
-  overflow: hidden;
+  font-size: 20px;
+  border: 1px solid rgba(0, 191, 255, 0.2);
 }
 
-/* Iconos de redes sociales coloridos y vibrantes */
-.social-icon.facebook {
-  background: linear-gradient(135deg, #1877F2 0%, #42A5F5 100%);
-  color: white;
-  box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);
+.social-icon:hover {
+  background: rgba(0, 191, 255, 0.2);
+  transform: translateY(-2px);
+  border-color: #00bfff;
 }
 
 .social-icon.facebook:hover {
-  background: linear-gradient(135deg, #0d65d9 0%, #1976D2 100%);
-  transform: translateY(-6px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(24, 119, 242, 0.5);
-  border-color: rgba(24, 119, 242, 0.5);
-}
-
-.social-icon.instagram {
-  background: linear-gradient(135deg, #E4405F 0%, #F77737 50%, #FCAF45 100%);
-  color: white;
-  box-shadow: 0 4px 15px rgba(228, 64, 95, 0.3);
+  background: rgba(24, 119, 242, 0.2);
+  border-color: #1877F2;
 }
 
 .social-icon.instagram:hover {
-  background: linear-gradient(135deg, #d12d4a 0%, #e85d2b 50%, #f39c2b 100%);
-  transform: translateY(-6px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(228, 64, 95, 0.5);
-  border-color: rgba(228, 64, 95, 0.5);
-}
-
-.social-icon.twitter {
-  background: linear-gradient(135deg, #1DA1F2 0%, #0d8bd9 100%);
-  color: white;
-  box-shadow: 0 4px 15px rgba(29, 161, 242, 0.3);
+  background: rgba(228, 64, 95, 0.2);
+  border-color: #E4405F;
 }
 
 .social-icon.twitter:hover {
-  background: linear-gradient(135deg, #0c85d0 0%, #0a6ebd 100%);
-  transform: translateY(-6px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(29, 161, 242, 0.5);
-  border-color: rgba(29, 161, 242, 0.5);
-}
-
-.social-icon.whatsapp {
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-  color: white;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  background: rgba(29, 161, 242, 0.2);
+  border-color: #1DA1F2;
 }
 
 .social-icon.whatsapp:hover {
-  background: linear-gradient(135deg, #1ebe57 0%, #0e6b5d 100%);
-  transform: translateY(-6px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
-  border-color: rgba(37, 211, 102, 0.5);
+  background: rgba(37, 211, 102, 0.2);
+  border-color: #25D366;
 }
 
 .social-icon.newsletter-button {
