@@ -121,6 +121,226 @@ footer{padding:30px 0 60px; color:var(--nosotros-text-1)}
 .video-section figcaption{font-size:.95rem; color:var(--nosotros-text-1); margin-top:12px; max-width:800px; margin-left:auto; margin-right:auto}
 
 
+/* LIGHT MODE STYLES */
+body:not(.dark-mode) {
+  --nosotros-bg-0: #ffffff;
+  --nosotros-bg-1: #f8fafc;
+  --nosotros-text-0: rgba(3, 6, 23, 0.9);
+  --nosotros-text-1: rgba(3, 6, 23, 0.7);
+  --nosotros-muted: #e2e8f0;
+  --nosotros-glass: rgba(255, 255, 255, 0.8);
+  --nosotros-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  --nosotros-grad-soft: linear-gradient(180deg, rgba(255,186,0,.08), rgba(255,42,85,.05));
+}
+
+body:not(.dark-mode) html,
+body:not(.dark-mode) body {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  color: var(--nosotros-text-0);
+}
+
+/* Hero text light mode - Fix for black text */
+body:not(.dark-mode) .hero h1 {
+  color: var(--nosotros-text-0) !important;
+}
+
+body:not(.dark-mode) .hero p {
+  color: var(--nosotros-text-1) !important;
+}
+
+body:not(.dark-mode) .kicker {
+  color: var(--nosotros-text-0) !important;
+}
+
+/* Section headers light mode */
+body:not(.dark-mode) .section-head h2 {
+  color: var(--nosotros-text-0) !important;
+}
+
+body:not(.dark-mode) .section-head p {
+  color: var(--nosotros-text-1) !important;
+}
+
+/* All text elements light mode - Force override */
+body:not(.dark-mode) h1,
+body:not(.dark-mode) h2,
+body:not(.dark-mode) h3,
+body:not(.dark-mode) h4,
+body:not(.dark-mode) h5,
+body:not(.dark-mode) h6 {
+  color: var(--nosotros-text-0) !important;
+}
+
+body:not(.dark-mode) p,
+body:not(.dark-mode) span:not(.highlight),
+body:not(.dark-mode) div:not(.highlight) {
+  color: var(--nosotros-text-1) !important;
+}
+
+/* Fix for gradient text that should remain visible */
+body:not(.dark-mode) em[style*="background"] {
+  /* background: var(--nosotros-grad-1) !important; */
+  /* -webkit-background-clip: text !important; */
+  /* background-clip: text !important; */
+  /* -webkit-text-fill-color: transparent !important; */
+  /* color: transparent !important; */
+}
+
+/* Hero light mode */
+body:not(.dark-mode) .hero-overlay {
+  /* background: radial-gradient(80% 60% at 50% 10%, rgba(255,255,255,.3), rgba(255,255,255,.8) 70%),  */
+              /* linear-gradient(180deg, rgba(255,255,255,.4), rgba(255,255,255,.9)); */
+}
+
+body:not(.dark-mode) .hero-glow {
+  background: radial-gradient(80% 50% at 70% 20%, rgba(255,105,0,.15), transparent 40%), 
+              radial-gradient(80% 50% at 30% 80%, rgba(212,175,55,.12), transparent 40%);
+}
+
+body:not(.dark-mode) .kicker {
+  background: rgba(255, 186, 0, 0.1);
+  border: 1px solid rgba(255, 186, 0, 0.3);
+  color: var(--nosotros-text-0);
+}
+
+/* Buttons light mode */
+body:not(.dark-mode) .btn-primary {
+  background: var(--nosotros-grad-1);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(255, 105, 0, 0.3);
+}
+
+body:not(.dark-mode) .btn-ghost {
+  background: rgba(255, 186, 0, 0.1);
+  border-color: rgba(255, 186, 0, 0.3);
+  color: var(--nosotros-text-0);
+}
+
+body:not(.dark-mode) .btn-ghost:hover {
+  background: rgba(255, 186, 0, 0.2);
+}
+
+/* Trust badges light mode */
+body:not(.dark-mode) .trust .card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 186, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+body:not(.dark-mode) .trust .card small {
+  color: var(--nosotros-text-1);
+}
+
+/* Values cards light mode */
+body:not(.dark-mode) .values .card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 186, 0, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+body:not(.dark-mode) .values .card::after {
+  background: var(--nosotros-grad-soft);
+}
+
+body:not(.dark-mode) .values .card p {
+  color: var(--nosotros-text-1);
+}
+
+/* Timeline light mode */
+body:not(.dark-mode) .timeline::before {
+  background: linear-gradient(180deg, rgba(255, 186, 0, 0.3), transparent);
+}
+
+body:not(.dark-mode) .tl-body {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 186, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+body:not(.dark-mode) .tl-body p {
+  color: var(--nosotros-text-1);
+}
+
+body:not(.dark-mode) .tl-year {
+  color: var(--nosotros-text-0);
+}
+
+/* Metrics light mode */
+body:not(.dark-mode) .metric {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 186, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+body:not(.dark-mode) .metric small {
+  color: var(--nosotros-text-1);
+}
+
+/* Team cards light mode */
+body:not(.dark-mode) .member {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 186, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+body:not(.dark-mode) .member .role {
+  color: var(--nosotros-text-1);
+}
+
+/* CTA section light mode */
+body:not(.dark-mode) .cta {
+  background: radial-gradient(1200px 400px at 50% 0%, rgba(255,105,0,.12), transparent), 
+              linear-gradient(180deg, rgba(255,255,255,.9), rgba(248,250,252,.95));
+  border: 1px solid rgba(255, 186, 0, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Footer light mode */
+body:not(.dark-mode) footer {
+  color: var(--nosotros-text-1);
+}
+
+body:not(.dark-mode) .foot {
+  border-top: 1px solid rgba(255, 186, 0, 0.2);
+}
+
+/* Utilities light mode */
+body:not(.dark-mode) .pill {
+  background: rgba(255, 186, 0, 0.1);
+  border: 1px solid rgba(255, 186, 0, 0.3);
+  color: var(--nosotros-text-0);
+}
+
+body:not(.dark-mode) .muted {
+  color: var(--nosotros-text-1);
+}
+
+body:not(.dark-mode) .divider {
+  background: linear-gradient(90deg, transparent, rgba(255, 186, 0, 0.3), transparent);
+}
+
+/* Difference cards light mode */
+body:not(.dark-mode) .difference .card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 186, 0, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+body:not(.dark-mode) .difference .card::after {
+  background: var(--nosotros-grad-soft);
+}
+
+body:not(.dark-mode) .difference .card p {
+  color: var(--nosotros-text-1);
+}
+
+/* Video section light mode */
+body:not(.dark-mode) .video-section figcaption {
+  color: var(--nosotros-text-1);
+}
+
 /* Responsive */
 @media (max-width: 1024px){
   .team{grid-template-columns:repeat(3,1fr)}

@@ -24,7 +24,8 @@
         {"type":"img","src":"https://images.unsplash.com/photo-1518684079-6f7f1f9b81c2?q=80&w=1200&auto=format&fit=crop"},
         {"type":"video","src":"https://cdn.coverr.co/videos/coverr-golden-sand-9586/1080p.mp4",
           "poster":"https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop"}
+        {"type":"img","src":"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1544194215-d5f8ff9c07d7?q=80&w=1200&auto=format&fit=crop"}
       ],
       "itinerario": [
         {"dia":"Día 1", "titulo":"Ruta Riohacha • Ranchería", "detalle":"Recepción, almuerzo típico y recorrido cultural. Fogata con historias Wayuu."},
@@ -71,7 +72,8 @@
         {"type":"video","src":"https://cdn.coverr.co/videos/coverr-tropical-water-9639/1080p.mp4",
           "poster":"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200&auto=format&fit=crop"},
         {"type":"img","src":"https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1200&auto=format&fit=crop"}
+        {"type":"img","src":"https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1505228395891-9a9af86d060a?q=80&w=1200&auto=format&fit=crop"}
       ],
       "itinerario":[
         {"dia":"Día 1", "titulo":"Centro histórico", "detalle":"Calles empedradas, Getsemaní y comida de autor."},
@@ -118,7 +120,8 @@
         {"type":"video","src":"https://cdn.coverr.co/videos/coverr-green-mountains-6027/1080p.mp4",
           "poster":"https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop"},
         {"type":"img","src":"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1504197835220-9f453cd4a4d0?q=80&w=1200&auto=format&fit=crop"}
+        {"type":"img","src":"https://images.unsplash.com/photo-1504197835220-9f453cd4a4d0?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1544194215-d5f8ff9c07d7?q=80&w=1200&auto=format&fit=crop"}
       ],
       "itinerario":[
         {"dia":"Día 1", "titulo":"Finca cafetera", "detalle":"Del cerezo a la taza: catación y tostión."},
@@ -173,8 +176,8 @@
       "inclusions": ["Transporte", "Guía local", "Entradas"],
       "exclusions": ["Propinas", "Comidas no especificadas"],
       "gallery": [
-        "https://source.unsplash.com/800x600/?guatape",
-        "https://source.unsplash.com/random/800x600/?guatape"
+        "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1570549717489-461e9e0b5b7a?q=80&w=1200&auto=format&fit=crop"
       ],
       "details": {
         "duration": "1 día",
@@ -211,8 +214,8 @@
       "inclusions": ["Transporte acuático", "Almuerzo", "Equipo de snorkel"],
       "exclusions": ["Bebidas alcohólicas", "Propinas"],
       "gallery": [
-        "https://source.unsplash.com/800x600/?cartagena",
-        "https://source.unsplash.com/random/800x600/?cartagena"
+        "https://images.unsplash.com/photo-1505228395891-9a9af86d060a?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1200&auto=format&fit=crop"
       ],
       "details": {
         "duration": "4 días / 3 noches",
@@ -245,7 +248,7 @@
           "day": "Día 1",
           "title": "Turismo en el Parque Arví",
           "description": "Recorre el Parque Arví y disfruta de las vistas panorámicas de la ciudad.",
-          "activities": ["Turismo", "Fotos panorámicas", "Almuerzo t\u00edpico"],
+          "activities": ["Turismo", "Fotos panorámicas", "Almuerzo típico"],
           "time": "8:00 AM - 2:00 PM",
           "location": "Parque Arví"
         }
@@ -253,8 +256,8 @@
       "inclusions": ["Transporte", "Guía local", "Entradas"],
       "exclusions": ["Propinas", "Comidas no especificadas"],
       "gallery": [
-        "https://source.unsplash.com/800x600/?medellin",
-        "https://source.unsplash.com/random/800x600/?medellin"
+        "https://images.unsplash.com/photo-1541795795328-8666c4e4a3ce?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1541795795328-8666c4e4a3ce?q=80&w=1200&auto=format&fit=crop"
       ],
       "details": {
         "duration": "1 día",
@@ -287,7 +290,7 @@
           "day": "Día 1",
           "title": "Turismo en el Parque Natural de los Nevados",
           "description": "Recorre el Parque Natural de los Nevados y disfruta de las vistas panorámicas de la montaña.",
-          "activities": ["Turismo", "Fotos panorámicas", "Almuerzo t\u00edpico"],
+          "activities": ["Turismo", "Fotos panorámicas", "Almuerzo típico"],
           "time": "8:00 AM - 2:00 PM",
           "location": "Parque Natural de los Nevados"
         }
@@ -295,8 +298,8 @@
       "inclusions": ["Transporte", "Guía local", "Entradas"],
       "exclusions": ["Propinas", "Comidas no especificadas"],
       "gallery": [
-        "https://source.unsplash.com/800x600/?andes",
-        "https://source.unsplash.com/random/800x600/?andes"
+        "https://images.unsplash.com/photo-1544194215-d5f8ff9c07d7?q=80&w=1200&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1544194215-d5f8ff9c07d7?q=80&w=1200&auto=format&fit=crop"
       ],
       "details": {
         "duration": "5 días / 4 noches",
@@ -305,6 +308,108 @@
         "languages": ["Español"],
         "bestSeason": "Junio a Noviembre"
       }
+    },
+    {
+      "id": "sanandres",
+      "nombre": "San Andrés • Paraíso Caribeño",
+      "resumen": "Playas de arena blanca, mar de siete colores y cultura raizal. Un paraíso insular con snorkel y relax total.",
+      "bullets": [
+        "Snorkel en el mar de siete colores",
+        "Noche de reggaeton y ron",
+        "Visita a Johnny Cay",
+        "Tour en buggy por la isla"
+      ],
+      "salida": ["Bogotá","Medellín"],
+      "categorias": ["Playa","Aventura","Náutico"],
+      "duracion": 4,
+      "precio": 1790000,
+      "popularidad": 95,
+      "portada": { "type":"img",
+        "src":"https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=1600&auto=format&fit=crop"
+      },
+      "media": [
+        {"type":"img","src":"https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1505228395891-9a9af86d060a?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"video","src":"https://cdn.coverr.co/videos/coverr-tropical-water-9639/1080p.mp4",
+          "poster":"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1200&auto=format&fit=crop"}
+      ],
+      "itinerario": [
+        {"dia":"Día 1", "titulo":"Llegada y playa", "detalle":"Recepción y tiempo libre en playa principal."},
+        {"dia":"Día 2", "titulo":"Snorkel y Johnny Cay", "detalle":"Excursión a cayos cercanos y snorkel."},
+        {"dia":"Día 3", "titulo":"Tour por la isla", "detalle":"Buggy, cueva de Morgan y shopping."},
+        {"dia":"Día 4", "titulo":"Relajación y regreso", "detalle":"Mañana libre y traslado al aeropuerto."}
+      ],
+      "incluye": [
+        {"ok":true, "txt":"Hotel 4★ con desayuno"},
+        {"ok":true, "txt":"Traslados aeropuerto–hotel"},
+        {"ok":true, "txt":"Tour Johnny Cay y snorkel"},
+        {"ok":true, "txt":"Buggy rental"},
+        {"ok":false, "txt":"Comidas no descritas"},
+        {"ok":false, "txt":"Gastos personales"}
+      ],
+      "quick": [
+        ["Dificultad","Baja"], ["Clima","Cálido – húmedo"], ["Mejor época","Dic–Abr"],
+        ["Familias","Sí"], ["Parejas","Top"], ["Wifi","Hotel"]
+      ],
+      "reviews": [
+        ["Paula D.","Col","5","“El mar de siete colores es real, impresionante.”"],
+        ["Luis K.","Col","4","“Relax total, buenas vibes raizal.”"],
+        ["Sofia L.","Col","5","“Snorkel inolvidable, volveré.”"]
+      ]
+    },
+    {
+      "id": "amazon",
+      "nombre": "Amazonas • Selva Profunda",
+      "resumen": "Ríos poderosos, biodiversidad infinita y comunidades indígenas. Una aventura en el pulmón del mundo.",
+      "bullets": [
+        "Navegación por el Río Amazonas",
+        "Observación de delfines rosados",
+        "Inmersión cultural con tribus",
+        "Noche en lodge ecológico"
+      ],
+      "salida": ["Bogotá"],
+      "categorias": ["Naturaleza","Aventura","Cultura"],
+      "duracion": 5,
+      "precio": 2190000,
+      "popularidad": 90,
+      "portada": { "type":"video",
+        "src":"https://cdn.coverr.co/videos/coverr-green-mountains-6027/1080p.mp4",
+        "poster":"https://images.unsplash.com/photo-1542601600647-4a722a9a1c60?q=80&w=1600&auto=format&fit=crop"
+      },
+      "media": [
+        {"type":"img","src":"https://images.unsplash.com/photo-1542601600647-4a722a9a1c60?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1528821154947-1aa3d1d9f3be?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"video","src":"https://cdn.coverr.co/videos/coverr-green-mountains-6027/1080p.mp4",
+          "poster":"https://images.unsplash.com/photo-1542601600647-4a722a9a1c60?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://images.unsplash.com/photo-1542601600647-4a722a9a1c60?q=80&w=1200&auto=format&fit=crop"}
+      ],
+      "itinerario": [
+        {"dia":"Día 1", "titulo":"Llegada a Leticia", "detalle":"Recepción y traslado al lodge. Paseo nocturno."},
+        {"dia":"Día 2", "titulo":"Río Amazonas", "detalle":"Navegación, delfines y pesca."},
+        {"dia":"Día 3", "titulo":"Comunidad indígena", "detalle":"Visita a tribu, artesanías y ceremonia."},
+        {"dia":"Día 4", "titulo":"Exploración selva", "detalle":"Sendero y canopy."},
+        {"dia":"Día 5", "titulo":"Regreso", "detalle":"Tiempo libre y vuelo."}
+      ],
+      "incluye": [
+        {"ok":true, "txt":"Transporte fluvial y terrestre"},
+        {"ok":true, "txt":"Lodge ecológico con comidas"},
+        {"ok":true, "txt":"Guía bilingüe"},
+        {"ok":true, "txt":"Actividades descritas"},
+        {"ok":false, "txt":"Vuelos"},
+        {"ok":false, "txt":"Bebidas alcohólicas"}
+      ],
+      "quick": [
+        ["Dificultad","Media"], ["Clima","Cálido – húmedo"], ["Mejor época","Jun–Nov"],
+        ["Grupo","8 pax"], ["Sostenible","Eco-lodge"], ["Cobertura","Seguro médico"]
+      ],
+      "reviews": [
+        ["Jorge B.","Col","5","“La selva te cambia la perspectiva.”"],
+        ["Ana F.","Col","4","“Delfines rosados, mágico.”"],
+        ["Pedro C.","Col","5","“Aventura auténtica.”"]
+      ]
     }
   ]
 }

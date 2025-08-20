@@ -1329,6 +1329,275 @@
   margin-bottom: 80px;
 }
 
+/* ========================================
+   LIGHT MODE STYLES - CONTACTO
+   ======================================== */
+
+/* Main container light mode */
+body:not(.dark-mode) .contacto-container {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f5f6f7 100%);
+  color: rgba(3, 6, 23, 0.9);
+}
+
+/* Hero section light mode */
+body:not(.dark-mode) .hero-overlay {
+  /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.9) 100%); */
+}
+
+body:not(.dark-mode) .hero-badge {
+  background: linear-gradient(135deg, rgba(218, 165, 32, 0.95), rgba(255, 140, 0, 0.9));
+  color: #1a1a1a;
+  border-color: rgba(218, 165, 32, 0.8);
+}
+
+body:not(.dark-mode) .hero-content h1 {
+  /* color: rgba(3, 6, 23, 0.9) !important; */
+  /* text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1); */
+}
+
+body:not(.dark-mode) .hero-content p {
+  /* color: rgba(3, 6, 23, 0.7) !important; */
+}
+
+/* Hero stats light mode */
+body:not(.dark-mode) .hero-stats {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(218, 165, 32, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+body:not(.dark-mode) .stat {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(218, 165, 32, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+body:not(.dark-mode) .stat:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 20px 40px rgba(218, 165, 32, 0.15), 0 0 20px rgba(255, 140, 0, 0.2);
+}
+
+body:not(.dark-mode) .stat-label {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .stat:hover .stat-label {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+/* Main contact section light mode */
+body:not(.dark-mode) .main-contact-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f5f6f7 100%);
+}
+
+body:not(.dark-mode) .main-contact-section::before {
+  background: radial-gradient(circle at 30% 20%, rgba(218, 165, 32, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(255, 140, 0, 0.08) 0%, transparent 50%);
+}
+
+/* Section headers light mode */
+body:not(.dark-mode) .header-badge {
+  background: linear-gradient(135deg, rgba(218, 165, 32, 0.15), rgba(255, 140, 0, 0.15));
+  border-color: rgba(218, 165, 32, 0.3);
+  color: #DAA520;
+}
+
+body:not(.dark-mode) .section-header h2 {
+  color: rgba(3, 6, 23, 0.9) !important;
+}
+
+body:not(.dark-mode) .section-header p {
+  color: rgba(3, 6, 23, 0.7) !important;
+}
+
+/* Contact form light mode */
+body:not(.dark-mode) .contact-form-container {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(218, 165, 32, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+body:not(.dark-mode) .contact-form-container::before {
+  background: linear-gradient(135deg, rgba(218, 165, 32, 0.05) 0%, rgba(255, 140, 0, 0.03) 50%, rgba(220, 20, 60, 0.05) 100%);
+}
+
+body:not(.dark-mode) .form-icon {
+  background: linear-gradient(135deg, rgba(218, 165, 32, 0.2), rgba(255, 140, 0, 0.2));
+  border-color: rgba(218, 165, 32, 0.3);
+  color: #DAA520;
+}
+
+body:not(.dark-mode) .form-header h3 {
+  color: rgba(3, 6, 23, 0.9);
+  background: linear-gradient(135deg, #DAA520, #FF8C00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body:not(.dark-mode) .form-header p {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .form-group label {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .form-input {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(218, 165, 32, 0.2);
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .form-input::placeholder {
+  color: rgba(3, 6, 23, 0.5);
+}
+
+body:not(.dark-mode) .form-input:focus {
+  border-color: #DAA520;
+  background: rgba(218, 165, 32, 0.05);
+  box-shadow: 0 0 0 4px rgba(218, 165, 32, 0.1);
+}
+
+body:not(.dark-mode) .char-counter {
+  color: rgba(3, 6, 23, 0.5);
+}
+
+body:not(.dark-mode) .form-footer p {
+  color: rgba(3, 6, 23, 0.6);
+}
+
+/* Contact method cards light mode */
+body:not(.dark-mode) .contact-method-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(218, 165, 32, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+body:not(.dark-mode) .contact-method-card::before {
+  background: linear-gradient(135deg, rgba(218, 165, 32, 0.03) 0%, rgba(255, 140, 0, 0.02) 50%, rgba(220, 20, 60, 0.03) 100%);
+}
+
+body:not(.dark-mode) .contact-method-card:hover::before {
+  background: linear-gradient(135deg, rgba(218, 165, 32, 0.08) 0%, rgba(255, 140, 0, 0.05) 50%, rgba(220, 20, 60, 0.08) 100%);
+}
+
+body:not(.dark-mode) .contact-method-card:hover {
+  border-color: rgba(218, 165, 32, 0.4);
+  box-shadow: 0 15px 40px rgba(218, 165, 32, 0.15);
+}
+
+body:not(.dark-mode) .method-content h4 {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .method-content p {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .method-schedule {
+  color: rgba(3, 6, 23, 0.6);
+}
+
+body:not(.dark-mode) .method-extra span {
+  color: rgba(3, 6, 23, 0.6);
+}
+
+body:not(.dark-mode) .emergency-note {
+  color: rgba(3, 6, 23, 0.6);
+}
+
+body:not(.dark-mode) .contact-extra span {
+  color: rgba(3, 6, 23, 0.6);
+}
+
+body:not(.dark-mode) .contact-note {
+  color: rgba(3, 6, 23, 0.6);
+}
+
+/* Social section light mode */
+body:not(.dark-mode) .premium-social-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f5f6f7 100%);
+}
+
+body:not(.dark-mode) .premium-social-section::before {
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(218, 165, 32, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 140, 0, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(220, 20, 60, 0.04) 0%, transparent 50%);
+}
+
+body:not(.dark-mode) .social-badge {
+  background: rgba(218, 165, 32, 0.15);
+  border-color: rgba(218, 165, 32, 0.3);
+}
+
+body:not(.dark-mode) .premium-social-header h2 {
+  color: rgba(3, 6, 23, 0.9) !important;
+}
+
+body:not(.dark-mode) .premium-social-header p {
+  color: rgba(3, 6, 23, 0.7) !important;
+}
+
+body:not(.dark-mode) .premium-social-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(218, 165, 32, 0.2);
+  color: rgba(3, 6, 23, 0.9);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+body:not(.dark-mode) .premium-social-card:hover {
+  border-color: rgba(218, 165, 32, 0.4);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+body:not(.dark-mode) .social-info h3 {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .social-info p {
+  color: rgba(3, 6, 23, 0.6);
+}
+
+body:not(.dark-mode) .social-description {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .follower-count .label {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .social-card-footer span {
+  color: #DAA520;
+}
+
+body:not(.dark-mode) .arrow-icon {
+  color: #DAA520;
+}
+
+/* Social stats banner light mode */
+body:not(.dark-mode) .social-stats-banner {
+  background: rgba(218, 165, 32, 0.08);
+  border-color: rgba(218, 165, 32, 0.2);
+}
+
+body:not(.dark-mode) .stat-label {
+  color: rgba(3, 6, 23, 0.8);
+}
+
+/* Map section light mode */
+body:not(.dark-mode) .premium-map-section {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #f5f6f7 50%, #f8fafc 75%, #ffffff 100%);
+}
+
+body:not(.dark-mode) .premium-map-section::before {
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(218, 165, 32, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 140, 0, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 50% 10%, rgba(220, 20, 60, 0.03) 0%, transparent 50%);
+}
+
 .location-badge {
   display: inline-flex;
   align-items: center;
@@ -1906,9 +2175,6 @@ body:not(.dark-mode) .contacto-hero {
   background: url('/contacto_piquitorus.jpeg') center/cover no-repeat;
 }
 
-body:not(.dark-mode) .hero-overlay {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
-}
 
 body:not(.dark-mode) .hero-particles .particle {
   background: linear-gradient(45deg, rgba(218, 165, 32, 0.3), rgba(255, 140, 0, 0.3));
@@ -2497,11 +2763,275 @@ body:not(.dark-mode) .coord-value {
 
 /* Map Container - Light Mode */
 body:not(.dark-mode) .interactive-map-container {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+background: rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(10px);
 }
 
 body:not(.dark-mode) .map-frame {
-  border: 3px solid rgba(218, 165, 32, 0.3);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+border: 3px solid rgba(218, 165, 32, 0.3);
+box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== MODO CLARO ADICIONAL ===== */
+/* Main Container - Light Mode */
+body:not(.dark-mode) .contacto-container {
+background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f5f6f7 100%);
+color: rgba(3, 6, 23, 0.9);
+}
+
+/* Hero Section - Light Mode */
+body:not(.dark-mode) .hero-overlay {
+/* background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%); */
+}
+
+body:not(.dark-mode) .particle {
+background: linear-gradient(45deg, #0099ff, #00ccff);
+}
+
+body:not(.dark-mode) .hero-badge {
+background: linear-gradient(135deg, rgba(0, 153, 255, 0.95), rgba(0, 204, 255, 0.9));
+border: 2px solid rgba(0, 153, 255, 0.8);
+color: #ffffff;
+}
+
+body:not(.dark-mode) .hero-content h1 {
+/* color: rgba(3, 6, 23, 0.9); */
+}
+
+body:not(.dark-mode) .hero-content p {
+/* color: rgba(3, 6, 23, 0.7); */
+}
+
+body:not(.dark-mode) .highlight {
+background: linear-gradient(90deg, #0099ff, #00ccff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+/* Stats - Light Mode */
+body:not(.dark-mode) .stat-number {
+background: linear-gradient(90deg, #0099ff, #00ccff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+body:not(.dark-mode) .stat-label {
+color: rgba(3, 6, 23, 0.7);
+}
+
+/* Section Headers - Light Mode */
+body:not(.dark-mode) .section-header h2 {
+color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .section-header p {
+color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .text-gradient {
+background: linear-gradient(90deg, #0099ff, #00ccff);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+body:not(.dark-mode) .header-badge {
+background: rgba(0, 153, 255, 0.1);
+border: 1px solid rgba(0, 153, 255, 0.3);
+color: #0099ff;
+}
+
+/* Form Container - Light Mode */
+body:not(.dark-mode) .contact-form-container {
+background: rgba(255, 255, 255, 0.95);
+border: 1px solid rgba(0, 153, 255, 0.2);
+box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+body:not(.dark-mode) .form-header h3 {
+color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .form-header p {
+color: rgba(3, 6, 23, 0.7);
+}
+
+/* Form Elements - Light Mode */
+body:not(.dark-mode) .form-input {
+background: rgba(255, 255, 255, 0.9);
+border: 2px solid rgba(0, 153, 255, 0.2);
+color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .form-input:focus {
+border-color: rgba(0, 153, 255, 0.5);
+box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.1);
+}
+
+body:not(.dark-mode) .form-input::placeholder {
+color: rgba(3, 6, 23, 0.5);
+}
+
+body:not(.dark-mode) .form-group label {
+color: rgba(3, 6, 23, 0.8);
+}
+
+body:not(.dark-mode) .char-counter {
+color: rgba(3, 6, 23, 0.6);
+}
+
+/* Submit Button - Light Mode */
+body:not(.dark-mode) .premium-submit-btn {
+background: linear-gradient(135deg, #0099ff, #00ccff);
+color: #ffffff;
+box-shadow: 0 8px 25px rgba(0, 153, 255, 0.3);
+}
+
+body:not(.dark-mode) .premium-submit-btn:hover {
+box-shadow: 0 12px 35px rgba(0, 153, 255, 0.4);
+}
+
+body:not(.dark-mode) .premium-submit-btn:disabled {
+background: rgba(0, 153, 255, 0.3);
+}
+
+/* Contact Method Cards - Light Mode */
+body:not(.dark-mode) .contact-method-card {
+background: rgba(255, 255, 255, 0.95);
+border: 1px solid rgba(0, 153, 255, 0.2);
+box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+body:not(.dark-mode) .contact-method-card:hover {
+background: rgba(255, 255, 255, 1);
+border-color: rgba(0, 153, 255, 0.4);
+box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+}
+
+body:not(.dark-mode) .contact-method-card h4 {
+color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .contact-method-card p {
+color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .method-link-display {
+color: #0099ff;
+}
+
+body:not(.dark-mode) .method-schedule span {
+color: rgba(3, 6, 23, 0.6);
+}
+
+/* Method Icons - Light Mode */
+body:not(.dark-mode) .method-icon {
+background: linear-gradient(135deg, rgba(0, 153, 255, 0.1), rgba(0, 204, 255, 0.15));
+color: #0099ff;
+}
+
+body:not(.dark-mode) .phone-icon {
+background: linear-gradient(135deg, rgba(0, 153, 255, 0.1), rgba(0, 204, 255, 0.15));
+}
+
+body:not(.dark-mode) .email-icon {
+background: linear-gradient(135deg, rgba(0, 153, 255, 0.1), rgba(0, 204, 255, 0.15));
+}
+
+body:not(.dark-mode) .location-icon {
+background: linear-gradient(135deg, rgba(0, 153, 255, 0.1), rgba(0, 204, 255, 0.15));
+}
+
+body:not(.dark-mode) .emergency-icon {
+background: linear-gradient(135deg, rgba(220, 20, 60, 0.1), rgba(255, 69, 0, 0.15));
+color: #dc143c;
+}
+
+/* Badges - Light Mode */
+body:not(.dark-mode) .whatsapp-badge {
+background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+body:not(.dark-mode) .emergency-badge {
+background: linear-gradient(135deg, #dc143c, #ff4500);
+}
+
+/* Social Section - Light Mode */
+body:not(.dark-mode) .premium-social-section {
+background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #f5f6f7 100%);
+}
+
+body:not(.dark-mode) .premium-social-header h2 {
+color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .premium-social-header p {
+color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .social-badge {
+background: rgba(0, 153, 255, 0.1);
+border: 1px solid rgba(0, 153, 255, 0.3);
+color: #0099ff;
+}
+
+/* Map Section - Light Mode */
+body:not(.dark-mode) .premium-map-section {
+background: linear-gradient(135deg, #f5f6f7 0%, #ffffff 50%, #f8f9fa 100%);
+}
+
+body:not(.dark-mode) .premium-map-header h2 {
+color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .premium-map-header p {
+color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .location-badge {
+background: rgba(0, 153, 255, 0.1);
+border: 1px solid rgba(0, 153, 255, 0.3);
+color: #0099ff;
+}
+
+/* Floating Elements - Light Mode */
+body:not(.dark-mode) .floating-shape {
+background: linear-gradient(45deg, rgba(0, 153, 255, 0.1), rgba(0, 204, 255, 0.15));
+}
+
+body:not(.dark-mode) .map-floating-element {
+background: linear-gradient(45deg, rgba(0, 153, 255, 0.08), rgba(0, 204, 255, 0.12));
+}
+
+/* Success/Error Messages - Light Mode */
+body:not(.dark-mode) .form-success {
+background: rgba(34, 197, 94, 0.1);
+border: 1px solid rgba(34, 197, 94, 0.3);
+color: rgba(21, 128, 61, 0.9);
+}
+
+body:not(.dark-mode) .form-error {
+background: rgba(239, 68, 68, 0.1);
+border: 1px solid rgba(239, 68, 68, 0.3);
+color: rgba(185, 28, 28, 0.9);
+}
+
+body:not(.dark-mode) .error-message {
+color: #dc2626;
+}
+
+/* Visit CTA Banner - Light Mode */
+body:not(.dark-mode) .visit-cta-banner {
+background: rgba(255, 255, 255, 0.95);
+border: 1px solid rgba(0, 153, 255, 0.2);
+}
+
+body:not(.dark-mode) .visit-cta-banner h4 {
+color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .visit-cta-banner p {
+color: rgba(3, 6, 23, 0.7);
 }

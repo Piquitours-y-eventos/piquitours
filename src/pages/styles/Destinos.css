@@ -1063,3 +1063,396 @@
     width: 100%;
   }
 }
+
+/* Destinos Intro Section */
+.destinos-intro-section {
+  padding: 80px 20px 60px;
+  text-align: center;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(218, 165, 32, 0.1) 0%, rgba(255, 140, 0, 0.1) 50%, rgba(220, 20, 60, 0.1) 100%);
+  z-index: 1;
+}
+
+.intro-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #DAA520, #FF8C00, #DC143C);
+  color: #fff;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+}
+
+.intro-title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.intro-gradient-text {
+  background: linear-gradient(90deg, #DAA520, #FF8C00, #DC143C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.intro-subtitle {
+  font-size: 18px;
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ===== MODO CLARO ===== */
+body:not(.dark-mode) .destinos-page {
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(0, 153, 255, 0.08), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(0, 204, 255, 0.06), transparent 60%),
+    linear-gradient(180deg, #f8f9fa 0%, #ffffff 40%, #f5f6f7 100%);
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .premium-hero-destinos {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f5f6f7 100%);
+}
+
+body:not(.dark-mode) .hero-badge {
+  background: linear-gradient(90deg, #0099ff, #00ccff, #0099ff);
+  color: #ffffff;
+}
+
+body:not(.dark-mode) .premium-hero-title {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .gradient-text {
+  background: linear-gradient(90deg, #0099ff, #00ccff, #0099ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body:not(.dark-mode) .premium-hero-subtitle {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .stat-item {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.95));
+  border: 1px solid rgba(0, 153, 255, 0.2);
+}
+
+body:not(.dark-mode) .stat-item:hover {
+  border-color: rgba(0, 153, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+body:not(.dark-mode) .stat-icon {
+  color: #0099ff;
+}
+
+body:not(.dark-mode) .stat-value {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .stat-label {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .premium-search-section {
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+body:not(.dark-mode) .search-badge {
+  background: rgba(0, 153, 255, 0.1);
+  border: 1px solid rgba(0, 153, 255, 0.3);
+  color: #0099ff;
+}
+
+body:not(.dark-mode) .search-title {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .gradient-text-search {
+  background: linear-gradient(90deg, #0099ff, #00ccff, #0099ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body:not(.dark-mode) .search-subtitle {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .premium-search-input {
+  border: 1px solid rgba(0, 153, 255, 0.2);
+  background: rgba(255, 255, 255, 0.9);
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .premium-search-input:focus {
+  border-color: rgba(0, 153, 255, 0.5);
+  box-shadow: 0 0 0 2px rgba(0, 153, 255, 0.25), 0 8px 26px rgba(0, 153, 255, 0.18);
+}
+
+body:not(.dark-mode) .search-input-icon {
+  color: #0099ff;
+}
+
+body:not(.dark-mode) .filter-toggle {
+  border: 1px solid rgba(0, 153, 255, 0.2);
+  background: rgba(255, 255, 255, 0.9);
+  color: #0099ff;
+}
+
+body:not(.dark-mode) .filter-toggle:hover {
+  border-color: rgba(0, 153, 255, 0.5);
+  background: rgba(0, 153, 255, 0.1);
+}
+
+body:not(.dark-mode) .premium-category-btn {
+  border: 1px solid rgba(0, 153, 255, 0.2);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.95));
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .premium-category-btn:hover {
+  border-color: rgba(0, 153, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+body:not(.dark-mode) .premium-category-btn.active {
+  background: linear-gradient(145deg, rgba(0, 153, 255, 0.15), rgba(0, 204, 255, 0.1));
+  border-color: #0099ff;
+}
+
+body:not(.dark-mode) .category-icon {
+  color: #0099ff;
+}
+
+body:not(.dark-mode) .category-count {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .featured-destinations-section {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+body:not(.dark-mode) .featured-badge {
+  background: rgba(0, 153, 255, 0.1);
+  border: 1px solid rgba(0, 153, 255, 0.3);
+  color: #0099ff;
+}
+
+body:not(.dark-mode) .featured-title {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .gradient-text-featured {
+  background: linear-gradient(90deg, #0099ff, #00ccff, #0099ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body:not(.dark-mode) .featured-subtitle {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .no-results {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .premium-destination-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(248, 249, 250, 0.98));
+  border: 1px solid rgba(0, 153, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+body:not(.dark-mode) .premium-destination-card:hover {
+  border-color: rgba(0, 153, 255, 0.4);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+body:not(.dark-mode) .duration-badge {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .rating-badge-featured {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 153, 255, 0.3);
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .destination-name {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .price-label {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .price-value {
+  color: #0099ff;
+}
+
+body:not(.dark-mode) .destination-description {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .highlight-tag {
+  background: rgba(0, 153, 255, 0.1);
+  border: 1px solid rgba(0, 153, 255, 0.2);
+  color: #0099ff;
+}
+
+body:not(.dark-mode) .reviews-count {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .explore-btn {
+  background: linear-gradient(90deg, #0099ff, #00ccff, #0099ff);
+  color: #ffffff;
+}
+
+body:not(.dark-mode) .explore-btn:hover {
+  box-shadow: 0 8px 20px rgba(0, 153, 255, 0.3);
+}
+
+body:not(.dark-mode) .premium-stats-section {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #f5f6f7 100%);
+}
+
+body:not(.dark-mode) .stats-badge {
+  background: rgba(0, 153, 255, 0.1);
+  border: 1px solid rgba(0, 153, 255, 0.3);
+  color: #0099ff;
+}
+
+body:not(.dark-mode) .stats-title {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .gradient-text-stats {
+  background: linear-gradient(90deg, #0099ff, #00ccff, #0099ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body:not(.dark-mode) .premium-stat-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.95));
+  border: 1px solid rgba(0, 153, 255, 0.2);
+}
+
+body:not(.dark-mode) .premium-stat-card:hover {
+  border-color: rgba(0, 153, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+body:not(.dark-mode) .stat-card-icon {
+  color: #0099ff;
+}
+
+body:not(.dark-mode) .stat-card-value {
+  background: linear-gradient(90deg, #0099ff, #00ccff, #0099ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body:not(.dark-mode) .stat-card-label {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .premium-cta-section {
+  background: linear-gradient(135deg, #f5f6f7 0%, #f8f9fa 50%, #ffffff 100%);
+}
+
+body:not(.dark-mode) .cta-badge {
+  background: linear-gradient(90deg, #0099ff, #00ccff, #0099ff);
+  color: #ffffff;
+}
+
+body:not(.dark-mode) .premium-cta-title {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .gradient-text-cta {
+  background: linear-gradient(90deg, #0099ff, #00ccff, #0099ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body:not(.dark-mode) .premium-cta-subtitle {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .premium-cta-primary {
+  background: linear-gradient(90deg, #0099ff, #00ccff, #0099ff);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 153, 255, 0.3);
+}
+
+body:not(.dark-mode) .premium-cta-primary:hover {
+  box-shadow: 0 12px 30px rgba(0, 153, 255, 0.4);
+}
+
+body:not(.dark-mode) .premium-cta-secondary {
+  border: 1px solid rgba(0, 153, 255, 0.3);
+  background: rgba(0, 153, 255, 0.1);
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .premium-cta-secondary:hover {
+  border-color: rgba(0, 153, 255, 0.5);
+  background: rgba(0, 153, 255, 0.2);
+}
+
+body:not(.dark-mode) .cta-feature {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+/* Light Mode - Destinos Intro Section */
+body:not(.dark-mode) .destinos-intro-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+body:not(.dark-mode) .intro-gradient-overlay {
+  background: linear-gradient(45deg, rgba(0, 153, 255, 0.08) 0%, rgba(0, 204, 255, 0.06) 50%, rgba(0, 153, 255, 0.08) 100%);
+}
+
+body:not(.dark-mode) .intro-badge {
+  background: linear-gradient(90deg, #0099ff, #00ccff, #0099ff);
+  color: #ffffff;
+}
+
+body:not(.dark-mode) .intro-title {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .intro-gradient-text {
+  background: linear-gradient(90deg, #0099ff, #00ccff, #0099ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body:not(.dark-mode) .intro-subtitle {
+  color: rgba(3, 6, 23, 0.7);
+}

@@ -37,7 +37,7 @@ export default function Footer() {
           viewport={{ once: true }}
         >
           <img 
-            src="/logo_entero.png" 
+            src="/logo.png" 
             alt="Piquitours Logo" 
             className="footer-logo"
           />

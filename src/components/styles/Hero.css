@@ -45,9 +45,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 140, 0, 0.12) 30%, rgba(255, 107, 53, 0.18) 70%, rgba(184, 134, 11, 0.25) 100%);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  /* background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 140, 0, 0.12) 30%, rgba(255, 107, 53, 0.18) 70%, rgba(184, 134, 11, 0.25) 100%); */
+  /* backdrop-filter: blur(2px); */
+  /* -webkit-backdrop-filter: blur(2px); */
   z-index: 0;
 }
 
@@ -572,60 +572,38 @@
   }
 }
 
-/* Modo claro */
+/* Modo claro - Light mode styles */
 body:not(.dark-mode) .hero {
-  background: var(--background-color-light);
-}
-
-body:not(.dark-mode) .hero-content h1 {
-  color: var(--text-color-light);
-}
-
-body:not(.dark-mode) .hero-overlay {
-  background: rgba(255, 255, 255, 0.3);
+  background: transparent;
 }
 
 body:not(.dark-mode) .hero-gradient {
-  background: linear-gradient(to bottom, transparent 10%, rgba(255, 255, 255, 0.8) 70%, var(--background-color-light) 100%);
+  background: linear-gradient(to bottom, transparent 10%, rgba(184, 134, 11, 0.4) 40%, rgba(139, 69, 19, 0.6) 70%, rgba(255, 255, 255, 0.95) 100%);
 }
 
-body:not(.dark-mode) .hero-button {
-  background: linear-gradient(135deg, var(--primary-color), var(--highlight-color));
-  color: var(--background-color-light);
-}
-
-body:not(.dark-mode) .hero-button:hover {
-  background: var(--highlight-color);
-}
-
-body:not(.dark-mode) .redes-sociales {
-  background: rgba(255, 255, 255, 0.5);
-}
-
-body:not(.dark-mode) .redes-sociales a {
-  color: var(--text-color-light);
-}
-
-body:not(.dark-mode) .hero::after {
-  background: linear-gradient(90deg, transparent 0%, rgba(17, 255, 0, 0.8) 30%, rgba(255, 234, 0, 0.8) 70%, transparent 100%);
-}
-
-body:not(.dark-mode) .animated-text {
-  background: linear-gradient(45deg, var(--text-color-light), var(--highlight-color));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Estilo especial para "Piquitours" - Rojo-Naranja */
-.hero h1 .piquitours-text {
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 25%, #ff4500 50%, #ff6347 75%, #ff6b35 100%);
+body:not(.dark-mode) .hero h1 {
+  background: linear-gradient(135deg, #d4af37 0%, #ff8c00 25%, #dc143c 50%, #ffa500 75%, #ffd700 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 900;
-  filter: drop-shadow(2px 2px 4px rgba(255, 107, 53, 0.4));
-  letter-spacing: -0.01em;
+  filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
+}
+
+body:not(.dark-mode) .animated-text {
+  background: linear-gradient(45deg, #333, #555);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Modo oscuro - Dark mode styles */
+body.dark-mode .hero {
+  background: transparent;
+}
+
+body.dark-mode .hero-gradient {
+  background: linear-gradient(to bottom, transparent 10%, rgba(184, 134, 11, 0.6) 40%, rgba(139, 69, 19, 0.75) 70%, rgba(11, 15, 25, 0.95) 100%);
 }
 
 .hero h1 span {

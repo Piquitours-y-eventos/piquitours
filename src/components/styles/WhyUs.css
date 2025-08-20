@@ -230,3 +230,98 @@
     padding: 1.5rem;
   }
 }
+
+/* ========================================
+   LIGHT MODE STYLES - WHY US
+   ======================================== */
+
+/* Main container - Light Mode */
+body:not(.dark-mode) .why-us {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f5f6f7 100%);
+  color: rgba(3, 6, 23, 0.9);
+}
+
+/* Content - Light Mode */
+body:not(.dark-mode) .why-us-content h2 {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .why-us-content .highlight {
+  background: linear-gradient(90deg, #ffd66b, #ff8a40, #ff3b3b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body:not(.dark-mode) .intro-text {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .why-us-rating {
+  color: #ffd66b;
+}
+
+/* Tabs - Light Mode */
+body:not(.dark-mode) .why-us-tab {
+  background: rgba(255, 255, 255, 0.8);
+  color: rgba(3, 6, 23, 0.7);
+  border: 1px solid rgba(218, 165, 32, 0.2);
+}
+
+body:not(.dark-mode) .why-us-tab:hover {
+  background: rgba(255, 255, 255, 0.95);
+  color: rgba(3, 6, 23, 0.9);
+  border-color: rgba(255, 138, 64, 0.4);
+}
+
+body:not(.dark-mode) .why-us-tab.active {
+  background: linear-gradient(90deg, #ffd66b, #ff8a40, #ff3b3b);
+  color: #111;
+}
+
+/* Tab content - Light Mode */
+body:not(.dark-mode) #feature-text-x {
+  color: rgba(3, 6, 23, 0.8);
+}
+
+/* Feature cards - Light Mode */
+body:not(.dark-mode) .feature-card {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(248, 249, 250, 0.9));
+  border: 1px solid rgba(255, 140, 64, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+body:not(.dark-mode) .feature-card:hover {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 1), rgba(248, 249, 250, 0.95));
+  border-color: rgba(255, 140, 64, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+body:not(.dark-mode) .feature-card h3 {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .feature-card p {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+/* Visual section - Light Mode */
+body:not(.dark-mode) .why-us-image {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+body:not(.dark-mode) .why-us-badge {
+  background: linear-gradient(90deg, #ffd66b, #ff8a40, #ff3b3b);
+  color: #111;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* CTA Button - Light Mode */
+body:not(.dark-mode) .book-btn {
+  background: linear-gradient(90deg, #ff8a40, #ff3b3b);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255, 59, 59, 0.4);
+}
+
+body:not(.dark-mode) .book-btn:hover {
+  background: linear-gradient(90deg, #ffd66b, #ff8a40);
+}

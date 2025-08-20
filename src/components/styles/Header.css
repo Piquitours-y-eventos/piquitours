@@ -314,32 +314,20 @@
 }
 
 /* ===== MODO CLARO ===== */
-body:not(.dark-mode) .header {
-  background: transparent;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
 
-body:not(.dark-mode).scrolled {
-  background: transparent;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
 
 body:not(.dark-mode) .nav-links a {
   color: #1a1a1a;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 body:not(.dark-mode) .nav-links a:hover {
-  background: rgba(0, 153, 255, 0.2);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 140, 0, 0.2) 50%, rgba(255, 215, 0, 0.15) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15), 
+              0 0 10px rgba(255, 215, 0, 0.1);
+  color: #ffd700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
-
-body:not(.dark-mode) .menu-toggle {
-  color: #1a1a1a;
-}
-
 
 
 /* ===== BLOQUEO DE SCROLL ===== */
