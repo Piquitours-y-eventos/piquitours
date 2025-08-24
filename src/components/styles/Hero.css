@@ -45,9 +45,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 140, 0, 0.12) 30%, rgba(255, 107, 53, 0.18) 70%, rgba(184, 134, 11, 0.25) 100%); */
-  /* backdrop-filter: blur(2px); */
-  /* -webkit-backdrop-filter: blur(2px); */
   z-index: 0;
 }
 
@@ -88,11 +85,6 @@
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* Eliminado el elemento ::before que causaba el cuadrado azul */
-
-/* Hover duplicado eliminado - se usa el elegante más abajo */
-
-/* Eliminado hover del ::before que causaba el efecto azul */
 
 .hero-button:active {
   transform: translateY(-50%) scale(0.98);
@@ -570,42 +562,4 @@
   .hero:hover .hero-content {
     transform: translateZ(50px) rotateX(5deg) rotateY(-5deg);
   }
-}
-
-/* Modo claro - Light mode styles */
-body:not(.dark-mode) .hero {
-  background: transparent;
-}
-
-body:not(.dark-mode) .hero-gradient {
-  background: linear-gradient(to bottom, transparent 10%, rgba(184, 134, 11, 0.4) 40%, rgba(139, 69, 19, 0.6) 70%, rgba(255, 255, 255, 0.95) 100%);
-}
-
-body:not(.dark-mode) .hero h1 {
-  background: linear-gradient(135deg, #d4af37 0%, #ff8c00 25%, #dc143c 50%, #ffa500 75%, #ffd700 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 15px rgba(212, 175, 55, 0.3));
-}
-
-body:not(.dark-mode) .animated-text {
-  background: linear-gradient(45deg, #333, #555);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* Modo oscuro - Dark mode styles */
-body.dark-mode .hero {
-  background: transparent;
-}
-
-body.dark-mode .hero-gradient {
-  background: linear-gradient(to bottom, transparent 10%, rgba(184, 134, 11, 0.6) 40%, rgba(139, 69, 19, 0.75) 70%, rgba(11, 15, 25, 0.95) 100%);
-}
-
-.hero h1 span {
-  display: inline-block;
 }
