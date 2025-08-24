@@ -213,8 +213,7 @@ function NosotrosPage() {
           </div>
           <figure>
             <video controls preload="metadata" poster="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1200&auto=format&fit=crop">
-              <source src="https://cdn.coverr.co/videos/coverr-tropical-beach-1562/1080p.mp4" type="video/mp4" />
-              <source src="https://cdn.coverr.co/videos/coverr-tropical-beach-1562/720p.mp4" type="video/mp4" />
+              <source src="/video_nosotros.mp4" type="video/mp4" />
             </video>
             <figcaption className="pt-muted">Un vistazo a nuestras rutas: cultura, naturaleza y momentos que perduran.</figcaption>
           </figure>
