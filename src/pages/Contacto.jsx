@@ -111,7 +111,7 @@ export default function Contacto() {
           <div className="particle"></div>
         </div>
         <motion.div 
-          className="hero-content"
+          className="hero-content-contacto"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}

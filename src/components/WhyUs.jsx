@@ -1,3 +1,4 @@
+// whyus.jsx
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiStar } from 'react-icons/fi';
@@ -139,7 +140,7 @@ export default function WhyUs() {
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <img src={feature.icon} alt={feature.title} />
+                        <img src={feature.icon} alt={feature.title} loading="lazy" />
                       </motion.div>
                       <h3>{feature.title}</h3>
                       <p>{feature.desc}</p>
@@ -173,6 +174,7 @@ export default function WhyUs() {
             src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop"
             alt="Turismo en Colombia"
             className="why-us-image"
+            loading="lazy"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.5 }}
           />

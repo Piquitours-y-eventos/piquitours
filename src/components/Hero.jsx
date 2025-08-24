@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { TbWorld } from 'react-icons/tb';
@@ -21,7 +20,8 @@ const IMAGES = [
 export default function Hero() {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const intervalRef = useRef(null);
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
 
   useEffect(() => {
     const textInterval = setInterval(() => {
@@ -51,17 +51,60 @@ export default function Hero() {
   };
 
   const handleScroll = () => {
-    const destination = document.querySelector('.destinations-section');
-    if (destination) {
-      destination.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+    try {
+      const destination = document.querySelector('.destinations-section');
+      if (destination && destination.offsetParent !== null) {
+        destination.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      } else {
+        // Fallback: scroll to next section or a reasonable position
+        window.scrollTo({
+          top: window.innerHeight,
+          behavior: 'smooth'
+        });
+      }
+    } catch (error) {
+      console.warn('Error scrolling to destination:', error);
+      // Fallback scroll
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: 'smooth'
       });
     }
   };
 
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current && touchEndX.current) {
+      const diff = touchStartX.current - touchEndX.current;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          goToNext();
+        } else {
+          goToPrevious();
+        }
+      }
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   return (
-    <section className="hero">
+    <section 
+      className="hero"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="hero-images">
         {IMAGES.map((image, index) => (
           <img
@@ -76,10 +119,10 @@ export default function Hero() {
       <div className="hero-overlay" />
       <div className="hero-gradient" />
       <button className="hero-button prev" onClick={goToPrevious} aria-label="Imagen anterior">
-      ←
+        ←
       </button>
       <button className="hero-button next" onClick={goToNext} aria-label="Imagen siguiente">
-      →
+        →
       </button>
       <div className="hero-dots">
         {IMAGES.map((_, index) => (
@@ -93,7 +136,7 @@ export default function Hero() {
       </div>
       <div className="hero-content">
         <h1>
-          <span>Explora los lugares mas <br /> hermosos</span><br />
+          <span>Explora los lugares más <br /> hermosos</span><br />
           con <span className="piquitours-text">Piquitours</span>
         </h1>
         <div className="animated-text-container">
@@ -117,17 +160,21 @@ export default function Hero() {
         </button>
       </div>
       <div className="redes-sociales">
-        <a href="https://www.facebook.com/share/1AiMVjLLDs/" target="_blank" rel="noreferrer">
+        <a href="https://www.facebook.com/share/1AiMVjLLDs/" target="_blank" rel="noreferrer noopener">
           <FaFacebook />
           <span>Facebook</span>
         </a>
-        <a href="https://www.instagram.com/piquitours?igsh=OThpM2EyajhwaGNt" target="_blank" rel="noreferrer">
+        <a href="https://www.instagram.com/piquitours?igsh=OThpM2EyajhwaGNt" target="_blank" rel="noreferrer noopener">
           <FaInstagram />
           <span>Instagram</span>
         </a>
-        <a href="https://whatsapp.com" target="_blank" rel="noreferrer">
+        <a href="https://whatsapp.com" target="_blank" rel="noreferrer noopener">
           <FaWhatsapp />
           <span>Contáctanos</span>
+        </a>
+        <a href="https://piquitours.com" target="_blank" rel="noreferrer noopener">
+          <TbWorld />
+          <span>Website</span>
         </a>
       </div>
     </section>

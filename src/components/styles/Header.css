@@ -1,4 +1,3 @@
-
 /* ===== RESET Y VARIABLES ===== */
 * {
   margin: 0;
@@ -49,21 +48,20 @@
 }
 
 .logo {
-  height: clamp(90px, 8vh, 100px);
+  height: clamp(50px, 6vh, 60px);
   width: auto;
-  max-width: clamp(220px, 25vw, 280px);
+  max-width: clamp(180px, 20vw, 220px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   object-fit: contain;
   object-position: center;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
-  /* Asegurar que el logo mantenga su proporción */
   aspect-ratio: auto;
-  max-height: 100px;
+  max-height: 100%;
 }
 
 .scrolled .logo {
-  height: clamp(55px, 6vh, 65px);
-  max-width: clamp(180px, 22vw, 220px);
+  height: clamp(40px, 5vh, 50px);
+  max-width: clamp(150px, 18vw, 180px);
 }
 
 /* ===== NAVEGACIÓN PRINCIPAL ===== */
@@ -229,10 +227,8 @@
 
   .nav {
     position: fixed;
-    top: clamp(45px, 6vh, 60px);
     left: 0;
     width: 100%;
-    height: calc(100vh - clamp(45px, 6vh, 60px));
     background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -241,6 +237,7 @@
     transform: translateY(-150%);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     padding-top: clamp(1.5rem, 3.5vh, 2.2rem);
+    /* top y height se setean dinámicamente via JS */
   }
 
   .nav.open {
@@ -277,7 +274,7 @@
   }
 
   .theme-toggle.dark {
-    background: #34c759;
+    background: linear-gradient(135deg, #ffd700 0%, #ff8c00 50%, #ffd700 100%);
   }
 
   .toggle-thumb {
@@ -304,20 +301,23 @@
   }
 
   .logo {
-    height: 180px;
-    max-width: 400px;
+    height: clamp(60px, 7vh, 70px);
+    max-width: clamp(200px, 22vw, 250px);
   }
 
   .scrolled .logo {
-    height: 140px;
+    height: clamp(50px, 6vh, 60px);
   }
 }
 
 /* ===== MODO CLARO ===== */
-
+body:not(.dark-mode) .header {
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+}
 
 body:not(.dark-mode) .nav-links a {
   color: #1a1a1a;
+  text-shadow: none;
 }
 
 body:not(.dark-mode) .nav-links a:hover {
@@ -329,6 +329,17 @@ body:not(.dark-mode) .nav-links a:hover {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
+body:not(.dark-mode) .menu-toggle {
+  color: #1a1a1a;
+}
+
+body:not(.dark-mode) .nav {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body:not(.dark-mode) .nav-links a {
+  background: rgba(0, 0, 0, 0.05);
+}
 
 /* ===== BLOQUEO DE SCROLL ===== */
 .no-scroll {

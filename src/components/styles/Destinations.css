@@ -1,3 +1,4 @@
+/* Destinations.css */
 :root {
   --bg: #0c0c0f;
   --card: #121218;
@@ -74,7 +75,7 @@ body {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 7px 12px; border-radius: 999px;
   background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3));
-  color: #111; font-weight: 700; letter-spacing: .2px;
+  color: #111; font-weight: 700; letterSpacing: .2px;
   box-shadow: var(--shadow-soft);
 }
 

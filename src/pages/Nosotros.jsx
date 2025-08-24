@@ -131,7 +131,7 @@ function NosotrosPage() {
             </div>
           </div>
           <figure className="pt-quienes-figure">
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt="Grupo disfrutando de un tour al atardecer" />
+            <img loading="lazy" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt="Grupo disfrutando de un tour al atardecer" />
             <figcaption className="pt-muted">Diseño, logística y hospitalidad — todo en un solo equipo.</figcaption>
           </figure>
         </div>
@@ -212,7 +212,7 @@ function NosotrosPage() {
             <p>Descubre cómo transformamos cada viaje en una historia inolvidable.</p>
           </div>
           <figure>
-            <video controls preload="metadata" poster="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1200&auto=format&fit=crop">
+            <video controls preload="metadata">
               <source src="/video_nosotros.mp4" type="video/mp4" />
             </video>
             <figcaption className="pt-muted">Un vistazo a nuestras rutas: cultura, naturaleza y momentos que perduran.</figcaption>
@@ -229,28 +229,28 @@ function NosotrosPage() {
           </div>
           <div className="pt-team">
             <article className="pt-member">
-              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop" alt="Foto de persona del equipo" />
+              <img loading="lazy" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop" alt="Foto de persona del equipo" />
               <div className="pt-info">
                 <strong>Valeria Ortiz</strong>
                 <div className="pt-role">Directora de Operaciones</div>
               </div>
             </article>
             <article className="pt-member">
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" alt="Foto de persona del equipo" />
+              <img loading="lazy" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" alt="Foto de persona del equipo" />
               <div className="pt-info">
                 <strong>Samuel Rojas</strong>
                 <div className="pt-role">Experiencias y Curaduría</div>
               </div>
             </article>
             <article className="pt-member">
-              <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=800&auto=format&fit=crop" alt="Foto de persona del equipo" />
+              <img loading="lazy" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=800&auto=format&fit=crop" alt="Foto de persona del equipo" />
               <div className="pt-info">
                 <strong>Juliana Pérez</strong>
                 <div className="pt-role">Relación con Aliados</div>
               </div>
             </article>
             <article className="pt-member">
-              <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=800&auto=format&fit=crop" alt="Foto de persona del equipo" />
+              <img loading="lazy" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=800&auto=format&fit=crop" alt="Foto de persona del equipo" />
               <div className="pt-info">
                 <strong>Camilo Díaz</strong>
                 <div className="pt-role">Guía Líder</div>

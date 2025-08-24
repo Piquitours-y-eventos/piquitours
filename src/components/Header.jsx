@@ -1,7 +1,6 @@
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { FaSun, FaMoon, FaBars, FaTimes, FaGem, FaGlobeAmericas, FaUserTie, FaPaperPlane, FaPhone, FaStar } from 'react-icons/fa';
+import { FaSun, FaMoon, FaBars, FaTimes, FaGem, FaGlobeAmericas, FaUserTie, FaPaperPlane } from 'react-icons/fa';
 import "./styles/Header.css";
 
 export default function Header() {
@@ -11,6 +10,9 @@ export default function Header() {
     return savedTheme ? JSON.parse(savedTheme) : window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const headerRef = useRef(null);
+  const navRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -28,11 +30,19 @@ export default function Header() {
     return () => document.body.classList.remove('no-scroll');
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (menuOpen && navRef.current && headerRef.current) {
+      const headerHeight = headerRef.current.offsetHeight;
+      navRef.current.style.top = `${headerHeight}px`;
+      navRef.current.style.height = `calc(100vh - ${headerHeight}px)`;
+    }
+  }, [menuOpen, scrolled]);
+
   const toggleDarkMode = () => setDarkMode(prev => !prev);
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className={`header ${scrolled ? "scrolled" : ""}`}>
+    <header ref={headerRef} className={`header ${scrolled ? "scrolled" : ""}`}>
       <div className="container">
         <div className="logo-container">
           <img 
@@ -42,7 +52,7 @@ export default function Header() {
           />
         </div>
 
-        <nav className={`nav ${menuOpen ? "open" : ""}`}>
+        <nav ref={navRef} className={`nav ${menuOpen ? "open" : ""}`}>
           <ul className="nav-links">
             <li>
               <Link to="/" onClick={closeMenu}>
