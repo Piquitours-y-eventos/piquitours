@@ -443,33 +443,33 @@ body:not(.dark-mode) .animated-text {
 }
 
 body:not(.dark-mode) .button-continue {
-  background: linear-gradient(135deg, #ffd700 0%, #ffcc00 25%, #ff9900 50%, #ffcc00 75%, #ffd700 100%);
-  color: #fff;
-  text-shadow: 0 1px 2px rgba(255,255,255,0.2);
+  /* background: linear-gradient(135deg, #ffd700 0%, #ffcc00 25%, #ff9900 50%, #ffcc00 75%, #ffd700 100%); */
+  /* color: #fff; */
+  /* text-shadow: 0 1px 2px rgba(255,255,255,0.2); */
 }
 
 body:not(.dark-mode) .redes-sociales {
-  background: linear-gradient(135deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.02) 100%);
-  border: 1px solid rgba(0,0,0,0.1);
+  /* background: linear-gradient(135deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.02) 100%); */
+  /* border: 1px solid rgba(0,0,0,0.1); */
 }
 
 body:not(.dark-mode) .redes-sociales a {
   color: #333;
-  background: rgba(0,0,0,0.04);
-  border: 1px solid rgba(0,0,0,0.05);
-  text-shadow: none;
+  /* background: rgba(0,0,0,0.04); */
+  /* border: 1px solid rgba(0,0,0,0.05); */
+  /* text-shadow: none; */
 }
 
 body:not(.dark-mode) .hero-button {
   color: #333;
-  background: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.1) 100%);
-  border: 1px solid rgba(0,0,0,0.2);
-  text-shadow: none;
+  /* background: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.1) 100%); */
+  /* border: 1px solid rgba(0,0,0,0.2); */
+  /* text-shadow: none; */
 }
 
 body:not(.dark-mode) .dot {
-  background: rgba(0,0,0,0.3);
-  border: 1px solid rgba(0,0,0,0.4);
+  /* background: rgba(0,0,0,0.3); */
+  /* border: 1px solid rgba(0,0,0,0.4); */
 }
 
 body:not(.dark-mode) .dot.active {
