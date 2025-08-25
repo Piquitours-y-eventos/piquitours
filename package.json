@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/auth-helpers-react": "^0.5.0",
+    "@supabase/auth-ui-react": "^0.4.7",
+    "@supabase/supabase-js": "^2.56.0",
     "@vercel/speed-insights": "^1.2.0",
     "aos": "^2.3.4",
     "autoprefixer": "^10.4.21",

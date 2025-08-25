@@ -4,6 +4,7 @@ import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaTik
 import { RiCustomerService2Fill } from "react-icons/ri";
 import { MdLocationOn, MdEmail, MdPhone } from "react-icons/md";
 import Footer from "../components/Footer";
+import { supabase } from '../utils/supabase';
 import './styles/Contacto.css';
 
 export default function Contacto() {
@@ -76,8 +77,19 @@ export default function Contacto() {
     setFormStatus({ isSubmitting: true, isSubmitted: false, hasError: false, errorMessage: '' });
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const { data, error } = await supabase
+        .from('contactos')
+        .insert([{
+          nombre: formData.nombre,
+          email: formData.email,
+          telefono: formData.telefono,
+          asunto: formData.asunto,
+          mensaje: formData.mensaje
+        }]);
+      
+      if (error) {
+        throw error;
+      }
       
       setFormStatus({ isSubmitting: false, isSubmitted: true, hasError: false, errorMessage: '' });
       setFormData({ nombre: '', email: '', telefono: '', asunto: '', mensaje: '' });
@@ -89,11 +101,12 @@ export default function Contacto() {
       }, 5000);
       
     } catch (error) {
+      console.error('Error al enviar:', error);
       setFormStatus({ 
         isSubmitting: false, 
         isSubmitted: false, 
         hasError: true, 
-        errorMessage: 'Error al enviar el mensaje. Por favor, inténtalo de nuevo.' 
+        errorMessage: error.message || 'Error al enviar el mensaje. Por favor, inténtalo de nuevo.' 
       });
     }
   };
