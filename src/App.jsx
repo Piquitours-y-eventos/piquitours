@@ -15,6 +15,7 @@ import Contacto from "./pages/Contacto";
 // Páginas admin
 import AdminLogin from "./components/AdminLogin";
 import AdminPanel from "./pages/AdminPanel";
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -26,17 +27,24 @@ function App() {
           <Route path="/destinos" element={<Destinos />} />
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/contacto" element={<Contacto />} />
+          
+          {/* Catch-all para rutas públicas */}
+          <Route path="*" element={<NotFound />} />
         </Route>
 
         {/* Layout admin */}
         <Route element={<AdminLayout />}>
           <Route path="/login" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminPanel />} />
+
+          {/* Catch-all para rutas admin */}
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Router>
-  )
+  );
 }
+
 
 export default App;
 
