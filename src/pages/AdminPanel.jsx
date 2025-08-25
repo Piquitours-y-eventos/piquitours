@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../utils/supabase';
 import { motion } from 'framer-motion';
+import './styles/AdminPanel.css';
 
 export default function AdminPanel() {
   const [contactos, setContactos] = useState([]);
@@ -49,54 +50,54 @@ export default function AdminPanel() {
     navigate('/login');
   };
 
-  if (!session || loading) return <div className="text-center mt-10">Cargando...</div>;
+  if (!session || loading) return (
+    <div className="panel-loading">
+      <div className="spinner"></div>
+      <p>Cargando panel...</p>
+    </div>
+  );
 
   return (
     <motion.div 
-      className="max-w-6xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg"
+      className="panel-container"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Panel Admin</h1>
-        <button 
-          onClick={handleLogout} 
-          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-        >
-          Logout
-        </button>
-      </div>
-      {error && <p className="text-red-500 mb-4">{error}</p>}
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-200">
-          <thead className="bg-gray-100">
+      <header className="panel-header">
+        <h1>Panel Admin</h1>
+        <button className="logout-btn" onClick={handleLogout}>Cerrar sesión</button>
+      </header>
+
+      {error && <p className="panel-error">{error}</p>}
+
+      <div className="table-wrapper">
+        {/* Desktop / Tablet */}
+        <table className="contact-table">
+          <thead>
             <tr>
-              <th className="px-4 py-2 border">ID</th>
-              <th className="px-4 py-2 border">Nombre</th>
-              <th className="px-4 py-2 border">Email</th>
-              <th className="px-4 py-2 border">Teléfono</th>
-              <th className="px-4 py-2 border">Asunto</th>
-              <th className="px-4 py-2 border">Mensaje</th>
-              <th className="px-4 py-2 border">Fecha</th>
-              <th className="px-4 py-2 border">Acciones</th>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Teléfono</th>
+              <th>Asunto</th>
+              <th>Mensaje</th>
+              <th>Fecha</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            {contactos.map((c) => (
-              <tr key={c.id} className="hover:bg-gray-50">
-                <td className="px-4 py-2 border">{c.id}</td>
-                <td className="px-4 py-2 border">{c.nombre}</td>
-                <td className="px-4 py-2 border">{c.email}</td>
-                <td className="px-4 py-2 border">{c.telefono}</td>
-                <td className="px-4 py-2 border">{c.asunto}</td>
-                <td className="px-4 py-2 border">{c.mensaje}</td>
-                <td className="px-4 py-2 border">{new Date(c.created_at).toLocaleString()}</td>
-                <td className="px-4 py-2 border">
-                  <button 
-                    onClick={() => handleDelete(c.id)} 
-                    className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-                  >
+            {contactos.map(c => (
+              <tr key={c.id}>
+                <td>{c.id}</td>
+                <td>{c.nombre}</td>
+                <td>{c.email}</td>
+                <td>{c.telefono}</td>
+                <td>{c.asunto}</td>
+                <td>{c.mensaje}</td>
+                <td>{new Date(c.created_at).toLocaleString()}</td>
+                <td>
+                  <button className="delete-btn" onClick={() => handleDelete(c.id)}>
                     Eliminar
                   </button>
                 </td>
@@ -104,6 +105,24 @@ export default function AdminPanel() {
             ))}
           </tbody>
         </table>
+
+        {/* Mobile cards */}
+        <div className="contact-cards">
+          {contactos.map(c => (
+            <div key={c.id} className="contact-card">
+              <div className="card-row"><strong>ID:</strong> {c.id}</div>
+              <div className="card-row"><strong>Nombre:</strong> {c.nombre}</div>
+              <div className="card-row"><strong>Email:</strong> {c.email}</div>
+              <div className="card-row"><strong>Teléfono:</strong> {c.telefono}</div>
+              <div className="card-row"><strong>Asunto:</strong> {c.asunto}</div>
+              <div className="card-row"><strong>Mensaje:</strong> {c.mensaje}</div>
+              <div className="card-row"><strong>Fecha:</strong> {new Date(c.created_at).toLocaleString()}</div>
+              <button className="delete-btn" onClick={() => handleDelete(c.id)}>
+                Eliminar
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </motion.div>
   );

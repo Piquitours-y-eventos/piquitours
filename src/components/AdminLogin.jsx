@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '../utils/supabase';
 import { motion } from 'framer-motion';
 import { Mail, Lock } from 'lucide-react';
+import './styles/AdminLogin.css';
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('');
@@ -27,21 +28,21 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4">
+    <div className="login-container">
       <motion.div
-        className="w-full max-w-md p-10 bg-white rounded-3xl shadow-2xl border border-gray-100"
+        className="login-card"
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        {/* Logo o título */}
-        <h1 className="text-4xl font-extrabold text-center text-blue-700 mb-6">PiquiTours Admin</h1>
-        <p className="text-gray-500 text-center mb-6">Inicia sesión con tu correo y contraseña</p>
+        {/* Título */}
+        <h1 className="login-title">PiquiTours Admin</h1>
+        <p className="login-subtitle">Accede a tu cuenta para administrar el panel</p>
 
         {/* Error */}
         {error && (
           <motion.div
-            className="bg-red-100 text-red-700 px-4 py-2 rounded-md mb-4 text-sm text-center"
+            className="login-error"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
@@ -50,29 +51,29 @@ export default function AdminLogin() {
         )}
 
         {/* Formulario */}
-        <form onSubmit={handleLogin} className="space-y-5">
+        <form onSubmit={handleLogin} className="login-form">
           {/* Email */}
-          <div className="relative">
-            <Mail className="absolute left-3 top-3 text-gray-400" size={20} />
+          <div className="input-wrapper">
+            <Mail className="input-icon" size={20} />
             <input
               type="email"
               placeholder="Correo electrónico"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700 transition-all"
+              className="login-input"
               required
             />
           </div>
 
           {/* Password */}
-          <div className="relative">
-            <Lock className="absolute left-3 top-3 text-gray-400" size={20} />
+          <div className="input-wrapper">
+            <Lock className="input-icon" size={20} />
             <input
               type="password"
               placeholder="Contraseña"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700 transition-all"
+              className="login-input"
               required
             />
           </div>
@@ -81,16 +82,22 @@ export default function AdminLogin() {
           <motion.button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold shadow-lg hover:bg-blue-700 disabled:bg-gray-400 transition-all"
+            className="login-button"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            {loading ? 'Cargando...' : 'Iniciar Sesión'}
+            {loading ? (
+              <>
+                <span className="button-spinner"></span> Cargando...
+              </>
+            ) : (
+              'Iniciar Sesión'
+            )}
           </motion.button>
         </form>
 
         {/* Footer */}
-        <p className="text-center text-gray-400 text-sm mt-6">
+        <p className="login-footer">
           © 2025 PiquiTours. Todos los derechos reservados.
         </p>
       </motion.div>

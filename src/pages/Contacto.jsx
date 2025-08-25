@@ -24,7 +24,7 @@ export default function Contacto() {
   });
   
   const [formErrors, setFormErrors] = useState({});
-
+  
   const validateForm = () => {
     const errors = {};
     
@@ -54,7 +54,7 @@ export default function Contacto() {
     
     return errors;
   };
-
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -64,7 +64,7 @@ export default function Contacto() {
       setFormErrors(prev => ({ ...prev, [name]: '' }));
     }
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -77,7 +77,7 @@ export default function Contacto() {
     setFormStatus({ isSubmitting: true, isSubmitted: false, hasError: false, errorMessage: '' });
     
     try {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('contactos')
         .insert([{
           nombre: formData.nombre,
@@ -85,7 +85,7 @@ export default function Contacto() {
           telefono: formData.telefono,
           asunto: formData.asunto,
           mensaje: formData.mensaje
-        }]);
+        }], { returning: 'minimal' });
       
       if (error) {
         throw error;
@@ -102,15 +102,15 @@ export default function Contacto() {
       
     } catch (error) {
       console.error('Error al enviar:', error);
-      setFormStatus({ 
-        isSubmitting: false, 
-        isSubmitted: false, 
-        hasError: true, 
-        errorMessage: error.message || 'Error al enviar el mensaje. Por favor, inténtalo de nuevo.' 
+      setFormStatus({
+        isSubmitting: false,
+        isSubmitted: false,
+        hasError: true,
+        errorMessage: error.message || 'Error al enviar el mensaje. Por favor, inténtalo de nuevo.'
       });
     }
   };
-
+  
   return (
     <main className="contacto-container">
       {/* HERO SECTION */}
@@ -123,7 +123,7 @@ export default function Contacto() {
           <div className="particle"></div>
           <div className="particle"></div>
         </div>
-        <motion.div 
+        <motion.div
           className="hero-content-contacto"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -149,7 +149,7 @@ export default function Contacto() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            Transformamos tus sueños de viaje en experiencias inolvidables. 
+            Transformamos tus sueños de viaje en experiencias inolvidables.
             <br />Contáctanos y descubre por qué somos líderes en turismo colombiano.
           </motion.p>
           <motion.div
@@ -173,11 +173,10 @@ export default function Contacto() {
           </motion.div>
         </motion.div>
       </section>
-
       {/* MAIN CONTACT SECTION */}
       <section className="main-contact-section">
         <div className="section-container">
-          <motion.div 
+          <motion.div
             className="section-header"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -190,10 +189,9 @@ export default function Contacto() {
             <h2>Elige Tu Método de <span className="text-gradient">Contacto Preferido</span></h2>
             <p>Estamos disponibles a través de múltiples canales para brindarte la mejor atención personalizada</p>
           </motion.div>
-
           <div className="contact-main-grid">
             {/* PREMIUM CONTACT FORM */}
-            <motion.div 
+            <motion.div
               className="contact-form-container"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -209,7 +207,7 @@ export default function Contacto() {
               </div>
               
               {formStatus.isSubmitted && (
-                <motion.div 
+                <motion.div
                   className="form-success"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -221,7 +219,7 @@ export default function Contacto() {
               )}
               
               {formStatus.hasError && (
-                <motion.div 
+                <motion.div
                   className="form-error"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -236,8 +234,8 @@ export default function Contacto() {
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="nombre">Nombre Completo *</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       id="nombre"
                       name="nombre"
                       value={formData.nombre}
@@ -250,8 +248,8 @@ export default function Contacto() {
                   
                   <div className="form-group">
                     <label htmlFor="telefono">Teléfono *</label>
-                    <input 
-                      type="tel" 
+                    <input
+                      type="tel"
                       id="telefono"
                       name="telefono"
                       value={formData.telefono}
@@ -265,8 +263,8 @@ export default function Contacto() {
                 
                 <div className="form-group">
                   <label htmlFor="email">Correo Electrónico *</label>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     id="email"
                     name="email"
                     value={formData.email}
@@ -279,8 +277,8 @@ export default function Contacto() {
                 
                 <div className="form-group">
                   <label htmlFor="asunto">Asunto *</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     id="asunto"
                     name="asunto"
                     value={formData.asunto}
@@ -293,7 +291,7 @@ export default function Contacto() {
                 
                 <div className="form-group">
                   <label htmlFor="mensaje">Mensaje *</label>
-                  <textarea 
+                  <textarea
                     id="mensaje"
                     name="mensaje"
                     value={formData.mensaje}
@@ -334,11 +332,10 @@ export default function Contacto() {
                 </div>
               </form>
             </motion.div>
-
             {/* CONTACT METHODS GRID */}
             <div className="contact-methods-grid">
               {/* PHONE CONTACT */}
-              <motion.div 
+              <motion.div
                 className="contact-method-card phone-card clickable-card"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -371,9 +368,8 @@ export default function Contacto() {
                   <span>WhatsApp</span>
                 </div>
               </motion.div>
-
               {/* EMAIL CONTACT */}
-              <motion.div 
+              <motion.div
                 className="contact-method-card email-card clickable-card"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -404,9 +400,8 @@ export default function Contacto() {
                   </div>
                 </div>
               </motion.div>
-
               {/* LOCATION CONTACT */}
-              <motion.div 
+              <motion.div
                 className="contact-method-card location-card"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -430,9 +425,8 @@ export default function Contacto() {
                   </div>
                 </div>
               </motion.div>
-
               {/* EMERGENCY SUPPORT */}
-              <motion.div 
+              <motion.div
                 className="contact-method-card emergency-card"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -461,9 +455,6 @@ export default function Contacto() {
           </div>
         </div>
       </section>
-
-
-
       {/* PREMIUM SOCIAL SECTION */}
       <section className="premium-social-section">
         <div className="social-background-effects">
@@ -473,7 +464,7 @@ export default function Contacto() {
         </div>
         
         <div className="section-container">
-          <motion.div 
+          <motion.div
             className="premium-social-header"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -486,11 +477,10 @@ export default function Contacto() {
             <h2>Únete a Nuestra <span className="text-gradient">Comunidad Viajera</span></h2>
             <p>Más de 88K viajeros ya forman parte de nuestra familia digital. Descubre destinos, ofertas exclusivas y experiencias únicas.</p>
           </motion.div>
-
           <div className="premium-social-grid">
-            <motion.a 
-              href="https://facebook.com/piquitours" 
-              target="_blank" 
+            <motion.a
+              href="https://facebook.com/piquitours"
+              target="_blank"
               rel="noreferrer"
               className="premium-social-card facebook-card"
               initial={{ opacity: 0, x: -50 }}
@@ -522,10 +512,9 @@ export default function Contacto() {
                 <div className="arrow-icon">→</div>
               </div>
             </motion.a>
-
-            <motion.a 
-              href="https://instagram.com/piquitours" 
-              target="_blank" 
+            <motion.a
+              href="https://instagram.com/piquitours"
+              target="_blank"
               rel="noreferrer"
               className="premium-social-card instagram-card"
               initial={{ opacity: 0, y: 50 }}
@@ -557,10 +546,9 @@ export default function Contacto() {
                 <div className="arrow-icon">→</div>
               </div>
             </motion.a>
-
-            <motion.a 
-              href="https://tiktok.com/@piquitours" 
-              target="_blank" 
+            <motion.a
+              href="https://tiktok.com/@piquitours"
+              target="_blank"
               rel="noreferrer"
               className="premium-social-card tiktok-card"
               initial={{ opacity: 0, x: 50 }}
@@ -593,8 +581,7 @@ export default function Contacto() {
               </div>
             </motion.a>
           </div>
-
-          <motion.div 
+          <motion.div
             className="social-stats-banner"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -618,7 +605,6 @@ export default function Contacto() {
           </motion.div>
         </div>
       </section>
-
       {/* PREMIUM MAP SECTION */}
       <section className="premium-map-section">
         <div className="map-background-effects">
@@ -629,7 +615,7 @@ export default function Contacto() {
         </div>
         
         <div className="section-container">
-          <motion.div 
+          <motion.div
             className="premium-map-header"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -643,9 +629,8 @@ export default function Contacto() {
             <h2>Encuéntranos en el <span className="text-gradient">Corazón de Colombia</span></h2>
             <p>Nuestra oficina principal está ubicada estratégicamente en El Espinal, Tolima - el punto perfecto para comenzar tu aventura colombiana.</p>
           </motion.div>
-
           <div className="premium-map-layout">
-            <motion.div 
+            <motion.div
               className="interactive-map-container"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -660,12 +645,12 @@ export default function Contacto() {
                     <div className="pin-pulse"></div>
                   </div>
                 </div>
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.234391843344!2d-74.88578892468654!3d4.152876841943651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f2f45e8e6f5a5%3A0x3b3b3b3b3b3b3b3b!2sEl%20Espinal%2C%20Tolima!5e0!3m2!1ses!2sco!4v1620000000000!5m2!1ses!2sco" 
-                  width="100%" 
-                  height="500" 
-                  style={{ border: 0 }} 
-                  allowFullScreen="" 
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.234391843344!2d-74.88578892468654!3d4.152876841943651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f2f45e8e6f5a5%3A0x3b3b3b3b3b3b3b3b!2sEl%20Espinal%2C%20Tolima!5e0!3m2!1ses!2sco!4v1620000000000!5m2!1ses!2sco"
+                  width="100%"
+                  height="500"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
                   loading="lazy"
                   title="Ubicación PiquiTours"
                 ></iframe>
@@ -676,8 +661,7 @@ export default function Contacto() {
                 <span className="coord-value">4.1529°N, 74.8858°W</span>
               </div>
             </motion.div>
-
-            <motion.div 
+            <motion.div
               className="location-info-panel"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -688,9 +672,8 @@ export default function Contacto() {
                 <h3>Información de Contacto</h3>
                 <p>Estamos aquí para ayudarte</p>
               </div>
-
               <div className="premium-info-grid">
-                <motion.div 
+                <motion.div
                   className="premium-info-card address-card"
                   whileHover={{ y: -5, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -707,8 +690,7 @@ export default function Contacto() {
                     </div>
                   </div>
                 </motion.div>
-
-                <motion.div 
+                <motion.div
                   className="premium-info-card phone-card clickable-info-card"
                   whileHover={{ y: -5, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -726,8 +708,7 @@ export default function Contacto() {
                     </div>
                   </div>
                 </motion.div>
-
-                <motion.div 
+                <motion.div
                   className="premium-info-card email-card clickable-info-card"
                   whileHover={{ y: -5, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -745,8 +726,7 @@ export default function Contacto() {
                     </div>
                   </div>
                 </motion.div>
-
-                <motion.div 
+                <motion.div
                   className="premium-info-card schedule-card"
                   whileHover={{ y: -5, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -773,8 +753,7 @@ export default function Contacto() {
                   </div>
                 </motion.div>
               </div>
-
-              <motion.div 
+              <motion.div
                 className="visit-cta-banner"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -796,7 +775,6 @@ export default function Contacto() {
           </div>
         </div>
       </section>
-
       <Footer />
     </main>
   );
