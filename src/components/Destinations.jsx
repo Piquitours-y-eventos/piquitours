@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiStar, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import toursData from '../data/tours.json';
 import './styles/Destinations.css';
+import ReservaForm from "../componentes/ReservaForm";
+
 
 const Destinations = () => {
   const [tours, setTours] = useState(toursData.tours);
@@ -18,6 +20,8 @@ const Destinations = () => {
   const [activeTab, setActiveTab] = useState('resumen');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [reservaAbierta, setReservaAbierta] = useState(false);
+
 
   useEffect(() => {
     filterAndSort();
@@ -477,12 +481,13 @@ const Destinations = () => {
               </AnimatePresence>
               <motion.button
                 className="book-btn"
-                onClick={() => alert('Reserva simulada. Contacta para más info.')}
+                onClick={() => setReservaAbierta(true)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                ¡Reserva tu aventura ahora!
+              ¡Reserva tu aventura ahora!
               </motion.button>
+
             </main>
           </motion.div>
         </motion.div>
@@ -540,6 +545,10 @@ const Destinations = () => {
           </motion.div>
         </motion.div>
       )}
+      {reservaAbierta && (
+  <ReservaForm onClose={() => setReservaAbierta(false)} />
+)}
+
     </section>
   );
 };
