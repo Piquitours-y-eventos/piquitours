@@ -1,0 +1,16 @@
+import React from "react";
+import ReservaForm from "../components/ReservaForm";
+
+function Home() {
+  return (
+    <div>
+      <h1>Bienvenido a PiquiTours</h1>
+      <p>Descubre los mejores destinos turísticos.</p>
+      
+      {/* Aquí aparece el botón para abrir el formulario */}
+      <ReservaForm />
+    </div>
+  );
+}
+
+export default Home;
