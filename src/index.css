@@ -5,8 +5,8 @@
 
 /* Variables globales */
 :root {
-  --color-bg-dark: #0B0F19;
-  --color-bg-light: #FFFFFF;
+  /* --color-bg-dark: #0B0F19; */
+  /* --color-bg-light: #FFFFFF; */
   --color-primary: #00B4D8; /* Turquesa */
   --color-primary-dark: #0077B6; /* Azul Marino */
   --color-accent: #FFD166; /* Dorado */
@@ -70,15 +70,15 @@ main:not([data-page="home"]) {
 }
 
 /* Modo oscuro */
-body.dark-mode {
-  background-color: var(--color-bg-dark);
-  color: var(--color-text-light);
-}
+/* body.dark-mode { */
+  /* background-color: var(--color-bg-dark); */
+  /* color: var(--color-text-light); */
+/* } */
 
-body:not(.dark-mode) {
-  background-color: var(--color-bg-light);
-  color: var(--color-text-dark);
-}
+/* body:not(.dark-mode) { */
+  /* background-color: var(--color-bg-light); */
+  /* color: var(--color-text-dark); */
+/* } */
 
 /* Enlaces */
 a {
@@ -115,20 +115,20 @@ a:hover {
 }
 
 /* Modo oscuro scrollbar */
-body.dark-mode ::-webkit-scrollbar-thumb {
-  background: rgba(0, 180, 216, 0.6);
-}
-body.dark-mode ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 180, 216, 0.9);
-}
+/* body.dark-mode ::-webkit-scrollbar-thumb { */
+  /* background: rgba(0, 180, 216, 0.6); */
+/* } */
+/* body.dark-mode ::-webkit-scrollbar-thumb:hover { */
+  /* background: rgba(0, 180, 216, 0.9); */
+/* } */
 
 /* Modo claro scrollbar */
-body:not(.dark-mode) ::-webkit-scrollbar-thumb {
-  background: rgba(0, 119, 182, 0.4);
-}
-body:not(.dark-mode) ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 119, 182, 0.8);
-}
+/* body:not(.dark-mode) ::-webkit-scrollbar-thumb { */
+  /* background: rgba(0, 119, 182, 0.4); */
+/* } */
+/* body:not(.dark-mode) ::-webkit-scrollbar-thumb:hover { */
+  /* background: rgba(0, 119, 182, 0.8); */
+/* } */
 
 /* Firefox */
 * {

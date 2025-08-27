@@ -261,7 +261,7 @@ body {
 }
 .ghost:hover { border-color: #3a3a44; }
 
-/* Modal */
+/* Modal mejoras: más grande, mejor interfaz */
 .backdrop {
   position: fixed; inset: 0; background: rgba(0,0,0,.75);
   display: none; align-items: center; justify-content: center; padding: 20px; z-index: 999999;
@@ -269,12 +269,13 @@ body {
   padding-top: 80px;
 }
 .backdrop.show { display: flex; }
-.dialog {
-  width: min(1000px, 94%); max-height: calc(90vh - 80px); overflow: hidden; border-radius: 24px;
+.improved-dialog { 
+  width: min(1080px, 92vw); max-height: 80vh; overflow: hidden; border-radius: 24px;
   background: linear-gradient(145deg, rgba(18,18,26,0.95), rgba(15,15,21,0.95));
   border: 1px solid rgba(255,138,64,0.2);
   box-shadow: 0 20px 60px rgba(0,0,0,.6);
   position: relative; display: flex; flex-direction: column;
+  padding: 18px;
 }
 .dialog header {
   padding: 20px 24px; display: flex; gap: 12px; align-items: center; justify-content: space-between;
@@ -293,7 +294,7 @@ body {
 }
 .headtitle h2 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(24px, 3vw, 28px);
+  font-size: clamp(28px, 3.5vw, 32px); 
   font-weight: 800;
   margin: 0;
   background: linear-gradient(90deg, var(--g1), var(--g2));
@@ -302,7 +303,7 @@ body {
   color: transparent;
 }
 .headtitle p {
-  font-size: clamp(12px, 1.8vw, 13px);
+  font-size: clamp(13px, 2vw, 14px);
   margin: 0;
 }
 .dotAccent {
@@ -311,8 +312,9 @@ body {
   box-shadow: 0 0 0 3px rgba(255,138,64,.15);
 }
 .dialog .cover {
-  position: relative; aspect-ratio: 16/9; overflow: hidden;
+  position: relative; aspect-ratio: 16/8; overflow: hidden;
   border-bottom: 1px solid rgba(255,138,64,0.15);
+  border-radius: 16px; 
 }
 .dialog .cover img, .dialog .cover video {
   width: 100%; height: 100%; object-fit: cover; display: block;
@@ -323,12 +325,12 @@ body {
 }
 .dialog main {
   overflow-y: auto;
-  max-height: calc(90vh - 220px);
+  max-height: calc(80vh - 210px);
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: var(--g2) #1a1a22;
-  padding-top: 0;
-  margin-top: 0;
+  padding: 18px; 
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1)); 
 }
 .dialog main::-webkit-scrollbar { width: 6px; }
 .dialog main::-webkit-scrollbar-track { background: #1a1a22; border-radius: 10px; }
@@ -337,11 +339,11 @@ body {
   position: sticky; top: 0; z-index: 4;
   background: linear-gradient(180deg, rgba(18,18,26,0.95), rgba(15,15,21,0.95));
   border-bottom: 1px solid rgba(255,138,64,0.15);
-  display: flex; gap: 8px; padding: 8px 16px 0 16px; flex-wrap: wrap; justify-content: center;
+  display: flex; gap: 12px; padding: 12px 20px 0; flex-wrap: wrap; justify-content: center; 
   margin-bottom: 0;
 }
 .tab {
-  padding: 10px 16px; border-radius: 12px; font-weight: 600; font-size: 14px;
+  padding: 12px 20px; border-radius: 12px; font-weight: 600; font-size: 15px; 
   cursor: pointer; color: var(--text); border: 1px solid transparent;
   transition: all 0.2s ease; background: rgba(255,255,255,0.05);
   margin-bottom: 0.5rem;
@@ -351,37 +353,46 @@ body {
   color: #111; background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3));
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
-.section { padding: 0 24px 16px 24px; }
-.section:first-of-type { padding-top: 0; }
+.improved-section { 
+  padding: 20px; 
+  margin: 10px 0;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.02); 
+}
 .section h4 {
-  margin: 0 0 12px; font-size: clamp(18px, 2.2vw, 20px);
-  display: flex; align-items: center; gap: 8px; font-weight: 700;
+  margin: 0 0 16px; font-size: clamp(20px, 2.5vw, 22px); 
+  display: flex; align-items: center; gap: 10px; font-weight: 700;
 }
 .two {
-  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 20px;
+  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px;
 }
 @media (max-width: 920px) { .two { grid-template-columns: 1fr; } }
 .info {
   background: linear-gradient(180deg, rgba(20,20,28,0.95), rgba(18,18,25,0.95));
-  border: 1px solid rgba(255,138,64,0.15); border-radius: 16px; padding: 16px;
+  border: 1px solid rgba(255,138,64,0.15); border-radius: 16px; padding: 20px;
 }
-.list { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
-.list li { display: flex; gap: 10px; align-items: flex-start; }
-.list .ok { color: var(--ok); font-size: 16px; }
-.list .no { color: #ff5555; font-size: 16px; }
-.timeline { display: grid; gap: 12px; }
+.list { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; 
+}
+.list li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; 
+}
+.list .ok { color: var(--ok); font-size: 18px; }
+.list .no { color: #ff5555; font-size: 18px; }
+.timeline { display: grid; gap: 16px; }
 .step {
   background: linear-gradient(180deg, rgba(20,20,28,0.95), rgba(18,18,25,0.95));
-  border: 1px solid rgba(255,138,64,0.15); border-radius: 12px; padding: 12px;
+  border: 1px solid rgba(255,138,64,0.15); border-radius: 12px; padding: 16px;
 }
-.step .small { color: var(--muted); font-size: 12px; }
+.step .small { color: var(--muted); font-size: 13px; }
 
-/* Gallery */
+/* Gallery mejoras */
+.gallery-intro {
+  color: var(--muted); font-size: 14px; margin-bottom: 16px; line-height: 1.6;
+}
 .gallery {
-  display: grid; grid-template-columns: repeat(12,1fr); gap: 8px;
+  display: grid; grid-template-columns: repeat(12,1fr); gap: 12px; 
 }
 .ph {
-  position: relative; overflow: hidden; border-radius: 14px; background: #0e0e14; aspect-ratio: 4/3;
+  position: relative; overflow: hidden; border-radius: 16px; background: #0e0e14; aspect-ratio: 4/3;
 }
 .ph img, .ph video {
   width: 100%; height: 100%; object-fit: cover; display: block;
@@ -397,7 +408,7 @@ body {
   .span-4 { grid-column: span 6; }
 }
 @media (max-width: 560px) { .span-4 { grid-column: span 12; } }
-@media (max-width: 400px) { .gallery { gap: 6px; } }
+@media (max-width: 400px) { .gallery { gap: 8px; } }
 
 /* Lightbox */
 .lightbox {
@@ -459,6 +470,74 @@ body.modal-open {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+/* Nuevo: Estilos para formulario de reserva - Diseño mejorado: más limpio, tamaños ajustados, iconos dentro, botones elegantes */
+.reserva-overlay {
+  position: absolute; inset: 0; background: rgba(18,18,26,0.98);
+  padding: 16px; overflow-y: auto; z-index: 10;
+  border-radius: 24px; 
+  box-shadow: inset 0 0 20px rgba(255,138,64,0.1);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.reserva-close {
+  position: absolute; top: 8px; right: 8px;
+  background: transparent; border: none; color: var(--text); cursor: pointer;
+  font-size: 18px; padding: 4px; border-radius: 50%;
+  transition: all 0.2s ease;
+}
+.reserva-close:hover { background: rgba(255,138,64,0.2); }
+.reserva-title {
+  font-size: 20px; text-align: center; margin: 0 0 8px;
+  background: linear-gradient(90deg, var(--g1), var(--g2)); -webkit-background-clip: text; color: transparent;
+}
+.reserva-intro {
+  text-align: center; color: var(--muted); margin: 0; font-size: 13px; line-height: 1.5;
+}
+.reserva-stepper {
+  display: flex; justify-content: center; margin: 8px 0; gap: 24px;
+}
+.step-indicator {
+  width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px;
+  background: rgba(255,255,255,0.05); color: var(--muted); font-size: 14px; transition: all 0.3s;
+}
+.step-indicator.active {
+  background: linear-gradient(90deg, var(--g1), var(--g2)); color: #111; font-weight: bold;
+  box-shadow: 0 2px 8px rgba(255,138,64,0.3);
+}
+.reserva-step {
+  display: grid; gap: 12px;
+}
+.form-group {
+  position: relative; display: flex; align-items: center;
+  background: rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden;
+  border: 1px solid rgba(255,138,64,0.2);
+}
+.form-icon {
+  padding: 10px 12px; color: var(--muted); font-size: 16px;
+  background: rgba(0,0,0,0.1); 
+}
+.form-group input, .form-group textarea {
+  flex: 1; padding: 10px 12px; border: none;
+  background: transparent; color: var(--text); font-size: 14px;
+}
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+}
+.form-group textarea { min-height: 80px; resize: vertical; }
+.reserva-actions {
+  display: flex; gap: 12px; margin-top: 16px; justify-content: center;
+}
+.reserva-error {
+  color: #ff5555; text-align: center; margin: -4px 0 8px; font-size: 12px;
+}
+.confirmation {
+  text-align: center; font-size: 14px;
+}
+.confirmation h5 { font-size: 16px; margin-bottom: 12px; }
+.confirmation p { margin: 4px 0; color: var(--text); }
+.confirmation-note {
+  color: var(--ok); font-size: 13px; margin-top: 12px;
 }
 
 /* New components */
@@ -569,7 +648,8 @@ body.modal-open {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 20, 0.9) 100%);
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 20, 0.9) 100%);
   color: #FFD700;
   padding: 10px 16px;
   border-radius: 25px;
@@ -610,12 +690,21 @@ body.modal-open {
     padding-top: 70px;
   }
   
-  .dialog {
-    max-height: calc(90vh - 70px);
+  .improved-dialog {
+    width: 100vw; height: 100vh; max-height: none; border-radius: 0;
+    padding: 16px;
   }
   
   .dialog main {
-    max-height: calc(90vh - 190px);
+    max-height: none;
+  }
+
+  .reserva-stepper {
+    gap: 16px;
+  }
+
+  .reserva-actions {
+    flex-direction: column-reverse;
   }
 }
 
@@ -808,7 +897,7 @@ body:not(.dark-mode) .backdrop {
   backdrop-filter: blur(10px);
 }
 
-body:not(.dark-mode) .dialog {
+body:not(.dark-mode) .improved-dialog {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(248, 249, 250, 0.95));
   border: 1px solid rgba(255,138,64,0.2);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
@@ -1008,4 +1097,59 @@ body:not(.dark-mode) .section strong {
 body:not(.dark-mode) .fade {
   opacity: 0.7;
   color: rgba(3, 6, 23, 0.7);
+}
+
+/* Reserva overlay - Light Mode */
+body:not(.dark-mode) .reserva-overlay {
+  background: rgba(248,249,250,0.98);
+  box-shadow: inset 0 0 20px rgba(255,138,64,0.1);
+}
+
+body:not(.dark-mode) .reserva-close {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .reserva-close:hover {
+  background: rgba(255,138,64,0.1);
+}
+
+body:not(.dark-mode) .reserva-title {
+  background: linear-gradient(90deg, var(--g1), var(--g2)); -webkit-background-clip: text; color: transparent;
+}
+
+body:not(.dark-mode) .reserva-intro {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .step-indicator {
+  background: rgba(255,255,255,0.8); color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .step-indicator.active {
+  background: linear-gradient(90deg, var(--g1), var(--g2)); color: #111;
+}
+
+body:not(.dark-mode) .form-group {
+  background: rgba(255,255,255,0.8); border: 1px solid rgba(255,138,64,0.2);
+}
+
+body:not(.dark-mode) .form-group input, body:not(.dark-mode) .form-group textarea {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .form-icon {
+  color: rgba(3, 6, 23, 0.7);
+  background: rgba(0,0,0,0.05);
+}
+
+body:not(.dark-mode) .reserva-error {
+  color: #dc3545;
+}
+
+body:not(.dark-mode) .confirmation p {
+  color: rgba(3, 6, 23, 0.8);
+}
+
+body:not(.dark-mode) .confirmation-note {
+  color: #28a745;
 }

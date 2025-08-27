@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'; // Nuevos iconos para prev/next
 import { TbWorld } from 'react-icons/tb';
 import './styles/Hero.css';
+import carrosel_1 from './../../public/carrosel_1.jpg'
+import carrosel_2 from './../../public/carrosel_2.png'
 
 const TEXTS = [
   "Viajes inolvidables en Colombia",
@@ -11,10 +14,13 @@ const TEXTS = [
 ];
 
 const IMAGES = [
-  'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-  'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+  // carrosel_1,
+  // carrosel_2,
   'https://i0.wp.com/blog.vivaaerobus.com/wp-content/uploads/2022/04/playas-colombia-1.jpg?fit=1920%2C1080&ssl=1',
-  'https://www.portafolio.co/files/article_new_multimedia/uploads/2024/02/05/65c10956b22b1.jpeg'
+  'https://www.portafolio.co/files/article_new_multimedia/uploads/2024/02/05/65c10956b22b1.jpeg',
+  // 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROPZcm-a6wLqgCBijhU_BDQcgrSU7czuPAA&s',
+  'https://wallpapers.com/images/featured/colombia-lznwnf00i3uafytz.jpg',
+  'https://denomades-blog.imgix.net/blog/wp-content/uploads/2017/10/19150237/Colombia_cartagena-de-indias.jpg?auto=compress%2Cformat&ixlib=php-3.3.1'
 ];
 
 export default function Hero() {
@@ -119,10 +125,10 @@ export default function Hero() {
       <div className="hero-overlay" />
       <div className="hero-gradient" />
       <button className="hero-button prev" onClick={goToPrevious} aria-label="Imagen anterior">
-        ←
+        <FaArrowLeft /> {/* Icono nuevo, centrado vía CSS */}
       </button>
       <button className="hero-button next" onClick={goToNext} aria-label="Imagen siguiente">
-        →
+        <FaArrowRight /> {/* Icono nuevo, centrado vía CSS */}
       </button>
       <div className="hero-dots">
         {IMAGES.map((_, index) => (
@@ -160,21 +166,17 @@ export default function Hero() {
         </button>
       </div>
       <div className="redes-sociales">
-        <a href="https://www.facebook.com/share/1AiMVjLLDs/" target="_blank" rel="noreferrer noopener">
+        <a href="https://www.facebook.com/profile.php?id=100068920613548" target="_blank" rel="noreferrer noopener">
           <FaFacebook />
           <span>Facebook</span>
         </a>
-        <a href="https://www.instagram.com/piquitours?igsh=OThpM2EyajhwaGNt" target="_blank" rel="noreferrer noopener">
+        <a href="https://www.instagram.com/piquitours/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noreferrer noopener">
           <FaInstagram />
           <span>Instagram</span>
         </a>
-        <a href="https://whatsapp.com" target="_blank" rel="noreferrer noopener">
+        <a href="https://wa.me/573115776477?text=Hola%2C%20quisiera%20saber%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20tours%20de%20Piquitours" target="_blank" rel="noreferrer noopener">
           <FaWhatsapp />
           <span>Contáctanos</span>
-        </a>
-        <a href="https://piquitours.com" target="_blank" rel="noreferrer noopener">
-          <TbWorld />
-          <span>Website</span>
         </a>
       </div>
     </section>

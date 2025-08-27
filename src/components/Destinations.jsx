@@ -1,11 +1,9 @@
 // Destinations.jsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiStar, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiStar, FiChevronLeft, FiChevronRight, FiUser, FiMail, FiPhone, FiCalendar, FiUsers, FiMessageSquare } from 'react-icons/fi';
 import toursData from '../data/tours.json';
 import './styles/Destinations.css';
-import ReservaForm from "../componentes/ReservaForm";
-
 
 const Destinations = () => {
   const [tours, setTours] = useState(toursData.tours);
@@ -22,6 +20,17 @@ const Destinations = () => {
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [reservaAbierta, setReservaAbierta] = useState(false);
 
+  // Nuevo estado para el formulario de reserva
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    telefono: '',
+    fecha: '',
+    personas: 1,
+    mensaje: ''
+  });
+  const [formStep, setFormStep] = useState(1); // Para stepper: 1=Detalles personales, 2=Detalles del viaje, 3=Confirmación
+  const [formError, setFormError] = useState('');
 
   useEffect(() => {
     filterAndSort();
@@ -74,11 +83,24 @@ const Destinations = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+    setReservaAbierta(false); // Cerrar también el formulario si está abierto
     document.body.classList.remove('modal-open');
     
     const scrollY = document.body.style.top;
     document.body.style.top = '';
     window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    
+    // Reset form
+    setFormData({
+      nombre: '',
+      email: '',
+      telefono: '',
+      fecha: '',
+      personas: 1,
+      mensaje: ''
+    });
+    setFormStep(1);
+    setFormError('');
   };
 
   const openLightbox = (index) => {
@@ -128,6 +150,50 @@ const Destinations = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [lightboxOpen, selectedTour, nextLightbox, prevLightbox, setLightboxIndex, closeLightbox, lightboxIndex]);
 
+  // Manejo del formulario
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const validateStep = () => {
+    if (formStep === 1) {
+      if (!formData.nombre || !formData.email || !formData.telefono) {
+        setFormError('Por favor completa todos los campos personales.');
+        return false;
+      }
+      if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        setFormError('Email inválido.');
+        return false;
+      }
+    } else if (formStep === 2) {
+      if (!formData.fecha || formData.personas < 1) {
+        setFormError('Por favor selecciona fecha y número de personas.');
+        return false;
+      }
+    }
+    setFormError('');
+    return true;
+  };
+
+  const nextFormStep = () => {
+    if (validateStep()) {
+      setFormStep(prev => Math.min(prev + 1, 3));
+    }
+  };
+
+  const prevFormStep = () => {
+    setFormStep(prev => Math.max(prev - 1, 1));
+  };
+
+  const submitForm = () => {
+    if (validateStep()) {
+      // Aquí iría la lógica de envío (ej. API call)
+      alert('¡Reserva enviada con éxito! Nos contactaremos pronto.');
+      closeModal();
+    }
+  };
+
   return (
     <section className="destinations-section" id="destinos">
       <div className="wrap">
@@ -163,7 +229,7 @@ const Destinations = () => {
         </header>
 
         <div style={{ maxWidth: '1000px', margin: '0 auto 28px' }}>
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop" alt="Paisaje Colombia" style={{ width: '100%', borderRadius: '16px', boxShadow: '0 6px 28px rgba(0,0,0,.18)', objectFit: 'cover', aspectRatio: '16/5' }} />
+          <img src="/portada_google.jpeg" alt="Paisaje Colombia" style={{ width: '100%', borderRadius: '16px', boxShadow: '0 6px 28px rgba(0,0,0,.18)', objectFit: 'cover', aspectRatio: '16/5' }} />
         </div>
 
         <section className="filters" aria-label="Filtros">
@@ -274,7 +340,7 @@ const Destinations = () => {
           onClick={closeModal}
         >
           <motion.div 
-            className="dialog"
+            className="dialog improved-dialog" // Clase nueva para mejoras
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
@@ -336,15 +402,15 @@ const Destinations = () => {
                 {activeTab === 'resumen' && (
                   <motion.section
                     key="resumen"
-                    className="section two panel"
+                    className="section two panel improved-section" // Mejoras en sección
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4 }}
                   >
                     <div className="info">
-                      <h4><span className="icon">📖</span> Una experiencia inolvidable</h4>
-                      <p>{selectedTour.resumen || selectedTour.fullDescription} Descubre un viaje diseñado para sorprenderte, con cada detalle cuidadosamente planeado por Piquitours. Desde paisajes que quitan el aliento hasta experiencias culturales auténticas, este destino te invita a vivir momentos que recordarás para siempre.</p>
+                      <h4><span className="icon">📖</span> Una experiencia inolvidable 🌟</h4>
+                      <p>{selectedTour.resumen || selectedTour.fullDescription} Descubre un viaje diseñado para sorprenderte, con cada detalle cuidadosamente planeado por Piquitours. Desde paisajes que quitan el aliento hasta experiencias culturales auténticas, este destino te invita a vivir momentos que recordarás para siempre. ¡No esperes más para reservar tu aventura! 🚀</p>
                       <ul className="list">
                         {(selectedTour.bullets || selectedTour.highlights.map(h => h.text)).map((b, i) => (
                           <li key={i}>
@@ -354,15 +420,15 @@ const Destinations = () => {
                       </ul>
                     </div>
                     <div className="info">
-                      <h4><span className="icon">⚡</span> Por qué elegir este destino</h4>
+                      <h4><span className="icon">⚡</span> Por qué elegir este destino 💎</h4>
                       <ul className="list">
                         {(selectedTour.quick || Object.entries(selectedTour.details)).map(([k, v], i) => (
                           <li key={i}>
                             <span style={{ opacity: '.7' }}>{k}:</span>&nbsp;<strong>{v}</strong>
                           </li>
                         ))}
-                        <li><span style={{ opacity: '.7' }}>Exclusividad:</span>&nbsp;<strong>Solo con Piquitours</strong></li>
-                        <li><span style={{ opacity: '.7' }}>Soporte:</span>&nbsp;<strong>Atención personalizada 24/7</strong></li>
+                        <li><span style={{ opacity: '.7' }}>Exclusividad:</span>&nbsp;<strong>Solo con Piquitours 🌟</strong></li>
+                        <li><span style={{ opacity: '.7' }}>Soporte:</span>&nbsp;<strong>Atención personalizada 24/7 📞</strong></li>
                       </ul>
                     </div>
                   </motion.section>
@@ -371,13 +437,13 @@ const Destinations = () => {
                 {activeTab === 'itinerario' && (
                   <motion.section
                     key="itinerario"
-                    className="section panel"
+                    className="section panel improved-section"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <h4><span className="icon">🗓️</span> Tu aventura día a día</h4>
+                    <h4><span className="icon">🗓️</span> Tu aventura día a día 📅</h4>
                     <div className="timeline">
                       {(selectedTour.itinerario || selectedTour.itinerary).map((st, i) => (
                         <motion.div
@@ -400,13 +466,13 @@ const Destinations = () => {
                 {activeTab === 'incluye' && (
                   <motion.section
                     key="incluye"
-                    className="section panel"
+                    className="section panel improved-section"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <h4><span className="icon">✅</span> Todo lo que incluye tu viaje</h4>
+                    <h4><span className="icon">✅</span> Todo lo que incluye tu viaje 🎁</h4>
                     <ul className="list">
                       {(selectedTour.incluye || selectedTour.inclusions.map(txt => ({ok: true, txt}))).map((x, i) => (
                         <li key={i}>
@@ -420,13 +486,14 @@ const Destinations = () => {
                 {activeTab === 'galeria' && (
                   <motion.section
                     key="galeria"
-                    className="section panel"
+                    className="section panel improved-section"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <h4><span className="icon">🖼️</span> Explora en imágenes</h4>
+                    <h4><span className="icon">🖼️</span> Galería Exclusiva: Vive la Aventura en Imágenes Antes de Reservar 🌟</h4>
+                    <p className="gallery-intro">Sumérgete en estas imágenes cautivadoras que capturan la esencia de tu próximo viaje. Cada foto es una promesa de momentos inolvidables. ¡Reserva ahora y hazlas realidad! 📸✨</p>
                     <div className="gallery">
                       {(selectedTour.media || selectedTour.gallery.map(src => ({type: 'img', src}))).map((m, i) => (
                         <motion.div
@@ -450,13 +517,13 @@ const Destinations = () => {
                 {activeTab === 'opiniones' && (
                   <motion.section
                     key="opiniones"
-                    className="section panel"
+                    className="section panel improved-section"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <h4><span className="icon">💬</span> Lo que dicen nuestros viajeros</h4>
+                    <h4><span className="icon">💬</span> Lo que dicen nuestros viajeros 🗣️</h4>
                     <div className="reviews">
                       {(selectedTour.reviews || []).map(([name, flag, stars, text], i) => (
                         <motion.div
@@ -472,23 +539,128 @@ const Destinations = () => {
                             <div className="stars">{'★'.repeat(+stars)}{'☆'.repeat(5 - +stars)}</div>
                             <div style={{ marginTop: '6px' }}>{text}</div>
                           </div>
-                          <div><span className="tag">Verificado</span></div>
+                          <div><span className="tag">Verificado ✅</span></div>
                         </motion.div>
                       ))}
                     </div>
                   </motion.section>
                 )}
               </AnimatePresence>
-              <motion.button
-                className="book-btn"
-                onClick={() => setReservaAbierta(true)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-              ¡Reserva tu aventura ahora!
-              </motion.button>
-
+              {!reservaAbierta && (
+                <motion.button
+                  className="book-btn"
+                  onClick={() => setReservaAbierta(true)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  ¡Reserva tu aventura ahora! 🚀
+                </motion.button>
+              )}
             </main>
+
+            {/* Nuevo: Formulario de reserva en el mismo modal, pero como overlay */}
+            <AnimatePresence>
+              {reservaAbierta && (
+                <motion.div
+                  className="reserva-overlay"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 50 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <h4 className="reserva-title"><span className="icon">📅</span> Reserva Tu Viaje: ¡Comienza la Aventura! 🌍</h4>
+                  <p className="reserva-intro">Completa este formulario rápido y seguro para reservar {selectedTour.nombre || selectedTour.title}. Nuestro equipo te contactará en menos de 24 horas. ¡Es fácil y sin compromiso inicial! ✨</p>
+                  
+                  {/* Stepper */}
+                  <div className="reserva-stepper">
+                    <div className={`step-indicator ${formStep >= 1 ? 'active' : ''}`}>1. Datos Personales</div>
+                    <div className={`step-indicator ${formStep >= 2 ? 'active' : ''}`}>2. Detalles del Viaje</div>
+                    <div className={`step-indicator ${formStep === 3 ? 'active' : ''}`}>3. Confirmación</div>
+                  </div>
+
+                  {formError && <p className="reserva-error">{formError}</p>}
+
+                  <AnimatePresence mode="wait">
+                    {formStep === 1 && (
+                      <motion.div
+                        key="step1"
+                        className="reserva-step"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                      >
+                        <div className="form-group">
+                          <FiUser className="form-icon" />
+                          <input type="text" name="nombre" placeholder="Nombre completo" value={formData.nombre} onChange={handleFormChange} />
+                        </div>
+                        <div className="form-group">
+                          <FiMail className="form-icon" />
+                          <input type="email" name="email" placeholder="Correo electrónico" value={formData.email} onChange={handleFormChange} />
+                        </div>
+                        <div className="form-group">
+                          <FiPhone className="form-icon" />
+                          <input type="tel" name="telefono" placeholder="Teléfono (con código de país)" value={formData.telefono} onChange={handleFormChange} />
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {formStep === 2 && (
+                      <motion.div
+                        key="step2"
+                        className="reserva-step"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                      >
+                        <div className="form-group">
+                          <FiCalendar className="form-icon" />
+                          <input type="date" name="fecha" placeholder="Fecha preferida" value={formData.fecha} onChange={handleFormChange} />
+                        </div>
+                        <div className="form-group">
+                          <FiUsers className="form-icon" />
+                          <input type="number" name="personas" min="1" placeholder="Número de personas" value={formData.personas} onChange={handleFormChange} />
+                        </div>
+                        <div className="form-group">
+                          <FiMessageSquare className="form-icon" />
+                          <textarea name="mensaje" placeholder="Mensaje adicional (ej. requerimientos especiales)" value={formData.mensaje} onChange={handleFormChange} />
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {formStep === 3 && (
+                      <motion.div
+                        key="step3"
+                        className="reserva-step confirmation"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                      >
+                        <h5>Resumen de tu Reserva 📋</h5>
+                        <p><strong>Destino:</strong> {selectedTour.nombre || selectedTour.title}</p>
+                        <p><strong>Nombre:</strong> {formData.nombre}</p>
+                        <p><strong>Email:</strong> {formData.email}</p>
+                        <p><strong>Teléfono:</strong> {formData.telefono}</p>
+                        <p><strong>Fecha:</strong> {formData.fecha}</p>
+                        <p><strong>Personas:</strong> {formData.personas}</p>
+                        <p><strong>Mensaje:</strong> {formData.mensaje || 'Ninguno'}</p>
+                        <p className="confirmation-note">¡Todo listo! Presiona "Enviar" para confirmar. Te enviaremos un email de confirmación. 😊</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <div className="reserva-actions">
+                    {formStep > 1 && (
+                      <button className="button ghost" onClick={prevFormStep}>Anterior</button>
+                    )}
+                    {formStep < 3 ? (
+                      <button className="button" onClick={nextFormStep}>Siguiente</button>
+                    ) : (
+                      <button className="button" onClick={submitForm}>Enviar Reserva ✅</button>
+                    )}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </motion.div>
       )}
@@ -545,9 +717,6 @@ const Destinations = () => {
           </motion.div>
         </motion.div>
       )}
-      {reservaAbierta && (
-  <ReservaForm onClose={() => setReservaAbierta(false)} />
-)}
 
     </section>
   );

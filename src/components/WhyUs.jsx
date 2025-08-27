@@ -88,7 +88,7 @@ export default function WhyUs() {
           </p>
           <div className="why-us-rating">
             <FiStar className="star-icon" />
-            <span>4.9/5 basado en +10,000 reseñas</span>
+            <span>Mas de +5,000 clientes que han viajado con nosotros</span>
           </div>
 
           {/* Tabs */}
@@ -154,7 +154,9 @@ export default function WhyUs() {
           {/* CTA */}
           <motion.button
             className="book-btn"
-            onClick={() => alert('¡Comienza tu aventura! Te contactaremos para personalizar tu viaje.')}
+            onClick={() => {
+              window.location.href = '/contacto';
+            }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -171,7 +173,7 @@ export default function WhyUs() {
           transition={{ duration: 0.8, delay: 0.2, type: 'spring', stiffness: 80 }}
         >
           <motion.img
-            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop"
+            src="/portada_google.jpeg"
             alt="Turismo en Colombia"
             className="why-us-image"
             loading="lazy"

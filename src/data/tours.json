@@ -15,17 +15,15 @@
       "precio": 1390000,
       "popularidad": 98,
       "portada": { "type":"video",
-        "src":"https://cdn.coverr.co/videos/coverr-sand-dunes-8474/1080p.mp4",
-        "poster":"https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1600&auto=format&fit=crop"
+        "src":"la_guajira_video.mp4",
+        "poster":"la_guajira_video.mp4"
       },
       "media": [
-        {"type":"img","src":"https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1535914254981-b5012eebbd15?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1518684079-6f7f1f9b81c2?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"video","src":"https://cdn.coverr.co/videos/coverr-golden-sand-9586/1080p.mp4",
-          "poster":"https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1544194215-d5f8ff9c07d7?q=80&w=1200&auto=format&fit=crop"}
+        {"type":"img","src":"https://substackcdn.com/image/fetch/%24s_%217wYG%21%2Cf_auto%2Cq_auto%3Agood%2Cfl_progressive%3Asteep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F476d4509-3545-45f2-88ea-8b08ed179193_2000x1333.jpeg"},
+        {"type":"img","src":"https://substackcdn.com/image/fetch/%24s_%21QhBg%21%2Cf_auto%2Cq_auto%3Agood%2Cfl_progressive%3Asteep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0c06fc38-b909-44a6-96e5-a7e0acbccfe7_2000x1333.jpeg"},
+        {"type":"img","src":"https://cosechabags.com/wp-content/uploads/2024/08/Wayuu-Gastronomy-1024x683.jpeg",
+          "poster":"https://colombia-travels.com/wp-content/uploads/anochecer-calido-guajira-ago14-1280x800.jpg"},
+        {"type":"img","src":"https://travelhapp.com/wp-content/uploads/2024/10/Riohacha_Sea_Colombia_Travelhapp.jpg"}
       ],
       "itinerario": [
         {"dia":"Día 1", "titulo":"Ruta Riohacha • Ranchería", "detalle":"Recepción, almuerzo típico y recorrido cultural. Fogata con historias Wayuu."},
@@ -65,15 +63,12 @@
       "duracion": 4,
       "precio": 1590000,
       "popularidad": 96,
-      "portada":{"type":"img","src":"https://images.unsplash.com/photo-1505761671935-60b3a7427bad?q=80&w=1600&auto=format&fit=crop"},
+      "portada":{"type":"img","src":"https://fastly.4sqi.net/img/general/original/2874272_HKo-lq9_8vQgLLUKet6hcu_1ck5A87vYP74PlPkckes.jpg"},
       "media":[
-        {"type":"img","src":"https://images.unsplash.com/photo-1543357480-c60d69b8b7e5?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1543351611-58f69d6e60bd?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"video","src":"https://cdn.coverr.co/videos/coverr-tropical-water-9639/1080p.mp4",
-          "poster":"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://fastly.4sqi.net/img/general/original/95788822_RSTXXNt6uE4C3sgBedNSQ6--wByH2B14oP9SrIZosrs.jpg"},
         {"type":"img","src":"https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=1200&auto=format&fit=crop"},
         {"type":"img","src":"https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1505228395891-9a9af86d060a?q=80&w=1200&auto=format&fit=crop"}
+        {"type":"img","src":"https://images.openai.com/thumbnails/url/vCGAY3icu1mSUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw4qdg1ItTDzyw51Diwuzc6rijAJSPHK8KwITna3yHapSnUycjapyEwqyXA2DU81Ty_2zrc0z3Gz8C5JDlQrBgAhcinn"}
       ],
       "itinerario":[
         {"dia":"Día 1", "titulo":"Centro histórico", "detalle":"Calles empedradas, Getsemaní y comida de autor."},
@@ -114,14 +109,14 @@
       "duracion": 3,
       "precio": 990000,
       "popularidad": 92,
-      "portada":{"type":"img","src":"https://images.unsplash.com/photo-1582231645943-84b068f70a5f?q=80&w=1600&auto=format&fit=crop"},
+      "portada":{"type":"img","src":"https://www.valledelcocora.com.co/w/wp-content/uploads/2024/06/valledelcocora-restaurante-bosques-de-cocora_1-1.jpg"},
       "media":[
-        {"type":"img","src":"https://images.unsplash.com/photo-1528821154947-1aa3d1d9f3be?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"https://www.triviantes.com/wp-content/uploads/2021/04/Trucha-Salento.jpg"},
         {"type":"video","src":"https://cdn.coverr.co/videos/coverr-green-mountains-6027/1080p.mp4",
-          "poster":"https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1504197835220-9f453cd4a4d0?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1544194215-d5f8ff9c07d7?q=80&w=1200&auto=format&fit=crop"}
+          "poster":"https://fincaspanacah10.com/wp-content/uploads/2023/01/BANDEJA-PAISA.png"},
+        {"type":"img","src":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI3_iIBf-8JsFufKrltqNBa5XQZEKU_EfbTFVn2fzxBnlBz45hkxmesHq5MFEt7TDJQ5Q&usqp=CAU"},
+        {"type":"img","src":"https://media.istockphoto.com/id/1363886997/es/foto/pareja-de-turistas-visitando-el-hermoso-valle-del-cocora-ubicado-en-salento-en-la-regi%C3%B3n-del.jpg?s=612x612&w=0&k=20&c=VtVZytHbrf1FjY3aPIWG72CkiGkTUZ8K4iQF7j23s5A="},
+        {"type":"img","src":"https://daleunavueltaalmundo.com/wp-content/uploads/2024/07/mano-princesa-cocora.webp"}
       ],
       "itinerario":[
         {"dia":"Día 1", "titulo":"Finca cafetera", "detalle":"Del cerezo a la taza: catación y tostión."},
@@ -149,7 +144,7 @@
       "id": 1,
       "title": "ARRÁS DE CIELO",
       "description": "Peñol y Guatapé, dos razones para enamorarte de Antioquia.",
-      "image": "san_andres.jpg",
+      "image": "https://cdn.getyourguide.com/img/location/5d301e2a59924.jpeg/99.jpg",
       "rating": 4.9,
       "price": "420,000",
       "fullDescription": "Explora el majestuoso Peñón de Guatapé y sus coloridos pueblos en una experiencia única que combina naturaleza, cultura y aventura.",
@@ -176,8 +171,9 @@
       "inclusions": ["Transporte", "Guía local", "Entradas"],
       "exclusions": ["Propinas", "Comidas no especificadas"],
       "gallery": [
-        "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1570549717489-461e9e0b5b7a?q=80&w=1200&auto=format&fit=crop"
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0irzlNeQas9cL4pEUEwvTa558Alcgl99w0MspIJ5Skx24Cl8PiPoMERMuK9f94L2kB60&usqp=CAU",
+        "https://cdn.getyourguide.com/img/tour/992efa7470cc58f9.png/68.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAKHgDsSiDt-zC4YzpMVCuHB1W7gKiJmm0OKWrwj5ttf8bFdDpHJqoxKyFVqCeZi-DLEw&usqp=CAU"
       ],
       "details": {
         "duration": "1 día",
@@ -191,7 +187,7 @@
       "id": 2,
       "title": "SABOR CARIBE",
       "description": "Barú, Rodadero y Cartagena: tres joyas, un solo paraíso.",
-      "image": "/quindio.jpg",
+      "image": "image.png",
       "rating": 4.8,
       "price": "850,000",
       "fullDescription": "Disfruta de las playas paradisíacas de Barú, la vibrante vida nocturna del Rodadero y el encanto histórico de Cartagena.",
@@ -214,8 +210,8 @@
       "inclusions": ["Transporte acuático", "Almuerzo", "Equipo de snorkel"],
       "exclusions": ["Bebidas alcohólicas", "Propinas"],
       "gallery": [
-        "https://images.unsplash.com/photo-1505228395891-9a9af86d060a?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1200&auto=format&fit=crop"
+        "pescado.jpg",
+        "ii.jpg"
       ],
       "details": {
         "duration": "4 días / 3 noches",
@@ -228,8 +224,8 @@
     {
       "id": 3,
       "title": "SELVA URBANA",
-      "description": "Conoce la ciudad de Medellín de una manera diferente.",
-      "image": "/baru.jpeg",
+      "description": "Conoce nuestra fauna y flora atravez de nuestras selvas.",
+      "image": "selva.jpg",
       "rating": 4.5,
       "price": "250,000",
       "fullDescription": "Explora la ciudad de Medellín y sus alrededores en una experiencia única que combina naturaleza, cultura y aventura.",
@@ -256,8 +252,8 @@
       "inclusions": ["Transporte", "Guía local", "Entradas"],
       "exclusions": ["Propinas", "Comidas no especificadas"],
       "gallery": [
-        "https://images.unsplash.com/photo-1541795795328-8666c4e4a3ce?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1541795795328-8666c4e4a3ce?q=80&w=1200&auto=format&fit=crop"
+        "selvita.jpg",
+        "monos.jpg"
       ],
       "details": {
         "duration": "1 día",
@@ -271,7 +267,7 @@
       "id": 4,
       "title": "ANDINOS",
       "description": "Conoce los Andes colombianos de una manera diferente.",
-      "image": "guatap2.jpeg",
+      "image": "andina.jpg",
       "rating": 4.8,
       "price": "2,000,000",
       "fullDescription": "Explora los Andes colombianos y sus alrededores en una experiencia única que combina naturaleza, cultura y aventura.",
@@ -298,8 +294,11 @@
       "inclusions": ["Transporte", "Guía local", "Entradas"],
       "exclusions": ["Propinas", "Comidas no especificadas"],
       "gallery": [
-        "https://images.unsplash.com/photo-1544194215-d5f8ff9c07d7?q=80&w=1200&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1544194215-d5f8ff9c07d7?q=80&w=1200&auto=format&fit=crop"
+        "fuente.webp",
+        "fuente.webp",
+        "ajiaco.webp",
+        "ajiaco.webp"
+
       ],
       "details": {
         "duration": "5 días / 4 noches",
@@ -325,15 +324,13 @@
       "precio": 1790000,
       "popularidad": 95,
       "portada": { "type":"img",
-        "src":"https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=1600&auto=format&fit=crop"
+        "src":"sn.jpg"
       },
       "media": [
-        {"type":"img","src":"https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1505228395891-9a9af86d060a?q=80&w=1200&auto=format&fit=crop"},
+        {"type":"img","src":"coco.jpg"},
         {"type":"video","src":"https://cdn.coverr.co/videos/coverr-tropical-water-9639/1080p.mp4",
-          "poster":"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1200&auto=format&fit=crop"}
+          "poster":"comidas.jpg"},
+        {"type":"img","src":"bote.jpg"}
       ],
       "itinerario": [
         {"dia":"Día 1", "titulo":"Llegada y playa", "detalle":"Recepción y tiempo libre en playa principal."},
@@ -360,7 +357,7 @@
       ]
     },
     {
-      "id": "amazon",
+      "id": "amazonas",
       "nombre": "Amazonas • Selva Profunda",
       "resumen": "Ríos poderosos, biodiversidad infinita y comunidades indígenas. Una aventura en el pulmón del mundo.",
       "bullets": [
@@ -376,15 +373,12 @@
       "popularidad": 90,
       "portada": { "type":"video",
         "src":"https://cdn.coverr.co/videos/coverr-green-mountains-6027/1080p.mp4",
-        "poster":"https://images.unsplash.com/photo-1542601600647-4a722a9a1c60?q=80&w=1600&auto=format&fit=crop"
+        "poster":"lago.jpg"
       },
       "media": [
-        {"type":"img","src":"https://images.unsplash.com/photo-1542601600647-4a722a9a1c60?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1528821154947-1aa3d1d9f3be?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"video","src":"https://cdn.coverr.co/videos/coverr-green-mountains-6027/1080p.mp4",
-          "poster":"https://images.unsplash.com/photo-1542601600647-4a722a9a1c60?q=80&w=1200&auto=format&fit=crop"},
-        {"type":"img","src":"https://images.unsplash.com/photo-1542601600647-4a722a9a1c60?q=80&w=1200&auto=format&fit=crop"}
+        {"type":"img","src":"estrellas.jpg"},
+        {"type":"img","src":"gusanos.jpg"},
+        {"type":"img","src":"boti.jpg"}
       ],
       "itinerario": [
         {"dia":"Día 1", "titulo":"Llegada a Leticia", "detalle":"Recepción y traslado al lodge. Paseo nocturno."},

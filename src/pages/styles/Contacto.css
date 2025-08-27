@@ -525,6 +525,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -533,21 +534,43 @@
   }
 }
 
+@media (max-width: 767px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+}
+
 .form-group {
   position: relative;
+  width: 100%;
+  min-width: 0;
 }
 
 .form-group label {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 600;
+  position: absolute;
+  top: 1rem;
+  left: 1.25rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.form-input:focus ~ label,
+.form-input:not(:placeholder-shown) ~ label {
+  top: -0.75rem;
+  left: 1rem;
+  font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 0.5rem;
+  background: #1a1a1a;
+  padding: 0 0.5rem;
 }
 
 .form-input {
   width: 100%;
-  padding: 1rem 1.25rem;
+  padding: 1.5rem 1.25rem 0.75rem 1.25rem;
   background: rgba(255, 255, 255, 0.05);
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
@@ -556,10 +579,10 @@
   font-family: inherit;
   transition: all 0.3s ease;
   resize: vertical;
-}
-
-.form-input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  z-index: 1;
 }
 
 .form-input:focus {
@@ -572,6 +595,11 @@
 .form-input.error {
   border-color: #ef4444;
   background: rgba(239, 68, 68, 0.05);
+}
+
+.form-input.error:focus ~ label,
+.form-input.error:not(:placeholder-shown) ~ label {
+  color: #ef4444;
 }
 
 .error-message {
@@ -1546,7 +1574,7 @@ body:not(.dark-mode) .form-header p {
 }
 
 body:not(.dark-mode) .form-group label {
-  color: rgba(3, 6, 23, 0.9);
+  color: rgba(3, 6, 23, 0.5);
 }
 
 body:not(.dark-mode) .form-input {
@@ -1555,14 +1583,16 @@ body:not(.dark-mode) .form-input {
   color: rgba(3, 6, 23, 0.9);
 }
 
-body:not(.dark-mode) .form-input::placeholder {
-  color: rgba(3, 6, 23, 0.5);
-}
-
 body:not(.dark-mode) .form-input:focus {
   border-color: #DAA520;
   background: rgba(218, 165, 32, 0.05);
   box-shadow: 0 0 0 4px rgba(218, 165, 32, 0.1);
+}
+
+body:not(.dark-mode) .form-input:focus ~ label,
+body:not(.dark-mode) .form-input:not(:placeholder-shown) ~ label {
+  color: rgba(3, 6, 23, 0.9);
+  background: #ffffff;
 }
 
 body:not(.dark-mode) .char-counter {
@@ -2573,10 +2603,6 @@ body:not(.dark-mode) .premium-map-section::before {
     font-size: 1.6rem;
   }
 
-  .form-header p {
-    font-size: 0.9rem;
-  }
-
   .form-icon {
     width: 60px;
     height: 60px;
@@ -2584,21 +2610,33 @@ body:not(.dark-mode) .premium-map-section::before {
   }
 
   .premium-form {
-    gap: 1.2rem;
+    gap: 2rem;
   }
 
   .form-row {
-    gap: 1.2rem;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
   }
 
   .form-group label {
     font-size: 0.85rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.8rem;
+    display: block;
+    order: 1;
+    position: static;
   }
 
   .form-input {
-    padding: 0.9rem 1.1rem;
+    padding: 1.2rem 1.4rem;
     font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    order: 2;
   }
 
   .error-message {
@@ -2631,7 +2669,7 @@ body:not(.dark-mode) .premium-map-section::before {
     width: 50px;
     height: 50px;
     font-size: 1.2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
   }
 
   .method-content h4 {
@@ -2785,21 +2823,12 @@ body:not(.dark-mode) .premium-map-section::before {
   }
 
   .location-pin {
-    top: 15px;
-    right: 15px;
     width: 40px;
     height: 40px;
   }
 
   .pin-icon {
     font-size: 1rem;
-  }
-
-  .pin-pulse {
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
   }
 
   .map-coordinates {

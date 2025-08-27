@@ -48,19 +48,43 @@ const Destinos = () => {
           
           {/* Added hero stats for more engaging and professional look */}
           <div className="hero-stats">
-            <div className="stat-item">
+            <div 
+              className="stat-item clickable-stat" 
+              onClick={() => {
+                const headerContent = document.querySelector('.header-content');
+                if (headerContent) {
+                  headerContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+            >
               <div className="stat-icon">🌍</div>
               <div className="stat-value">50+</div>
               <div className="stat-label">Destinos</div>
             </div>
-            <div className="stat-item">
+            <div 
+              className="stat-item clickable-stat" 
+              onClick={() => {
+                const headerContent = document.querySelector('.header-content');
+                if (headerContent) {
+                  headerContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+            >
               <div className="stat-icon">⭐</div>
-              <div className="stat-value">4.9</div>
-              <div className="stat-label">Calificación</div>
+              <div className="stat-value">+ 5,000</div>
+              <div className="stat-label">Usuarios</div>
             </div>
-            <div className="stat-item">
+            <div 
+              className="stat-item clickable-stat" 
+              onClick={() => {
+                const headerContent = document.querySelector('.header-content');
+                if (headerContent) {
+                  headerContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+            >
               <div className="stat-icon">👥</div>
-              <div className="stat-value">10k+</div>
+              <div className="stat-value">+ 5,000</div>
               <div className="stat-label">Viajeros Felices</div>
             </div>
           </div>

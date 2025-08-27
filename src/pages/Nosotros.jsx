@@ -66,18 +66,13 @@ function NosotrosPage() {
       {/* HERO */}
       <section className="pt-hero" aria-label="Presentación">
         <div className="pt-hero-media" aria-hidden="true">
-          <video autoPlay muted playsInline loop preload="metadata" poster="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1600&auto=format&fit=crop">
-            <source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-tropical-island-3654/1080p.mp4" type="video/mp4" />
-            <source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-tropical-island-3654/720p.mp4" type="video/mp4" />
-          </video>
-          <div className="pt-hero-overlay"></div>
-          <div className="pt-hero-glow"></div>
+          <img src="/portada_imagen_2919.jpg" alt="Paisaje Colombia - PiquiTours" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
 
         <div className="pt-container pt-hero-content">
           <span className="pt-kicker"><BadgeCheck aria-hidden="true" /> Calidad de clase mundial — desde El Espinal, Tolima</span>
           <h1>Diseñamos tours que <em className="gradient-text">se venden solos</em>.</h1>
-          <p>Somos una casa de experiencias: logística impecable, servicio obsesivo por el detalle y un toque premium. Llevamos la calidez tolimense a un estándar internacional.</p>
+          <p style={{ color: '#FFD700', textShadow: '1px 1px 2px rgba(0,0,0,0.7)' }}>Somos una casa de experiencias: logística impecable, servicio obsesivo por el detalle y un toque premium. Llevamos la calidez tolimense a un estándar internacional.</p>
           <div className="pt-hero-ctas">
             <a className="pt-btn pt-btn-primary" href="#pt-valores"><Compass aria-hidden="true" /> Por qué elegirnos</a>
             <a className="pt-btn pt-btn-ghost" href="#pt-historia"><PlayCircle aria-hidden="true" /> Conoce nuestra historia</a>
@@ -124,14 +119,14 @@ function NosotrosPage() {
             <p className="pt-muted">Piquitours y Eventos nació para elevar el turismo local con una visión clara: crear recuerdos que la gente quiera contar. Desde El Espinal conectamos Colombia con experiencias diseñadas con precisión, seguridad y estilo.</p>
             <div className="pt-divider"></div>
             <div className="pt-metrics">
-              <div className="pt-metric"><div className="pt-num">+10.000</div><small>Viajeros felices</small></div>
+              <div className="pt-metric"><div className="pt-num">+5,000</div><small>Viajeros felices</small></div>
               <div className="pt-metric"><div className="pt-num">98%</div><small>Rutas a tiempo</small></div>
-              <div className="pt-metric"><div className="pt-num">+80</div><small>Aliados confiables</small></div>
+              <div className="pt-metric"><div className="pt-num">+12</div><small>Aliados confiables</small></div>
               <div className="pt-metric"><div className="pt-num">-35%</div><small>Incidencias vs. promedio</small></div>
             </div>
           </div>
           <figure className="pt-quienes-figure">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt="Grupo disfrutando de un tour al atardecer" />
+            <img loading="lazy" src="/portada_google.jpeg" alt="Grupo disfrutando de un tour al atardecer" />
             <figcaption className="pt-muted">Diseño, logística y hospitalidad — todo en un solo equipo.</figcaption>
           </figure>
         </div>
@@ -212,16 +207,14 @@ function NosotrosPage() {
             <p>Descubre cómo transformamos cada viaje en una historia inolvidable.</p>
           </div>
           <figure>
-            <video controls preload="metadata">
-              <source src="/video_nosotros.mp4" type="video/mp4" />
-            </video>
+            <img loading="lazy" src="/portada_imagen_2919.jpg" alt="Experiencia PiquiTours" style={{ width: '100%', borderRadius: '8px' }} />
             <figcaption className="pt-muted">Un vistazo a nuestras rutas: cultura, naturaleza y momentos que perduran.</figcaption>
           </figure>
         </div>
       </section>
 
       {/* SECCIÓN: EQUIPO */}
-      <section id="pt-equipo" aria-label="Nuestro equipo">
+      {/* <section id="pt-equipo" aria-label="Nuestro equipo">
         <div className="pt-container">
           <div className="pt-section-head">
             <h2>Gente real, resultados reales</h2>
@@ -229,7 +222,7 @@ function NosotrosPage() {
           </div>
           <div className="pt-team">
             <article className="pt-member">
-              <img loading="lazy" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop" alt="Foto de persona del equipo" />
+              <img loading="lazy" src="/portada_imagen_2919.jpg" alt="Foto de persona del equipo" />
               <div className="pt-info">
                 <strong>Valeria Ortiz</strong>
                 <div className="pt-role">Directora de Operaciones</div>
@@ -258,7 +251,7 @@ function NosotrosPage() {
             </article>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* SECCIÓN: DIFERENCIA */}
       <section id="pt-como-lo-hacemos">

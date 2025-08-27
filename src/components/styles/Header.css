@@ -10,17 +10,18 @@
 .header {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: clamp(65px, 8vh, 75px);
   padding: 0 clamp(20px, 3vw, 40px);
-  background: transparent;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); /* Soporte para Safari */
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+  /* border-bottom: 0.5px solid rgba(255, 255, 255, 0.1); */
   transition: all 0.3s ease;
   z-index: 1000;
   display: flex;
   align-items: center;
+  margin: 0;
 }
 
 .scrolled {
@@ -28,7 +29,6 @@
   backdrop-filter: blur(15px); /* Mantener el blur al hacer scroll */
   -webkit-backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
 
 .container {
@@ -45,23 +45,33 @@
   z-index: 1001;
   transition: all 0.3s ease;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: clamp(5px, 1vh, 8px) 0; /* Añadido padding vertical sutil para centrar mejor sin aumentar height total */
 }
 
 .logo {
-  height: clamp(50px, 6vh, 60px);
+  height: clamp(55px, 7vh, 70px); /* Aumentado para hacer logo más grande */
   width: auto;
-  max-width: clamp(180px, 20vw, 220px);
+  max-width: clamp(200px, 22vw, 250px); /* Ajustado max-width para mantener proporciones */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   object-fit: contain;
   object-position: center;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
   aspect-ratio: auto;
   max-height: 100%;
+  transform: scale(1.05); /* Escala sutil para hacerlo "más grande" sin cambiar dimensiones reales ni layout */
+}
+
+.logo:hover {
+  transform: scale(1.1); /* Efecto hover para enfatizar el logo sin alterar height */
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
 }
 
 .scrolled .logo {
-  height: clamp(40px, 5vh, 50px);
-  max-width: clamp(150px, 18vw, 180px);
+  height: clamp(45px, 5.5vh, 55px); /* Aumentado para scrolled */
+  max-width: clamp(160px, 20vw, 200px);
+  transform: scale(1.05);
 }
 
 /* ===== NAVEGACIÓN PRINCIPAL ===== */
@@ -212,13 +222,14 @@
   }
 
   .logo {
-    height: clamp(40px, 5.5vh, 55px) !important;
-    max-width: clamp(120px, 22vw, 150px);
+    height: clamp(45px, 6vh, 60px) !important; /* Aumentado para mobile también */
+    max-width: clamp(140px, 24vw, 170px);
+    transform: scale(1.05);
   }
 
   .scrolled .logo {
-    height: clamp(32px, 4.5vh, 45px) !important;
-    max-width: clamp(95px, 18vw, 120px);
+    height: clamp(35px, 5vh, 50px) !important;
+    max-width: clamp(110px, 20vw, 140px);
   }
 
   .menu-toggle {
@@ -229,7 +240,7 @@
     position: fixed;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.1);
+    background: transparent;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     flex-direction: column;
@@ -301,44 +312,33 @@
   }
 
   .logo {
-    height: clamp(60px, 7vh, 70px);
-    max-width: clamp(200px, 22vw, 250px);
+    height: clamp(60px, 7.5vh, 75px);
+    max-width: clamp(220px, 24vw, 270px);
+    transform: scale(1.05);
   }
 
   .scrolled .logo {
-    height: clamp(50px, 6vh, 60px);
+    height: clamp(50px, 6.5vh, 65px);
   }
 }
 
 /* ===== MODO CLARO ===== */
 body:not(.dark-mode) .header {
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+  background: none !important;
+}
+
+body.dark-mode .header {
+  background: none !important;
 }
 
 body:not(.dark-mode) .nav-links a {
   color: #1a1a1a;
-  text-shadow: none;
-}
-
-body:not(.dark-mode) .nav-links a:hover {
-  /* background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 140, 0, 0.2) 50%, rgba(255, 215, 0, 0.15) 100%); */
-  /* transform: translateY(-1px); */
-  /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15),  */
-              /* 0 0 10px rgba(255, 215, 0, 0.1); */
-  /* color: #ffd700; */
-  /* text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); */
+  text-shadow: none !important;
 }
 
 body:not(.dark-mode) .menu-toggle {
   color: #1a1a1a;
-}
-
-body:not(.dark-mode) .nav {
-  /* background: rgba(255, 255, 255, 0.1); */
-}
-
-body:not(.dark-mode) .nav-links a {
-  /* background: rgba(0, 0, 0, 0.05); */
 }
 
 /* ===== BLOQUEO DE SCROLL ===== */

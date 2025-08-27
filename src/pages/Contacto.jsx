@@ -115,7 +115,6 @@ export default function Contacto() {
     <main className="contacto-container">
       {/* HERO SECTION */}
       <section className="contacto-hero">
-        <div className="hero-overlay" />
         <div className="hero-particles">
           <div className="particle"></div>
           <div className="particle"></div>
@@ -134,6 +133,10 @@ export default function Contacto() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
+            onClick={() => {
+              window.location.href = '/destinos';
+            }}
+            style={{ cursor: 'pointer' }}
           >
             <span>Contacto Profesional</span>
           </motion.div>
@@ -158,17 +161,44 @@ export default function Contacto() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
           >
-            <div className="stat">
-              <span className="stat-number">15K+</span>
+            <div 
+              className="stat" 
+              onClick={() => {
+                const contactForm = document.querySelector('.premium-form') || document.querySelector('.contact-form-container');
+                if (contactForm) {
+                  contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              style={{ cursor: 'pointer' }}
+            >
+              <span className="stat-number">5,000</span>
               <span className="stat-label">Viajeros Felices</span>
             </div>
-            <div className="stat">
+            <div 
+              className="stat" 
+              onClick={() => {
+                const contactForm = document.querySelector('.premium-form') || document.querySelector('.contact-form-container');
+                if (contactForm) {
+                  contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              style={{ cursor: 'pointer' }}
+            >
               <span className="stat-number">24/7</span>
               <span className="stat-label">Soporte</span>
             </div>
-            <div className="stat">
-              <span className="stat-number">5⭐</span>
-              <span className="stat-label">Calificación</span>
+            <div 
+              className="stat" 
+              onClick={() => {
+                const contactForm = document.querySelector('.premium-form') || document.querySelector('.contact-form-container');
+                if (contactForm) {
+                  contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              style={{ cursor: 'pointer' }}
+            >
+              <span className="stat-number">⭐</span>
+              <span className="stat-label">Todos estan conformes.</span>
             </div>
           </motion.div>
         </motion.div>
@@ -231,38 +261,35 @@ export default function Contacto() {
               )}
               
               <form className="premium-form" onSubmit={handleSubmit}>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="nombre">Nombre Completo *</label>
-                    <input
-                      type="text"
-                      id="nombre"
-                      name="nombre"
-                      value={formData.nombre}
-                      onChange={handleInputChange}
-                      className={`form-input ${formErrors.nombre ? 'error' : ''}`}
-                      placeholder="Ingresa tu nombre completo"
-                    />
-                    {formErrors.nombre && <span className="error-message">{formErrors.nombre}</span>}
-                  </div>
-                  
-                  <div className="form-group">
-                    <label htmlFor="telefono">Teléfono *</label>
-                    <input
-                      type="tel"
-                      id="telefono"
-                      name="telefono"
-                      value={formData.telefono}
-                      onChange={handleInputChange}
-                      className={`form-input ${formErrors.telefono ? 'error' : ''}`}
-                      placeholder="+57 300 123 4567"
-                    />
-                    {formErrors.telefono && <span className="error-message">{formErrors.telefono}</span>}
-                  </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    value={formData.nombre}
+                    onChange={handleInputChange}
+                    className={`form-input ${formErrors.nombre ? 'error' : ''}`}
+                    placeholder=" "
+                  />
+                  <label htmlFor="nombre">Nombre Completo *</label>
+                  {formErrors.nombre && <span className="error-message">{formErrors.nombre}</span>}
                 </div>
                 
                 <div className="form-group">
-                  <label htmlFor="email">Correo Electrónico *</label>
+                  <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    value={formData.telefono}
+                    onChange={handleInputChange}
+                    className={`form-input ${formErrors.telefono ? 'error' : ''}`}
+                    placeholder=" "
+                  />
+                  <label htmlFor="telefono">Teléfono *</label>
+                  {formErrors.telefono && <span className="error-message">{formErrors.telefono}</span>}
+                </div>
+                
+                <div className="form-group">
                   <input
                     type="email"
                     id="email"
@@ -270,13 +297,13 @@ export default function Contacto() {
                     value={formData.email}
                     onChange={handleInputChange}
                     className={`form-input ${formErrors.email ? 'error' : ''}`}
-                    placeholder="tu@email.com"
+                    placeholder=" "
                   />
+                  <label htmlFor="email">Correo Electrónico *</label>
                   {formErrors.email && <span className="error-message">{formErrors.email}</span>}
                 </div>
                 
                 <div className="form-group">
-                  <label htmlFor="asunto">Asunto *</label>
                   <input
                     type="text"
                     id="asunto"
@@ -284,13 +311,13 @@ export default function Contacto() {
                     value={formData.asunto}
                     onChange={handleInputChange}
                     className={`form-input ${formErrors.asunto ? 'error' : ''}`}
-                    placeholder="¿En qué podemos ayudarte?"
+                    placeholder=" "
                   />
+                  <label htmlFor="asunto">Asunto *</label>
                   {formErrors.asunto && <span className="error-message">{formErrors.asunto}</span>}
                 </div>
                 
                 <div className="form-group">
-                  <label htmlFor="mensaje">Mensaje *</label>
                   <textarea
                     id="mensaje"
                     name="mensaje"
@@ -298,9 +325,10 @@ export default function Contacto() {
                     onChange={handleInputChange}
                     rows="5"
                     className={`form-input ${formErrors.mensaje ? 'error' : ''}`}
-                    placeholder="Cuéntanos sobre tu viaje soñado, fechas, número de personas, presupuesto aproximado..."
+                    placeholder=" "
                     maxLength="500"
                   ></textarea>
+                  <label htmlFor="mensaje">Mensaje *</label>
                   {formErrors.mensaje && <span className="error-message">{formErrors.mensaje}</span>}
                   <div className="char-counter">
                     {formData.mensaje.length}/500 caracteres
@@ -352,7 +380,7 @@ export default function Contacto() {
                   <h4>Llamada Directa</h4>
                   <p>Atención personalizada inmediata</p>
                   <div className="method-link-display">
-                    +57 311 123 4567
+                  +57 311 5776477
                   </div>
                   <div className="method-schedule">
                     <FaClock className="schedule-icon" />
@@ -440,8 +468,8 @@ export default function Contacto() {
                 <div className="method-content">
                   <h4>Soporte de Emergencia</h4>
                   <p>Asistencia 24/7 durante tu viaje</p>
-                  <a href="tel:+573011234567" className="method-link emergency-link">
-                    +57 301 123 4567
+                  <a href="tel:+57 311 5776477" className="method-link emergency-link">
+                  311 5776477
                   </a>
                   <div className="emergency-note">
                     <span>Exclusivo para viajeros PiquiTours</span>
@@ -499,7 +527,7 @@ export default function Contacto() {
                   <h3>Facebook</h3>
                   <p>@piquitours</p>
                   <div className="follower-count">
-                    <span className="count">15.2K</span>
+                    <span className="count">347</span>
                     <span className="label">Seguidores</span>
                   </div>
                   <div className="social-description">
@@ -533,7 +561,7 @@ export default function Contacto() {
                   <h3>Instagram</h3>
                   <p>@piquitours</p>
                   <div className="follower-count">
-                    <span className="count">28.7K</span>
+                    <span className="count">239</span>
                     <span className="label">Seguidores</span>
                   </div>
                   <div className="social-description">
@@ -546,7 +574,7 @@ export default function Contacto() {
                 <div className="arrow-icon">→</div>
               </div>
             </motion.a>
-            <motion.a
+            {/* <motion.a
               href="https://tiktok.com/@piquitours"
               target="_blank"
               rel="noreferrer"
@@ -579,7 +607,7 @@ export default function Contacto() {
                 <span>Síguenos</span>
                 <div className="arrow-icon">→</div>
               </div>
-            </motion.a>
+            </motion.a> */}
           </div>
           <motion.div
             className="social-stats-banner"
@@ -590,17 +618,17 @@ export default function Contacto() {
           >
             <div className="stats-content">
               <div className="stat-item">
-                <span className="stat-number">88K+</span>
+                <span className="stat-number">500+</span>
                 <span className="stat-label">Seguidores Totales</span>
               </div>
               <div className="stat-item">
-                <span className="stat-number">2.5M+</span>
+                <span className="stat-number">30</span>
                 <span className="stat-label">Visualizaciones Mensuales</span>
               </div>
-              <div className="stat-item">
+              {/* <div className="stat-item">
                 <span className="stat-number">95%</span>
                 <span className="stat-label">Engagement Rate</span>
-              </div>
+              </div> */}
             </div>
           </motion.div>
         </div>
