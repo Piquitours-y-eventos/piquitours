@@ -66,7 +66,7 @@ function NosotrosPage() {
       {/* HERO */}
       <section className="pt-hero" aria-label="Presentación">
         <div className="pt-hero-media" aria-hidden="true">
-          <img src="/portada_imagen_2919.jpg" alt="Paisaje Colombia - PiquiTours" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img src="/portada_nosotros_0101.jpg" alt="Paisaje Colombia - PiquiTours" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
 
         <div className="pt-container pt-hero-content">
