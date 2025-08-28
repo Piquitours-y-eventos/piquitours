@@ -121,14 +121,14 @@ body {
 .input, .select {
   flex: 1;
   min-width: 140px;
-  border: 1px solid var(--chipBorder);
-  background: var(--chip);
   color: var(--text);
   border-radius: 8px;
   padding: 8px 12px;
   outline: none;
   font-size: 14px;
   transition: .2s box-shadow, .2s border-color;
+  background: rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden;
+  border: 1px solid rgba(255,138,64,0.2);
 }
 @media (max-width: 720px) {
   .input, .select {
@@ -508,23 +508,23 @@ body.modal-open {
 .reserva-step {
   display: grid; gap: 12px;
 }
-.form-group {
+.reserva-form .form-group {
   position: relative; display: flex; align-items: center;
-  background: rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden;
-  border: 1px solid rgba(255,138,64,0.2);
+  /* background: rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden; */
+  /* border: 1px solid rgba(255,138,64,0.2); */
 }
 .form-icon {
   padding: 10px 12px; color: var(--muted); font-size: 16px;
   background: rgba(0,0,0,0.1); 
 }
-.form-group input, .form-group textarea {
+.reserva-form .form-group input, .reserva-form .form-group textarea {
   flex: 1; padding: 10px 12px; border: none;
   background: transparent; color: var(--text); font-size: 14px;
 }
-.form-group input:focus, .form-group textarea:focus {
+.reserva-form .form-group input:focus, .reserva-form .form-group textarea:focus {
   outline: none;
 }
-.form-group textarea { min-height: 80px; resize: vertical; }
+.reserva-form .form-group textarea { min-height: 80px; resize: vertical; }
 .reserva-actions {
   display: flex; gap: 12px; margin-top: 16px; justify-content: center;
 }
@@ -1129,11 +1129,11 @@ body:not(.dark-mode) .step-indicator.active {
   background: linear-gradient(90deg, var(--g1), var(--g2)); color: #111;
 }
 
-body:not(.dark-mode) .form-group {
+body:not(.dark-mode) .reserva-form .form-group {
   background: rgba(255,255,255,0.8); border: 1px solid rgba(255,138,64,0.2);
 }
 
-body:not(.dark-mode) .form-group input, body:not(.dark-mode) .form-group textarea {
+body:not(.dark-mode) .reserva-form .form-group input, body:not(.dark-mode) .reserva-form .form-group textarea {
   color: rgba(3, 6, 23, 0.9);
 }
 

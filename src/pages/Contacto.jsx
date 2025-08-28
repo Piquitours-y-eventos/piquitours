@@ -59,7 +59,6 @@ export default function Contacto() {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
-    // Clear error for this field when user starts typing
     if (formErrors[name]) {
       setFormErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -95,7 +94,6 @@ export default function Contacto() {
       setFormData({ nombre: '', email: '', telefono: '', asunto: '', mensaje: '' });
       setFormErrors({});
       
-      // Reset success message after 5 seconds
       setTimeout(() => {
         setFormStatus(prev => ({ ...prev, isSubmitted: false }));
       }, 5000);
@@ -115,13 +113,6 @@ export default function Contacto() {
     <main className="contacto-container">
       {/* HERO SECTION */}
       <section className="contacto-hero">
-        <div className="hero-particles">
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-        </div>
         <motion.div
           className="hero-content-contacto"
           initial={{ opacity: 0, y: 50 }}
@@ -261,35 +252,36 @@ export default function Contacto() {
               )}
               
               <form className="premium-form" onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    id="nombre"
-                    name="nombre"
-                    value={formData.nombre}
-                    onChange={handleInputChange}
-                    className={`form-input ${formErrors.nombre ? 'error' : ''}`}
-                    placeholder=" "
-                  />
-                  <label htmlFor="nombre">Nombre Completo *</label>
-                  {formErrors.nombre && <span className="error-message">{formErrors.nombre}</span>}
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="nombre">Nombre Completo *</label>
+                    <input
+                      type="text"
+                      id="nombre"
+                      name="nombre"
+                      value={formData.nombre}
+                      onChange={handleInputChange}
+                      className={`form-input ${formErrors.nombre ? 'error' : ''}`}
+                      placeholder="Ingresa tu nombre completo"
+                    />
+                    {formErrors.nombre && <span className="error-message">{formErrors.nombre}</span>}
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="telefono">Teléfono *</label>
+                    <input
+                      type="tel"
+                      id="telefono"
+                      name="telefono"
+                      value={formData.telefono}
+                      onChange={handleInputChange}
+                      className={`form-input ${formErrors.telefono ? 'error' : ''}`}
+                      placeholder="+57 300 123 4567"
+                    />
+                    {formErrors.telefono && <span className="error-message">{formErrors.telefono}</span>}
+                  </div>
                 </div>
-                
                 <div className="form-group">
-                  <input
-                    type="tel"
-                    id="telefono"
-                    name="telefono"
-                    value={formData.telefono}
-                    onChange={handleInputChange}
-                    className={`form-input ${formErrors.telefono ? 'error' : ''}`}
-                    placeholder=" "
-                  />
-                  <label htmlFor="telefono">Teléfono *</label>
-                  {formErrors.telefono && <span className="error-message">{formErrors.telefono}</span>}
-                </div>
-                
-                <div className="form-group">
+                  <label htmlFor="email">Correo Electrónico *</label>
                   <input
                     type="email"
                     id="email"
@@ -297,13 +289,12 @@ export default function Contacto() {
                     value={formData.email}
                     onChange={handleInputChange}
                     className={`form-input ${formErrors.email ? 'error' : ''}`}
-                    placeholder=" "
+                    placeholder="tu@email.com"
                   />
-                  <label htmlFor="email">Correo Electrónico *</label>
                   {formErrors.email && <span className="error-message">{formErrors.email}</span>}
                 </div>
-                
                 <div className="form-group">
+                  <label htmlFor="asunto">Asunto *</label>
                   <input
                     type="text"
                     id="asunto"
@@ -311,13 +302,12 @@ export default function Contacto() {
                     value={formData.asunto}
                     onChange={handleInputChange}
                     className={`form-input ${formErrors.asunto ? 'error' : ''}`}
-                    placeholder=" "
+                    placeholder="¿En qué podemos ayudarte?"
                   />
-                  <label htmlFor="asunto">Asunto *</label>
                   {formErrors.asunto && <span className="error-message">{formErrors.asunto}</span>}
                 </div>
-                
                 <div className="form-group">
+                  <label htmlFor="mensaje">Mensaje *</label>
                   <textarea
                     id="mensaje"
                     name="mensaje"
@@ -325,10 +315,9 @@ export default function Contacto() {
                     onChange={handleInputChange}
                     rows="5"
                     className={`form-input ${formErrors.mensaje ? 'error' : ''}`}
-                    placeholder=" "
+                    placeholder="Cuéntanos sobre tu viaje soñado, fechas, número de personas, presupuesto aproximado..."
                     maxLength="500"
                   ></textarea>
-                  <label htmlFor="mensaje">Mensaje *</label>
                   {formErrors.mensaje && <span className="error-message">{formErrors.mensaje}</span>}
                   <div className="char-counter">
                     {formData.mensaje.length}/500 caracteres
