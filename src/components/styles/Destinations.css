@@ -702,7 +702,7 @@ body.modal-open {
   background: var(--chip);
   border: 1px solid var(--chipBorder);
   border-radius: 8px;
-  padding: 12px;
+  padding: 8px 12px; /* Reduced padding */
 }
 
 .input-wrapper:focus-within {
@@ -712,7 +712,8 @@ body.modal-open {
 
 .form-icon {
   color: var(--muted);
-  margin-right: 12px;
+  margin-right: 8px; /* Reduced margin */
+  font-size: 16px; /* Smaller icon */
 }
 
 .form-group input,
@@ -721,12 +722,12 @@ body.modal-open {
   background: transparent;
   border: none;
   color: var(--text);
-  font-size: 16px;
+  font-size: 14px; /* Smaller font */
   outline: none;
 }
 
 .form-group textarea {
-  min-height: 100px;
+  min-height: 80px;
   resize: vertical;
 }
 
@@ -739,12 +740,16 @@ body.modal-open {
 .button.primary {
   background: linear-gradient(90deg, var(--g1), var(--g2));
   color: #111;
+  padding: 10px 20px; /* Adjusted button size */
+  font-size: 14px;
 }
 
 .button.secondary {
   background: transparent;
   border: 1px solid var(--chipBorder);
   color: var(--text);
+  padding: 10px 20px; /* Adjusted button size */
+  font-size: 14px;
 }
 
 .button.secondary:hover {
