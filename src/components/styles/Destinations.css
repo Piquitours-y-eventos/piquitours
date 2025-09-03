@@ -74,7 +74,7 @@ body {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 7px 12px; border-radius: 999px;
   background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3));
-  color: #111; font-weight: 700; letterSpacing: .2px;
+  color: #111; font-weight: 700; letter-spacing: .2px;
   box-shadow: var(--shadow-soft);
 }
 
@@ -705,29 +705,35 @@ body.modal-open {
   font-size: 13px; /* Smaller labels */
   font-weight: 500;
   color: var(--text);
+  padding: 0px !important;
+  margin:  0px !important;
 }
 
 .input-wrapper {
   display: flex;
   align-items: center;
-  background: var(--chip);
-  border: 1px solid var(--chipBorder);
-  border-radius: 8px;
-  padding: 5px 5px; /* Slightly reduced padding */
+  justify-content: center;
   transition: all 0.2s ease;
+  gap: 10px;
 }
 
 
 
-.input-wrapper:focus-within {
+/* .input-wrapper:focus-within {
   border-color: var(--g2);
   box-shadow: var(--ring);
-}
+} */
 
 .form-icon {
   color: var(--muted);
-  margin-right: 10px;
-  font-size: 18px; /* Smaller icons */
+  margin-right: 8px;
+  font-size: 14px; /* Smaller icons */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px; /* Prevent stretch */
 }
 
 .form-group input,
@@ -736,13 +742,19 @@ body.modal-open {
   background: transparent;
   border: none;
   color: var(--text);
-  font-size: 15px; /* Slightly larger for readability */
+  font-size: 13px; /* Slimmer text to match thinner inputs */
+  line-height: 1.2;
   outline: none;
 }
 
 .form-group textarea {
-  min-height: 60px; /* Smaller textarea */
+  min-height: 48px; /* Slimmer textarea */
   resize: vertical;
+}
+
+/* Fine-tune spacing for textarea inside wrapper */
+.input-wrapper textarea {
+  padding-top: 2px;
 }
 
 .form-actions {
@@ -1353,3 +1365,15 @@ body:not(.dark-mode) .success-message p {
 body:not(.dark-mode) .success-icon {
   color: #28a745;
 }
+
+
+input {
+  border: 1px solid #222 !important;
+  border-radius: 6px;
+}
+
+ textarea{
+  border: 1px solid #222 !important;
+  padding: 4rem;
+  border-radius: 6px;
+ }

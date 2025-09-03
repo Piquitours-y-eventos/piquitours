@@ -667,21 +667,21 @@ const Destinations = () => {
                           <label htmlFor="nombre">Nombre completo</label>
                           <div className="input-wrapper">
                             <FiUser className="form-icon" />
-                            <input id="nombre" type="text" name="nombre" value={formData.nombre} onChange={handleFormChange} />
+                            <input id="nombre" type="text" name="nombre" value={formData.nombre} onChange={handleFormChange} placeholder='Ingresa tu nombre completo' />
                           </div>
                         </div>
                         <div className="form-group">
                           <label htmlFor="email">Correo electrónico</label>
                           <div className="input-wrapper">
                             <FiMail className="form-icon" />
-                            <input id="email" type="email" name="email" value={formData.email} onChange={handleFormChange} />
+                            <input id="email" type="email" name="email" value={formData.email} onChange={handleFormChange} placeholder='tu @email.com' />
                           </div>
                         </div>
                         <div className="form-group">
                           <label htmlFor="telefono">Teléfono</label>
                           <div className="input-wrapper">
                             <FiPhone className="form-icon" />
-                            <input id="telefono" type="tel" name="telefono" value={formData.telefono} onChange={handleFormChange} />
+                            <input id="telefono" type="tel" name="telefono" value={formData.telefono} onChange={handleFormChange} placeholder='+57 300 xxx 30xx xx' />
                           </div>
                         </div>
                       </motion.div>
@@ -712,7 +712,7 @@ const Destinations = () => {
                           <label htmlFor="mensaje">Mensaje adicional</label>
                           <div className="input-wrapper">
                             <FiMessageSquare className="form-icon" />
-                            <textarea id="mensaje" name="mensaje" value={formData.mensaje} onChange={handleFormChange} />
+                            <textarea id="mensaje" name="mensaje" value={formData.mensaje} onChange={handleFormChange} placeholder='Ingrese su mensaje aqui' />
                           </div>
                         </div>
                       </motion.div>
