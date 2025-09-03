@@ -1,10 +1,9 @@
 // Destinations.jsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiStar, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiStar, FiChevronLeft, FiChevronRight, FiUser, FiMail, FiPhone, FiCalendar, FiUsers, FiMessageSquare } from 'react-icons/fi';
 import toursData from '../data/tours.json';
 import './styles/Destinations.css';
-import ReservationForm from './ReservationForm';
 
 const Destinations = () => {
   const [tours, setTours] = useState(toursData.tours);
@@ -19,7 +18,19 @@ const Destinations = () => {
   const [activeTab, setActiveTab] = useState('resumen');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
-  const [reservaAbierta, setReservaAbierta] = useState(false);
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false); // Nuevo estado para modal de formulario separado
+
+  // Estado para el formulario de reserva
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    telefono: '',
+    fecha: '',
+    personas: 1,
+    mensaje: ''
+  });
+  const [formStep, setFormStep] = useState(1);
+  const [formError, setFormError] = useState('');
 
   useEffect(() => {
     filterAndSort();
@@ -72,12 +83,40 @@ const Destinations = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setReservaAbierta(false); 
     document.body.classList.remove('modal-open');
     
     const scrollY = document.body.style.top;
     document.body.style.top = '';
     window.scrollTo(0, parseInt(scrollY || '0') * -1);
+  };
+
+  const openFormModal = () => {
+    const scrollY = window.scrollY;
+    document.body.style.top = `-${scrollY}px`;
+    
+    setIsFormModalOpen(true);
+    document.body.classList.add('modal-open');
+  };
+
+  const closeFormModal = () => {
+    setIsFormModalOpen(false);
+    document.body.classList.remove('modal-open');
+    
+    const scrollY = document.body.style.top;
+    document.body.style.top = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    
+    // Reset form
+    setFormData({
+      nombre: '',
+      email: '',
+      telefono: '',
+      fecha: '',
+      personas: 1,
+      mensaje: ''
+    });
+    setFormStep(1);
+    setFormError('');
   };
 
   const openLightbox = (index) => {
@@ -126,6 +165,50 @@ const Destinations = () => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [lightboxOpen, selectedTour, nextLightbox, prevLightbox, setLightboxIndex, closeLightbox, lightboxIndex]);
+
+  // Manejo del formulario
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const validateStep = () => {
+    if (formStep === 1) {
+      if (!formData.nombre || !formData.email || !formData.telefono) {
+        setFormError('Por favor completa todos los campos personales.');
+        return false;
+      }
+      if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        setFormError('Email inválido.');
+        return false;
+      }
+    } else if (formStep === 2) {
+      if (!formData.fecha || formData.personas < 1) {
+        setFormError('Por favor selecciona fecha y número de personas.');
+        return false;
+      }
+    }
+    setFormError('');
+    return true;
+  };
+
+  const nextFormStep = () => {
+    if (validateStep()) {
+      setFormStep(prev => Math.min(prev + 1, 3));
+    }
+  };
+
+  const prevFormStep = () => {
+    setFormStep(prev => Math.max(prev - 1, 1));
+  };
+
+  const submitForm = () => {
+    if (validateStep()) {
+      // Aquí iría la lógica de envío (ej. API call)
+      alert('¡Reserva enviada con éxito! Nos contactaremos pronto.');
+      closeFormModal();
+    }
+  };
 
   return (
     <section className="destinations-section" id="destinos">
@@ -273,7 +356,7 @@ const Destinations = () => {
           onClick={closeModal}
         >
           <motion.div 
-            className="dialog improved-dialog" 
+            className="dialog improved-dialog"
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
@@ -335,7 +418,7 @@ const Destinations = () => {
                 {activeTab === 'resumen' && (
                   <motion.section
                     key="resumen"
-                    className="section two panel improved-section" 
+                    className="section two panel improved-section"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
@@ -428,11 +511,21 @@ const Destinations = () => {
                     <h4><span className="icon">🖼️</span> Galería Exclusiva: Vive la Aventura en Imágenes Antes de Reservar 🌟</h4>
                     <p className="gallery-intro">Sumérgete en estas imágenes cautivadoras que capturan la esencia de tu próximo viaje. Cada foto es una promesa de momentos inolvidables. ¡Reserva ahora y hazlas realidad! 📸✨</p>
                     <div className="gallery">
-                      {(selectedTour.media || selectedTour.gallery.map(src => ({type: 'img', src})))[lightboxIndex].type === 'img' ? (
-                        <img src={(selectedTour.media || selectedTour.gallery.map(src => ({type: 'img', src})))[lightboxIndex].src} alt={`media ${lightboxIndex + 1}`} />
-                      ) : (
-                        <video preload="metadata" src={(selectedTour.media || [])[lightboxIndex].src} poster={(selectedTour.media || [])[lightboxIndex].poster || ''} muted />
-                      )}
+                      {(selectedTour.media || selectedTour.gallery.map(src => ({type: 'img', src}))).map((m, i) => (
+                        <motion.div
+                          key={i}
+                          className={`ph ${i % 5 === 0 ? 'span-8' : (i % 3 === 0 ? 'span-6' : 'span-4')}`}
+                          onClick={() => openLightbox(i)}
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          {m.type === 'img' ? (
+                            <img loading="lazy" src={m.src} alt={`${selectedTour.nombre || selectedTour.title} media ${i + 1}`} />
+                          ) : (
+                            <video preload="metadata" src={m.src} poster={m.poster} muted />
+                          )}
+                        </motion.div>
+                      ))}
                     </div>
                   </motion.section>
                 )}
@@ -469,28 +562,158 @@ const Destinations = () => {
                   </motion.section>
                 )}
               </AnimatePresence>
-              {!reservaAbierta && (
-                <motion.button
-                  className="book-btn"
-                  onClick={() => setReservaAbierta(true)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  ¡Reserva tu aventura ahora! 🚀
-                </motion.button>
-              )}
+              <motion.button
+                className="book-btn"
+                onClick={openFormModal}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                ¡Reserva tu aventura ahora! 🚀
+              </motion.button>
             </main>
+          </motion.div>
+        </motion.div>
+      )}
 
-            {/* Formulario de reserva como componente separado */}
-            <AnimatePresence>
-              {reservaAbierta && (
-                <ReservationForm
-                  selectedTour={selectedTour}
-                  onClose={() => setReservaAbierta(false)}
-                  onSubmitted={() => { alert('¡Reserva enviada con éxito! Nos contactaremos pronto.'); closeModal(); }}
-                />
-              )}
-            </AnimatePresence>
+      {/* Modal separado para el formulario de reserva */}
+      {isFormModalOpen && selectedTour && (
+        <motion.div 
+          className="backdrop show" 
+          role="dialog" 
+          aria-modal="true" 
+          aria-labelledby="formTitle"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          onClick={closeFormModal}
+        >
+          <motion.div 
+            className="form-dialog"
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <header>
+              <h2 id="formTitle">Reserva {selectedTour.nombre || selectedTour.title}</h2>
+              <motion.button 
+                className="close" 
+                aria-label="Cerrar" 
+                onClick={closeFormModal}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                ✕
+              </motion.button>
+            </header>
+
+            <main>
+              <p className="form-intro">Completa el formulario para reservar. Nos contactaremos pronto.</p>
+
+              <div className="form-stepper">
+                <div className={`step-indicator ${formStep >= 1 ? 'active' : ''}`}>1</div>
+                <div className={`step-indicator ${formStep >= 2 ? 'active' : ''}`}>2</div>
+                <div className={`step-indicator ${formStep === 3 ? 'active' : ''}`}>3</div>
+              </div>
+
+              {formError && <p className="form-error">{formError}</p>}
+
+              <AnimatePresence mode="wait">
+                {formStep === 1 && (
+                  <motion.div
+                    key="step1"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                  >
+                    <div className="form-group">
+                      <label htmlFor="nombre">Nombre completo</label>
+                      <div className="input-wrapper">
+                        <FiUser className="form-icon" />
+                        <input id="nombre" type="text" name="nombre" value={formData.nombre} onChange={handleFormChange} />
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="email">Correo electrónico</label>
+                      <div className="input-wrapper">
+                        <FiMail className="form-icon" />
+                        <input id="email" type="email" name="email" value={formData.email} onChange={handleFormChange} />
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="telefono">Teléfono</label>
+                      <div className="input-wrapper">
+                        <FiPhone className="form-icon" />
+                        <input id="telefono" type="tel" name="telefono" value={formData.telefono} onChange={handleFormChange} />
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {formStep === 2 && (
+                  <motion.div
+                    key="step2"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                  >
+                    <div className="form-group">
+                      <label htmlFor="fecha">Fecha preferida</label>
+                      <div className="input-wrapper">
+                        <FiCalendar className="form-icon" />
+                        <input id="fecha" type="date" name="fecha" value={formData.fecha} onChange={handleFormChange} />
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="personas">Número de personas</label>
+                      <div className="input-wrapper">
+                        <FiUsers className="form-icon" />
+                        <input id="personas" type="number" name="personas" min="1" value={formData.personas} onChange={handleFormChange} />
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="mensaje">Mensaje adicional</label>
+                      <div className="input-wrapper">
+                        <FiMessageSquare className="form-icon" />
+                        <textarea id="mensaje" name="mensaje" value={formData.mensaje} onChange={handleFormChange} />
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {formStep === 3 && (
+                  <motion.div
+                    key="step3"
+                    className="confirmation"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                  >
+                    <h3>Resumen de Reserva</h3>
+                    <p><strong>Destino:</strong> {selectedTour.nombre || selectedTour.title}</p>
+                    <p><strong>Nombre:</strong> {formData.nombre}</p>
+                    <p><strong>Email:</strong> {formData.email}</p>
+                    <p><strong>Teléfono:</strong> {formData.telefono}</p>
+                    <p><strong>Fecha:</strong> {formData.fecha}</p>
+                    <p><strong>Personas:</strong> {formData.personas}</p>
+                    <p><strong>Mensaje:</strong> {formData.mensaje || 'Ninguno'}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <div className="form-actions">
+                {formStep > 1 && (
+                  <button className="button secondary" onClick={prevFormStep}>Anterior</button>
+                )}
+                {formStep < 3 ? (
+                  <button className="button primary" onClick={nextFormStep}>Siguiente</button>
+                ) : (
+                  <button className="button primary" onClick={submitForm}>Enviar</button>
+                )}
+              </div>
+            </main>
           </motion.div>
         </motion.div>
       )}

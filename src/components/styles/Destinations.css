@@ -1,4 +1,3 @@
-/* Destinations.css */
 :root {
   --bg: #0c0c0f;
   --card: #121218;
@@ -75,7 +74,7 @@ body {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 7px 12px; border-radius: 999px;
   background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3));
-  color: #111; font-weight: 700; letter-spacing: .2px;
+  color: #111; font-weight: 700; letterSpacing: .2px;
   box-shadow: var(--shadow-soft);
 }
 
@@ -472,8 +471,6 @@ body.modal-open {
   height: 100%;
 }
 
-/* (reserva-* styles moved to ReservationForm.css) */
-
 /* New components */
 .book-btn {
   margin: 20px auto; padding: 12px 24px; border-radius: 12px;
@@ -609,6 +606,168 @@ body.modal-open {
   font-weight: 700;
 }
 
+/* Form Modal */
+.form-dialog {
+  width: min(600px, 90vw);
+  max-height: 80vh;
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.form-dialog header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.form-dialog h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.form-dialog main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+}
+
+.form-intro {
+  text-align: center;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.form-stepper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  position: relative;
+}
+
+.step-indicator {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--chip);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.step-indicator.active {
+  background: linear-gradient(90deg, var(--g1), var(--g2));
+  color: #111;
+}
+
+.form-stepper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 36px;
+  right: 36px;
+  height: 2px;
+  background: var(--chipBorder);
+}
+
+.form-error {
+  color: var(--warn);
+  text-align: center;
+  font-size: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background: var(--chip);
+  border: 1px solid var(--chipBorder);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.input-wrapper:focus-within {
+  border-color: var(--g2);
+  box-shadow: var(--ring);
+}
+
+.form-icon {
+  color: var(--muted);
+  margin-right: 12px;
+}
+
+.form-group input,
+.form-group textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 16px;
+  outline: none;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+}
+
+.button.primary {
+  background: linear-gradient(90deg, var(--g1), var(--g2));
+  color: #111;
+}
+
+.button.secondary {
+  background: transparent;
+  border: 1px solid var(--chipBorder);
+  color: var(--text);
+}
+
+.button.secondary:hover {
+  background: var(--chip);
+}
+
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.confirmation h3 {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.confirmation p {
+  font-size: 16px;
+  margin: 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .grid {
@@ -633,6 +792,13 @@ body.modal-open {
     max-height: none;
   }
 
+  .form-dialog {
+    width: 100vw;
+    height: 100vh;
+    max-height: none;
+    border-radius: 0;
+    padding: 16px;
+  }
 }
 
 /* ========================================
@@ -1026,57 +1192,81 @@ body:not(.dark-mode) .fade {
   color: rgba(3, 6, 23, 0.7);
 }
 
-/* Reserva overlay - Light Mode */
-body:not(.dark-mode) .reserva-overlay {
-  background: rgba(248,249,250,0.98);
-  box-shadow: inset 0 0 20px rgba(255,138,64,0.1);
+/* Form Modal - Light Mode */
+body:not(.dark-mode) .form-dialog {
+  background: var(--card);
 }
 
-body:not(.dark-mode) .reserva-close {
+body:not(.dark-mode) .form-dialog h2 {
   color: rgba(3, 6, 23, 0.9);
 }
 
-body:not(.dark-mode) .reserva-close:hover {
-  background: rgba(255,138,64,0.1);
-}
-
-body:not(.dark-mode) .reserva-title {
-  background: linear-gradient(90deg, var(--g1), var(--g2)); -webkit-background-clip: text; color: transparent;
-}
-
-body:not(.dark-mode) .reserva-intro {
+body:not(.dark-mode) .form-intro {
   color: rgba(3, 6, 23, 0.7);
 }
 
 body:not(.dark-mode) .step-indicator {
-  background: rgba(255,255,255,0.8); color: rgba(3, 6, 23, 0.7);
+  background: var(--chip);
+  color: rgba(3, 6, 23, 0.9);
 }
 
 body:not(.dark-mode) .step-indicator.active {
-  background: linear-gradient(90deg, var(--g1), var(--g2)); color: #111;
+  background: linear-gradient(90deg, var(--g1), var(--g2));
+  color: #111;
 }
 
-body:not(.dark-mode) .reserva-form .form-group {
-  background: rgba(255,255,255,0.8); border: 1px solid rgba(255,138,64,0.2);
+body:not(.dark-mode) .form-stepper::before {
+  background: var(--chipBorder);
 }
 
-body:not(.dark-mode) .reserva-form .form-group input, body:not(.dark-mode) .reserva-form .form-group textarea {
+body:not(.dark-mode) .form-error {
+  color: var(--warn);
+}
+
+body:not(.dark-mode) .form-group label {
   color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .input-wrapper {
+  background: var(--chip);
+  border-color: var(--chipBorder);
+}
+
+body:not(.dark-mode) .input-wrapper:focus-within {
+  border-color: var(--g2);
 }
 
 body:not(.dark-mode) .form-icon {
   color: rgba(3, 6, 23, 0.7);
-  background: rgba(0,0,0,0.05);
 }
 
-body:not(.dark-mode) .reserva-error {
-  color: #dc3545;
+body:not(.dark-mode) .form-group input,
+body:not(.dark-mode) .form-group textarea {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .button.primary {
+  background: linear-gradient(90deg, var(--g1), var(--g2));
+  color: #111;
+}
+
+body:not(.dark-mode) .button.secondary {
+  border-color: var(--chipBorder);
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .button.secondary:hover {
+  background: var(--chip);
+}
+
+body:not(.dark-mode) .confirmation h3 {
+  color: rgba(3, 6, 23, 0.9);
 }
 
 body:not(.dark-mode) .confirmation p {
   color: rgba(3, 6, 23, 0.8);
 }
 
-body:not(.dark-mode) .confirmation-note {
-  color: #28a745;
+body:not(.dark-mode) .confirmation strong {
+  color: rgba(3, 6, 23, 0.9);
 }

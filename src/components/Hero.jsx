@@ -14,7 +14,7 @@ const TEXTS = [
 const IMAGES = [
   // carrosel_1,
   // carrosel_2,
-  'https://th.bing.com/th/id/R.af26d699493c4706a64f70f67d5e64cb?rik=UwJk0rSJP3s9%2bw&riu=http%3a%2f%2fbreathelife2030.org%2fwp-content%2fuploads%2f2019%2f01%2fBarranquilla1.jpeg&ehk=%2fIMFaTWlQDmpwSOzcTlHHDvsbtMEwjTwnLAN8EVLpts%3d&risl=&pid=ImgRaw&r=0',
+  // 'https://th.bing.com/th/id/R.af26d699493c4706a64f70f67d5e64cb?rik=UwJk0rSJP3s9%2bw&riu=http%3a%2f%2fbreathelife2030.org%2fwp-content%2fuploads%2f2019%2f01%2fBarranquilla1.jpeg&ehk=%2fIMFaTWlQDmpwSOzcTlHHDvsbtMEwjTwnLAN8EVLpts%3d&risl=&pid=ImgRaw&r=0',
   'https://th.bing.com/th/id/R.4e34ba92a1a9804d0f2d595dd2d1d534?rik=MKtWH7w7wWkp2A&pid=ImgRaw&r=0',
   'https://wallpapers.com/images/featured/colombia-lznwnf00i3uafytz.jpg',
   'https://denomades-blog.imgix.net/blog/wp-content/uploads/2017/10/19150237/Colombia_cartagena-de-indias.jpg?auto=compress%2Cformat&ixlib=php-3.3.1'
