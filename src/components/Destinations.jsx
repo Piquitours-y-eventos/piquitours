@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiStar, FiChevronLeft, FiChevronRight, FiUser, FiMail, FiPhone, FiCalendar, FiUsers, FiMessageSquare } from 'react-icons/fi';
 import toursData from '../data/tours.json';
 import './styles/Destinations.css';
+import { supabase } from '../utils/supabase';
 
 const Destinations = () => {
   const [tours, setTours] = useState(toursData.tours);
@@ -31,6 +32,7 @@ const Destinations = () => {
   });
   const [formStep, setFormStep] = useState(1);
   const [formError, setFormError] = useState('');
+  const [bookingSubmitting, setBookingSubmitting] = useState(false);
 
   useEffect(() => {
     filterAndSort();
@@ -202,11 +204,36 @@ const Destinations = () => {
     setFormStep(prev => Math.max(prev - 1, 1));
   };
 
-  const submitForm = () => {
-    if (validateStep()) {
-      // Aquí iría la lógica de envío (ej. API call)
+  const submitForm = async () => {
+    if (!validateStep()) return;
+    setBookingSubmitting(true);
+    setFormError('');
+
+    try {
+      // Preparar payload para la tabla 'reservas'
+      const payload = {
+        nombre: formData.nombre,
+        email: formData.email,
+        telefono: formData.telefono,
+        fecha: formData.fecha, // formato YYYY-MM-DD
+        personas: parseInt(formData.personas, 10),
+        mensaje: formData.mensaje,
+        detalles: formData.mensaje, // compatibilidad si ya existe columna 'detalles'
+        tour_id: selectedTour?.id ?? null,
+        tour_nombre: selectedTour?.nombre || selectedTour?.title || null,
+        precio: (selectedTour?.precio ?? (selectedTour?.price ? parseInt(String(selectedTour.price).replace(/,/g, ''), 10) : null))
+      };
+
+      const { error } = await supabase.from('reservas').insert([payload], { returning: 'minimal' });
+      if (error) throw error;
+
       alert('¡Reserva enviada con éxito! Nos contactaremos pronto.');
       closeFormModal();
+    } catch (e) {
+      console.error('Error al crear reserva:', e);
+      setFormError(e.message || 'Ocurrió un error al enviar tu reserva. Intenta nuevamente.');
+    } finally {
+      setBookingSubmitting(false);
     }
   };
 
@@ -708,9 +735,11 @@ const Destinations = () => {
                   <button className="button secondary" onClick={prevFormStep}>Anterior</button>
                 )}
                 {formStep < 3 ? (
-                  <button className="button primary" onClick={nextFormStep}>Siguiente</button>
+                  <button className="button primary" onClick={nextFormStep} disabled={bookingSubmitting}>Siguiente</button>
                 ) : (
-                  <button className="button primary" onClick={submitForm}>Enviar</button>
+                  <button className="button primary" onClick={submitForm} disabled={bookingSubmitting}>
+                    {bookingSubmitting ? 'Enviando…' : 'Enviar'}
+                  </button>
                 )}
               </div>
             </main>

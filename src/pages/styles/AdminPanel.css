@@ -43,6 +43,56 @@
   text-align: center;
 }
 
+/* Tabs: Contactos / Reservas */
+.tabs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 0.25rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(17,17,23,0.04), rgba(17,17,23,0.02));
+  border: 1px solid rgba(255,138,64,0.15);
+}
+
+.tab-btn {
+  position: relative;
+  appearance: none;
+  border: 1px solid rgba(255,138,64,0.22);
+  background: #ffffff;
+  color: #1f2937;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease, transform .06s ease;
+}
+
+.tab-btn:hover {
+  border-color: rgba(255,138,64,0.35);
+  box-shadow: 0 4px 14px rgba(255,138,64,0.18);
+}
+
+.tab-btn:active { transform: translateY(1px); }
+
+.tab-btn.active {
+  background: linear-gradient(90deg, var(--g1, #ffd66b), var(--g2, #ff8a40), var(--g3, #ff3b3b));
+  color: #111111;
+  border-color: transparent;
+  box-shadow: 0 10px 24px rgba(255,138,64,0.28);
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+  pointer-events: none;
+}
+
 /* Tabla Desktop/Tablet */
 .table-wrapper { width: 100%; overflow-x: auto; }
 .contact-table {

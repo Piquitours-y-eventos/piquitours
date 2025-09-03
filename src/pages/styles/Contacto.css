@@ -586,7 +586,7 @@ body:not(.dark-mode) .main-contact-section {
   width: 100%;
   padding: 1rem 1.25rem;
   background: var(--card-bg);
-  border: 2px solid var(--border-low);
+  border: 2px solid var(--border-low) !important;
   border-radius: 12px;
   color: var(--text-color);
   font-size: 1rem;
