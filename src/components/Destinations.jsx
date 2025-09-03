@@ -1,9 +1,10 @@
 // Destinations.jsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiStar, FiChevronLeft, FiChevronRight, FiUser, FiMail, FiPhone, FiCalendar, FiUsers, FiMessageSquare, FiCheckCircle } from 'react-icons/fi';
+import { FiStar, FiChevronLeft, FiChevronRight, FiCheckCircle } from 'react-icons/fi';
 import toursData from '../data/tours.json';
 import './styles/Destinations.css';
+import '../pages/styles/Contacto.css';
 import { supabase } from '../utils/supabase';
 
 const Destinations = () => {
@@ -175,40 +176,46 @@ const Destinations = () => {
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (formError) setFormError('');
   };
 
-  const validateStep = () => {
-    if (formStep === 1) {
-      if (!formData.nombre || !formData.email || !formData.telefono) {
-        setFormError('Por favor completa todos los campos personales.');
-        return false;
-      }
-      if (!/\S+@\S+\.\S+/.test(formData.email)) {
-        setFormError('Email inválido.');
-        return false;
-      }
-    } else if (formStep === 2) {
-      if (!formData.fecha || formData.personas < 1) {
-        setFormError('Por favor selecciona fecha y número de personas.');
-        return false;
-      }
+  const validateForm = () => {
+    if (!formData.nombre) {
+      setFormError('El nombre es requerido');
+      return false;
+    }
+    if (!formData.email) {
+      setFormError('El correo electrónico es requerido');
+      return false;
+    }
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      setFormError('Por favor ingresa un correo electrónico válido');
+      return false;
+    }
+    if (!formData.telefono) {
+      setFormError('El teléfono es requerido');
+      return false;
+    }
+    if (!formData.fecha) {
+      setFormError('Por favor selecciona una fecha');
+      return false;
+    }
+    if (!formData.personas || formData.personas < 1) {
+      setFormError('El número de personas debe ser al menos 1');
+      return false;
+    }
+    if (!formData.mensaje) {
+      setFormError('Por favor escribe un mensaje');
+      return false;
     }
     setFormError('');
     return true;
   };
 
-  const nextFormStep = () => {
-    if (validateStep()) {
-      setFormStep(prev => Math.min(prev + 1, 3));
-    }
-  };
-
-  const prevFormStep = () => {
-    setFormStep(prev => Math.max(prev - 1, 1));
-  };
-
-  const submitForm = async () => {
-    if (!validateStep()) return;
+  const submitForm = async (e) => {
+    if (e) e.preventDefault();
+    if (!validateForm()) return;
     setBookingSubmitting(true);
     setFormError('');
 
@@ -645,123 +652,134 @@ const Destinations = () => {
             <main>
               {!isSubmitted ? (
                 <>
-                  <p className="form-intro">¡Estás a un paso de vivir una aventura inolvidable! Completa el formulario y nos contactaremos pronto para confirmar tu reserva exclusiva.</p>
+                  <p className="form-intro">Completa el formulario y te contactaremos para confirmar tu reserva.</p>
 
-                  <div className="form-stepper">
-                    <div className={`step-indicator ${formStep >= 1 ? 'active' : ''}`}>1</div>
-                    <div className={`step-indicator ${formStep >= 2 ? 'active' : ''}`}>2</div>
-                    <div className={`step-indicator ${formStep === 3 ? 'active' : ''}`}>3</div>
-                  </div>
+                  {formError && (
+                    <motion.div 
+                      className="error-message"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                    >
+                      {formError}
+                    </motion.div>
+                  )}
 
-                  {formError && <p className="form-error">{formError}</p>}
+                  <form className="premium-form" onSubmit={(e) => { e.preventDefault(); submitForm(); }}>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label htmlFor="nombre">Nombre Completo *</label>
+                        <input
+                          type="text"
+                          id="nombre"
+                          name="nombre"
+                          value={formData.nombre}
+                          onChange={handleFormChange}
+                          className={`form-input ${formError && !formData.nombre ? 'error' : ''}`}
+                          placeholder="Ingresa tu nombre completo"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="telefono">Teléfono *</label>
+                        <input
+                          type="tel"
+                          id="telefono"
+                          name="telefono"
+                          value={formData.telefono}
+                          onChange={handleFormChange}
+                          className={`form-input ${formError && !formData.telefono ? 'error' : ''}`}
+                          placeholder="+57 300 123 4567"
+                        />
+                      </div>
+                    </div>
 
-                  <AnimatePresence mode="wait">
-                    {formStep === 1 && (
-                      <motion.div
-                        key="step1"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                      >
-                        <div className="form-group">
-                          <label htmlFor="nombre">Nombre completo</label>
-                          <div className="input-wrapper">
-                            <FiUser className="form-icon" />
-                            <input id="nombre" type="text" name="nombre" value={formData.nombre} onChange={handleFormChange} placeholder='Ingresa tu nombre completo' />
-                          </div>
-                        </div>
-                        <div className="form-group">
-                          <label htmlFor="email">Correo electrónico</label>
-                          <div className="input-wrapper">
-                            <FiMail className="form-icon" />
-                            <input id="email" type="email" name="email" value={formData.email} onChange={handleFormChange} placeholder='tu @email.com' />
-                          </div>
-                        </div>
-                        <div className="form-group">
-                          <label htmlFor="telefono">Teléfono</label>
-                          <div className="input-wrapper">
-                            <FiPhone className="form-icon" />
-                            <input id="telefono" type="tel" name="telefono" value={formData.telefono} onChange={handleFormChange} placeholder='+57 300 xxx 30xx xx' />
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label htmlFor="email">Correo Electrónico *</label>
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleFormChange}
+                          className={`form-input ${formError && (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) ? 'error' : ''}`}
+                          placeholder="tu@email.com"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="fecha">Fecha Preferida *</label>
+                        <input
+                          type="date"
+                          id="fecha"
+                          name="fecha"
+                          value={formData.fecha}
+                          onChange={handleFormChange}
+                          className={`form-input ${formError && !formData.fecha ? 'error' : ''}`}
+                        />
+                      </div>
+                    </div>
 
-                    {formStep === 2 && (
-                      <motion.div
-                        key="step2"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                      >
-                        <div className="form-group">
-                          <label htmlFor="fecha">Fecha preferida</label>
-                          <div className="input-wrapper">
-                            <FiCalendar className="form-icon" />
-                            <input id="fecha" type="date" name="fecha" value={formData.fecha} onChange={handleFormChange} />
-                          </div>
-                        </div>
-                        <div className="form-group">
-                          <label htmlFor="personas">Número de personas</label>
-                          <div className="input-wrapper">
-                            <FiUsers className="form-icon" />
-                            <input id="personas" type="number" name="personas" min="1" value={formData.personas} onChange={handleFormChange} />
-                          </div>
-                        </div>
-                        <div className="form-group">
-                          <label htmlFor="mensaje">Mensaje adicional</label>
-                          <div className="input-wrapper">
-                            <FiMessageSquare className="form-icon" />
-                            <textarea id="mensaje" name="mensaje" value={formData.mensaje} onChange={handleFormChange} placeholder='Ingrese su mensaje aqui' />
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
+                    <div className="form-group">
+                      <label htmlFor="personas">Número de Personas *</label>
+                      <input
+                        type="number"
+                        id="personas"
+                        name="personas"
+                        min="1"
+                        value={formData.personas}
+                        onChange={handleFormChange}
+                        className={`form-input ${formError && formData.personas < 1 ? 'error' : ''}`}
+                      />
+                    </div>
 
-                    {formStep === 3 && (
-                      <motion.div
-                        key="step3"
-                        className="confirmation"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                      >
-                        <h3>Resumen de Reserva</h3>
-                        <p><strong>Destino:</strong> {selectedTour.nombre || selectedTour.title}</p>
-                        <p><strong>Nombre:</strong> {formData.nombre}</p>
-                        <p><strong>Email:</strong> {formData.email}</p>
-                        <p><strong>Teléfono:</strong> {formData.telefono}</p>
-                        <p><strong>Fecha:</strong> {formData.fecha}</p>
-                        <p><strong>Personas:</strong> {formData.personas}</p>
-                        <p><strong>Mensaje:</strong> {formData.mensaje || 'Ninguno'}</p>
-                        <p className="form-total"><strong>Total aproximado:</strong> {fmtPrice((selectedTour.precio || parseInt(selectedTour.price.replace(/,/g, ''))) * formData.personas)} (sujeto a confirmación)</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                    <div className="form-group">
+                      <label htmlFor="mensaje">Mensaje *</label>
+                      <textarea
+                        id="mensaje"
+                        name="mensaje"
+                        value={formData.mensaje}
+                        onChange={handleFormChange}
+                        rows="5"
+                        className={`form-input ${formError && !formData.mensaje ? 'error' : ''}`}
+                        placeholder="Especifica detalles: ciudad de salida, fechas, presupuesto, etc."
+                        maxLength="500"
+                      ></textarea>
+                      <div className="char-counter">
+                        {formData.mensaje.length}/500 caracteres
+                      </div>
+                    </div>
 
-                  <div className="form-actions">
-                    {formStep > 1 && (
-                      <button className="button secondary" onClick={prevFormStep} disabled={bookingSubmitting}>Anterior</button>
-                    )}
-                    {formStep < 3 ? (
-                      <button className="button primary" onClick={nextFormStep} disabled={bookingSubmitting}>Siguiente</button>
-                    ) : (
-                      <button className="button primary" onClick={submitForm} disabled={bookingSubmitting}>
-                        {bookingSubmitting ? 'Enviando…' : 'Confirmar y Enviar'}
-                      </button>
-                    )}
-                  </div>
+                    <motion.button
+                      type="submit"
+                      className="premium-submit-btn"
+                      disabled={bookingSubmitting}
+                      whileHover={{ scale: bookingSubmitting ? 1 : 1.02 }}
+                      whileTap={{ scale: bookingSubmitting ? 1 : 0.98 }}
+                    >
+                      {bookingSubmitting ? (
+                        <>
+                          <div className="loading-spinner"></div>
+                          Enviando...
+                        </>
+                      ) : (
+                        'Enviar Reserva'
+                      )}
+                    </motion.button>
+                  </form>
                 </>
               ) : (
                 <motion.div
-                  className="success-message"
+                  className="success-state"
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <FiCheckCircle className="success-icon" />
-                  <h3>¡Reserva enviada con éxito!</h3>
-                  <p>Gracias por elegir Piquitours. Nos contactaremos pronto para confirmar tu aventura. ¡Prepárate para momentos inolvidables!</p>
+                  <div className="success-icon-wrapper">
+                    <svg className="success-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="#28a745"/>
+                    </svg>
+                  </div>
+                  <h3>¡Solicitud enviada con éxito!</h3>
+                  <p>Hemos recibido tu reserva para <strong>{selectedTour.nombre || selectedTour.title}</strong>. Te contactaremos muy pronto.</p>
                 </motion.div>
               )}
             </main>
