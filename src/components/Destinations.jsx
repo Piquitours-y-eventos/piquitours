@@ -1,7 +1,7 @@
 // Destinations.jsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiStar, FiChevronLeft, FiChevronRight, FiUser, FiMail, FiPhone, FiCalendar, FiUsers, FiMessageSquare } from 'react-icons/fi';
+import { FiStar, FiChevronLeft, FiChevronRight, FiUser, FiMail, FiPhone, FiCalendar, FiUsers, FiMessageSquare, FiCheckCircle } from 'react-icons/fi';
 import toursData from '../data/tours.json';
 import './styles/Destinations.css';
 import { supabase } from '../utils/supabase';
@@ -33,6 +33,7 @@ const Destinations = () => {
   const [formStep, setFormStep] = useState(1);
   const [formError, setFormError] = useState('');
   const [bookingSubmitting, setBookingSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false); // Nuevo estado para éxito
 
   useEffect(() => {
     filterAndSort();
@@ -97,6 +98,7 @@ const Destinations = () => {
     document.body.style.top = `-${scrollY}px`;
     
     setIsFormModalOpen(true);
+    setIsSubmitted(false); // Reset success state
     document.body.classList.add('modal-open');
   };
 
@@ -119,6 +121,7 @@ const Destinations = () => {
     });
     setFormStep(1);
     setFormError('');
+    setIsSubmitted(false);
   };
 
   const openLightbox = (index) => {
@@ -227,8 +230,11 @@ const Destinations = () => {
       const { error } = await supabase.from('reservas').insert([payload], { returning: 'minimal' });
       if (error) throw error;
 
-      alert('¡Reserva enviada con éxito! Nos contactaremos pronto.');
-      closeFormModal();
+      setIsSubmitted(true);
+      // Cierra el modal después de 3 segundos
+      setTimeout(() => {
+        closeFormModal();
+      }, 3000);
     } catch (e) {
       console.error('Error al crear reserva:', e);
       setFormError(e.message || 'Ocurrió un error al enviar tu reserva. Intenta nuevamente.');
@@ -637,111 +643,127 @@ const Destinations = () => {
             </header>
 
             <main>
-              <p className="form-intro">Completa el formulario para reservar. Nos contactaremos pronto.</p>
+              {!isSubmitted ? (
+                <>
+                  <p className="form-intro">¡Estás a un paso de vivir una aventura inolvidable! Completa el formulario y nos contactaremos pronto para confirmar tu reserva exclusiva.</p>
 
-              <div className="form-stepper">
-                <div className={`step-indicator ${formStep >= 1 ? 'active' : ''}`}>1</div>
-                <div className={`step-indicator ${formStep >= 2 ? 'active' : ''}`}>2</div>
-                <div className={`step-indicator ${formStep === 3 ? 'active' : ''}`}>3</div>
-              </div>
+                  <div className="form-stepper">
+                    <div className={`step-indicator ${formStep >= 1 ? 'active' : ''}`}>1</div>
+                    <div className={`step-indicator ${formStep >= 2 ? 'active' : ''}`}>2</div>
+                    <div className={`step-indicator ${formStep === 3 ? 'active' : ''}`}>3</div>
+                  </div>
 
-              {formError && <p className="form-error">{formError}</p>}
+                  {formError && <p className="form-error">{formError}</p>}
 
-              <AnimatePresence mode="wait">
-                {formStep === 1 && (
-                  <motion.div
-                    key="step1"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                  >
-                    <div className="form-group">
-                      <label htmlFor="nombre">Nombre completo</label>
-                      <div className="input-wrapper">
-                        <FiUser className="form-icon" />
-                        <input id="nombre" type="text" name="nombre" value={formData.nombre} onChange={handleFormChange} />
-                      </div>
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="email">Correo electrónico</label>
-                      <div className="input-wrapper">
-                        <FiMail className="form-icon" />
-                        <input id="email" type="email" name="email" value={formData.email} onChange={handleFormChange} />
-                      </div>
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="telefono">Teléfono</label>
-                      <div className="input-wrapper">
-                        <FiPhone className="form-icon" />
-                        <input id="telefono" type="tel" name="telefono" value={formData.telefono} onChange={handleFormChange} />
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
+                  <AnimatePresence mode="wait">
+                    {formStep === 1 && (
+                      <motion.div
+                        key="step1"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                      >
+                        <div className="form-group">
+                          <label htmlFor="nombre">Nombre completo</label>
+                          <div className="input-wrapper">
+                            <FiUser className="form-icon" />
+                            <input id="nombre" type="text" name="nombre" value={formData.nombre} onChange={handleFormChange} />
+                          </div>
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="email">Correo electrónico</label>
+                          <div className="input-wrapper">
+                            <FiMail className="form-icon" />
+                            <input id="email" type="email" name="email" value={formData.email} onChange={handleFormChange} />
+                          </div>
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="telefono">Teléfono</label>
+                          <div className="input-wrapper">
+                            <FiPhone className="form-icon" />
+                            <input id="telefono" type="tel" name="telefono" value={formData.telefono} onChange={handleFormChange} />
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
 
-                {formStep === 2 && (
-                  <motion.div
-                    key="step2"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                  >
-                    <div className="form-group">
-                      <label htmlFor="fecha">Fecha preferida</label>
-                      <div className="input-wrapper">
-                        <FiCalendar className="form-icon" />
-                        <input id="fecha" type="date" name="fecha" value={formData.fecha} onChange={handleFormChange} />
-                      </div>
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="personas">Número de personas</label>
-                      <div className="input-wrapper">
-                        <FiUsers className="form-icon" />
-                        <input id="personas" type="number" name="personas" min="1" value={formData.personas} onChange={handleFormChange} />
-                      </div>
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="mensaje">Mensaje adicional</label>
-                      <div className="input-wrapper">
-                        <FiMessageSquare className="form-icon" />
-                        <textarea id="mensaje" name="mensaje" value={formData.mensaje} onChange={handleFormChange} />
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
+                    {formStep === 2 && (
+                      <motion.div
+                        key="step2"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                      >
+                        <div className="form-group">
+                          <label htmlFor="fecha">Fecha preferida</label>
+                          <div className="input-wrapper">
+                            <FiCalendar className="form-icon" />
+                            <input id="fecha" type="date" name="fecha" value={formData.fecha} onChange={handleFormChange} />
+                          </div>
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="personas">Número de personas</label>
+                          <div className="input-wrapper">
+                            <FiUsers className="form-icon" />
+                            <input id="personas" type="number" name="personas" min="1" value={formData.personas} onChange={handleFormChange} />
+                          </div>
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="mensaje">Mensaje adicional</label>
+                          <div className="input-wrapper">
+                            <FiMessageSquare className="form-icon" />
+                            <textarea id="mensaje" name="mensaje" value={formData.mensaje} onChange={handleFormChange} />
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
 
-                {formStep === 3 && (
-                  <motion.div
-                    key="step3"
-                    className="confirmation"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                  >
-                    <h3>Resumen de Reserva</h3>
-                    <p><strong>Destino:</strong> {selectedTour.nombre || selectedTour.title}</p>
-                    <p><strong>Nombre:</strong> {formData.nombre}</p>
-                    <p><strong>Email:</strong> {formData.email}</p>
-                    <p><strong>Teléfono:</strong> {formData.telefono}</p>
-                    <p><strong>Fecha:</strong> {formData.fecha}</p>
-                    <p><strong>Personas:</strong> {formData.personas}</p>
-                    <p><strong>Mensaje:</strong> {formData.mensaje || 'Ninguno'}</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    {formStep === 3 && (
+                      <motion.div
+                        key="step3"
+                        className="confirmation"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                      >
+                        <h3>Resumen de Reserva</h3>
+                        <p><strong>Destino:</strong> {selectedTour.nombre || selectedTour.title}</p>
+                        <p><strong>Nombre:</strong> {formData.nombre}</p>
+                        <p><strong>Email:</strong> {formData.email}</p>
+                        <p><strong>Teléfono:</strong> {formData.telefono}</p>
+                        <p><strong>Fecha:</strong> {formData.fecha}</p>
+                        <p><strong>Personas:</strong> {formData.personas}</p>
+                        <p><strong>Mensaje:</strong> {formData.mensaje || 'Ninguno'}</p>
+                        <p className="form-total"><strong>Total aproximado:</strong> {fmtPrice((selectedTour.precio || parseInt(selectedTour.price.replace(/,/g, ''))) * formData.personas)} (sujeto a confirmación)</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
-              <div className="form-actions">
-                {formStep > 1 && (
-                  <button className="button secondary" onClick={prevFormStep}>Anterior</button>
-                )}
-                {formStep < 3 ? (
-                  <button className="button primary" onClick={nextFormStep} disabled={bookingSubmitting}>Siguiente</button>
-                ) : (
-                  <button className="button primary" onClick={submitForm} disabled={bookingSubmitting}>
-                    {bookingSubmitting ? 'Enviando…' : 'Enviar'}
-                  </button>
-                )}
-              </div>
+                  <div className="form-actions">
+                    {formStep > 1 && (
+                      <button className="button secondary" onClick={prevFormStep} disabled={bookingSubmitting}>Anterior</button>
+                    )}
+                    {formStep < 3 ? (
+                      <button className="button primary" onClick={nextFormStep} disabled={bookingSubmitting}>Siguiente</button>
+                    ) : (
+                      <button className="button primary" onClick={submitForm} disabled={bookingSubmitting}>
+                        {bookingSubmitting ? 'Enviando…' : 'Confirmar y Enviar'}
+                      </button>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <motion.div
+                  className="success-message"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <FiCheckCircle className="success-icon" />
+                  <h3>¡Reserva enviada con éxito!</h3>
+                  <p>Gracias por elegir Piquitours. Nos contactaremos pronto para confirmar tu aventura. ¡Prepárate para momentos inolvidables!</p>
+                </motion.div>
+              )}
             </main>
           </motion.div>
         </motion.div>

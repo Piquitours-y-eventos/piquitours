@@ -606,16 +606,17 @@ body.modal-open {
   font-weight: 700;
 }
 
-/* Form Modal */
+/* Form Modal - Improved Minimalist Design */
 .form-dialog {
-  width: min(600px, 90vw);
+  width: min(500px, 90vw); /* Smaller width for minimalism */
   max-height: 80vh;
   background: var(--card);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  padding: 24px 32px; /* Balanced padding */
+  border: 1px solid var(--chipBorder);
 }
 
 .form-dialog header {
@@ -623,44 +624,51 @@ body.modal-open {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+  border-bottom: 1px solid var(--chipBorder);
+  padding-bottom: 16px;
 }
 
 .form-dialog h2 {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 22px; /* Smaller, cleaner */
+  font-weight: 600;
   margin: 0;
+  color: var(--text);
 }
 
 .form-dialog main {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px; /* Reduced gap for compactness */
   overflow-y: auto;
 }
 
 .form-intro {
   text-align: center;
   color: var(--muted);
-  font-size: 16px;
+  font-size: 14px; /* Smaller text */
+  line-height: 1.4;
+  margin-bottom: 8px;
 }
 
 .form-stepper {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 30px; /* Adjusted gap */
   position: relative;
+  margin-bottom: 16px;
 }
 
 .step-indicator {
-  width: 32px;
-  height: 32px;
+  width: 28px; /* Smaller indicators */
+  height: 28px;
   border-radius: 50%;
   background: var(--chip);
   color: var(--text);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .step-indicator.active {
@@ -672,27 +680,30 @@ body.modal-open {
   content: '';
   position: absolute;
   top: 50%;
-  left: 36px;
-  right: 36px;
-  height: 2px;
+  left: 32px;
+  right: 32px;
+  height: 1px; /* Thinner line */
   background: var(--chipBorder);
 }
 
 .form-error {
   color: var(--warn);
   text-align: center;
-  font-size: 14px;
+  font-size: 13px;
+  background: rgba(255, 204, 0, 0.1);
+  padding: 8px;
+  border-radius: 8px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px; /* Reduced gap */
 }
 
 .form-group label {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px; /* Smaller labels */
+  font-weight: 500;
   color: var(--text);
 }
 
@@ -702,8 +713,11 @@ body.modal-open {
   background: var(--chip);
   border: 1px solid var(--chipBorder);
   border-radius: 8px;
-  padding: 8px 12px; /* Reduced padding */
+  padding: 5px 5px; /* Slightly reduced padding */
+  transition: all 0.2s ease;
 }
+
+
 
 .input-wrapper:focus-within {
   border-color: var(--g2);
@@ -712,8 +726,8 @@ body.modal-open {
 
 .form-icon {
   color: var(--muted);
-  margin-right: 8px; /* Reduced margin */
-  font-size: 16px; /* Smaller icon */
+  margin-right: 10px;
+  font-size: 18px; /* Smaller icons */
 }
 
 .form-group input,
@@ -722,34 +736,39 @@ body.modal-open {
   background: transparent;
   border: none;
   color: var(--text);
-  font-size: 14px; /* Smaller font */
+  font-size: 15px; /* Slightly larger for readability */
   outline: none;
 }
 
 .form-group textarea {
-  min-height: 80px;
+  min-height: 60px; /* Smaller textarea */
   resize: vertical;
 }
 
 .form-actions {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   justify-content: flex-end;
+  margin-top: 16px;
 }
 
 .button.primary {
   background: linear-gradient(90deg, var(--g1), var(--g2));
   color: #111;
-  padding: 10px 20px; /* Adjusted button size */
+  padding: 10px 20px;
   font-size: 14px;
+  border-radius: 8px;
+  font-weight: 600;
 }
 
 .button.secondary {
   background: transparent;
   border: 1px solid var(--chipBorder);
   color: var(--text);
-  padding: 10px 20px; /* Adjusted button size */
+  padding: 10px 20px;
   font-size: 14px;
+  border-radius: 8px;
+  font-weight: 600;
 }
 
 .button.secondary:hover {
@@ -759,18 +778,58 @@ body.modal-open {
 .confirmation {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px; /* Reduced gap */
+  padding: 16px;
+  background: var(--chip);
+  border-radius: 12px;
+  border: 1px solid var(--chipBorder);
 }
 
 .confirmation h3 {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 600;
   text-align: center;
+  margin-bottom: 12px;
 }
 
 .confirmation p {
-  font-size: 16px;
+  font-size: 14px;
   margin: 0;
+  color: var(--muted);
+}
+
+.form-total {
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--chipBorder);
+}
+
+.success-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  padding: 32px 0;
+}
+
+.success-icon {
+  font-size: 48px;
+  color: var(--ok);
+}
+
+.success-message h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.success-message p {
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 80%;
 }
 
 /* Responsive */
@@ -1226,6 +1285,7 @@ body:not(.dark-mode) .form-stepper::before {
 
 body:not(.dark-mode) .form-error {
   color: var(--warn);
+  background: rgba(255, 204, 0, 0.1);
 }
 
 body:not(.dark-mode) .form-group label {
@@ -1264,6 +1324,11 @@ body:not(.dark-mode) .button.secondary:hover {
   background: var(--chip);
 }
 
+body:not(.dark-mode) .confirmation {
+  background: var(--chip);
+  border-color: var(--chipBorder);
+}
+
 body:not(.dark-mode) .confirmation h3 {
   color: rgba(3, 6, 23, 0.9);
 }
@@ -1272,6 +1337,19 @@ body:not(.dark-mode) .confirmation p {
   color: rgba(3, 6, 23, 0.8);
 }
 
-body:not(.dark-mode) .confirmation strong {
+body:not(.dark-mode) .form-total {
   color: rgba(3, 6, 23, 0.9);
+  border-top-color: var(--chipBorder);
+}
+
+body:not(.dark-mode) .success-message h3 {
+  color: rgba(3, 6, 23, 0.9);
+}
+
+body:not(.dark-mode) .success-message p {
+  color: rgba(3, 6, 23, 0.7);
+}
+
+body:not(.dark-mode) .success-icon {
+  color: #28a745;
 }
