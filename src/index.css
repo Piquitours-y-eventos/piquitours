@@ -130,6 +130,10 @@ a:hover {
   /* background: rgba(0, 119, 182, 0.8); */
 /* } */
 
+/* body:not(.dark-mode) * {
+  background: none !important;
+} */
+
 /* Firefox */
 * {
   scrollbar-color: var(--color-primary-dark) transparent;

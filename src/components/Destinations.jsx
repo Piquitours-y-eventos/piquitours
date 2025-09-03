@@ -1,9 +1,10 @@
 // Destinations.jsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiStar, FiChevronLeft, FiChevronRight, FiUser, FiMail, FiPhone, FiCalendar, FiUsers, FiMessageSquare } from 'react-icons/fi';
+import { FiStar, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import toursData from '../data/tours.json';
 import './styles/Destinations.css';
+import ReservationForm from './ReservationForm';
 
 const Destinations = () => {
   const [tours, setTours] = useState(toursData.tours);
@@ -19,18 +20,6 @@ const Destinations = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [reservaAbierta, setReservaAbierta] = useState(false);
-
-  // Nuevo estado para el formulario de reserva
-  const [formData, setFormData] = useState({
-    nombre: '',
-    email: '',
-    telefono: '',
-    fecha: '',
-    personas: 1,
-    mensaje: ''
-  });
-  const [formStep, setFormStep] = useState(1); // Para stepper: 1=Detalles personales, 2=Detalles del viaje, 3=Confirmación
-  const [formError, setFormError] = useState('');
 
   useEffect(() => {
     filterAndSort();
@@ -83,24 +72,12 @@ const Destinations = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setReservaAbierta(false); // Cerrar también el formulario si está abierto
+    setReservaAbierta(false); 
     document.body.classList.remove('modal-open');
     
     const scrollY = document.body.style.top;
     document.body.style.top = '';
     window.scrollTo(0, parseInt(scrollY || '0') * -1);
-    
-    // Reset form
-    setFormData({
-      nombre: '',
-      email: '',
-      telefono: '',
-      fecha: '',
-      personas: 1,
-      mensaje: ''
-    });
-    setFormStep(1);
-    setFormError('');
   };
 
   const openLightbox = (index) => {
@@ -149,50 +126,6 @@ const Destinations = () => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [lightboxOpen, selectedTour, nextLightbox, prevLightbox, setLightboxIndex, closeLightbox, lightboxIndex]);
-
-  // Manejo del formulario
-  const handleFormChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const validateStep = () => {
-    if (formStep === 1) {
-      if (!formData.nombre || !formData.email || !formData.telefono) {
-        setFormError('Por favor completa todos los campos personales.');
-        return false;
-      }
-      if (!/\S+@\S+\.\S+/.test(formData.email)) {
-        setFormError('Email inválido.');
-        return false;
-      }
-    } else if (formStep === 2) {
-      if (!formData.fecha || formData.personas < 1) {
-        setFormError('Por favor selecciona fecha y número de personas.');
-        return false;
-      }
-    }
-    setFormError('');
-    return true;
-  };
-
-  const nextFormStep = () => {
-    if (validateStep()) {
-      setFormStep(prev => Math.min(prev + 1, 3));
-    }
-  };
-
-  const prevFormStep = () => {
-    setFormStep(prev => Math.max(prev - 1, 1));
-  };
-
-  const submitForm = () => {
-    if (validateStep()) {
-      // Aquí iría la lógica de envío (ej. API call)
-      alert('¡Reserva enviada con éxito! Nos contactaremos pronto.');
-      closeModal();
-    }
-  };
 
   return (
     <section className="destinations-section" id="destinos">
@@ -340,7 +273,7 @@ const Destinations = () => {
           onClick={closeModal}
         >
           <motion.div 
-            className="dialog improved-dialog" // Clase nueva para mejoras
+            className="dialog improved-dialog" 
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
@@ -402,7 +335,7 @@ const Destinations = () => {
                 {activeTab === 'resumen' && (
                   <motion.section
                     key="resumen"
-                    className="section two panel improved-section" // Mejoras en sección
+                    className="section two panel improved-section" 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
@@ -495,21 +428,11 @@ const Destinations = () => {
                     <h4><span className="icon">🖼️</span> Galería Exclusiva: Vive la Aventura en Imágenes Antes de Reservar 🌟</h4>
                     <p className="gallery-intro">Sumérgete en estas imágenes cautivadoras que capturan la esencia de tu próximo viaje. Cada foto es una promesa de momentos inolvidables. ¡Reserva ahora y hazlas realidad! 📸✨</p>
                     <div className="gallery">
-                      {(selectedTour.media || selectedTour.gallery.map(src => ({type: 'img', src}))).map((m, i) => (
-                        <motion.div
-                          key={i}
-                          className={`ph ${i % 5 === 0 ? 'span-8' : (i % 3 === 0 ? 'span-6' : 'span-4')}`}
-                          onClick={() => openLightbox(i)}
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          {m.type === 'img' ? (
-                            <img loading="lazy" src={m.src} alt={`${selectedTour.nombre || selectedTour.title} media ${i + 1}`} />
-                          ) : (
-                            <video preload="metadata" src={m.src} poster={m.poster} muted />
-                          )}
-                        </motion.div>
-                      ))}
+                      {(selectedTour.media || selectedTour.gallery.map(src => ({type: 'img', src})))[lightboxIndex].type === 'img' ? (
+                        <img src={(selectedTour.media || selectedTour.gallery.map(src => ({type: 'img', src})))[lightboxIndex].src} alt={`media ${lightboxIndex + 1}`} />
+                      ) : (
+                        <video preload="metadata" src={(selectedTour.media || [])[lightboxIndex].src} poster={(selectedTour.media || [])[lightboxIndex].poster || ''} muted />
+                      )}
                     </div>
                   </motion.section>
                 )}
@@ -558,107 +481,14 @@ const Destinations = () => {
               )}
             </main>
 
-            {/* Nuevo: Formulario de reserva en el mismo modal, pero como overlay */}
+            {/* Formulario de reserva como componente separado */}
             <AnimatePresence>
               {reservaAbierta && (
-                <motion.div
-                  className="reserva-overlay"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 50 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <h4 className="reserva-title"><span className="icon">📅</span> Reserva Tu Viaje: ¡Comienza la Aventura! 🌍</h4>
-                  <p className="reserva-intro">Completa este formulario rápido y seguro para reservar {selectedTour.nombre || selectedTour.title}. Nuestro equipo te contactará en menos de 24 horas. ¡Es fácil y sin compromiso inicial! ✨</p>
-                  
-                  {/* Stepper */}
-                  <div className="reserva-stepper">
-                    <div className={`step-indicator ${formStep >= 1 ? 'active' : ''}`}>1. Datos Personales</div>
-                    <div className={`step-indicator ${formStep >= 2 ? 'active' : ''}`}>2. Detalles del Viaje</div>
-                    <div className={`step-indicator ${formStep === 3 ? 'active' : ''}`}>3. Confirmación</div>
-                  </div>
-
-                  {formError && <p className="reserva-error">{formError}</p>}
-
-                  <AnimatePresence mode="wait">
-                    {formStep === 1 && (
-                      <motion.div
-                        key="step1"
-                        className="reserva-step"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                      >
-                        <div className="form-group">
-                          <FiUser className="form-icon" />
-                          <input type="text" name="nombre" placeholder="Nombre completo" value={formData.nombre} onChange={handleFormChange} />
-                        </div>
-                        <div className="form-group">
-                          <FiMail className="form-icon" />
-                          <input type="email" name="email" placeholder="Correo electrónico" value={formData.email} onChange={handleFormChange} />
-                        </div>
-                        <div className="form-group">
-                          <FiPhone className="form-icon" />
-                          <input type="tel" name="telefono" placeholder="Teléfono (con código de país)" value={formData.telefono} onChange={handleFormChange} />
-                        </div>
-                      </motion.div>
-                    )}
-
-                    {formStep === 2 && (
-                      <motion.div
-                        key="step2"
-                        className="reserva-step"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                      >
-                        <div className="form-group">
-                          <FiCalendar className="form-icon" />
-                          <input type="date" name="fecha" placeholder="Fecha preferida" value={formData.fecha} onChange={handleFormChange} />
-                        </div>
-                        <div className="form-group">
-                          <FiUsers className="form-icon" />
-                          <input type="number" name="personas" min="1" placeholder="Número de personas" value={formData.personas} onChange={handleFormChange} />
-                        </div>
-                        <div className="form-group">
-                          <FiMessageSquare className="form-icon" />
-                          <textarea name="mensaje" placeholder="Mensaje adicional (ej. requerimientos especiales)" value={formData.mensaje} onChange={handleFormChange} />
-                        </div>
-                      </motion.div>
-                    )}
-
-                    {formStep === 3 && (
-                      <motion.div
-                        key="step3"
-                        className="reserva-step confirmation"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                      >
-                        <h5>Resumen de tu Reserva 📋</h5>
-                        <p><strong>Destino:</strong> {selectedTour.nombre || selectedTour.title}</p>
-                        <p><strong>Nombre:</strong> {formData.nombre}</p>
-                        <p><strong>Email:</strong> {formData.email}</p>
-                        <p><strong>Teléfono:</strong> {formData.telefono}</p>
-                        <p><strong>Fecha:</strong> {formData.fecha}</p>
-                        <p><strong>Personas:</strong> {formData.personas}</p>
-                        <p><strong>Mensaje:</strong> {formData.mensaje || 'Ninguno'}</p>
-                        <p className="confirmation-note">¡Todo listo! Presiona "Enviar" para confirmar. Te enviaremos un email de confirmación. 😊</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  <div className="reserva-actions">
-                    {formStep > 1 && (
-                      <button className="button ghost" onClick={prevFormStep}>Anterior</button>
-                    )}
-                    {formStep < 3 ? (
-                      <button className="button" onClick={nextFormStep}>Siguiente</button>
-                    ) : (
-                      <button className="button" onClick={submitForm}>Enviar Reserva ✅</button>
-                    )}
-                  </div>
-                </motion.div>
+                <ReservationForm
+                  selectedTour={selectedTour}
+                  onClose={() => setReservaAbierta(false)}
+                  onSubmitted={() => { alert('¡Reserva enviada con éxito! Nos contactaremos pronto.'); closeModal(); }}
+                />
               )}
             </AnimatePresence>
           </motion.div>
