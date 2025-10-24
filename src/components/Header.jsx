@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { FaSun, FaMoon, FaBars, FaTimes, FaGem, FaGlobeAmericas, FaUserTie, FaPaperPlane } from 'react-icons/fa';
+import { Sun, Moon, Menu, X, Home, MapPin, Users, Send } from 'lucide-react';
 import "./styles/Header.css";
 
 export default function Header() {
@@ -56,25 +56,25 @@ export default function Header() {
           <ul className="nav-links">
             <li>
               <Link to="/" onClick={closeMenu}>
-                <FaGem />
+                <Home size={18} strokeWidth={2} />
                 <span>Inicio</span>
               </Link>
             </li>
             <li>
               <Link to="/destinos" onClick={closeMenu}>
-                <FaGlobeAmericas />
+                <MapPin size={18} strokeWidth={2} />
                 <span>Destinos</span>
               </Link>
             </li>
             <li>
               <Link to="/nosotros" onClick={closeMenu}>
-                <FaUserTie />
+                <Users size={18} strokeWidth={2} />
                 <span>Nosotros</span>
               </Link>
             </li>
             <li>
               <Link to="/contacto" onClick={closeMenu}>
-                <FaPaperPlane />
+                <Send size={18} strokeWidth={2} />
                 <span>Contacto</span>
               </Link>
             </li>
@@ -87,7 +87,7 @@ export default function Header() {
               aria-label="Toggle theme"
             >
               <div className="toggle-thumb">
-                {darkMode ? <FaSun /> : <FaMoon />}
+                {darkMode ? <Sun size={14} strokeWidth={2.5} /> : <Moon size={14} strokeWidth={2.5} />}
               </div>
             </button>
           </div>
@@ -98,7 +98,7 @@ export default function Header() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          {menuOpen ? <FaTimes /> : <FaBars />}
+          {menuOpen ? <X size={28} strokeWidth={2} /> : <Menu size={28} strokeWidth={2} />}
         </button>
       </div>
     </header>

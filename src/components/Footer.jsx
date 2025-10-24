@@ -1,7 +1,7 @@
 // Footer.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp, FaArrowUp, FaPhone, FaEnvelope, FaMapMarkerAlt, FaStar } from 'react-icons/fa';
+import { Facebook, Instagram, Twitter, MessageCircle, ArrowUp, Phone, Mail, MapPin, Star } from 'lucide-react';
 import './styles/Footer.css';
 
 export default function Footer() {
@@ -20,11 +20,11 @@ export default function Footer() {
     <footer className="footer">
       {/* Floating Action Buttons */}
       <div className="back-to-top" onClick={scrollToTop}>
-        <FaArrowUp className="arrow-icon" />
+        <ArrowUp className="arrow-icon" size={20} strokeWidth={2.5} />
       </div>
 
       <div className="floating-whatsapp" onClick={openWhatsApp}>
-        <FaWhatsapp className="whatsapp-icon" />
+        <MessageCircle className="whatsapp-icon" size={24} strokeWidth={2} />
       </div>
       
       <div className="footer-content">
@@ -49,7 +49,11 @@ export default function Footer() {
           <div className="trust-indicators">
             <div className="rating-display">
               <div className="rating-stars">
-                <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
+                <Star size={16} fill="#ffd700" strokeWidth={0} />
+                <Star size={16} fill="#ffd700" strokeWidth={0} />
+                <Star size={16} fill="#ffd700" strokeWidth={0} />
+                <Star size={16} fill="#ffd700" strokeWidth={0} />
+                <Star size={16} fill="#ffd700" strokeWidth={0} />
               </div>
               <span className="rating-text">5.0 • 500+ clientes satisfechos</span>
             </div>
@@ -85,15 +89,15 @@ export default function Footer() {
           <h4>Contacto</h4>
           <div className="contact-info">
             <div className="contact-item">
-              <FaMapMarkerAlt className="contact-icon" />
+              <MapPin className="contact-icon" size={18} strokeWidth={2} />
               <span>El Espinal, Tolima - Colombia</span>
             </div>
             <div className="contact-item">
-              <FaPhone className="contact-icon" />
+              <Phone className="contact-icon" size={18} strokeWidth={2} />
               <span>+57 320 812 6905</span>
             </div>
             <div className="contact-item">
-              <FaEnvelope className="contact-icon" />
+              <Mail className="contact-icon" size={18} strokeWidth={2} />
               <span>info@piquitours.com</span>
             </div>
           </div>
@@ -110,16 +114,16 @@ export default function Footer() {
           <h4>Conecta con nosotros</h4>
           <div className="social-icons">
             <a href="https://www.facebook.com/share/1AiMVjLLDs/" className="social-icon facebook" target="_blank" rel="noopener noreferrer">
-              <FaFacebook />
+              <Facebook size={22} strokeWidth={2} />
             </a>
             <a href="https://instagram.com" className="social-icon instagram" target="_blank" rel="noopener noreferrer">
-              <FaInstagram />
+              <Instagram size={22} strokeWidth={2} />
             </a>
             <a href="https://twitter.com" className="social-icon twitter" target="_blank" rel="noopener noreferrer">
-              <FaTwitter />
+              <Twitter size={22} strokeWidth={2} />
             </a>
             <a href="https://wa.me/+573208126905" className="social-icon whatsapp" target="_blank" rel="noopener noreferrer">
-              <FaWhatsapp />
+              <MessageCircle size={22} strokeWidth={2} />
             </a>
           </div>
           
