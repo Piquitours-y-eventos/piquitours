@@ -17,14 +17,29 @@ export default function AdminLogin() {
     setLoading(true);
     setError(null);
 
-    const { error: authError } = await supabase.auth.signInWithPassword({ email, password });
+    try {
+      const { error: authError } = await supabase.auth.signInWithPassword({ email, password });
 
-    setLoading(false);
-    if (authError) {
-      setError(authError.message);
-      return;
+      if (authError) {
+        throw authError;
+      }
+      navigate('/admin');
+    } catch (err) {
+      console.error('Error en login:', err);
+      let errorMessage = 'Error al iniciar sesión. Por favor, intenta nuevamente.';
+      
+      if (err.message && err.message.includes('Failed to fetch')) {
+        errorMessage = 'No pudimos conectar con el servidor. Verifica tu conexión a internet.';
+      } else if (err.message && err.message.includes('Invalid login')) {
+        errorMessage = 'Email o contraseña incorrectos.';
+      } else if (err.message) {
+        errorMessage = err.message;
+      }
+      
+      setError(errorMessage);
+    } finally {
+      setLoading(false);
     }
-    navigate('/admin');
   };
 
   return (

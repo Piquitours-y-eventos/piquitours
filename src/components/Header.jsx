@@ -47,7 +47,7 @@ export default function Header() {
         <div className="logo-container">
           <img 
             className="logo" 
-            src="/logo.png" 
+            src="/brand/logo.png" 
             alt="Piquitours y Eventos" 
           />
         </div>

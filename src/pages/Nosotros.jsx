@@ -66,7 +66,7 @@ function NosotrosPage() {
       {/* HERO */}
       <section className="pt-hero" aria-label="Presentación">
         <div className="pt-hero-media" aria-hidden="true">
-          <img src="/portada_nosotros_0101.jpg" alt="Paisaje Colombia - PiquiTours" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img src="/pages/portada_nosotros_0101.jpg" alt="Paisaje Colombia - PiquiTours" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
 
         <div className="pt-container pt-hero-content">
@@ -126,7 +126,7 @@ function NosotrosPage() {
             </div>
           </div>
           <figure className="pt-quienes-figure">
-            <img loading="lazy" src="/portada_google.jpeg" alt="Grupo disfrutando de un tour al atardecer" />
+            <img loading="lazy" src="/meta/portada_google.jpeg" alt="Grupo disfrutando de un tour al atardecer" />
             <figcaption className="pt-muted">Diseño, logística y hospitalidad — todo en un solo equipo.</figcaption>
           </figure>
         </div>
@@ -207,7 +207,7 @@ function NosotrosPage() {
             <p>Descubre cómo transformamos cada viaje en una historia inolvidable.</p>
           </div>
           <figure>
-            <img loading="lazy" src="/portada_imagen_2919.jpg" alt="Experiencia PiquiTours" style={{ width: '100%', borderRadius: '8px' }} />
+            <img loading="lazy" src="/pages/portada_imagen_2919.jpg" alt="Experiencia PiquiTours" style={{ width: '100%', borderRadius: '8px' }} />
             <figcaption className="pt-muted">Un vistazo a nuestras rutas: cultura, naturaleza y momentos que perduran.</figcaption>
           </figure>
         </div>
@@ -222,7 +222,7 @@ function NosotrosPage() {
           </div>
           <div className="pt-team">
             <article className="pt-member">
-              <img loading="lazy" src="/portada_imagen_2919.jpg" alt="Foto de persona del equipo" />
+              <img loading="lazy" src="/pages/portada_imagen_2919.jpg" alt="Foto de persona del equipo" />
               <div className="pt-info">
                 <strong>Valeria Ortiz</strong>
                 <div className="pt-role">Directora de Operaciones</div>

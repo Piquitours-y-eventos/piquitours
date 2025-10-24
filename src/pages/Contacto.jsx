@@ -100,11 +100,19 @@ export default function Contacto() {
       
     } catch (error) {
       console.error('Error al enviar:', error);
+      let errorMessage = 'Hubo un problema al enviar el mensaje. Por favor intenta nuevamente.';
+      
+      if (error.message && error.message.includes('Failed to fetch')) {
+        errorMessage = 'No pudimos conectar con el servidor. Verifica tu conexión a internet e intenta nuevamente.';
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
       setFormStatus({
         isSubmitting: false,
         isSubmitted: false,
         hasError: true,
-        errorMessage: error.message || 'Error al enviar el mensaje. Por favor, inténtalo de nuevo.'
+        errorMessage: errorMessage
       });
     }
   };
