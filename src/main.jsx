@@ -4,7 +4,6 @@ import App from './App.jsx'
 import './index.css'
 
 // Importar y configurar AOS
-import 'aos/dist/aos.css'
 import AOS from 'aos'
 
 // SpeedInsights desde vercel

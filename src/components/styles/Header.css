@@ -16,7 +16,6 @@
   padding: 0 clamp(20px, 3vw, 40px);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); /* Soporte para Safari */
-  /* border-bottom: 0.5px solid rgba(255, 255, 255, 0.1); */
   transition: all 0.3s ease;
   z-index: 1000;
   display: flex;
@@ -40,7 +39,6 @@
   align-items: center;
 }
 
-/* ===== LOGO RESPONSIVE ===== */
 .logo-container {
   z-index: 1001;
   transition: all 0.3s ease;
@@ -74,7 +72,6 @@
   transform: scale(1.05);
 }
 
-/* ===== NAVEGACIÓN PRINCIPAL ===== */
 .nav {
   display: flex;
   transition: all 0.3s ease;

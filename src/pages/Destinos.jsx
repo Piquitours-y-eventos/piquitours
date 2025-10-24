@@ -7,7 +7,6 @@ import './styles/Destinos.css';
 const Destinos = () => {
   return (
     <div className="destinos-page">
-      {/* Premium Hero Section - Updated for better responsiveness and professionalism */}
       <section className="premium-hero-destinos">
         <div className="floating-shapes">
           <div className="floating-shape shape-1"></div>
@@ -46,7 +45,6 @@ const Destinos = () => {
             Descubre experiencias auténticas y destinos extraordinarios diseñados para crear recuerdos inolvidables
           </motion.p>
           
-          {/* Added hero stats for more engaging and professional look */}
           <div className="hero-stats">
             <div 
               className="stat-item clickable-stat" 
@@ -91,7 +89,6 @@ const Destinos = () => {
         </motion.div>
       </section>
 
-      {/* Main Destinations Component */}
       <Destinations />
       
       <Footer />

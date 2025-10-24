@@ -115,5 +115,38 @@
         {"pregunta":"¿Apto para niños?","respuesta":"Totalmente. Descuentos para menores de 12 años"}
       ]
     }
+  ],
+  [
+    {
+      "id": 3,
+      "slug": "cocora",
+      "nombre": "San Andrés • Mar de Siete Colores (falso)",
+      "resumen": "Playas paradisíacas, snorkel y cultura raizal auténtica (falso)",
+      "descripcionCompleta": "Vive el Caribe en su máxima expresión con aguas cristalinas (falso)",
+      "bullets": ["Snorkel mar siete colores (falso)", "Johnny Cay (falso)", "Tour buggy (falso)", "Cueva de Morgan (falso)"],
+      "salida": ["Bogotá (falso)", "Medellín (falso)"],
+      "categorias": ["Playa (falso)", "Aventura (falso)", "Náutico (falso)"],
+      "duracion": 4,
+      "precio": 1790000,
+      "popularidad": 95,
+      "portada": {"type":"image","src":"/tours/san-andres/portada.jpg"},
+      "galeria": ["/tours/san-andres/coco.jpg","/tours/san-andres/comidas.jpg","/tours/san-andres/bote.jpg"],
+      "itinerario": [
+        {"dia":"Día 1","titulo":"Llegada y playa (falso)","descripcion":"Recepción y tiempo libre en playa principal (falso)","actividades":["Check-in (falso)","Playa (falso)","Relax (falso)"],"incluye":true},
+        {"dia":"Día 2","titulo":"Snorkel y Johnny Cay (falso)","descripcion":"Excursión a cayos con snorkel (falso)","actividades":["Lancha (falso)","Snorkel (falso)","Johnny Cay (falso)"],"incluye":true},
+        {"dia":"Día 3","titulo":"Tour isla (falso)","descripcion":"Recorrido en buggy completo (falso)","actividades":["Buggy (falso)","Cueva Morgan (falso)","Shopping (falso)"],"incluye":true},
+        {"dia":"Día 4","titulo":"Regreso (falso)","descripcion":"Mañana libre y traslado (falso)","actividades":["Tiempo libre (falso)","Check-out (falso)"],"incluye":true}
+      ],
+      "incluye": [
+        {"ok":true,"item":"Transporte 4x4 especializado (falso)"},
+        {"ok":true,"item":"Alojamiento chinchorro premium (falso)"},
+        {"ok":true,"item":"Guía Wayuu certificado (falso)"},
+        {"ok":true,"item":"2 desayunos, 3 almuerzos, 2 cenas (falso)"},
+        {"ok":true,"item":"Seguro de viaje (falso)"},
+        {"ok":false,"item":"Vuelos a Riohacha (falso)"}
+      ],
+      "detalles": {"dificultad":"Baja (falso)","clima":"Cálido seco 28-35°C (falso)","mejorEpoca":"Dic-Ago (falso)","grupoMax":12,"grupoMin":4,"idiomas":["Español (falso)","Wayuunaiki (falso)"],"sostenible":"Compensación CO₂ (falso)"},
+    }
+
   ]
 }
