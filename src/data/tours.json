@@ -114,39 +114,232 @@
         {"pregunta":"¿Hotel en el centro?","respuesta":"Sí, dentro o a 2 cuadras de las murallas"},
         {"pregunta":"¿Apto para niños?","respuesta":"Totalmente. Descuentos para menores de 12 años"}
       ]
-    }
-  ],
-  [
+    },
     {
       "id": 3,
-      "slug": "cocora",
-      "nombre": "San Andrés • Mar de Siete Colores (falso)",
-      "resumen": "Playas paradisíacas, snorkel y cultura raizal auténtica (falso)",
-      "descripcionCompleta": "Vive el Caribe en su máxima expresión con aguas cristalinas (falso)",
-      "bullets": ["Snorkel mar siete colores (falso)", "Johnny Cay (falso)", "Tour buggy (falso)", "Cueva de Morgan (falso)"],
-      "salida": ["Bogotá (falso)", "Medellín (falso)"],
-      "categorias": ["Playa (falso)", "Aventura (falso)", "Náutico (falso)"],
-      "duracion": 4,
-      "precio": 1790000,
-      "popularidad": 95,
-      "portada": {"type":"image","src":"/tours/san-andres/portada.jpg"},
-      "galeria": ["/tours/san-andres/coco.jpg","/tours/san-andres/comidas.jpg","/tours/san-andres/bote.jpg"],
+      "slug": "eje-cafetero",
+      "nombre": "Eje Cafetero • Valle de Cocora",
+      "resumen": "Senderos entre palmas de cera gigantes, fincas cafeteras y clima de montaña",
+      "descripcionCompleta": "Experimenta el corazón cafetero de Colombia con naturaleza espectacular",
+      "bullets": ["Taller de café de especialidad", "Hike entre palmas de 60m", "Termales al atardecer", "Finca ecológica"],
+      "salida": ["Bogotá","Medellín","Cali"],
+      "categorias": ["Montaña","Café","Naturaleza","Wellness"],
+      "duracion": 3,
+      "precio": 990000,
+      "popularidad": 92,
+      "portada": {"type":"image","src":"/tours/eje-cafetero/portada.jpg"},
+      "galeria": ["/tours/eje-cafetero/trucha.jpg","/tours/eje-cafetero/cocora.jpg"],
       "itinerario": [
-        {"dia":"Día 1","titulo":"Llegada y playa (falso)","descripcion":"Recepción y tiempo libre en playa principal (falso)","actividades":["Check-in (falso)","Playa (falso)","Relax (falso)"],"incluye":true},
-        {"dia":"Día 2","titulo":"Snorkel y Johnny Cay (falso)","descripcion":"Excursión a cayos con snorkel (falso)","actividades":["Lancha (falso)","Snorkel (falso)","Johnny Cay (falso)"],"incluye":true},
-        {"dia":"Día 3","titulo":"Tour isla (falso)","descripcion":"Recorrido en buggy completo (falso)","actividades":["Buggy (falso)","Cueva Morgan (falso)","Shopping (falso)"],"incluye":true},
-        {"dia":"Día 4","titulo":"Regreso (falso)","descripcion":"Mañana libre y traslado (falso)","actividades":["Tiempo libre (falso)","Check-out (falso)"],"incluye":true}
+        {"dia":"Día 1","titulo":"Finca cafetera","descripcion":"Del cerezo a la taza: catación y tostión","actividades":["Taller café","Catación","Tour finca"],"incluye":true},
+        {"dia":"Día 2","titulo":"Valle de Cocora","descripcion":"Sendero y miradores. Picnic de autor","actividades":["Hike","Miradores","Picnic","Fotos"],"incluye":true},
+        {"dia":"Día 3","titulo":"Termales","descripcion":"Desconexión total antes del retorno","actividades":["Termales","Relax","Retorno"],"incluye":true}
       ],
       "incluye": [
-        {"ok":true,"item":"Transporte 4x4 especializado (falso)"},
-        {"ok":true,"item":"Alojamiento chinchorro premium (falso)"},
-        {"ok":true,"item":"Guía Wayuu certificado (falso)"},
-        {"ok":true,"item":"2 desayunos, 3 almuerzos, 2 cenas (falso)"},
-        {"ok":true,"item":"Seguro de viaje (falso)"},
-        {"ok":false,"item":"Vuelos a Riohacha (falso)"}
+        {"ok":true,"item":"Transporte local y guía"},
+        {"ok":true,"item":"Alojamiento rural superior"},
+        {"ok":true,"item":"Entradas y taller de café"},
+        {"ok":true,"item":"2 desayunos, 2 cenas"},
+        {"ok":false,"item":"Almuerzos"},
+        {"ok":false,"item":"Bebidas alcohólicas"}
       ],
-      "detalles": {"dificultad":"Baja (falso)","clima":"Cálido seco 28-35°C (falso)","mejorEpoca":"Dic-Ago (falso)","grupoMax":12,"grupoMin":4,"idiomas":["Español (falso)","Wayuunaiki (falso)"],"sostenible":"Compensación CO₂ (falso)"},
+      "detalles": {"dificultad":"Media","clima":"Frío-templado 12-22°C","mejorEpoca":"Jun-Sep / Dic-Mar","grupoMax":15,"grupoMin":4,"idiomas":["Español","Inglés"],"sostenible":"Turismo responsable"},
+      "reviews": [
+        {"nombre":"Nati G.","ubicacion":"Bogotá","rating":5,"fecha":"Mar 2025","comentario":"El café nunca me supo igual después de esto","verificado":true},
+        {"nombre":"Santiago P.","ubicacion":"Cali","rating":4,"fecha":"Feb 2025","comentario":"Vistas surrealistas, guía crack","verificado":true},
+        {"nombre":"Elena V.","ubicacion":"Medellín","rating":5,"fecha":"Ene 2025","comentario":"Naturaleza pura y fresca","verificado":true}
+      ],
+      "faq": [
+        {"pregunta":"¿Qué llevar?","respuesta":"Ropa abrigada, impermeable, zapatos de montaña, cámara"},
+        {"pregunta":"¿Hay señal móvil?","respuesta":"Limitada en el Valle, buena en Salento y termales"}
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "guatape",
+      "nombre": "Guatapé • Peñón y Colores",
+      "resumen": "Peñol y Guatapé, dos razones para enamorarte de Antioquia",
+      "descripcionCompleta": "Explora el majestuoso Peñón de Guatapé y sus coloridos pueblos",
+      "bullets": ["Ascenso al Peñón (740 escalones)", "Calles coloridas de Guatapé", "Paseo en lancha", "Fotografía panorámica"],
+      "salida": ["Medellín"],
+      "categorias": ["Aventura","Naturaleza","Fotografía","Cultural"],
+      "duracion": 1,
+      "precio": 420000,
+      "popularidad": 89,
+      "portada": {"type":"image","src":"/tours/guatape/portada.jpg"},
+      "galeria": ["/tours/guatape/pueblo.jpg","/tours/guatape/vista.jpg"],
+      "itinerario": [
+        {"dia":"Día 1","titulo":"Ascenso al Peñón","descripcion":"Subida por las escalinatas del Peñón de Guatapé para disfrutar de las mejores vistas","actividades":["Ascenso","Fotos panorámicas","Almuerzo típico","Tour Guatapé"],"incluye":true}
+      ],
+      "incluye": [
+        {"ok":true,"item":"Transporte desde Medellín"},
+        {"ok":true,"item":"Guía local bilingüe"},
+        {"ok":true,"item":"Entrada al Peñón"},
+        {"ok":true,"item":"Almuerzo típico"},
+        {"ok":false,"item":"Paseo en lancha"},
+        {"ok":false,"item":"Propinas"}
+      ],
+      "detalles": {"dificultad":"Moderada","clima":"Templado 18-25°C","mejorEpoca":"Todo el año","grupoMax":15,"grupoMin":2,"idiomas":["Español","Inglés básico"]},
+      "reviews": [
+        {"nombre":"Carlos M.","ubicacion":"Medellín","rating":5,"fecha":"Abr 2025","comentario":"Las vistas desde arriba son espectaculares","verificado":true},
+        {"nombre":"María L.","ubicacion":"Bogotá","rating":4,"fecha":"Mar 2025","comentario":"Pueblo muy colorido, vale la pena","verificado":true}
+      ],
+      "faq": [
+        {"pregunta":"¿Cuántos escalones son?","respuesta":"740 escalones. Hay descansos cada 100 escalones"},
+        {"pregunta":"¿Apto para niños?","respuesta":"Sí, desde 5 años con supervisión"}
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "costa-caribe",
+      "nombre": "Costa Caribe • Barú, Rodadero y Cartagena",
+      "resumen": "Barú, Rodadero y Cartagena: tres joyas, un solo paraíso",
+      "descripcionCompleta": "Disfruta de las playas paradisíacas de Barú, la vibrante vida del Rodadero y el encanto de Cartagena",
+      "bullets": ["Playas de arena blanca en Barú", "Vida nocturna del Rodadero", "Centro histórico Cartagena", "Snorkel y playa"],
+      "salida": ["Bogotá","Medellín"],
+      "categorias": ["Playa","Cultura","Náutico","Fiesta"],
+      "duracion": 4,
+      "precio": 1850000,
+      "popularidad": 88,
+      "portada": {"type":"image","src":"/tours/baru/image.png"},
+      "galeria": ["/tours/baru/pescado.jpg","/tours/baru/ii.jpg"],
+      "itinerario": [
+        {"dia":"Día 1","titulo":"Islas de Barú","descripcion":"Tour por las islas paradisíacas de Barú con almuerzo incluido","actividades":["Tour en lancha","Snorkel","Almuerzo playero"],"incluye":true},
+        {"dia":"Día 2","titulo":"El Rodadero","descripcion":"Playa y vida nocturna vibrante","actividades":["Playa","Shopping","Fiesta nocturna"],"incluye":true},
+        {"dia":"Día 3","titulo":"Cartagena Colonial","descripcion":"Tour por el centro histórico amurallado","actividades":["Tour histórico","Museos","Gastronomía"],"incluye":true},
+        {"dia":"Día 4","titulo":"Tiempo libre","descripcion":"Relax y compras antes del retorno","actividades":["Playa","Compras","Traslado"],"incluye":true}
+      ],
+      "incluye": [
+        {"ok":true,"item":"Hotel 4★ con desayuno"},
+        {"ok":true,"item":"Transporte acuático"},
+        {"ok":true,"item":"3 almuerzos incluidos"},
+        {"ok":true,"item":"Equipo de snorkel"},
+        {"ok":false,"item":"Vuelos"},
+        {"ok":false,"item":"Bebidas alcohólicas"}
+      ],
+      "detalles": {"dificultad":"Fácil","clima":"Cálido 27-33°C","mejorEpoca":"Dic-Mar","grupoMax":12,"grupoMin":4,"idiomas":["Español"]},
+      "reviews": [
+        {"nombre":"Juliana R.","ubicacion":"Bogotá","rating":5,"fecha":"Mar 2025","comentario":"Barú es un paraíso escondido","verificado":true},
+        {"nombre":"David P.","ubicacion":"Medellín","rating":4,"fecha":"Feb 2025","comentario":"Excelente combinación de playa y cultura","verificado":true}
+      ],
+      "faq": [
+        {"pregunta":"¿Incluye fiestas?","respuesta":"Entrada a zona de rumba del Rodadero incluida"},
+        {"pregunta":"¿Qué llevar?","respuesta":"Ropa de baño, bloqueador, zapatos cómodos, cámara acuática"}
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "medellin-urbano",
+      "nombre": "Medellín • Selva Urbana",
+      "resumen": "Conoce nuestra fauna y flora a través de nuestras selvas urbanas",
+      "descripcionCompleta": "Explora la ciudad de Medellín y sus alrededores en una experiencia única",
+      "bullets": ["Parque Arví en Metrocable", "Comuna 13 graffiti tour", "El Poblado gastronómico", "Jardín Botánico"],
+      "salida": ["Bogotá","Cali"],
+      "categorias": ["Urbano","Cultural","Naturaleza","Gastronomía"],
+      "duracion": 3,
+      "precio": 890000,
+      "popularidad": 85,
+      "portada": {"type":"image","src":"/tours/medellin/selva.jpg"},
+      "galeria": ["/tours/medellin/monos.jpg","/tours/medellin/selvita.jpg"],
+      "itinerario": [
+        {"dia":"Día 1","titulo":"Llegada y El Poblado","descripcion":"Recorrido por el barrio más moderno de la ciudad","actividades":["Check-in","Tour Poblado","Cena gourmet"],"incluye":true},
+        {"dia":"Día 2","titulo":"Parque Arví","descripcion":"Metrocable y turismo ecológico en las montañas","actividades":["Metrocable","Parque Arví","Almuerzo típico"],"incluye":true},
+        {"dia":"Día 3","titulo":"Comuna 13 y Jardín","descripcion":"Arte urbano y naturaleza en un día","actividades":["Graffiti tour","Jardín Botánico","Despedida"],"incluye":true}
+      ],
+      "incluye": [
+        {"ok":true,"item":"Hotel 3★ céntrico"},
+        {"ok":true,"item":"Transporte local"},
+        {"ok":true,"item":"Guía especializado"},
+        {"ok":true,"item":"Entradas incluidas"},
+        {"ok":false,"item":"Vuelos"},
+        {"ok":false,"item":"Comidas no descritas"}
+      ],
+      "detalles": {"dificultad":"Baja","clima":"Templado 18-28°C","mejorEpoca":"Todo el año","grupoMax":15,"grupoMin":2,"idiomas":["Español","Inglés"]},
+      "reviews": [
+        {"nombre":"Camila V.","ubicacion":"Bogotá","rating":5,"fecha":"Abr 2025","comentario":"La Comuna 13 es arte puro","verificado":true},
+        {"nombre":"Roberto F.","ubicacion":"Cali","rating":4,"fecha":"Mar 2025","comentario":"Ciudad moderna y acogedora","verificado":true}
+      ],
+      "faq": [
+        {"pregunta":"¿Es seguro?","respuesta":"Sí, tours con guías locales certificados en zonas turísticas"},
+        {"pregunta":"¿Incluye metro?","respuesta":"Sí, pases de Metrocable incluidos"}
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "bogota-andina",
+      "nombre": "Bogotá • Andes y Cultura",
+      "resumen": "Conoce los Andes colombianos de una manera diferente",
+      "descripcionCompleta": "Explora Bogotá y sus alrededores andinos en una experiencia cultural única",
+      "bullets": ["Monserrate y centro histórico", "Catedral de Sal", "Museo del Oro", "Gastronomía andina"],
+      "salida": ["Medellín","Cali"],
+      "categorias": ["Cultural","Montaña","Gastronomía","Historia"],
+      "duracion": 3,
+      "precio": 1190000,
+      "popularidad": 87,
+      "portada": {"type":"image","src":"/tours/eje-cafetero/andina.jpg"},
+      "galeria": ["/tours/eje-cafetero/ajiaco.webp","/tours/eje-cafetero/fuente.webp"],
+      "itinerario": [
+        {"dia":"Día 1","titulo":"Centro histórico","descripcion":"La Candelaria, Museo del Oro y Monserrate","actividades":["Tour Candelaria","Museo del Oro","Monserrate"],"incluye":true},
+        {"dia":"Día 2","titulo":"Catedral de Sal","descripcion":"Excursión a Zipaquirá y pueblo colonial","actividades":["Catedral","Almuerzo típico","Tour Zipaquirá"],"incluye":true},
+        {"dia":"Día 3","titulo":"Experiencia gastronómica","descripcion":"Mercado de Paloquemao y clase de cocina","actividades":["Mercado","Clase cocina","Degustación"],"incluye":true}
+      ],
+      "incluye": [
+        {"ok":true,"item":"Hotel boutique 4★"},
+        {"ok":true,"item":"Transporte privado"},
+        {"ok":true,"item":"Guía bilingüe"},
+        {"ok":true,"item":"Todas las entradas"},
+        {"ok":true,"item":"2 desayunos, 3 almuerzos"},
+        {"ok":false,"item":"Vuelos"},
+        {"ok":false,"item":"Cenas"}
+      ],
+      "detalles": {"dificultad":"Baja","clima":"Frío 8-19°C","mejorEpoca":"Jun-Nov","grupoMax":12,"grupoMin":4,"idiomas":["Español","Inglés","Francés"],"sostenible":"Turismo comunitario"},
+      "reviews": [
+        {"nombre":"Patricia G.","ubicacion":"México","rating":5,"fecha":"Abr 2025","comentario":"La Catedral de Sal es impresionante","verificado":true},
+        {"nombre":"Fernando L.","ubicacion":"España","rating":5,"fecha":"Mar 2025","comentario":"Historia viva en cada esquina","verificado":true}
+      ],
+      "faq": [
+        {"pregunta":"¿Qué ropa llevar?","respuesta":"Ropa abrigada (chaqueta, bufanda), capas. Bogotá es fría"},
+        {"pregunta":"¿Hay mal de altura?","respuesta":"Bogotá está a 2.600 msnm. Hidrátate bien y ve con calma el primer día"}
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "amazonas",
+      "nombre": "Amazonas • Selva Profunda",
+      "resumen": "Ríos poderosos, biodiversidad infinita y comunidades indígenas",
+      "descripcionCompleta": "Una aventura en el pulmón del mundo con inmersión total en la naturaleza",
+      "bullets": ["Navegación por el Río Amazonas", "Delfines rosados", "Inmersión cultural con tribus", "Lodge ecológico"],
+      "salida": ["Bogotá"],
+      "categorias": ["Naturaleza","Aventura","Cultural","Eco-turismo"],
+      "duracion": 5,
+      "precio": 2190000,
+      "popularidad": 90,
+      "portada": {"type":"image","src":"/tours/san-andres/portada.jpg"},
+      "galeria": ["/tours/san-andres/bote.jpg","/tours/san-andres/comidas.jpg","/tours/san-andres/coco.jpg"],
+      "itinerario": [
+        {"dia":"Día 1","titulo":"Llegada a Leticia","descripcion":"Recepción y traslado al lodge. Paseo nocturno","actividades":["Vuelo a Leticia","Traslado fluvial","Lodge","Paseo nocturno"],"incluye":true},
+        {"dia":"Día 2","titulo":"Río Amazonas","descripcion":"Navegación, delfines y pesca","actividades":["Navegación","Delfines rosados","Pesca","Almuerzo riverside"],"incluye":true},
+        {"dia":"Día 3","titulo":"Comunidad indígena","descripcion":"Visita a tribu, artesanías y ceremonia","actividades":["Visita tribu","Artesanías","Ceremonia tradicional","Comida local"],"incluye":true},
+        {"dia":"Día 4","titulo":"Exploración selva","descripcion":"Sendero y canopy","actividades":["Trekking","Fauna y flora","Canopy","Cascadas"],"incluye":true},
+        {"dia":"Día 5","titulo":"Regreso","descripcion":"Tiempo libre y vuelo","actividades":["Compras","Traslado","Vuelo"],"incluye":true}
+      ],
+      "incluye": [
+        {"ok":true,"item":"Transporte fluvial y terrestre"},
+        {"ok":true,"item":"Lodge ecológico todo incluido"},
+        {"ok":true,"item":"Guía naturalista bilingüe"},
+        {"ok":true,"item":"Todas las actividades descritas"},
+        {"ok":true,"item":"Seguro de viaje"},
+        {"ok":false,"item":"Vuelos"},
+        {"ok":false,"item":"Bebidas alcohólicas"}
+      ],
+      "detalles": {"dificultad":"Media","clima":"Húmedo tropical 24-32°C","mejorEpoca":"Jul-Nov (menos lluvias)","grupoMax":10,"grupoMin":4,"idiomas":["Español","Inglés","Portugués"],"sostenible":"Ecoturismo certificado"},
+      "reviews": [
+        {"nombre":"Ana M.","ubicacion":"Argentina","rating":5,"fecha":"Abr 2025","comentario":"Los delfines rosados son mágicos. Experiencia única","verificado":true},
+        {"nombre":"Luis C.","ubicacion":"Bogotá","rating":5,"fecha":"Mar 2025","comentario":"Naturaleza en estado puro. El lodge es muy cómodo","verificado":true}
+      ],
+      "faq": [
+        {"pregunta":"¿Qué vacunas necesito?","respuesta":"Fiebre amarilla obligatoria. Consulta con tu médico sobre malaria"},
+        {"pregunta":"¿Es peligroso?","respuesta":"Con guías locales y siguiendo protocolos es totalmente seguro"}
+      ]
     }
-
   ]
 }
