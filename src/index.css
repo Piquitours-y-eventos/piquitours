@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,8 +13,8 @@
   --color-text-light: #F8F9FA;
   --color-text-dark: #1E1E1E;
 
-  --font-heading: 'Poppins', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
 
   line-height: 1.5;
   font-weight: 400;
@@ -23,12 +23,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Reset básico */
 * {
   text-decoration: none !important;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-color: var(--color-primary-dark) transparent;
+  scrollbar-width: thin;
 }
 
 html, body {
@@ -42,7 +43,6 @@ body {
   display: block;
 }
 
-/* Tipografía */
 body {
   font-family: var(--font-body);
   margin: 0;
@@ -50,15 +50,13 @@ body {
   text-align: center;
 }
 
-/* Encabezados */
 h1, h2, h3 {
   font-family: var(--font-heading);
   font-weight: 700;
 }
 
-/* Ajuste global de tamaño de fuente */
 html {
-  font-size: 15px; /* Antes probablemente 16px+, ahora más equilibrado */
+  font-size: 15px; 
 }
 
 main:not([data-page="home"]) {
@@ -69,18 +67,7 @@ main:not([data-page="home"]) {
   margin-top: 90px;
 }
 
-/* Modo oscuro */
-/* body.dark-mode { */
-  /* background-color: var(--color-bg-dark); */
-  /* color: var(--color-text-light); */
-/* } */
 
-/* body:not(.dark-mode) { */
-  /* background-color: var(--color-bg-light); */
-  /* color: var(--color-text-dark); */
-/* } */
-
-/* Enlaces */
 a {
   font-weight: 500;
   color: var(--color-primary);
@@ -91,15 +78,16 @@ a:hover {
   color: var(--color-primary-dark);
 }
 
-/* Scrollbar personalizado */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
+  z-index: 999999 !important; 
 }
 
 ::-webkit-scrollbar-track {
   background: transparent;
   border-radius: 8px;
+  z-index: 999999 !important;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -108,34 +96,10 @@ a:hover {
   border: 2px solid transparent;
   background-clip: padding-box;
   transition: all 0.3s ease;
+  z-index: 999999 !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary);
-}
-
-/* Modo oscuro scrollbar */
-/* body.dark-mode ::-webkit-scrollbar-thumb { */
-  /* background: rgba(0, 180, 216, 0.6); */
-/* } */
-/* body.dark-mode ::-webkit-scrollbar-thumb:hover { */
-  /* background: rgba(0, 180, 216, 0.9); */
-/* } */
-
-/* Modo claro scrollbar */
-/* body:not(.dark-mode) ::-webkit-scrollbar-thumb { */
-  /* background: rgba(0, 119, 182, 0.4); */
-/* } */
-/* body:not(.dark-mode) ::-webkit-scrollbar-thumb:hover { */
-  /* background: rgba(0, 119, 182, 0.8); */
-/* } */
-
-/* body:not(.dark-mode) * {
-  background: none !important;
-} */
-
-/* Firefox */
-* {
-  scrollbar-color: var(--color-primary-dark) transparent;
-  scrollbar-width: thin;
+  z-index: 999999 !important;
 }

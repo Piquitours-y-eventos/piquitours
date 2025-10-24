@@ -173,7 +173,7 @@ export default function WhyUs() {
           transition={{ duration: 0.8, delay: 0.2, type: 'spring', stiffness: 80 }}
         >
           <motion.img
-            src="/portada_google.jpeg"
+            src="/meta/portada_google.jpeg"
             alt="Turismo en Colombia"
             className="why-us-image"
             loading="lazy"

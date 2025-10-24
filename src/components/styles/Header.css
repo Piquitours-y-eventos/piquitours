@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* ===== HEADER PRINCIPAL ====== */
@@ -16,7 +16,6 @@
   padding: 0 clamp(20px, 3vw, 40px);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px); /* Soporte para Safari */
-  /* border-bottom: 0.5px solid rgba(255, 255, 255, 0.1); */
   transition: all 0.3s ease;
   z-index: 1000;
   display: flex;
@@ -40,7 +39,6 @@
   align-items: center;
 }
 
-/* ===== LOGO RESPONSIVE ===== */
 .logo-container {
   z-index: 1001;
   transition: all 0.3s ease;
@@ -51,16 +49,16 @@
 }
 
 .logo {
-  height: clamp(55px, 7vh, 70px); /* Aumentado para hacer logo más grande */
+  height: clamp(60px, 8vh, 80px); /* Logo más grande - aumentado significativamente */
   width: auto;
-  max-width: clamp(200px, 22vw, 250px); /* Ajustado max-width para mantener proporciones */
+  max-width: clamp(220px, 25vw, 280px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   object-fit: contain;
   object-position: center;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.3));
   aspect-ratio: auto;
   max-height: 100%;
-  transform: scale(1.05); /* Escala sutil para hacerlo "más grande" sin cambiar dimensiones reales ni layout */
+  transform: scale(1.08); /* Más grande visualmente */
 }
 
 .logo:hover {
@@ -69,12 +67,11 @@
 }
 
 .scrolled .logo {
-  height: clamp(45px, 5.5vh, 55px); /* Aumentado para scrolled */
-  max-width: clamp(160px, 20vw, 200px);
+  height: clamp(50px, 6.5vh, 65px);
+  max-width: clamp(180px, 22vw, 220px);
   transform: scale(1.05);
 }
 
-/* ===== NAVEGACIÓN PRINCIPAL ===== */
 .nav {
   display: flex;
   transition: all 0.3s ease;
@@ -90,26 +87,28 @@
 .nav-links a {
   color: #fff;
   text-decoration: none;
-  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
   font-weight: 500;
-  font-family: 'Playfair Display', serif;
-  letter-spacing: 0.01em;
-  padding: clamp(0.6rem, 1.5vw, 0.8rem) clamp(0.8rem, 1.8vw, 1rem);
-  border-radius: 10px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: -0.01em;
+  padding: clamp(0.5rem, 1.2vw, 0.625rem) clamp(0.75rem, 1.6vw, 0.875rem);
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   display: flex;
   align-items: center;
-  gap: clamp(0.5rem, 1.2vw, 0.7rem);
+  gap: clamp(0.4rem, 1vw, 0.5rem);
   white-space: nowrap;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  /* Sin background ni border por defecto - estilo Apple minimalista */
+  background: transparent;
+  border: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 .nav-links a svg {
-  font-size: clamp(14px, 2.8vw, 18px);
   flex-shrink: 0;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
 }
 
 .nav-links a span {
@@ -117,12 +116,15 @@
 }
 
 .nav-links a:hover {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 140, 0, 0.2) 50%, rgba(255, 215, 0, 0.15) 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15), 
-              0 0 10px rgba(255, 215, 0, 0.1);
+  /* Estilo Apple: solo cambia el color y opacidad, sin background */
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(0px);
   color: #ffd700;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links a:hover svg {
+  opacity: 1;
 }
 
 /* ===== CONTENEDOR DEL BOTÓN TEMA ===== */
@@ -222,14 +224,14 @@
   }
 
   .logo {
-    height: clamp(45px, 6vh, 60px) !important; /* Aumentado para mobile también */
-    max-width: clamp(140px, 24vw, 170px);
+    height: clamp(50px, 7vh, 65px) !important;
+    max-width: clamp(160px, 26vw, 190px);
     transform: scale(1.05);
   }
 
   .scrolled .logo {
-    height: clamp(35px, 5vh, 50px) !important;
-    max-width: clamp(110px, 20vw, 140px);
+    height: clamp(40px, 5.5vh, 55px) !important;
+    max-width: clamp(130px, 22vw, 160px);
   }
 
   .menu-toggle {
@@ -264,10 +266,16 @@
 
   .nav-links a {
     width: 100%;
-    font-size: clamp(0.9rem, 2.2vw, 1.2rem);
-    padding: clamp(0.8rem, 2vh, 1rem);
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
+    font-size: clamp(0.9375rem, 2.2vw, 1.0625rem);
+    padding: clamp(0.875rem, 2.2vh, 1rem) clamp(1rem, 2.5vw, 1.25rem);
+    /* Sin background en móvil también */
+    background: transparent;
+    border-radius: 12px;
+  }
+
+  .nav-links a:active {
+    background: rgba(255, 255, 255, 0.12);
+    transform: scale(0.98);
   }
 
   .theme-toggle-container {
@@ -312,13 +320,14 @@
   }
 
   .logo {
-    height: clamp(60px, 7.5vh, 75px);
-    max-width: clamp(220px, 24vw, 270px);
-    transform: scale(1.05);
+    height: clamp(65px, 8vh, 80px);
+    max-width: clamp(240px, 26vw, 290px);
+    transform: scale(1.08);
   }
 
   .scrolled .logo {
-    height: clamp(50px, 6.5vh, 65px);
+    height: clamp(55px, 7vh, 70px);
+    max-width: clamp(200px, 24vw, 240px);
   }
 }
 
@@ -333,8 +342,13 @@ body.dark-mode .header {
 }
 
 body:not(.dark-mode) .nav-links a {
-  color: #1a1a1a;
+  color: #1d1d1f;
   text-shadow: none !important;
+}
+
+body:not(.dark-mode) .nav-links a:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #ff8c00;
 }
 
 body:not(.dark-mode) .menu-toggle {

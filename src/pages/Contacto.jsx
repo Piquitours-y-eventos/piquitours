@@ -100,11 +100,19 @@ export default function Contacto() {
       
     } catch (error) {
       console.error('Error al enviar:', error);
+      let errorMessage = 'Hubo un problema al enviar el mensaje. Por favor intenta nuevamente.';
+      
+      if (error.message && error.message.includes('Failed to fetch')) {
+        errorMessage = 'No pudimos conectar con el servidor. Verifica tu conexión a internet e intenta nuevamente.';
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
       setFormStatus({
         isSubmitting: false,
         isSubmitted: false,
         hasError: true,
-        errorMessage: error.message || 'Error al enviar el mensaje. Por favor, inténtalo de nuevo.'
+        errorMessage: errorMessage
       });
     }
   };
@@ -563,40 +571,6 @@ export default function Contacto() {
                 <div className="arrow-icon">→</div>
               </div>
             </motion.a>
-            {/* <motion.a
-              href="https://tiktok.com/@piquitours"
-              target="_blank"
-              rel="noreferrer"
-              className="premium-social-card tiktok-card"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -15, scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div className="social-card-background"></div>
-              <div className="social-card-content">
-                <div className="social-icon-container tiktok-icon">
-                  <FaTiktok className="social-icon" />
-                </div>
-                <div className="social-info">
-                  <h3>TikTok</h3>
-                  <p>@piquitours</p>
-                  <div className="follower-count">
-                    <span className="count">45.1K</span>
-                    <span className="label">Seguidores</span>
-                  </div>
-                  <div className="social-description">
-                    Videos virales, tips de viaje y momentos únicos que solo Colombia puede ofrecer
-                  </div>
-                </div>
-              </div>
-              <div className="social-card-footer">
-                <span>Síguenos</span>
-                <div className="arrow-icon">→</div>
-              </div>
-            </motion.a> */}
           </div>
           <motion.div
             className="social-stats-banner"

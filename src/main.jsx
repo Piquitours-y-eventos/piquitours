@@ -4,10 +4,9 @@ import App from './App.jsx'
 import './index.css'
 
 // Importar y configurar AOS
-import 'aos/dist/aos.css'
 import AOS from 'aos'
 
-// 👇 Importa SpeedInsights desde vercel
+// SpeedInsights desde vercel
 import { SpeedInsights } from "@vercel/speed-insights/react"
 
 AOS.init({
@@ -19,7 +18,7 @@ AOS.init({
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
-    {/* 👇 Se agrega SpeedInsights al final */}
+    {/* peedInsights al final */}
     <SpeedInsights />
   </React.StrictMode>,
 )

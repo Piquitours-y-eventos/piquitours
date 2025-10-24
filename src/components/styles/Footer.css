@@ -4,9 +4,9 @@
     radial-gradient(900px 500px at 110% 10%, rgba(255,59,59,.08), transparent 60%),
     linear-gradient(180deg, #0b0b0e 0%, #0b0b0e 40%, #0e0e12 100%);
   color: var(--text);
-  padding: 4rem 2rem 2rem;
+  padding: clamp(3rem, 6vh, 4rem) clamp(1.25rem, 4vw, 2rem) clamp(1.5rem, 3vh, 2rem);
   position: relative;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.55;
 }
 
@@ -24,8 +24,8 @@
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(2rem, 4vw, 3rem);
 }
 
 .footer-logo {
@@ -39,9 +39,9 @@
 }
 
 .footer h4 {
-  font-size: 1.5rem;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin-bottom: clamp(1.25rem, 2.5vh, 1.5rem);
   position: relative;
   background: linear-gradient(90deg, var(--g1), var(--g2));
   -webkit-background-clip: text;
@@ -256,12 +256,12 @@
 
 .back-to-top {
   position: fixed;
-  bottom: 20px;
-  right: 80px;
+  bottom: clamp(16px, 3vh, 20px);
+  right: clamp(70px, 15vw, 80px);
   background: linear-gradient(135deg, var(--g1), var(--g2), var(--g3));
   color: #111;
-  width: 50px;
-  height: 50px;
+  width: clamp(46px, 10vw, 50px);
+  height: clamp(46px, 10vw, 50px);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -279,13 +279,13 @@
 
 .floating-whatsapp {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: clamp(16px, 3vh, 20px);
+  right: clamp(16px, 3vw, 20px);
   background: #25D366;
   color: white;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: clamp(50px, 11vw, 56px);
+  height: clamp(50px, 11vw, 56px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -315,48 +315,163 @@
 }
 
 @media (max-width: 768px) {
+  .footer {
+    padding: 2.5rem 1.25rem 1.5rem;
+  }
+
   .footer-content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   .footer-section {
     text-align: center;
   }
 
+  .footer-logo {
+    width: clamp(140px, 35vw, 160px);
+    margin: 0 auto 1.25rem;
+  }
+
   .social-icons {
     justify-content: center;
+    gap: 0.875rem;
+  }
+
+  .social-icon {
+    width: 42px;
+    height: 42px;
   }
 
   .newsletter-form {
     flex-direction: column;
+    gap: 0.75rem;
   }
 
   .newsletter-button {
     width: 100%;
+    padding: 0.875rem 1rem;
   }
 
   .contact-info {
     align-items: center;
+    gap: 1.125rem;
   }
 
   .contact-item {
     justify-content: center;
+    font-size: 0.9375rem;
+  }
+
+  .footer h4 {
+    font-size: 1.375rem;
   }
 
   .footer h4::after {
     left: 50%;
     transform: translateX(-50%);
   }
+
+  .back-to-top {
+    bottom: 14px;
+    right: 64px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .floating-whatsapp {
+    bottom: 14px;
+    right: 14px;
+    width: 52px;
+    height: 52px;
+  }
 }
 
 @media (max-width: 480px) {
   .footer {
-    padding: 3rem 1rem 1rem;
+    padding: 2.25rem 1rem 1.25rem;
+  }
+
+  .footer-content {
+    gap: 2rem;
   }
 
   .footer h4 {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
+    margin-bottom: 1.125rem;
+  }
+
+  .footer h5 {
+    font-size: 1.0625rem;
+  }
+
+  .footer-logo {
+    width: clamp(120px, 32vw, 140px);
+  }
+
+  .company-description {
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .social-icons {
+    gap: 0.75rem;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .contact-item {
+    font-size: 0.875rem;
+  }
+
+  .footer-links a {
+    font-size: 0.9375rem;
+  }
+
+  .newsletter-section {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+  }
+
+  .newsletter-description {
+    font-size: 0.8125rem;
+  }
+
+  .newsletter-input {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .newsletter-button {
+    padding: 0.8125rem 0.9375rem;
+    font-size: 0.875rem;
+  }
+
+  .footer-bottom {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+
+  .footer-bottom-content p {
+    font-size: 0.8125rem;
+  }
+
+  .back-to-top {
+    bottom: 12px;
+    right: 60px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .floating-whatsapp {
+    bottom: 12px;
+    right: 12px;
+    width: 48px;
+    height: 48px;
   }
 }
 

@@ -1,9 +1,11 @@
 // Destinations.jsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiStar, FiChevronLeft, FiChevronRight, FiCheckCircle } from 'react-icons/fi';
+import { Star, ChevronLeft, ChevronRight, CheckCircle, X, Calendar, Users, MapPin, Clock, Phone, Mail } from 'lucide-react';
 import toursData from '../data/tours.json';
 import './styles/Destinations.css';
+import './styles/TourModal.css';
+import './styles/FormStyles.css';
 import '../pages/styles/Contacto.css';
 import { supabase } from '../utils/supabase';
 
@@ -20,7 +22,8 @@ const Destinations = () => {
   const [activeTab, setActiveTab] = useState('resumen');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
-  const [isFormModalOpen, setIsFormModalOpen] = useState(false); // Nuevo estado para modal de formulario separado
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+  const [bookingTour, setBookingTour] = useState(null); // Tour para el formulario
 
   // Estado para el formulario de reserva
   const [formData, setFormData] = useState({
@@ -95,21 +98,13 @@ const Destinations = () => {
   };
 
   const openFormModal = () => {
-    const scrollY = window.scrollY;
-    document.body.style.top = `-${scrollY}px`;
-    
+    if (!selectedTour) return;
     setIsFormModalOpen(true);
-    setIsSubmitted(false); // Reset success state
-    document.body.classList.add('modal-open');
+    setIsSubmitted(false);
   };
 
   const closeFormModal = () => {
     setIsFormModalOpen(false);
-    document.body.classList.remove('modal-open');
-    
-    const scrollY = document.body.style.top;
-    document.body.style.top = '';
-    window.scrollTo(0, parseInt(scrollY || '0') * -1);
     
     // Reset form
     setFormData({
@@ -135,11 +130,13 @@ const Destinations = () => {
   };
 
   const nextLightbox = () => {
-    setLightboxIndex((prev) => (prev + 1) % (selectedTour.media || selectedTour.gallery).length);
+    const mediaArray = selectedTour.media || selectedTour.galeria || selectedTour.gallery || [];
+    setLightboxIndex((prev) => (prev + 1) % mediaArray.length);
   };
 
   const prevLightbox = () => {
-    setLightboxIndex((prev) => (prev - 1 + (selectedTour.media || selectedTour.gallery).length) % (selectedTour.media || selectedTour.gallery).length);
+    const mediaArray = selectedTour.media || selectedTour.galeria || selectedTour.gallery || [];
+    setLightboxIndex((prev) => (prev - 1 + mediaArray.length) % mediaArray.length);
   };
 
   const durBadge = (d) => {
@@ -160,7 +157,10 @@ const Destinations = () => {
       if (e.key === 'ArrowLeft') prevLightbox();
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'Home') setLightboxIndex(0);
-      if (e.key === 'End') setLightboxIndex((selectedTour.media || selectedTour.gallery).length - 1);
+      if (e.key === 'End') {
+        const mediaArray = selectedTour.media || selectedTour.galeria || selectedTour.gallery || [];
+        setLightboxIndex(mediaArray.length - 1);
+      }
       if (e.key.toLowerCase() === 'f') {
         const elem = document.getElementById('lbMedia');
         if (elem && elem.requestFullscreen) elem.requestFullscreen();
@@ -244,7 +244,15 @@ const Destinations = () => {
       }, 3000);
     } catch (e) {
       console.error('Error al crear reserva:', e);
-      setFormError(e.message || 'Ocurrió un error al enviar tu reserva. Intenta nuevamente.');
+      let errorMessage = 'Ocurrió un error al enviar tu reserva. Por favor, intenta nuevamente.';
+      
+      if (e.message && e.message.includes('Failed to fetch')) {
+        errorMessage = 'No pudimos conectar con el servidor. Verifica tu conexión a internet e intenta nuevamente.';
+      } else if (e.message) {
+        errorMessage = e.message;
+      }
+      
+      setFormError(errorMessage);
     } finally {
       setBookingSubmitting(false);
     }
@@ -285,7 +293,7 @@ const Destinations = () => {
         </header>
 
         <div style={{ maxWidth: '1000px', margin: '0 auto 28px' }}>
-          <img src="/portada_google.jpeg" alt="Paisaje Colombia" style={{ width: '100%', borderRadius: '16px', boxShadow: '0 6px 28px rgba(0,0,0,.18)', objectFit: 'cover', aspectRatio: '16/5' }} />
+          <img src="/meta/portada_google.jpeg" alt="Paisaje Colombia" style={{ width: '100%', borderRadius: '16px', boxShadow: '0 6px 28px rgba(0,0,0,.18)', objectFit: 'cover', aspectRatio: '16/5' }} />
         </div>
 
         <section className="filters" aria-label="Filtros">
@@ -348,7 +356,7 @@ const Destinations = () => {
                   <span>★ {tour.popularidad || tour.rating * 20}</span>
                 </div>
                 <div className="rating-badge">
-                  <FiStar className="star-icon" />
+                  <Star className="star-icon" size={16} />
                   <span>{tour.rating || (tour.popularidad / 20).toFixed(1)}</span>
                 </div>
               </div>
@@ -478,7 +486,7 @@ const Destinations = () => {
                     <div className="info">
                       <h4><span className="icon">⚡</span> Por qué elegir este destino 💎</h4>
                       <ul className="list">
-                        {(selectedTour.quick || Object.entries(selectedTour.details)).map(([k, v], i) => (
+                        {(selectedTour.quick || Object.entries(selectedTour.detalles || selectedTour.details || {})).map(([k, v], i) => (
                           <li key={i}>
                             <span style={{ opacity: '.7' }}>{k}:</span>&nbsp;<strong>{v}</strong>
                           </li>
@@ -530,9 +538,9 @@ const Destinations = () => {
                   >
                     <h4><span className="icon">✅</span> Todo lo que incluye tu viaje 🎁</h4>
                     <ul className="list">
-                      {(selectedTour.incluye || selectedTour.inclusions.map(txt => ({ok: true, txt}))).map((x, i) => (
+                      {(selectedTour.incluye || selectedTour.inclusions?.map(txt => ({ok: true, item: txt})) || []).map((x, i) => (
                         <li key={i}>
-                          <span className={x.ok ? 'ok' : 'no'}>{x.ok ? '✔' : '✗'}</span> <span>{x.txt}</span>
+                          <span className={x.ok ? 'ok' : 'no'}>{x.ok ? '✔' : '✗'}</span> <span style={{color: '#fff'}}>{x.item || x.txt}</span>
                         </li>
                       ))}
                     </ul>
@@ -551,21 +559,24 @@ const Destinations = () => {
                     <h4><span className="icon">🖼️</span> Galería Exclusiva: Vive la Aventura en Imágenes Antes de Reservar 🌟</h4>
                     <p className="gallery-intro">Sumérgete en estas imágenes cautivadoras que capturan la esencia de tu próximo viaje. Cada foto es una promesa de momentos inolvidables. ¡Reserva ahora y hazlas realidad! 📸✨</p>
                     <div className="gallery">
-                      {(selectedTour.media || selectedTour.gallery.map(src => ({type: 'img', src}))).map((m, i) => (
-                        <motion.div
-                          key={i}
-                          className={`ph ${i % 5 === 0 ? 'span-8' : (i % 3 === 0 ? 'span-6' : 'span-4')}`}
-                          onClick={() => openLightbox(i)}
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          {m.type === 'img' ? (
-                            <img loading="lazy" src={m.src} alt={`${selectedTour.nombre || selectedTour.title} media ${i + 1}`} />
-                          ) : (
-                            <video preload="metadata" src={m.src} poster={m.poster} muted />
-                          )}
-                        </motion.div>
-                      ))}
+                      {(selectedTour.media || selectedTour.galeria || selectedTour.gallery || []).map((m, i) => {
+                        const media = typeof m === 'string' ? {type: 'img', src: m} : m;
+                        return (
+                          <motion.div
+                            key={i}
+                            className={`ph ${i % 5 === 0 ? 'span-8' : (i % 3 === 0 ? 'span-6' : 'span-4')}`}
+                            onClick={() => openLightbox(i)}
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            {media.type === 'img' ? (
+                              <img loading="lazy" src={media.src} alt={`${selectedTour.nombre || selectedTour.title} media ${i + 1}`} />
+                            ) : (
+                              <video preload="metadata" src={media.src} poster={media.poster} muted />
+                            )}
+                          </motion.div>
+                        );
+                      })}
                     </div>
                   </motion.section>
                 )}
@@ -581,30 +592,43 @@ const Destinations = () => {
                   >
                     <h4><span className="icon">💬</span> Lo que dicen nuestros viajeros 🗣️</h4>
                     <div className="reviews">
-                      {(selectedTour.reviews || []).map(([name, flag, stars, text], i) => (
-                        <motion.div
-                          key={i}
-                          className="rev"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: i * 0.1 }}
-                        >
-                          <div className="avatar" style={{ background: `linear-gradient(90deg, var(--g1), var(--g2))` }}></div>
-                          <div>
-                            <div style={{ fontWeight: 700 }}>{name} <span className="tag">{flag}</span></div>
-                            <div className="stars">{'★'.repeat(+stars)}{'☆'.repeat(5 - +stars)}</div>
-                            <div style={{ marginTop: '6px' }}>{text}</div>
-                          </div>
-                          <div><span className="tag">Verificado ✅</span></div>
-                        </motion.div>
-                      ))}
+                      {(selectedTour.reviews || []).map((review, i) => {
+                        const {nombre, ubicacion, rating, comentario, verificado} = review;
+                        return (
+                          <motion.div
+                            key={i}
+                            className="rev"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3, delay: i * 0.1 }}
+                          >
+                            <div className="avatar" style={{ background: `linear-gradient(90deg, var(--g1), var(--g2))` }}>{nombre?.charAt(0)}</div>
+                            <div>
+                              <div style={{ fontWeight: 700 }}>{nombre} <span className="tag">{ubicacion}</span></div>
+                              <div className="stars">{'★'.repeat(rating)}{'☆'.repeat(5 - rating)}</div>
+                              <div style={{ marginTop: '6px' }}>{comentario}</div>
+                            </div>
+                            {verificado && <div><span className="tag">Verificado ✅</span></div>}
+                          </motion.div>
+                        );
+                      })}
                     </div>
                   </motion.section>
                 )}
               </AnimatePresence>
               <motion.button
                 className="book-btn"
-                onClick={openFormModal}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const tourParaReservar = selectedTour;
+                  setBookingTour(tourParaReservar);
+                  setIsModalOpen(false);
+                  document.body.classList.remove('modal-open');
+                  setTimeout(() => {
+                    setIsFormModalOpen(true);
+                    setIsSubmitted(false);
+                  }, 350);
+                }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -616,9 +640,21 @@ const Destinations = () => {
       )}
 
       {/* Modal separado para el formulario de reserva */}
-      {isFormModalOpen && selectedTour && (
-        <motion.div 
-          className="backdrop show" 
+      {isFormModalOpen && bookingTour && (
+        <div 
+          className="fixed inset-0 bg-black flex items-center justify-center p-4 overflow-y-auto"
+          style={{ 
+            zIndex: 999999,
+            display: 'flex',
+            visibility: 'visible',
+            opacity: 1,
+            backgroundColor: 'rgba(0,0,0,0.85)',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0
+          }}
           role="dialog" 
           aria-modal="true" 
           aria-labelledby="formTitle"
@@ -628,140 +664,213 @@ const Destinations = () => {
           transition={{ duration: 0.3 }}
           onClick={closeFormModal}
         >
-          <motion.div 
-            className="form-dialog"
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
+          <div 
+            style={{
+              position: 'relative',
+              width: '100%',
+              maxWidth: '800px',
+              background: 'linear-gradient(145deg, rgba(20, 20, 20, 0.98) 0%, rgba(30, 30, 30, 0.95) 100%)',
+              borderRadius: '24px',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 138, 64, 0.2)',
+              overflow: 'hidden',
+              margin: '40px 20px 20px 20px',
+              backdropFilter: 'blur(20px)'
+            }}
             onClick={(e) => e.stopPropagation()}
           >
-            <header>
-              <h2 id="formTitle">Reserva {selectedTour.nombre || selectedTour.title}</h2>
-              <motion.button 
-                className="close" 
-                aria-label="Cerrar" 
-                onClick={closeFormModal}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                ✕
-              </motion.button>
-            </header>
+            <div style={{
+              position: 'sticky',
+              top: 0,
+              zIndex: 10,
+              background: 'linear-gradient(180deg, rgba(18,18,26,0.95), rgba(15,15,21,0.95))',
+              borderBottom: '1px solid rgba(255,138,64,0.15)',
+              padding: '24px',
+              backdropFilter: 'blur(20px)'
+            }}>
+              <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px'}}>
+                <div style={{flex: 1, minWidth: 0}}>
+                  <h2 style={{
+                    fontSize: '28px',
+                    fontWeight: '700',
+                    background: 'linear-gradient(90deg, #ff8a40, #ffa25c, #ff6b40)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    margin: 0,
+                    marginBottom: '8px'
+                  }}>Reserva tu Aventura</h2>
+                  <p style={{fontSize: '14px', color: '#999', margin: 0, fontFamily: "'Inter', sans-serif"}}>{bookingTour.nombre || bookingTour.title}</p>
+                </div>
+                <motion.button 
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    background: 'rgba(255,138,64,0.1)',
+                    border: '1px solid rgba(255,138,64,0.2)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    color: '#ff8a40',
+                    flexShrink: 0
+                  }}
+                  onClick={closeFormModal}
+                  whileHover={{ scale: 1.1, background: 'rgba(255,138,64,0.2)' }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <X size={20} />
+                </motion.button>
+              </div>
+            </div>
 
-            <main>
+            <div className="premium-form-container">
               {!isSubmitted ? (
                 <>
-                  <p className="form-intro">Completa el formulario y te contactaremos para confirmar tu reserva.</p>
+                  <div style={{
+                    marginBottom: '24px',
+                    padding: '16px 20px',
+                    background: 'linear-gradient(135deg, rgba(255,138,64,0.1), rgba(255,162,92,0.05))',
+                    borderRadius: '16px',
+                    border: '1px solid rgba(255,138,64,0.2)',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '12px'
+                  }}>
+                    <Calendar size={18} style={{color: '#ff8a40', flexShrink: 0, marginTop: '2px'}} />
+                    <p style={{fontSize: '14px', color: '#ccc', margin: 0, fontFamily: "'Inter', sans-serif", lineHeight: '1.5'}}>
+                      Completa el formulario y te contactaremos para confirmar tu reserva en menos de 24 horas.
+                    </p>
+                  </div>
 
                   {formError && (
                     <motion.div 
-                      className="error-message"
+                      className="mb-6 p-4 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 rounded-xl flex items-start gap-3"
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                     >
-                      {formError}
+                      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center">
+                        <span className="text-red-600 dark:text-red-400 text-xs font-bold">!</span>
+                      </div>
+                      <p className="text-sm text-red-700 dark:text-red-300 font-['Inter']">{formError}</p>
                     </motion.div>
                   )}
 
-                  <form className="premium-form" onSubmit={(e) => { e.preventDefault(); submitForm(); }}>
-                    <div className="form-row">
-                      <div className="form-group">
-                        <label htmlFor="nombre">Nombre Completo *</label>
+                  <form onSubmit={(e) => { e.preventDefault(); submitForm(); }}>
+                    <div className="premium-form-grid">
+                      <div className="premium-form-field">
+                        <label htmlFor="nombre" className="premium-form-label">Nombre Completo *</label>
                         <input
                           type="text"
                           id="nombre"
                           name="nombre"
                           value={formData.nombre}
                           onChange={handleFormChange}
-                          className={`form-input ${formError && !formData.nombre ? 'error' : ''}`}
-                          placeholder="Ingresa tu nombre completo"
+                          className={`premium-form-input ${formError && !formData.nombre ? 'error' : ''}`}
+                          placeholder="Juan Pérez"
+                          required
                         />
+                        <Users size={18} className="premium-form-icon" />
                       </div>
-                      <div className="form-group">
-                        <label htmlFor="telefono">Teléfono *</label>
+                      <div className="premium-form-field">
+                        <label htmlFor="telefono" className="premium-form-label">Teléfono *</label>
                         <input
                           type="tel"
                           id="telefono"
                           name="telefono"
                           value={formData.telefono}
                           onChange={handleFormChange}
-                          className={`form-input ${formError && !formData.telefono ? 'error' : ''}`}
+                          className={`premium-form-input ${formError && !formData.telefono ? 'error' : ''}`}
                           placeholder="+57 300 123 4567"
+                          required
                         />
+                        <Phone size={18} className="premium-form-icon" />
                       </div>
                     </div>
 
-                    <div className="form-row">
-                      <div className="form-group">
-                        <label htmlFor="email">Correo Electrónico *</label>
+                    <div className="premium-form-grid">
+                      <div className="premium-form-field">
+                        <label htmlFor="email" className="premium-form-label">Correo Electrónico *</label>
                         <input
                           type="email"
                           id="email"
                           name="email"
                           value={formData.email}
                           onChange={handleFormChange}
-                          className={`form-input ${formError && (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) ? 'error' : ''}`}
+                          className={`premium-form-input ${formError && (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) ? 'error' : ''}`}
                           placeholder="tu@email.com"
+                          required
                         />
+                        <Mail size={18} className="premium-form-icon" />
                       </div>
-                      <div className="form-group">
-                        <label htmlFor="fecha">Fecha Preferida *</label>
+                      <div className="premium-form-field">
+                        <label htmlFor="fecha" className="premium-form-label">Fecha Preferida *</label>
                         <input
                           type="date"
                           id="fecha"
                           name="fecha"
                           value={formData.fecha}
                           onChange={handleFormChange}
-                          className={`form-input ${formError && !formData.fecha ? 'error' : ''}`}
+                          min={new Date().toISOString().split('T')[0]}
+                          className={`premium-form-input ${formError && !formData.fecha ? 'error' : ''}`}
+                          required
                         />
+                        <Calendar size={18} className="premium-form-icon" />
                       </div>
                     </div>
 
-                    <div className="form-group">
-                      <label htmlFor="personas">Número de Personas *</label>
+                    <div className="premium-form-field">
+                      <label htmlFor="personas" className="premium-form-label">Número de Personas *</label>
                       <input
                         type="number"
                         id="personas"
                         name="personas"
                         min="1"
+                        max="20"
                         value={formData.personas}
                         onChange={handleFormChange}
-                        className={`form-input ${formError && formData.personas < 1 ? 'error' : ''}`}
+                        className={`premium-form-input ${formError && formData.personas < 1 ? 'error' : ''}`}
+                        required
                       />
+                      <Users size={18} className="premium-form-icon" />
+                      <p style={{marginTop: '8px', fontSize: '12px', color: '#666'}}>Máximo 20 personas por reserva</p>
                     </div>
 
-                    <div className="form-group">
-                      <label htmlFor="mensaje">Mensaje *</label>
+                    <div className="premium-form-field">
+                      <label htmlFor="mensaje" className="premium-form-label">Mensaje *</label>
                       <textarea
                         id="mensaje"
                         name="mensaje"
                         value={formData.mensaje}
                         onChange={handleFormChange}
-                        rows="5"
-                        className={`form-input ${formError && !formData.mensaje ? 'error' : ''}`}
-                        placeholder="Especifica detalles: ciudad de salida, fechas, presupuesto, etc."
+                        className={`premium-form-textarea ${formError && !formData.mensaje ? 'error' : ''}`}
+                        placeholder="Especifica detalles: ciudad de salida, fechas flexibles, presupuesto, preferencias especiales..."
                         maxLength="500"
+                        required
                       ></textarea>
-                      <div className="char-counter">
-                        {formData.mensaje.length}/500 caracteres
+                      <div className={`char-counter ${formData.mensaje.length > 450 ? 'warning' : ''}`}>
+                        <span style={{fontSize: '12px', color: '#666'}}>Comparte tus preferencias para personalizar tu experiencia</span>
+                        <span style={{fontSize: '12px', fontWeight: '600'}}>{formData.mensaje.length}/500</span>
                       </div>
                     </div>
 
                     <motion.button
                       type="submit"
-                      className="premium-submit-btn"
+                      className="premium-submit-button"
                       disabled={bookingSubmitting}
                       whileHover={{ scale: bookingSubmitting ? 1 : 1.02 }}
                       whileTap={{ scale: bookingSubmitting ? 1 : 0.98 }}
                     >
                       {bookingSubmitting ? (
                         <>
-                          <div className="loading-spinner"></div>
-                          Enviando...
+                          <div style={{width: '20px', height: '20px', border: '3px solid #000', borderTop: '3px solid transparent', borderRadius: '50%', animation: 'spin 0.8s linear infinite'}}></div>
+                          <span>Enviando reserva...</span>
                         </>
                       ) : (
-                        'Enviar Reserva'
+                        <>
+                          <CheckCircle size={20} />
+                          <span>Confirmar Reserva</span>
+                        </>
                       )}
                     </motion.button>
                   </form>
@@ -771,20 +880,32 @@ const Destinations = () => {
                   className="success-state"
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <div className="success-icon-wrapper">
-                    <svg className="success-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="#28a745"/>
-                    </svg>
+                    <CheckCircle size={48} color="#fff" strokeWidth={2.5} />
                   </div>
                   <h3>¡Solicitud enviada con éxito!</h3>
-                  <p>Hemos recibido tu reserva para <strong>{selectedTour.nombre || selectedTour.title}</strong>. Te contactaremos muy pronto.</p>
+                  <p>
+                    Hemos recibido tu reserva para <strong style={{color: '#ff8a40'}}>{bookingTour.nombre || bookingTour.title}</strong>.
+                  </p>
+                  <div className="success-badge">
+                    <Clock size={16} />
+                    <span>Te contactaremos en menos de 24 horas</span>
+                  </div>
+                  <motion.button
+                    onClick={closeFormModal}
+                    className="success-close-button"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Cerrar
+                  </motion.button>
                 </motion.div>
               )}
-            </main>
-          </motion.div>
-        </motion.div>
+            </div>
+          </div>
+        </div>
       )}
 
       {lightboxOpen && selectedTour && (
@@ -813,7 +934,7 @@ const Destinations = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <FiChevronLeft size={24} />
+              <ChevronLeft size={24} />
             </motion.button>
             <motion.button
               className="lbbtn"
@@ -822,7 +943,7 @@ const Destinations = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <FiChevronRight size={24} />
+              <ChevronRight size={24} />
             </motion.button>
           </div>
           <motion.div
@@ -831,11 +952,16 @@ const Destinations = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.4 }}
           >
-            { (selectedTour.media || selectedTour.gallery.map(src => ({type: 'img', src})))[lightboxIndex].type === 'img' ? (
-              <img src={(selectedTour.media || selectedTour.gallery.map(src => ({type: 'img', src})))[lightboxIndex].src} alt={`media ${lightboxIndex + 1}`} />
-            ) : (
-              <video src={(selectedTour.media || [])[lightboxIndex].src} controls autoPlay poster={(selectedTour.media || [])[lightboxIndex].poster || ''} />
-            )}
+            { (() => {
+              const mediaArray = selectedTour.media || selectedTour.galeria || selectedTour.gallery || [];
+              const item = mediaArray[lightboxIndex];
+              const media = typeof item === 'string' ? {type: 'img', src: item} : item;
+              return media.type === 'img' ? (
+                <img src={media.src} alt={`media ${lightboxIndex + 1}`} />
+              ) : (
+                <video src={media.src} controls autoPlay poster={media.poster || ''} />
+              );
+            })() }
           </motion.div>
         </motion.div>
       )}

@@ -22,7 +22,6 @@ import './styles/Nosotros.css';
 
 function NosotrosPage() {
   useEffect(() => {
-    // Smooth scroll for anchor links
     const handleSmoothScroll = (e) => {
       if (e.target.tagName === 'A' && e.target.getAttribute('href')?.startsWith('#')) {
         const href = e.target.getAttribute('href');
@@ -37,7 +36,6 @@ function NosotrosPage() {
     };
     document.addEventListener('click', handleSmoothScroll);
 
-    // Animation on appear
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -66,7 +64,7 @@ function NosotrosPage() {
       {/* HERO */}
       <section className="pt-hero" aria-label="Presentación">
         <div className="pt-hero-media" aria-hidden="true">
-          <img src="/portada_nosotros_0101.jpg" alt="Paisaje Colombia - PiquiTours" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img src="/pages/portada_nosotros_0101.jpg" alt="Paisaje Colombia - PiquiTours" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
 
         <div className="pt-container pt-hero-content">
@@ -126,7 +124,7 @@ function NosotrosPage() {
             </div>
           </div>
           <figure className="pt-quienes-figure">
-            <img loading="lazy" src="/portada_google.jpeg" alt="Grupo disfrutando de un tour al atardecer" />
+            <img loading="lazy" src="/meta/portada_google.jpeg" alt="Grupo disfrutando de un tour al atardecer" />
             <figcaption className="pt-muted">Diseño, logística y hospitalidad — todo en un solo equipo.</figcaption>
           </figure>
         </div>
@@ -207,51 +205,11 @@ function NosotrosPage() {
             <p>Descubre cómo transformamos cada viaje en una historia inolvidable.</p>
           </div>
           <figure>
-            <img loading="lazy" src="/portada_imagen_2919.jpg" alt="Experiencia PiquiTours" style={{ width: '100%', borderRadius: '8px' }} />
+            <img loading="lazy" src="/pages/portada_imagen_2919.jpg" alt="Experiencia PiquiTours" style={{ width: '100%', borderRadius: '8px' }} />
             <figcaption className="pt-muted">Un vistazo a nuestras rutas: cultura, naturaleza y momentos que perduran.</figcaption>
           </figure>
         </div>
       </section>
-
-      {/* SECCIÓN: EQUIPO */}
-      {/* <section id="pt-equipo" aria-label="Nuestro equipo">
-        <div className="pt-container">
-          <div className="pt-section-head">
-            <h2>Gente real, resultados reales</h2>
-            <p>Un equipo pequeño y obsesivo: diseñadores de experiencias, logística y hospitalidad.</p>
-          </div>
-          <div className="pt-team">
-            <article className="pt-member">
-              <img loading="lazy" src="/portada_imagen_2919.jpg" alt="Foto de persona del equipo" />
-              <div className="pt-info">
-                <strong>Valeria Ortiz</strong>
-                <div className="pt-role">Directora de Operaciones</div>
-              </div>
-            </article>
-            <article className="pt-member">
-              <img loading="lazy" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" alt="Foto de persona del equipo" />
-              <div className="pt-info">
-                <strong>Samuel Rojas</strong>
-                <div className="pt-role">Experiencias y Curaduría</div>
-              </div>
-            </article>
-            <article className="pt-member">
-              <img loading="lazy" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=800&auto=format&fit=crop" alt="Foto de persona del equipo" />
-              <div className="pt-info">
-                <strong>Juliana Pérez</strong>
-                <div className="pt-role">Relación con Aliados</div>
-              </div>
-            </article>
-            <article className="pt-member">
-              <img loading="lazy" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=800&auto=format&fit=crop" alt="Foto de persona del equipo" />
-              <div className="pt-info">
-                <strong>Camilo Díaz</strong>
-                <div className="pt-role">Guía Líder</div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section> */}
 
       {/* SECCIÓN: DIFERENCIA */}
       <section id="pt-como-lo-hacemos">
